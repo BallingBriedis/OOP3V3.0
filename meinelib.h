@@ -2,6 +2,8 @@
 #include <iomanip>
 #include <string>
 #include <vector>
+#include <fstream>
+#include <algorithm>
 
 using std::cout;
 using std::cin;
@@ -13,5 +15,5 @@ struct Stud{
 string var;
 string pav;
 vector<int>uzd{};
-int egz;
+int egz=0;
 };
