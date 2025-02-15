@@ -41,3 +41,6 @@ void read(Stud &stu) {
 		i++;
 	}
 }
+float vidurkis(Stud &studentai) {
+	return accumulate(studentai.uzd.begin(), studentai.uzd.end(), 0) / studentai.uzd.size();
+}
