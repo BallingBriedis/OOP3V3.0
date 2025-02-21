@@ -31,7 +31,8 @@ int main() {
 	if (pasirinkimasV == 'V') {
 		cout << "Studentu sarasas: \n";
 		cout << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20) << "Galutinis (Vid.)" << endl;
-		for (Stud studentas : studentai) {
+		for (size_t i = 0; i < studentai.size(); ++i) {
+			Stud studentas = studentai[i];
 			cout << std::setw(20) << studentas.var << std::setw(20) << studentas.pav << std::setw(20) << fixed << setprecision(0) << 0.6 * studentas.egz + 0.4 * vidurkis(studentas) << endl;
 		}
 		break;
@@ -89,7 +90,12 @@ void readRanka(Stud& stu) {
 
 float vidurkis(Stud& studentai) {
 	if (studentai.uzdSize == 0) return 0.0;
-	return std::accumulate(studentai.mUzd, studentai.mUzd + studentai.uzdSize, 0) / (float)(studentai.uzdSize);
+
+	double suma = 0;
+	for (int i = 0; i < studentai.uzdSize; i++) {
+		suma += studentai.mUzd[i];
+	}
+	return suma / studentai.uzdSize;
 }
 
 float mediana(Stud& studentai) {
