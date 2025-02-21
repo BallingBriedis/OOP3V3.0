@@ -8,7 +8,6 @@
 #include <fstream>
 #include <algorithm>
 #include <numeric>
-#include <iomanip>
 #include <sstream>
 
 using std::cout;
@@ -16,6 +15,8 @@ using std::cin;
 using std::endl;
 using std::string;
 using std::vector;
+using std::fixed;
+using std::setprecision;
 
 struct Stud {
 	string var;
@@ -25,8 +26,30 @@ struct Stud {
 
 	int* mUzd = nullptr;
 	size_t uzdSize = 0;
+	size_t uzd_capacity = 0;
+
+    Stud() : mUzd(nullptr), uzdSize(0), uzd_capacity(0) {}
+
 	~Stud() {
 		delete[] mUzd;
 	}
+    void addGrades(int grade) {
+        if (uzdSize == uzd_capacity) {
+            size_t newCapacity = (uzd_capacity == 0) ? 1 : uzd_capacity * 2;
+            int* newMuzd = new int[newCapacity];
+
+            std::copy(mUzd, mUzd + uzdSize, newMuzd);
+
+            delete[] mUzd;
+
+            mUzd = newMuzd;
+            uzd_capacity = newCapacity;
+        }
+		cout <<"\n\n\n"<< grade << "\n\n\n";
+        mUzd[uzdSize] = grade;
+		uzdSize++;
+		for(int i=0;i<uzdSize;i++)
+		cout << "\nABFDAFG" << mUzd[i] << "\nABFDAFG";
+    }
 };
 #endif
