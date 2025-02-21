@@ -24,15 +24,16 @@ int main() {
 			}
 		}
 	}
-	
+
 	cout << "Ar galutini rezultata skaiciuosite vidurkiu ar mediana? (V/M): ";
+
 	while(true){
 		cin >> pasirinkimasV;
 	if (pasirinkimasV == 'V') {
 		cout << "Studentu sarasas: \n";
 		cout << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20) << "Galutinis (Vid.)" << endl;
 		for (Stud studentas : studentai) {
-			cout << std::setw(20) << studentas.var << std::setw(20) << studentas.pav << std::setw(20) << fixed << setprecision(0) << 0.6 * studentas.egz + 0.4 * vidurkis(studentas) << endl;
+			cout << std::setw(20) << studentas.var << std::setw(20) << studentas.pav << std::setw(20) << fixed << setprecision(0) << (0.6 * studentas.egz + 0.4 * vidurkis(studentas)) << endl;
 		}
 		break;
 	}
@@ -40,7 +41,7 @@ int main() {
 		cout << "Studentu sarasas: \n";
 		cout << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20) << "Galutinis (Med.)" << endl;
 		for (Stud studentas : studentai) {
-			cout << std::setw(20) << studentas.var << std::setw(20) << studentas.pav << std::setw(20) << fixed << setprecision(0) << 0.6 * studentas.egz + 0.4 * mediana(studentas) << endl;
+			cout << std::setw(20) << studentas.var << std::setw(20) << studentas.pav << std::setw(20) << fixed << setprecision(0) << (0.6 * studentas.egz + 0.4 * mediana(studentas)) << endl;
 		}
 		break;
 	}
@@ -88,25 +89,21 @@ void readRanka(Stud& stu) {
 }
 
 float vidurkis(Stud& studentai) {
-	if (studentai.uzdSize == 0) return 0.0;
+    if (studentai.uzdSize == 0 || studentai.mUzd == nullptr) return 0.0;
 
-	double suma = 0;
-	for (int i = 0; i < studentai.uzdSize; i++) {
-		suma += studentai.mUzd[i];
-	}
-	return suma / studentai.uzdSize;
+    double suma = 0;
+    for (int i = 0; i < studentai.uzdSize; i++) {
+        suma += studentai.mUzd[i];
+		cout << "\n" << studentai.mUzd[i] << "\n";
+    }
+    return suma / studentai.uzdSize;
 }
 
 float mediana(Stud& studentai) {
-	if (studentai.uzdSize == 0) return 0.0;
+	if (studentai.uzdSize == 0 || studentai.mUzd == nullptr) return 0.0;
 
 	std::vector<int> sortedUzd(studentai.mUzd, studentai.mUzd + studentai.uzdSize);
 	std::sort(sortedUzd.begin(), sortedUzd.end());
 	size_t size = sortedUzd.size();
-	if (size % 2 == 0) {
-		return (sortedUzd[size / 2 - 1] + sortedUzd[size / 2]) / 2.0;
-	}
-	else {
-		return sortedUzd[size / 2];
-	}
+	return (size % 2 == 0) ? (sortedUzd[size / 2 - 1] + sortedUzd[size / 2]) / 2.0 : sortedUzd[size / 2];
 }

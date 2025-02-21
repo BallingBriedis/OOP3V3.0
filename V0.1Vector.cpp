@@ -1,7 +1,8 @@
 #include "functions.h"
 
-
 void readRanka(Stud& stu);
+float vidurkis(Stud& studentai);
+float mediana(Stud& studentai);
 
 int main() {
 	vector<Stud> studentai;
@@ -12,48 +13,40 @@ int main() {
 		readRanka(studentas);
 		studentai.push_back(studentas);
 		cout << "Ar norite ivesti dar viena studenta? (Y/N): ";
-		cin >> pasirinkimasS;
-		if (pasirinkimasS == 'Y' || pasirinkimasS == 'N') {
+		while (true) {
+			cin >> pasirinkimasS;
+			if (pasirinkimasS == 'Y' || pasirinkimasS == 'N') {
+				break;
+			}
+			else {
+				cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				cout << "Neteisingas pasirinkimas. Iveskite Y arba N: ";
+			}
+		}
+	}
+
+	cout << "Ar galutini rezultata skaiciuosite vidurkiu ar mediana? (V/M): ";
+
+	while (true) {
+		cin >> pasirinkimasV;
+		if (pasirinkimasV == 'V') {
+			cout << "Studentu sarasas: \n";
+			cout << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20) << "Galutinis (Vid.)" << endl;
+			for (Stud studentas : studentai) {
+				cout << std::setw(20) << studentas.var << std::setw(20) << studentas.pav << std::setw(20) << fixed << setprecision(0) << (0.6 * studentas.egz + 0.4 * vidurkis(studentas)) << endl;
+			}
+			break;
+		}
+		else if (pasirinkimasV == 'M') {
+			cout << "Studentu sarasas: \n";
+			cout << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20) << "Galutinis (Med.)" << endl;
+			for (Stud studentas : studentai) {
+				cout << std::setw(20) << studentas.var << std::setw(20) << studentas.pav << std::setw(20) << fixed << setprecision(0) << (0.6 * studentas.egz + 0.4 * mediana(studentas)) << endl;
+			}
+			break;
 		}
 		else {
-			bool kaasciadarau = true;
-			while (kaasciadarau) {
-				cout << "Neteisingas pasirinkimas. Iveskite Y arba N: ";
-				cin >> pasirinkimasS;
-				if (pasirinkimasS == 'Y' || pasirinkimasS == 'N') {
-					kaasciadarau = false;
-				}
-			}
-		}
-	}
-
-	cout << "Ar namu darbu pazymi skaiciuosite vidurkiu ar mediana? (V/M): ";
-	cin >> pasirinkimasV;
-	if (!(pasirinkimasV == 'V' || pasirinkimasV == 'M')) {
-		cout << "allpapa" <<endl;
-	}
-	else {
-		bool kaasciadarau = true;
-		while (kaasciadarau) {
 			cout << "Neteisingas pasirinkimas. Iveskite V arba M: ";
-			cin >> pasirinkimasV;
-			if (pasirinkimasV == 'V' || pasirinkimasV == 'M') {
-				kaasciadarau = false;
-			}
-		}
-	}
-	cout << "Studentu sarasas: \n";
-
-	if (pasirinkimasV == 'V') {
-		cout << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20) << "Galutinis (Vid.)" << endl;
-		for (Stud studentas : studentai) {
-			cout << std::setw(20) << studentas.var << std::setw(20) << studentas.pav << std::setw(20) << 0.6 * studentas.egz + 0.4 * vidurkis(studentas) << endl;
-		}
-	}
-	else {
-		cout << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20) << "Galutinis (Med.)" << endl;
-		for (Stud studentas : studentai) {
-			cout << std::setw(20) << studentas.var << std::setw(20) << studentas.pav << std::setw(20) << 0.6 * studentas.egz + 0.4 * mediana(studentas) << endl;
 		}
 	}
 	return 0;
@@ -92,5 +85,22 @@ void readRanka(Stud& stu) {
 		else {
 			cout << "Neteisinga ivestis. Iveskite sveika skaiciu nuo 0 iki 10 imtinai.\nJeigu norite iseiti iveskite -1: \n" << endl;
 		}
+	}
+}
+float vidurkis(Stud& studentai) {
+	if (studentai.uzd.empty()) return 0.0;
+	return accumulate(studentai.uzd.begin(), studentai.uzd.end(), 0) / studentai.uzd.size();
+}
+
+float mediana(Stud& studentai) {
+	if (studentai.uzd.empty()) return 0.0;
+
+	std::sort(studentai.uzd.begin(), studentai.uzd.end());
+	int size = studentai.uzd.size();
+	if (size % 2 == 0) {
+		return (studentai.uzd[size / 2 - 1] + studentai.uzd[size / 2]) / 2.0;
+	}
+	else {
+		return studentai.uzd[size / 2];
 	}
 }

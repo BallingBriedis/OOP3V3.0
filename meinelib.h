@@ -25,22 +25,15 @@ struct Stud {
 	int egz = 0;
 
 	int* mUzd = nullptr;
-	size_t uzdSize = 0;
-	size_t uzd_capacity = 1;
+	int uzdSize = 0;
+	int uzd_capacity = 1;
 
-    Stud() { mUzd = new int[1], uzdSize = 0, uzd_capacity = 1; }
-
-	~Stud() {
-		delete[] mUzd;
-	}
     void addGrades(int grade) {
-        if (mUzd == nullptr) {
-            uzd_capacity = 1;
-            mUzd = new int[uzd_capacity];
-        }
-
+		if (mUzd == nullptr) {
+			mUzd = new int[uzd_capacity];
+		}
         if (uzdSize == uzd_capacity) {
-            size_t newCapacity = uzd_capacity * 2;
+            int newCapacity = uzd_capacity + 1;
             int* newMuzd = new int[newCapacity];
 
             std::copy(mUzd, mUzd + uzdSize, newMuzd);
@@ -50,11 +43,13 @@ struct Stud {
             mUzd = newMuzd;
             uzd_capacity = newCapacity;
         }
-		cout <<"\n\n\n"<< grade << "\n\n\n";
+		cout <<"\n"<< grade << "\n";
+		cout <<"\n"<< "Veikia" << "\n";
         mUzd[uzdSize] = grade;
+		cout << "\n" << "Veikia po muzd idejimo" << "\n";
 		uzdSize++;
 		for(int i=0;i<uzdSize;i++)
-		cout << "\nABFDAFG" << mUzd[i] << "\nABFDAFG";
+		cout << "\nTestas meinelib.h " << mUzd[i] << " Testas meinelib.h\n";
     }
 };
 #endif
