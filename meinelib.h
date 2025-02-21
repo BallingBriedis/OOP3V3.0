@@ -9,6 +9,9 @@
 #include <algorithm>
 #include <numeric>
 #include <sstream>
+#include <cstdlib>
+#include <ctime>
+#include <cmath>
 
 using std::cout;
 using std::cin;
@@ -17,6 +20,12 @@ using std::string;
 using std::vector;
 using std::fixed;
 using std::setprecision;
+
+//Prototipai
+
+int isNumber();
+bool isValidInput(int input);
+
 
 struct Stud {
 	string var;
@@ -52,4 +61,30 @@ struct Stud {
 		cout << "\nTestas meinelib.h " << mUzd[i] << " Testas meinelib.h\n";
     }
 };
+
+
+inline int isNumber() {
+	int input;
+	while (true) {
+		cin >> input;
+		if (cin.fail()) {
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			cout << "Neteisinga ivestis. Iveskite sveika skaiciu: ";
+		}
+		else {
+			return input;
+		}
+	}
+}
+
+inline bool isValidInput(int input) {
+	if (input == -1) {
+		return true;
+	}
+	if (input < 0 || input > 10) {
+		return false;
+	}
+	return true;
+}
 #endif

@@ -1,10 +1,12 @@
-#include "functions.h"
+#include "meinelib.h"
 
 void readRanka(Stud& stu);
+void randomAtsitiktinisPazymys(Stud& stu);
 float vidurkis(Stud& studentai);
 float mediana(Stud& studentai);
 
 int main() {
+	srand(time(NULL));
 	vector<Stud> studentai;
 	char pasirinkimasS = 'Y';
 	char pasirinkimasV = 'V';
@@ -33,7 +35,7 @@ int main() {
 			cout << "Studentu sarasas: \n";
 			cout << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20) << "Galutinis (Vid.)" << endl;
 			for (Stud studentas : studentai) {
-				cout << std::setw(20) << studentas.var << std::setw(20) << studentas.pav << std::setw(20) << fixed << setprecision(0) << (0.6 * studentas.egz + 0.4 * vidurkis(studentas)) << endl;
+				cout << std::setw(20) << studentas.var << std::setw(20) << studentas.pav << std::setw(20) << fixed << setprecision(0) << round(0.6 * studentas.egz + 0.4 * vidurkis(studentas)) << endl;
 			}
 			break;
 		}
@@ -41,7 +43,7 @@ int main() {
 			cout << "Studentu sarasas: \n";
 			cout << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20) << "Galutinis (Med.)" << endl;
 			for (Stud studentas : studentai) {
-				cout << std::setw(20) << studentas.var << std::setw(20) << studentas.pav << std::setw(20) << fixed << setprecision(0) << (0.6 * studentas.egz + 0.4 * mediana(studentas)) << endl;
+				cout << std::setw(20) << studentas.var << std::setw(20) << studentas.pav << std::setw(20) << fixed << setprecision(0) << round(0.6 * studentas.egz + 0.4 * mediana(studentas)) << endl;
 			}
 			break;
 		}
@@ -54,39 +56,69 @@ int main() {
 
 void readRanka(Stud& stu) {
 	int input;
+	char pasirinkimas = 'R';
 	cout << "Iveskite studento varda: ";
 	cin >> stu.var;
 	cout << "Iveskite studento pavarde: ";
 	cin >> stu.pav;
-	cout << "Iveskite studento egzamino pazymi: ";
+	cout << "Ar pazymius norite ranka vesti, ar juos generuoti automatiskai. Iveskite (R/A) atitinkamai ranka arba auto: ";
 	while (true) {
-		input = isNumber();
-		if (isValidInput(input) && input != -1) {
-			stu.egz = input;
+		cin >> pasirinkimas;
+		if (pasirinkimas == 'R') {
+			cout << "Iveskite studento egzamino pazymi: ";
+			while (true) {
+				input = isNumber();
+				if (isValidInput(input) && input != -1) {
+					stu.egz = input;
+					break;
+				}
+				else {
+					cout << "Neteisingai ivestas egzamino pazymys. Iveskite sveika skaiciu nuo 0 iki 10 imtinai: ";
+				}
+			}
+			cout << "\n\n" << "Iveskite studento namu darbu pazymius. Ivedus visus pazymius, iveskite -1.\n";
+			cout << "Jeigu darbas neatliktas iveskite 0.\n\n";
+			int i = 1;
+			while (true) {
+				cout << i << "-asis pazymys: ";
+				input = isNumber();
+				if (isValidInput(input)) {
+					if (input == -1) {
+						break;
+					}
+					stu.uzd.push_back(input);
+					i++;
+				}
+				else {
+					cout << "Neteisinga ivestis. Iveskite sveika skaiciu nuo 0 iki 10 imtinai.\nJeigu norite iseiti iveskite -1: \n" << endl;
+				}
+			}
+			break;
+		}
+		else if (pasirinkimas == 'A') {
+			randomAtsitiktinisPazymys(stu);
 			break;
 		}
 		else {
-			cout << "Neteisingai ivestas egzamino pazymys. Iveskite sveika skaiciu nuo 0 iki 10 imtinai: ";
+			cout << "Neteisingas pasirinkimas. Iveskite R arba A: ";
 		}
 	}
-	cout << "\n\n" << "Iveskite studento namu darbu pazymius. Ivedus visus pazymius, iveskite -1.\n";
-	cout << "Jeigu darbas neatliktas iveskite 0.\n\n";
-	int i = 1;
-	while (true) {
-		cout << i << "-asis pazymys: ";
-		input = isNumber();
-		if (isValidInput(input)) {
-			if (input == -1) {
-				break;
-			}
-			stu.uzd.push_back(input);
-			i++;
-		}
-		else {
-			cout << "Neteisinga ivestis. Iveskite sveika skaiciu nuo 0 iki 10 imtinai.\nJeigu norite iseiti iveskite -1: \n" << endl;
-		}
+	
+}
+
+void randomAtsitiktinisPazymys(Stud& stu) {
+	stu.egz = rand() % 10 + 1;
+	cout << "Kiek pazymiu sugeneruoti? ";
+	int pazymiai = isNumber();
+	
+	for (int i = 0; i < pazymiai; i++) {
+		stu.uzd.push_back(rand() % 10 + 1);
+	}
+	for (int i = 0; i < pazymiai; i++) {
+		cout << stu.uzd[i] << " ";
 	}
 }
+
 float vidurkis(Stud& studentai) {
 	if (studentai.uzd.empty()) return 0.0;
 	return accumulate(studentai.uzd.begin(), studentai.uzd.end(), 0) / studentai.uzd.size();
