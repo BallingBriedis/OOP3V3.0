@@ -41,13 +41,11 @@ vector<string> moteruVardai = { "Austeja", "Gabija", "Egle", "Ieva", "Lina", "Ru
 								"Laima", "Zita", "Gitana", "Greta", "Sigita", "Brigita", "Aleksandra", "Emilija", "Asta", "Ingrida",
 								"Joana", "Patricija", "Skaiste", "Vitalija", "Giedre", "Rasa", "Lilija", "Ona", "Aurelija", "Silvija" };
 
-vector<string> moteruPavardes = { "Jonate", "Petraite", "KazlauskAite", "Baltrunaite", "Simkute", "Kairyte", "Marcinkeviciute", "Zabielskaite", "Bagdonaite", "UrbonAite",
-								   "KavaliauskAite", "Griniute", "Bielskiute", "Matuleviciute", "Sulskite", "SakalauskAite", "Butkute", "Karpaviciute", "Zilinskaite", "Stankeviciute",
-								   "VasiliauskAite", "Simkevičiute", "Vainyte", "Paskeviciute", "Bagdonavičiute", "Aleknavičiute", "Kavoliute", "Miezutavičiute", "Giedraite", "Pavardenyte",
-								   "SviderskytE", "MalinauskAite", "GintalAite", "BudreckAite", "TamasAuskAite", "ZimnickAite", "Tamuleviciute", "SkorupskAite", "GaigalAite", "SadauskAite",
-								   "Janusonyte", "Leskevičiute", "MikulenAite", "KairAite", "Jarmalavičiute", "Milkevičiute", "DumčiutE", "TamulynAite", "PoškAite", "SavickAite" };
-
-
+vector<string> moteruPavardes = { "Jonate", "Petraite", "Kazlauskaite", "Baltrunaite", "Simkute", "Kairyte", "Marcinkeviciute", "Zabielskaite", "Bagdonaite", "Urbonaite",
+								   "Kavaliauskaite", "Griniute", "Bielskiute", "Matuleviciute", "Sulskite", "Sakalauskaite", "Butkute", "Karpaviciute", "Zilinskaite", "Stankeviciute",
+								   "Vasiliauskaite", "Simkeviciute", "Vainyte", "Paskeviciute", "Bagdonavičiute", "Aleknavičiute", "Kavoliute", "Miezutavičiute", "Giedraite", "Pavardenyte",
+								   "Sviderskyte", "Malinauskaite", "Gintalaite", "Budreckaite", "Tamasauskaite", "Zimnickaite", "Tamuleviciute", "Skorupskaite", "Gaigalaite", "Sadauskaite",
+								   "Janusonyte", "Leskevičiute", "Mikulenaite", "Kairaite", "Jarmalavičiute", "Milkevičiute", "Dumciute", "Tamulynaite", "Poskaite", "Savickaite" };
 
 //Prototipai
 

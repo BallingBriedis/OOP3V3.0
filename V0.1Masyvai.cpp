@@ -1,90 +1,135 @@
-#include "functions.h"
+#include "meinelib.h"
 
-void readRanka(Stud& stu);
+void readRanka(Stud& stu, int pasirinkimasInt);
+void randomStudentas(Stud& studentas, bool vyras);
+void randomStudentas(Stud& studentas, bool vyras);
 float vidurkis(Stud& studentai);
 float mediana(Stud& studentai);
 
 int main() {
+	srand(time(NULL));
 	vector<Stud> studentai;
-	char pasirinkimasS = 'Y';
 	char pasirinkimasV = 'V';
-	while (pasirinkimasS != 'N') {
+	while (true) {
+		int pasirinkimasInt = 0;
 		Stud studentas;
-		readRanka(studentas);
-		studentai.push_back(studentas);
-		cout << "Ar norite ivesti dar viena studenta? (Y/N): ";
+		cout << "Pasirinkite norima studento duomenu surasyma irasant skaiciu nuo 1 iki 4.\n";
+		cout << "------------------------------------------------------------------------\n";
+		cout << "1 - Ivestis ranka\n2 - Generuojami tik pazymiai\n3 - Generuojamas studentas ir pazymiai\n4 - Baigti darba\n";
+		cout << "------------------------------------------------------------------------\n";
+		pasirinkimasInt = isNumber();
 		while (true) {
-			cin >> pasirinkimasS;
-			if (pasirinkimasS == 'Y' || pasirinkimasS == 'N') {
+			if (menuValidInput(pasirinkimasInt)) {
 				break;
 			}
 			else {
-				cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-				cout << "Neteisingas pasirinkimas. Iveskite Y arba N: ";
+				cout << "Neteisingas pasirinkimas. Iveskite skaiciu nuo 1 iki 4: ";
+				pasirinkimasInt = isNumber();
 			}
 		}
+		if (pasirinkimasInt == 4) {
+			break;
+		}
+		readRanka(studentas, pasirinkimasInt);
+		studentai.push_back(studentas);
 	}
 
 	cout << "Ar galutini rezultata skaiciuosite vidurkiu ar mediana? (V/M): ";
 
-	while(true){
+	while (true) {
 		cin >> pasirinkimasV;
-	if (pasirinkimasV == 'V') {
-		cout << "Studentu sarasas: \n";
-		cout << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20) << "Galutinis (Vid.)" << endl;
-		for (Stud studentas : studentai) {
-			cout << std::setw(20) << studentas.var << std::setw(20) << studentas.pav << std::setw(20) << fixed << setprecision(0) << (0.6 * studentas.egz + 0.4 * vidurkis(studentas)) << endl;
+		if (pasirinkimasV == 'V') {
+			cout << "Studentu sarasas: \n";
+			cout << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20) << "Galutinis (Vid.)" << endl;
+			for (Stud studentas : studentai) {
+				cout << std::setw(20) << studentas.var << std::setw(20) << studentas.pav << std::setw(20) << fixed << setprecision(0) << round(0.6 * studentas.egz + 0.4 * vidurkis(studentas)) << endl;
+			}
+			break;
 		}
-		break;
-	}
-	else if (pasirinkimasV == 'M') {
-		cout << "Studentu sarasas: \n";
-		cout << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20) << "Galutinis (Med.)" << endl;
-		for (Stud studentas : studentai) {
-			cout << std::setw(20) << studentas.var << std::setw(20) << studentas.pav << std::setw(20) << fixed << setprecision(0) << (0.6 * studentas.egz + 0.4 * mediana(studentas)) << endl;
+		else if (pasirinkimasV == 'M') {
+			cout << "Studentu sarasas: \n";
+			cout << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20) << "Galutinis (Med.)" << endl;
+			for (Stud studentas : studentai) {
+				cout << std::setw(20) << studentas.var << std::setw(20) << studentas.pav << std::setw(20) << fixed << setprecision(0) << round(0.6 * studentas.egz + 0.4 * mediana(studentas)) << endl;
+			}
+			break;
 		}
-		break;
-	}
-	else {
-		cout << "Neteisingas pasirinkimas. Iveskite V arba M: ";
+		else {
+			cout << "Neteisingas pasirinkimas. Iveskite V arba M: ";
 		}
 	}
 	return 0;
 }
 
-void readRanka(Stud& stu) {
+void readRanka(Stud& stu, int pasirinkimasInt) {
 	int input;
-	cout << "Iveskite studento varda: ";
-	cin >> stu.var;
-	cout << "Iveskite studento pavarde: ";
-	cin >> stu.pav;
-	cout << "Iveskite studento egzamino pazymi: ";
-	while (true) {
-		input = isNumber();
-		if (isValidInput(input) && input != -1) {
-			stu.egz = input;
-			break;
-		}
-		else {
-			cout << "Neteisingai ivestas egzamino pazymys. Iveskite sveika skaiciu nuo 0 iki 10 imtinai: ";
-		}
-	}
-	cout << "\n\n" << "Iveskite studento namu darbu pazymius. Ivedus visus pazymius, iveskite -1.\n";
-	cout << "Jeigu darbas neatliktas iveskite 0.\n\n";
-	int i = 1;
-	while (true) {
-		cout << i << "-asis pazymys: ";
-		input = isNumber();
-		if (isValidInput(input)) {
-			if (input == -1) {
+	if (pasirinkimasInt == 1) {
+		cout << "Iveskite studento varda: ";
+		cin >> stu.var;
+		cout << "Iveskite studento pavarde: ";
+		cin >> stu.pav;
+
+		cout << "Iveskite studento egzamino pazymi: ";
+		while (true) {
+			input = isNumber();
+			if (isValidInput(input) && input != -1) {
+				stu.egz = input;
 				break;
 			}
-			stu.addGrades(input);
-			i++;
+			else {
+				cout << "Neteisingai ivestas egzamino pazymys. Iveskite sveika skaiciu nuo 0 iki 10 imtinai: ";
+			}
 		}
-		else {
-			cout << "Neteisinga ivestis. Iveskite sveika skaiciu nuo 0 iki 10 imtinai.\nJeigu norite iseiti iveskite -1: \n" << endl;
+
+		cout << "\n\n" << "Iveskite studento namu darbu pazymius. Ivedus visus pazymius, iveskite -1.\n";
+		cout << "Jeigu darbas neatliktas iveskite 0.\n\n";
+		int i = 1;
+		while (true) {
+			cout << i << "-asis pazymys: ";
+			input = isNumber();
+			if (isValidInput(input)) {
+				if (input == -1) {
+					break;
+				}
+				stu.addGrades(input);
+				i++;
+			}
+			else {
+				cout << "Neteisinga ivestis. Iveskite sveika skaiciu nuo 0 iki 10 imtinai.\nJeigu norite iseiti iveskite -1: \n" << endl;
+			}
 		}
+	}
+	else if (pasirinkimasInt == 2) {
+		cout << "Iveskite studento varda: ";
+		cin >> stu.var;
+		cout << "Iveskite studento pavarde: ";
+		cin >> stu.pav;
+		randomAtsitiktinisPazymys(stu);
+	}
+	else if (pasirinkimasInt == 3) {
+		randomStudentas(stu, rand() % 2);
+		randomAtsitiktinisPazymys(stu);
+	}
+}
+
+void randomStudentas(Stud& studentas, bool vyras) {
+	if (vyras) {
+		studentas.var = vyruVardai[rand() % vyruVardai.size()];
+		studentas.pav = vyruPavardes[rand() % vyruPavardes.size()];
+	}
+	else {
+		studentas.var = moteruVardai[rand() % moteruVardai.size()];
+		studentas.pav = moteruPavardes[rand() % moteruPavardes.size()];
+	}
+}
+
+void randomAtsitiktinisPazymys(Stud& stu) {
+	stu.egz = rand() % 10 + 1;
+	cout << "Kiek pazymiu sugeneruoti? ";
+	int pazymiai = isNumber();
+
+	for (int i = 0; i < pazymiai; i++) {
+		stu.addGrades(rand() % 10 + 1);
 	}
 }
 
