@@ -30,7 +30,7 @@ int main() {
 		if (pasirinkimasInt == 4) {
 			break;
 		}
-		readRanka(studentas,pasirinkimasInt);
+		readRanka(studentas, pasirinkimasInt);
 		studentai.push_back(studentas);
 	}
 
@@ -91,7 +91,7 @@ void readRanka(Stud& stu, int pasirinkimasInt) {
 				if (input == -1) {
 					break;
 				}
-				stu.uzd.push_back(input);
+				stu.addGrades(input);
 				i++;
 			}
 			else {
@@ -112,7 +112,7 @@ void readRanka(Stud& stu, int pasirinkimasInt) {
 	}
 }
 
-void randomStudentas (Stud& studentas, bool vyras) {
+void randomStudentas(Stud& studentas, bool vyras) {
 	if (vyras) {
 		studentas.var = vyruVardai[rand() % vyruVardai.size()];
 		studentas.pav = vyruPavardes[rand() % vyruPavardes.size()];
@@ -127,26 +127,27 @@ void randomAtsitiktinisPazymys(Stud& stu) {
 	stu.egz = rand() % 10 + 1;
 	cout << "Kiek pazymiu sugeneruoti? ";
 	int pazymiai = isNumber();
-	
+
 	for (int i = 0; i < pazymiai; i++) {
-		stu.uzd.push_back(rand() % 10 + 1);
+		stu.addGrades(rand() % 10 + 1);
 	}
 }
 
 float vidurkis(Stud& studentai) {
-	if (studentai.uzd.empty()) return 0.0;
-	return accumulate(studentai.uzd.begin(), studentai.uzd.end(), 0) / studentai.uzd.size();
+    if (studentai.uzdSize == 0 || studentai.mUzd == nullptr) return 0.0;
+
+    double suma = 0;
+    for (int i = 0; i < studentai.uzdSize; i++) {
+        suma += studentai.mUzd[i];
+    }
+    return suma / studentai.uzdSize;
 }
 
 float mediana(Stud& studentai) {
-	if (studentai.uzd.empty()) return 0.0;
+	if (studentai.uzdSize == 0 || studentai.mUzd == nullptr) return 0.0;
 
-	std::sort(studentai.uzd.begin(), studentai.uzd.end());
-	int size = studentai.uzd.size();
-	if (size % 2 == 0) {
-		return (studentai.uzd[size / 2 - 1] + studentai.uzd[size / 2]) / 2.0;
-	}
-	else {
-		return studentai.uzd[size / 2];
-	}
+	std::vector<int> sortedUzd(studentai.mUzd, studentai.mUzd + studentai.uzdSize);
+	std::sort(sortedUzd.begin(), sortedUzd.end());
+	size_t size = sortedUzd.size();
+	return (size % 2 == 0) ? (sortedUzd[size / 2 - 1] + sortedUzd[size / 2]) / 2.0 : sortedUzd[size / 2];
 }
