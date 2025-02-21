@@ -1,3 +1,6 @@
+#ifndef MEINELIB_H
+#define MEINELIB_H
+
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -19,4 +22,11 @@ struct Stud {
 	string pav;
 	vector<int>uzd{};
 	int egz = 0;
+
+	int* mUzd = nullptr;
+	size_t uzdSize = 0;
+	~Stud() {
+		delete[] mUzd;
+	}
 };
+#endif
