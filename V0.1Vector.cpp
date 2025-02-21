@@ -1,6 +1,7 @@
 #include "meinelib.h"
 
-void readRanka(Stud& stu);
+void readRanka(Stud& stu, int pasirinkimasInt);
+void randomStudentas(Stud& studentas, bool vyras);
 void randomAtsitiktinisPazymys(Stud& stu);
 float vidurkis(Stud& studentai);
 float mediana(Stud& studentai);
@@ -8,23 +9,29 @@ float mediana(Stud& studentai);
 int main() {
 	srand(time(NULL));
 	vector<Stud> studentai;
-	char pasirinkimasS = 'Y';
 	char pasirinkimasV = 'V';
-	while (pasirinkimasS != 'N') {
+	while (true) {
+		int pasirinkimasInt = 0;
 		Stud studentas;
-		readRanka(studentas);
-		studentai.push_back(studentas);
-		cout << "Ar norite ivesti dar viena studenta? (Y/N): ";
+		cout << "Pasirinkite norima studento duomenu surasyma irasant skaiciu nuo 1 iki 4.\n";
+		cout << "------------------------------------------------------------------------\n";
+		cout << "1 - Ivestis ranka\n2 - Generuojami tik pazymiai\n3 - Generuojamas studentas ir pazymiai\n4 - Baigti darba\n";
+		cout << "------------------------------------------------------------------------\n";
+		pasirinkimasInt = isNumber();
 		while (true) {
-			cin >> pasirinkimasS;
-			if (pasirinkimasS == 'Y' || pasirinkimasS == 'N') {
+			if (menuValidInput(pasirinkimasInt)) {
 				break;
 			}
 			else {
-				cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-				cout << "Neteisingas pasirinkimas. Iveskite Y arba N: ";
+				cout << "Neteisingas pasirinkimas. Iveskite skaiciu nuo 1 iki 4: ";
+				pasirinkimasInt = isNumber();
 			}
 		}
+		if (pasirinkimasInt == 4) {
+			break;
+		}
+		readRanka(studentas,pasirinkimasInt);
+		studentai.push_back(studentas);
 	}
 
 	cout << "Ar galutini rezultata skaiciuosite vidurkiu ar mediana? (V/M): ";
@@ -54,56 +61,67 @@ int main() {
 	return 0;
 }
 
-void readRanka(Stud& stu) {
+void readRanka(Stud& stu, int pasirinkimasInt) {
 	int input;
-	char pasirinkimas = 'R';
-	cout << "Iveskite studento varda: ";
-	cin >> stu.var;
-	cout << "Iveskite studento pavarde: ";
-	cin >> stu.pav;
-	cout << "Ar pazymius norite ranka vesti, ar juos generuoti automatiskai. Iveskite (R/A) atitinkamai ranka arba auto: ";
-	while (true) {
-		cin >> pasirinkimas;
-		if (pasirinkimas == 'R') {
-			cout << "Iveskite studento egzamino pazymi: ";
-			while (true) {
-				input = isNumber();
-				if (isValidInput(input) && input != -1) {
-					stu.egz = input;
+	if (pasirinkimasInt == 1) {
+		cout << "Iveskite studento varda: ";
+		cin >> stu.var;
+		cout << "Iveskite studento pavarde: ";
+		cin >> stu.pav;
+
+		cout << "Iveskite studento egzamino pazymi: ";
+		while (true) {
+			input = isNumber();
+			if (isValidInput(input) && input != -1) {
+				stu.egz = input;
+				break;
+			}
+			else {
+				cout << "Neteisingai ivestas egzamino pazymys. Iveskite sveika skaiciu nuo 0 iki 10 imtinai: ";
+			}
+		}
+
+		cout << "\n\n" << "Iveskite studento namu darbu pazymius. Ivedus visus pazymius, iveskite -1.\n";
+		cout << "Jeigu darbas neatliktas iveskite 0.\n\n";
+		int i = 1;
+		while (true) {
+			cout << i << "-asis pazymys: ";
+			input = isNumber();
+			if (isValidInput(input)) {
+				if (input == -1) {
 					break;
 				}
-				else {
-					cout << "Neteisingai ivestas egzamino pazymys. Iveskite sveika skaiciu nuo 0 iki 10 imtinai: ";
-				}
+				stu.uzd.push_back(input);
+				i++;
 			}
-			cout << "\n\n" << "Iveskite studento namu darbu pazymius. Ivedus visus pazymius, iveskite -1.\n";
-			cout << "Jeigu darbas neatliktas iveskite 0.\n\n";
-			int i = 1;
-			while (true) {
-				cout << i << "-asis pazymys: ";
-				input = isNumber();
-				if (isValidInput(input)) {
-					if (input == -1) {
-						break;
-					}
-					stu.uzd.push_back(input);
-					i++;
-				}
-				else {
-					cout << "Neteisinga ivestis. Iveskite sveika skaiciu nuo 0 iki 10 imtinai.\nJeigu norite iseiti iveskite -1: \n" << endl;
-				}
+			else {
+				cout << "Neteisinga ivestis. Iveskite sveika skaiciu nuo 0 iki 10 imtinai.\nJeigu norite iseiti iveskite -1: \n" << endl;
 			}
-			break;
-		}
-		else if (pasirinkimas == 'A') {
-			randomAtsitiktinisPazymys(stu);
-			break;
-		}
-		else {
-			cout << "Neteisingas pasirinkimas. Iveskite R arba A: ";
 		}
 	}
+	else if (pasirinkimasInt == 2) {
+		cout << "Iveskite studento varda: ";
+		cin >> stu.var;
+		cout << "Iveskite studento pavarde: ";
+		cin >> stu.pav;
+		randomAtsitiktinisPazymys(stu);
+	}
+	else if (pasirinkimasInt == 3) {
+		randomStudentas(stu, rand() % 2);
+		randomAtsitiktinisPazymys(stu);
+	}
+}
 	
+
+void randomStudentas (Stud& studentas, bool vyras) {
+	if (vyras) {
+		studentas.var = vyruVardai[rand() % vyruVardai.size()];
+		studentas.pav = vyruPavardes[rand() % vyruPavardes.size()];
+	}
+	else {
+		studentas.var = moteruVardai[rand() % moteruVardai.size()];
+		studentas.pav = moteruPavardes[rand() % moteruPavardes.size()];
+	}
 }
 
 void randomAtsitiktinisPazymys(Stud& stu) {
@@ -113,9 +131,6 @@ void randomAtsitiktinisPazymys(Stud& stu) {
 	
 	for (int i = 0; i < pazymiai; i++) {
 		stu.uzd.push_back(rand() % 10 + 1);
-	}
-	for (int i = 0; i < pazymiai; i++) {
-		cout << stu.uzd[i] << " ";
 	}
 }
 
