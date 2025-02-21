@@ -1,8 +1,13 @@
 #include "meinelib.h"
 
+<<<<<<< HEAD
 void readRanka(Stud& stu);
 int isNumber();
 bool isValidInput(int input);
+=======
+void read(Stud& stu);
+bool isValidInput(const string& input, int& number);
+>>>>>>> f29ed72406a04a6eaabe894e954568de5654993d
 float vidurkis(Stud& studentai);
 float mediana(Stud& studentai);
 
@@ -13,13 +18,21 @@ int main() {
 	char pasirinkimasV = 'V';
 	while (pasirinkimasS != 'N') {
 		Stud studentas;
+<<<<<<< HEAD
 		readRanka(studentas);
+=======
+		read(studentas);
+>>>>>>> f29ed72406a04a6eaabe894e954568de5654993d
 		studentai.push_back(studentas);
 		cout << "Ar norite ivesti dar viena studenta? (Y/N): ";
 		cin >> pasirinkimasS;
 		if (pasirinkimasS == 'Y' || pasirinkimasS == 'N') {
 		}
+<<<<<<< HEAD
 		else {
+=======
+		else{
+>>>>>>> f29ed72406a04a6eaabe894e954568de5654993d
 			bool kaasciadarau = true;
 			while (kaasciadarau) {
 				cout << "Neteisingas pasirinkimas. Iveskite Y arba N: ";
@@ -59,6 +72,7 @@ int main() {
 			cout << std::setw(20) << studentas.var << std::setw(20) << studentas.pav << std::setw(20) << 0.6 * studentas.egz + 0.4 * mediana(studentas) << endl;
 		}
 	}
+<<<<<<< HEAD
 	return 0;
 }
 
@@ -139,3 +153,77 @@ float mediana(Stud& studentai) {
 		return studentai.uzd[size / 2];
 	}
 }
+=======
+		return 0;
+	}
+
+	void read(Stud & stu) {
+		string input;
+		int write;
+		cout << "Iveskite studento varda: ";
+		getline(cin, stu.var);
+		cout << "Iveskite studento pavarde: ";
+		getline(cin, stu.pav);
+		cout << "Iveskite studento egzamino pazymi: ";
+		while (true) {
+			getline(cin, input);
+			if (isValidInput(input, write) && write != -1) {
+				stu.egz = write;
+				break;
+			}
+			else {
+				cout << "Neteisingai ivestas egzamino pazymys. Iveskite sveika skaiciu nuo 0 iki 10 imtinai: ";
+			}
+		}
+		cout << "\n\n" << "Iveskite studento namu darbu pazymius. Ivedus visus pazymius, iveskite -1.\n";
+		cout << "Jeigu darbas neatliktas iveskite 0.\n\n";
+		int i = 1;
+		while (true) {
+			cout << i << "-asis pazymys: ";
+			getline(cin, input);
+			if (isValidInput(input, write)) {
+				if (write == -1) {
+					break;
+				}
+				stu.uzd.push_back(write);
+				i++;
+			}
+			else {
+				cout << "Neteisinga ivestis. Iveskite sveika skaiciu nuo 0 iki 10 imtinai.\nJeigu norite iseiti iveskite -1: \n" << endl;
+			}
+		}
+	}
+
+	bool isValidInput(const string & input, int& number) {
+		std::istringstream iss(input);
+
+		if (!(iss >> number) || !(iss.eof())) {
+			return false;
+		}
+		if (number == -1) {
+			return true;
+		}
+		if (number < 0 || number > 10) {
+			return false;
+		}
+		return true;
+	}
+
+	float vidurkis(Stud & studentai) {
+		if (studentai.uzd.empty()) return 0.0;
+		return accumulate(studentai.uzd.begin(), studentai.uzd.end(), 0) / studentai.uzd.size();
+	}
+
+	float mediana(Stud & studentai) {
+		if (studentai.uzd.empty()) return 0.0;
+
+		std::sort(studentai.uzd.begin(), studentai.uzd.end());
+		size_t size = studentai.uzd.size();
+		if (size % 2 == 0) {
+			return (studentai.uzd[size / 2 - 1] + studentai.uzd[size / 2]) / 2.0;
+		}
+		else {
+			return studentai.uzd[size / 2];
+		}
+	}
+>>>>>>> f29ed72406a04a6eaabe894e954568de5654993d
