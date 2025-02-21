@@ -31,8 +31,7 @@ int main() {
 	if (pasirinkimasV == 'V') {
 		cout << "Studentu sarasas: \n";
 		cout << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20) << "Galutinis (Vid.)" << endl;
-		for (size_t i = 0; i < studentai.size(); ++i) {
-			Stud studentas = studentai[i];
+		for (Stud studentas : studentai) {
 			cout << std::setw(20) << studentas.var << std::setw(20) << studentas.pav << std::setw(20) << fixed << setprecision(0) << 0.6 * studentas.egz + 0.4 * vidurkis(studentas) << endl;
 		}
 		break;
@@ -47,8 +46,8 @@ int main() {
 	}
 	else {
 		cout << "Neteisingas pasirinkimas. Iveskite V arba M: ";
+		}
 	}
-}
 	return 0;
 }
 

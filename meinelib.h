@@ -26,16 +26,21 @@ struct Stud {
 
 	int* mUzd = nullptr;
 	size_t uzdSize = 0;
-	size_t uzd_capacity = 0;
+	size_t uzd_capacity = 1;
 
-    Stud() : mUzd(nullptr), uzdSize(0), uzd_capacity(0) {}
+    Stud() { mUzd = new int[1], uzdSize = 0, uzd_capacity = 1; }
 
 	~Stud() {
 		delete[] mUzd;
 	}
     void addGrades(int grade) {
+        if (mUzd == nullptr) {
+            uzd_capacity = 1;
+            mUzd = new int[uzd_capacity];
+        }
+
         if (uzdSize == uzd_capacity) {
-            size_t newCapacity = (uzd_capacity == 0) ? 1 : uzd_capacity * 2;
+            size_t newCapacity = uzd_capacity * 2;
             int* newMuzd = new int[newCapacity];
 
             std::copy(mUzd, mUzd + uzdSize, newMuzd);
