@@ -111,7 +111,6 @@ void readRanka(Stud& stu, int pasirinkimasInt) {
 		randomAtsitiktinisPazymys(stu);
 	}
 }
-	
 
 void randomStudentas (Stud& studentas, bool vyras) {
 	if (vyras) {

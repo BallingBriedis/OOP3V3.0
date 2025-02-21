@@ -2,7 +2,7 @@
 
 void readRanka(Stud& stu, int pasirinkimasInt);
 void randomStudentas(Stud& studentas, bool vyras);
-void randomStudentas(Stud& studentas, bool vyras);
+void randomAtsitiktinisPazymys(Stud& stu);
 float vidurkis(Stud& studentai);
 float mediana(Stud& studentai);
 
@@ -139,7 +139,6 @@ float vidurkis(Stud& studentai) {
     double suma = 0;
     for (int i = 0; i < studentai.uzdSize; i++) {
         suma += studentai.mUzd[i];
-		cout << "\n" << studentai.mUzd[i] << "\n";
     }
     return suma / studentai.uzdSize;
 }

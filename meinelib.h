@@ -63,29 +63,24 @@ struct Stud {
 	int uzdSize = 0;
 	int uzd_capacity = 1;
 
-    void addGrades(int grade) {
+	void addGrades(int grade) {
 		if (mUzd == nullptr) {
 			mUzd = new int[uzd_capacity];
 		}
-        if (uzdSize == uzd_capacity) {
-            int newCapacity = uzd_capacity + 1;
-            int* newMuzd = new int[newCapacity];
+		if (uzdSize == uzd_capacity) {
+			int newCapacity = uzd_capacity + 1;
+			int* newMuzd = new int[newCapacity];
 
-            std::copy(mUzd, mUzd + uzdSize, newMuzd);
+			std::copy(mUzd, mUzd + uzdSize, newMuzd);
 
-            delete[] mUzd;
+			delete[] mUzd;
 
-            mUzd = newMuzd;
-            uzd_capacity = newCapacity;
-        }
-		cout <<"\n"<< grade << "\n";
-		cout <<"\n"<< "Veikia" << "\n";
-        mUzd[uzdSize] = grade;
-		cout << "\n" << "Veikia po muzd idejimo" << "\n";
+			mUzd = newMuzd;
+			uzd_capacity = newCapacity;
+		}
+		mUzd[uzdSize] = grade;
 		uzdSize++;
-		for(int i=0;i<uzdSize;i++)
-		cout << "\nTestas meinelib.h " << mUzd[i] << " Testas meinelib.h\n";
-    }
+	}
 };
 
 
