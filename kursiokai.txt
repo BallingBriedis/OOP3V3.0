@@ -1,9 +1,9 @@
 Vardas         Pavardė       ND1 ND2 ND3 ND4 ND5 Egzaminas
-Vardas1        Pavadė1       8   9   10  6   10  8
-Vardas2        Pavadė2       6   7   3   8   10  9
-Vardas3        Pavadė3       5   6   4   8   10  6
-Vardas4        Pavadė4       7   4   2   4   10  9
-Vardas5        Pavadė5       3   9   7   8   10  7
-Vardas6        Pavadė6       8   8   8   7   10  8
-Vardas7        Pavadė7       9   7   5   8   10  5
-Vardas8        Pavadė8       8   10  5   9   10  4
+Vardas1        Pavade1       8   9   10  6   10  8
+Vardas2        Pavade2       6   7   3   8   10  9
+Vardas3        Pavade3       5   6   4   8   10  6
+Vardas4        Pavade4       7   4   2   4   10  9
+Vardas5        Pavade5       3   9   7   8   10  7
+Vardas6        Pavade6       8   8   8   7   10  8
+Vardas7        Pavade7       9   7   5   8   10  5
+Vardas8        Pavade8       8   10  5   9   10  4

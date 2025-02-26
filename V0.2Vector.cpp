@@ -1,6 +1,9 @@
 #include "meinelib.h"
 
-void readRanka(Stud& stu, int pasirinkimasInt);
+void readRanka(Stud& stu);
+void readName_makeGrade(Stud& stu);
+void makeStud(Stud& stu);
+void fileRead(vector<Stud>& studentai, Stud stu);
 void randomStudentas(Stud& studentas, bool vyras);
 void randomAtsitiktinisPazymys(Stud& stu);
 float vidurkis(Stud& studentai);
@@ -23,15 +26,30 @@ int main() {
 				break;
 			}
 			else {
-				cout << "Neteisingas pasirinkimas. Iveskite skaiciu nuo 1 iki 4: ";
+				cout << "Neteisingas pasirinkimas. Iveskite skaiciu nuo 1 iki 5: ";
 				pasirinkimasInt = isNumber();
 			}
 		}
-		if (pasirinkimasInt == 4) {
+		if (pasirinkimasInt == 5) {
 			break;
 		}
-		readRanka(studentas,pasirinkimasInt);
-		studentai.push_back(studentas);
+		switch (pasirinkimasInt) {
+			case 1:
+				readRanka(studentas);
+				studentai.push_back(studentas);
+				break;
+			case 2:
+				readName_makeGrade(studentas);
+				studentai.push_back(studentas);
+				break;
+			case 3:
+				makeStud(studentas);
+				studentai.push_back(studentas);
+				break;
+			case 4:
+				fileRead(studentai,studentas);
+				break;
+		}
 	}
 
 	cout << "Ar galutini rezultata skaiciuosite vidurkiu ar mediana? (V/M): ";
@@ -61,79 +79,75 @@ int main() {
 	return 0;
 }
 
-void readRanka(Stud& stu, int pasirinkimasInt) {
+void readRanka(Stud& stu) {
 	int input;
-	if (pasirinkimasInt == 1) {
-		cout << "Iveskite studento varda: ";
-		cin >> stu.var;
-		cout << "Iveskite studento pavarde: ";
-		cin >> stu.pav;
+	cout << "Iveskite studento varda: ";
+	cin >> stu.var;
+	cout << "Iveskite studento pavarde: ";
+	cin >> stu.pav;
 
-		cout << "Iveskite studento egzamino pazymi: ";
-		while (true) {
-			input = isNumber();
-			if (isValidInput(input) && input != -1) {
-				stu.egz = input;
+	cout << "Iveskite studento egzamino pazymi: ";
+	while (true) {
+		input = isNumber();
+		if (isValidInput(input) && input != -1) {
+			stu.egz = input;
+			break;
+		}
+		else {
+			cout << "Neteisingai ivestas egzamino pazymys. Iveskite sveika skaiciu nuo 0 iki 10 imtinai: ";
+		}
+	}
+
+	cout << "\n\n" << "Iveskite studento namu darbu pazymius. Ivedus visus pazymius, iveskite -1.\n";
+	cout << "Jeigu darbas neatliktas iveskite 0.\n\n";
+	int i = 1;
+	while (true) {
+		cout << i << "-asis pazymys: ";
+		input = isNumber();
+		if (isValidInput(input)) {
+			if (input == -1) {
 				break;
 			}
-			else {
-				cout << "Neteisingai ivestas egzamino pazymys. Iveskite sveika skaiciu nuo 0 iki 10 imtinai: ";
-			}
+			stu.uzd.push_back(input);
+			i++;
 		}
-
-		cout << "\n\n" << "Iveskite studento namu darbu pazymius. Ivedus visus pazymius, iveskite -1.\n";
-		cout << "Jeigu darbas neatliktas iveskite 0.\n\n";
-		int i = 1;
-		while (true) {
-			cout << i << "-asis pazymys: ";
-			input = isNumber();
-			if (isValidInput(input)) {
-				if (input == -1) {
-					break;
-				}
-				stu.uzd.push_back(input);
-				i++;
-			}
-			else {
-				cout << "Neteisinga ivestis. Iveskite sveika skaiciu nuo 0 iki 10 imtinai.\nJeigu norite iseiti iveskite -1: \n" << endl;
-			}
+		else {
+			cout << "Neteisinga ivestis. Iveskite sveika skaiciu nuo 0 iki 10 imtinai.\nJeigu norite iseiti iveskite -1: \n" << endl;
 		}
-	}
-	else if (pasirinkimasInt == 2) {
-		cout << "Iveskite studento varda: ";
-		cin >> stu.var;
-		cout << "Iveskite studento pavarde: ";
-		cin >> stu.pav;
-		randomAtsitiktinisPazymys(stu);
-	}
-	else if (pasirinkimasInt == 3) {
-		randomStudentas(stu, rand() % 2);
-		randomAtsitiktinisPazymys(stu);
 	}
 }
 
-void fileRead() {
+void readName_makeGrade(Stud& stu) {
+	cout << "Iveskite studento varda: ";
+	cin >> stu.var;
+	cout << "Iveskite studento pavarde: ";
+	cin >> stu.pav;
+	randomAtsitiktinisPazymys(stu);
+}
+
+void makeStud(Stud& stu) {
+	randomStudentas(stu, rand() % 2);
+	randomAtsitiktinisPazymys(stu);
+}
+
+void fileRead(vector<Stud>& studentai, Stud stu) {
 	std::ifstream duom("kursiokai.txt");
 	if (!duom) {
 		cout << "Failas nerastas." << endl;
 		return;
 	}
 	string line;
-	vector<Stud> studentai;
+	getline(duom,line);
 	while (getline(duom, line)) {
-		Stud studentas;
 		std::stringstream ss(line);
-		ss >> studentas.var >> studentas.pav;
+		ss >> stu.var >> stu.pav;
 		int pazymys;
 		while (ss >> pazymys) {
-			if (pazymys == -1) {
-				break;
-			}
-			studentas.uzd.push_back(pazymys);
+			stu.uzd.push_back(pazymys);
 		}
-		studentas.egz = studentas.uzd.back();
-		studentas.uzd.pop_back();
-		studentai.push_back(studentas);
+		stu.egz = stu.uzd.back();
+		stu.uzd.pop_back();
+		studentai.push_back(stu);
 	}
 	duom.close();
 }
