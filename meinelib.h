@@ -1,6 +1,7 @@
 ﻿#ifndef MEINELIB_H
 #define MEINELIB_H
 
+#include "structV.h"
 #include <iostream>
 #include <iomanip>
 #include <string>
