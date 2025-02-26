@@ -10,21 +10,25 @@ struct Stud {
 void readRanka(Stud& stu);
 void readName_makeGrade(Stud& stu);
 void makeStud(Stud& stu);
-void fileRead(vector<Stud>& studentai);
+void fileRead(vector<Stud>& studentai, string ivestas_vardas);
 void randomStudentas(Stud& studentas, bool vyras);
 void randomAtsitiktinisPazymys(Stud& stu);
 float vidurkis(Stud& studentai);
 float mediana(Stud& studentai);
+void fileOutVid(vector<Stud>& studentai);
+void fileOutMed(vector<Stud>& studentai);
 
+namespace fs = std::filesystem;
 int main() {
 	srand(time(NULL));
 	vector<Stud> studentai;
-	char pasirinkimasV = 'V';
+	int pasirinkimasV = 0;
+	string ivestas_vardas, path = ".";
 	int n = 0;
 	while (true) {
 		int pasirinkimasInt = 0;
 		Stud studentas;
-		cout << "Pasirinkite norima studento duomenu surasyma irasant skaiciu nuo 1 iki 4.\n";
+		cout << "Pasirinkite norima studento duomenu surasyma irasant skaiciu nuo 1 iki 5.\n";
 		cout << "------------------------------------------------------------------------\n";
 		cout << "1 - Ivestis ranka\n2 - Generuojami tik pazymiai\n3 - Generuojamas studentas ir pazymiai\n4 - Nuskaityti is failo\n5 - Baigti darba\n";
 		cout << "------------------------------------------------------------------------\n";
@@ -59,35 +63,54 @@ int main() {
 				}
 				break;
 			case 4:
-				fileRead(studentai);
+				cout << "Iveskite norimo failo pavadinima be kabuciu:\n";
+				for (const auto& entry : fs::directory_iterator(path)) {
+					if (entry.path().extension() == ".txt") {
+						std::cout << entry.path().filename() << std::endl;
+					}
+				}
+				cin >> ivestas_vardas;
+				fileRead(studentai, ivestas_vardas);
 				break;
 		}
 	}
 
-	cout << "Ar galutini rezultata skaiciuosite vidurkiu ar mediana? (V/M): ";
-
+	cout << "Kaip pateikti rezultata?\n";
+	cout << "------------------------------------------------------------------------\n";
+	cout << "1 - Vidurkiu ekrane\n2 - Mediana ekrane\n3 - Vidurkiu faile\n4 - Mediana faile\n";
+	cout << "------------------------------------------------------------------------\n";
+	pasirinkimasV = isNumber();
 	while (true) {
-		cin >> pasirinkimasV;
-		if (pasirinkimasV == 'V') {
-			cout << "Studentu sarasas: \n";
-			cout << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20) << "Galutinis (Vid.)" << endl;
-			for (Stud studentas : studentai) {
-				cout << std::setw(20) << studentas.var << std::setw(20) << studentas.pav << std::setw(20) << fixed << setprecision(0) << round(0.6 * studentas.egz + 0.4 * vidurkis(studentas)) << endl;
-			}
-			break;
-		}
-		else if (pasirinkimasV == 'M') {
-			cout << "Studentu sarasas: \n";
-			cout << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20) << "Galutinis (Med.)" << endl;
-			for (Stud studentas : studentai) {
-				cout << std::setw(20) << studentas.var << std::setw(20) << studentas.pav << std::setw(20) << fixed << setprecision(0) << round(0.6 * studentas.egz + 0.4 * mediana(studentas)) << endl;
-			}
+		if (endValidInput(pasirinkimasV)) {
 			break;
 		}
 		else {
-			cout << "Neteisingas pasirinkimas. Iveskite V arba M: ";
+			cout << "Neteisingas pasirinkimas. Iveskite skaiciu nuo 1 iki 4: ";
+			pasirinkimasV = isNumber();
 		}
 	}
+		switch(pasirinkimasV) {
+			case 1:
+				cout << "Studentu sarasas: \n";
+				cout << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20) << "Galutinis (Vid.)" << endl;
+				for (Stud studentas : studentai) {
+					cout << std::setw(20) << studentas.var << std::setw(20) << studentas.pav << std::setw(20) << fixed << setprecision(0) << round(0.6 * studentas.egz + 0.4 * vidurkis(studentas)) << endl;
+				}
+				break;
+			case 2:
+				cout << "Studentu sarasas: \n";
+				cout << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20) << "Galutinis (Med.)" << endl;
+				for (Stud studentas : studentai) {
+					cout << std::setw(20) << studentas.var << std::setw(20) << studentas.pav << std::setw(20) << fixed << setprecision(0) << round(0.6 * studentas.egz + 0.4 * mediana(studentas)) << endl;
+				}
+				break;
+			case 3:
+				fileOutVid(studentai);
+				break;
+			case 4:
+				fileOutMed(studentai);
+				break;
+		}
 	return 0;
 }
 
@@ -142,9 +165,9 @@ void makeStud(Stud& stu) {
 	randomAtsitiktinisPazymys(stu);
 }
 
-void fileRead(vector<Stud>& studentai) {
+void fileRead(vector<Stud>& studentai, string ivestas_vardas) {
 	std::stringstream buffer;
-	std::ifstream duom("kursiokai.txt");
+	std::ifstream duom(ivestas_vardas);
 	if (!duom) {
 		cout << "Failas nerastas." << endl;
 		return;
@@ -205,4 +228,30 @@ float mediana(Stud& studentai) {
 	else {
 		return studentai.uzd[size / 2];
 	}
+}
+
+void fileOutVid(vector<Stud>& studentai) {
+	std::stringstream outputas;
+	outputas << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20) << "Galutinis (Vid.)" << endl;
+	for (auto& a : studentai) {
+		outputas << std::left << std::setw(20) << a.var << std::setw(20) << a.pav << std::setw(20) << round(0.6 * a.egz + 0.4 * vidurkis(a)) << "\n";
+	}
+	studentai.clear();
+
+	std::ofstream rez("rezultatas.txt");
+	rez << outputas.str();
+	rez.close();
+}
+
+void fileOutMed(vector<Stud>& studentai) {
+	std::stringstream outputas;
+	outputas << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20) << "Galutinis (Med.)" << endl;
+	for (auto& a : studentai) {
+		outputas << std::left << std::setw(20) << a.var << std::setw(20) << a.pav << std::setw(20) << round(0.6 * a.egz + 0.4 * mediana(a)) << "\n";
+	}
+	studentai.clear();
+
+	std::ofstream rez("rezultatas.txt");
+	rez << outputas.str();
+	rez.close();
 }

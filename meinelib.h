@@ -13,6 +13,7 @@
 #include <ctime>
 #include <cmath>
 #include <chrono>
+#include <filesystem>
 
 using std::cout;
 using std::cin;
@@ -74,6 +75,12 @@ inline bool isValidInput(int input) {
 }
 inline bool menuValidInput(int input) {
 	if (input < 1 || input > 5) {
+		return false;
+	}
+	return true;
+}
+inline bool endValidInput(int input) {
+	if (input < 1 || input > 4) {
 		return false;
 	}
 	return true;
