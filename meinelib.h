@@ -53,7 +53,7 @@ vector<string> moteruPavardes = { "Jonate", "Petraite", "Kazlauskaite", "Baltrun
 								   "Sviderskyte", "Malinauskaite", "Gintalaite", "Budreckaite", "Tamasauskaite", "Zimnickaite", "Tamuleviciute", "Skorupskaite", "Gaigalaite", "Sadauskaite",
 								   "Janusonyte", "Leskeviciute", "Mikulenaite", "Kairaite", "Jarmalaviciute", "Milkeviciute", "Dumciute", "Tamulynaite", "Poskaite", "Savickaite" };
 
-inline int isNumber() {
+int isNumber() {
 	int input;
 	while (true) {
 		cin >> input;
@@ -68,7 +68,7 @@ inline int isNumber() {
 	}
 }
 
-inline bool isValidInput(int input) {
+bool isValidInput(int input) {
 	if (input == -1) {
 		return true;
 	}
@@ -77,19 +77,19 @@ inline bool isValidInput(int input) {
 	}
 	return true;
 }
-inline bool menuValidInput(int input) {
+bool menuValidInput(int input) {
 	if (input < 1 || input > 6) {
 		return false;
 	}
 	return true;
 }
-inline bool endValidInput(int input) {
+bool endValidInput(int input) {
 	if (input < 1 || input > 4) {
 		return false;
 	}
 	return true;
 }
-inline bool sortValidInput(int input) {
+bool sortValidInput(int input) {
 	if (input < 1 || input > 3) {
 		return false;
 	}
