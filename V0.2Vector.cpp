@@ -1,13 +1,4 @@
-#include "meinelib.h"
-
-void readRanka(Stud& stu);
-void readName_makeGrade(Stud& stu);
-void makeStud(Stud& stu);
-void fileRead(vector<Stud>& studentai, Stud stu);
-void randomStudentas(Stud& studentas, bool vyras);
-void randomAtsitiktinisPazymys(Stud& stu);
-float vidurkis(Stud& studentai);
-float mediana(Stud& studentai);
+﻿#include "meinelib.h"
 
 struct Stud {
 	string var;
@@ -15,6 +6,15 @@ struct Stud {
 	vector<int>uzd{};
 	int egz = 0;
 };
+
+void readRanka(Stud& stu);
+void readName_makeGrade(Stud& stu);
+void makeStud(Stud& stu);
+void fileRead(vector<Stud>& studentai);
+void randomStudentas(Stud& studentas, bool vyras);
+void randomAtsitiktinisPazymys(Stud& stu);
+float vidurkis(Stud& studentai);
+float mediana(Stud& studentai);
 
 int main() {
 	srand(time(NULL));
@@ -59,7 +59,7 @@ int main() {
 				}
 				break;
 			case 4:
-				fileRead(studentai,studentas);
+				fileRead(studentai);
 				break;
 		}
 	}
@@ -142,29 +142,30 @@ void makeStud(Stud& stu) {
 	randomAtsitiktinisPazymys(stu);
 }
 
-void fileRead(vector<Stud>& studentai, Stud stu) {
+void fileRead(vector<Stud>& studentai) {
+	std::stringstream buffer;
 	std::ifstream duom("kursiokai.txt");
 	if (!duom) {
 		cout << "Failas nerastas." << endl;
 		return;
 	}
+	buffer << duom.rdbuf();
+	duom.close();
+
 	string line;
-	getline(duom,line);
-	while (getline(duom, line)) {
+	getline(buffer,line);
+	while (getline(buffer, line)) {
+		Stud stu;
 		std::stringstream ss(line);
-		cout << line << endl;
 		ss >> stu.var >> stu.pav;
 		int pazymys;
 		while (ss >> pazymys) {
-			cout << pazymys << " ";
 			stu.uzd.push_back(pazymys);
 		}
-		cout << endl;
 		stu.egz = stu.uzd.back();
 		stu.uzd.pop_back();
 		studentai.push_back(stu);
 	}
-	duom.close();
 }
 
 void randomStudentas (Stud& studentas, bool vyras) {
