@@ -1,4 +1,4 @@
-#include "meinelib.h"
+#include "meinelibVector.h"
 
 void readRanka(Stud& stu);
 void readName_makeGrade(Stud& stu);
@@ -13,6 +13,7 @@ int main() {
 	srand(time(NULL));
 	vector<Stud> studentai;
 	char pasirinkimasV = 'V';
+	int n = 0;
 	while (true) {
 		int pasirinkimasInt = 0;
 		Stud studentas;
@@ -43,8 +44,12 @@ int main() {
 				studentai.push_back(studentas);
 				break;
 			case 3:
+				cout << "Kiek studentu sugeneruoti? ";
+				cin >> n;
+				for (int i = 0; i < n; i++) {
 				makeStud(studentas);
 				studentai.push_back(studentas);
+				}
 				break;
 			case 4:
 				fileRead(studentai,studentas);
@@ -140,11 +145,14 @@ void fileRead(vector<Stud>& studentai, Stud stu) {
 	getline(duom,line);
 	while (getline(duom, line)) {
 		std::stringstream ss(line);
+		cout << line << endl;
 		ss >> stu.var >> stu.pav;
 		int pazymys;
 		while (ss >> pazymys) {
+			cout << pazymys << " ";
 			stu.uzd.push_back(pazymys);
 		}
+		cout << endl;
 		stu.egz = stu.uzd.back();
 		stu.uzd.pop_back();
 		studentai.push_back(stu);
