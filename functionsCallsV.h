@@ -187,7 +187,7 @@ void testas(string ivestas_vardas) {
 	std::stringstream buffer;
 	std::ifstream duom(ivestas_vardas);
 	if (!duom) {
-		cout << "Failas nerastas." << endl;
+		throw std::runtime_error("Failas nerastas.");
 		return;
 	}
 	buffer << duom.rdbuf();
@@ -200,9 +200,15 @@ void testas(string ivestas_vardas) {
 		std::stringstream ss(line);
 		ss >> stu.var >> stu.pav;
 		int pazymys;
+
 		while (ss >> pazymys) {
 			stu.uzd.push_back(pazymys);
 		}
+
+		if (stu.uzd.empty()) {
+			throw std::runtime_error("Error: Studentas neturi pazymiu.");
+		}
+
 		stu.egz = stu.uzd.back();
 		stu.uzd.pop_back();
 		studentai.push_back(stu);

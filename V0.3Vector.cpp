@@ -65,10 +65,19 @@ int main() {
 						cout << entry.path().filename() << endl;
 					}
 				}
+
 				cin >> ivestas_vardas;
 				for (int i = 0; i < n; i++) {
 					auto start = hrClock::now();
-					testas(ivestas_vardas);
+
+					try {
+						testas(ivestas_vardas);
+					}
+					catch (const std::exception& e) {
+						std::cerr << e.what() << std::endl;
+						break;
+					}
+
 					auto duration = std::chrono::duration_cast<ms>(hrClock::now() - start);
 					cout << "Failas nuskaitytas per " << duration.count() << " milisekundziu.\n";
 					dursum += duration;

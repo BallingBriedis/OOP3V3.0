@@ -1,5 +1,6 @@
 #ifndef STRUCTV_H
 #define STRUCTV_H
+
 #include <string>
 #include <vector>
 
