@@ -12,6 +12,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <cmath>
+#include <chrono>
 
 using std::cout;
 using std::cin;
@@ -29,9 +30,9 @@ vector<string> vyruVardai = { "Jonas", "Mantas", "Tomas", "Lukas", "Dovydas", "A
 							   "Benas", "Titas", "Ignas", "Nojus", "Vytautas", "Aivaras", "Saulius", "Kristupas", "Orestas", "Armandas",
 							   "Jokubas", "Dainius", "Sigitas", "Almantas", "Haroldas", "Julius", "Dziugas", "Gediminas", "Antanas", "Vytenis" };
 
-vector<string> vyruPavardes = { "Jonaitis", "Petraitis", "Kazlauskas", "Baltrunas", "Simkus", "Daksevic", "Marcinkevicius", "Zabielskas", "Bagdonas", "Urbonas",
+vector<string> vyruPavardes = { "Jonaitis", "Petraitis", "Kazlauskas", "Baltrunas", "Simkus", "Kairys", "Marcinkevicius", "Zabielskas", "Bagdonas", "Urbonas",
 								"Kavaliauskas", "Puidokas", "Bielskis", "Matulevicius", "Sulskis", "Sakalauskas", "Butkus", "Karpavicius", "Zilinskas", "Stankevicius",
-								"Vasiliauskas", "Simkevicius", "Vainius", "Paskevicius", "Bagdonavicius", "Aleknavicius", "Kavolis", "Miezutavicius", "Giedraitis", "Pavardenis",
+								"Vasiliauskas", "Simkevicius", "Daksevic", "Paskevicius", "Bagdonavicius", "Aleknavicius", "Kavolis", "Miezutavicius", "Giedraitis", "Pavardenis",
 								"Sviderskis", "Malinauskas", "Gintalas", "Budreckas", "Tamasauskas", "Zimnickas", "Tamulevicius", "Skorupskas", "Gaigalas", "Sadauskas",
 								"Janusonis", "Leskevicius", "Mikulenas", "Kairaitis", "Jarmalavicius", "Milkevicus", "Dumcius", "Tamulynas", "Poska", "Savickas" };
 
@@ -43,15 +44,9 @@ vector<string> moteruVardai = { "Austeja", "Gabija", "Egle", "Ieva", "Lina", "Ru
 
 vector<string> moteruPavardes = { "Jonate", "Petraite", "Kazlauskaite", "Baltrunaite", "Simkute", "Kairyte", "Marcinkeviciute", "Zabielskaite", "Bagdonaite", "Urbonaite",
 								   "Kavaliauskaite", "Griniute", "Bielskiute", "Matuleviciute", "Sulskite", "Sakalauskaite", "Butkute", "Karpaviciute", "Zilinskaite", "Stankeviciute",
-								   "Vasiliauskaite", "Simkeviciute", "Vainyte", "Paskeviciute", "Bagdonavičiute", "Aleknavičiute", "Kavoliute", "Miezutavičiute", "Giedraite", "Pavardenyte",
+								   "Vasiliauskaite", "Simkeviciute", "Vainyte", "Paskeviciute", "Bagdonaviciute", "Aleknaviciute", "Kavoliute", "Miezutaviciute", "Giedraite", "Pavardenyte",
 								   "Sviderskyte", "Malinauskaite", "Gintalaite", "Budreckaite", "Tamasauskaite", "Zimnickaite", "Tamuleviciute", "Skorupskaite", "Gaigalaite", "Sadauskaite",
-								   "Janusonyte", "Leskevičiute", "Mikulenaite", "Kairaite", "Jarmalavičiute", "Milkevičiute", "Dumciute", "Tamulynaite", "Poskaite", "Savickaite" };
-
-//Prototipai
-
-int isNumber();
-bool isValidInput(int input);
-
+								   "Janusonyte", "Leskeviciute", "Mikulenaite", "Kairaite", "Jarmalaviciute", "Milkeviciute", "Dumciute", "Tamulynaite", "Poskaite", "Savickaite" };
 
 struct Stud {
 	string var;
@@ -109,7 +104,7 @@ inline bool isValidInput(int input) {
 	return true;
 }
 inline bool menuValidInput(int input) {
-	if (input < 1 || input > 4) {
+	if (input < 1 || input > 5) {
 		return false;
 	}
 	return true;
