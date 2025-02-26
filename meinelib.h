@@ -15,6 +15,8 @@
 #include <chrono>
 #include <filesystem>
 
+namespace fs = std::filesystem;
+
 using std::cout;
 using std::cin;
 using std::endl;
@@ -22,6 +24,8 @@ using std::string;
 using std::vector;
 using std::fixed;
 using std::setprecision;
+using hrClock = std::chrono::high_resolution_clock;
+using ms = std::chrono::milliseconds;
 
 //Globalus kintamieji
 
@@ -74,13 +78,19 @@ inline bool isValidInput(int input) {
 	return true;
 }
 inline bool menuValidInput(int input) {
-	if (input < 1 || input > 5) {
+	if (input < 1 || input > 6) {
 		return false;
 	}
 	return true;
 }
 inline bool endValidInput(int input) {
 	if (input < 1 || input > 4) {
+		return false;
+	}
+	return true;
+}
+inline bool sortValidInput(int input) {
+	if (input < 1 || input > 3) {
 		return false;
 	}
 	return true;
