@@ -1,5 +1,34 @@
 #include "meinelib.h"
 
+struct Stud {
+	string var;
+	string pav;
+	int egz = 0;
+
+	int* mUzd = nullptr;
+	int uzdSize = 0;
+	int uzd_capacity = 1;
+
+	void addGrades(int grade) {
+		if (mUzd == nullptr) {
+			mUzd = new int[uzd_capacity];
+		}
+		if (uzdSize == uzd_capacity) {
+			int newCapacity = uzd_capacity + 1;
+			int* newMuzd = new int[newCapacity];
+
+			std::copy(mUzd, mUzd + uzdSize, newMuzd);
+
+			delete[] mUzd;
+
+			mUzd = newMuzd;
+			uzd_capacity = newCapacity;
+		}
+		mUzd[uzdSize] = grade;
+		uzdSize++;
+	}
+};
+
 void readRanka(Stud& stu, int pasirinkimasInt);
 void randomStudentas(Stud& studentas, bool vyras);
 void randomAtsitiktinisPazymys(Stud& stu);
