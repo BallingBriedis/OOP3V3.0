@@ -1,4 +1,4 @@
-#include "meinelibVector.h"
+#include "meinelib.h"
 
 void readRanka(Stud& stu);
 void readName_makeGrade(Stud& stu);
@@ -8,6 +8,13 @@ void randomStudentas(Stud& studentas, bool vyras);
 void randomAtsitiktinisPazymys(Stud& stu);
 float vidurkis(Stud& studentai);
 float mediana(Stud& studentai);
+
+struct Stud {
+	string var;
+	string pav;
+	vector<int>uzd{};
+	int egz = 0;
+};
 
 int main() {
 	srand(time(NULL));
