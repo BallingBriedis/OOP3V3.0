@@ -352,4 +352,18 @@ void testas(string ivestas_vardas) {
 	buffer << duom.rdbuf();
 	duom.close();
 
+	string line;
+	getline(buffer, line);
+	while (getline(buffer, line)) {
+		Stud stu;
+		std::stringstream ss(line);
+		ss >> stu.var >> stu.pav;
+		int pazymys;
+		while (ss >> pazymys) {
+			stu.uzd.push_back(pazymys);
+		}
+		stu.egz = stu.uzd.back();
+		stu.uzd.pop_back();
+		studentai.push_back(stu);
+	}
 }
