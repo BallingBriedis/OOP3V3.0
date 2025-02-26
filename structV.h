@@ -1,10 +1,12 @@
 #ifndef STRUCTV_H
 #define STRUCTV_H
+#include <string>
+#include <vector>
 
 struct Stud {
-	string var;
-	string pav;
-	vector<int>uzd{};
+	std::string var;
+	std::string pav;
+	std::vector<int>uzd{};
 	int egz = 0;
 	int gal = 0;
 };
