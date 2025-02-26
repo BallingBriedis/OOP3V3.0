@@ -15,7 +15,7 @@ int main() {
 		Stud studentas;
 		cout << "Pasirinkite norima studento duomenu surasyma irasant skaiciu nuo 1 iki 4.\n";
 		cout << "------------------------------------------------------------------------\n";
-		cout << "1 - Ivestis ranka\n2 - Generuojami tik pazymiai\n3 - Generuojamas studentas ir pazymiai\n4 - Baigti darba\n";
+		cout << "1 - Ivestis ranka\n2 - Generuojami tik pazymiai\n3 - Generuojamas studentas ir pazymiai\n4 - Nuskaityti is failo\n5 - Baigti darba\n";
 		cout << "------------------------------------------------------------------------\n";
 		pasirinkimasInt = isNumber();
 		while (true) {
@@ -110,6 +110,32 @@ void readRanka(Stud& stu, int pasirinkimasInt) {
 		randomStudentas(stu, rand() % 2);
 		randomAtsitiktinisPazymys(stu);
 	}
+}
+
+void fileRead() {
+	std::ifstream duom("kursiokai.txt");
+	if (!duom) {
+		cout << "Failas nerastas." << endl;
+		return;
+	}
+	string line;
+	vector<Stud> studentai;
+	while (getline(duom, line)) {
+		Stud studentas;
+		std::stringstream ss(line);
+		ss >> studentas.var >> studentas.pav;
+		int pazymys;
+		while (ss >> pazymys) {
+			if (pazymys == -1) {
+				break;
+			}
+			studentas.uzd.push_back(pazymys);
+		}
+		studentas.egz = studentas.uzd.back();
+		studentas.uzd.pop_back();
+		studentai.push_back(studentas);
+	}
+	duom.close();
 }
 
 void randomStudentas (Stud& studentas, bool vyras) {
