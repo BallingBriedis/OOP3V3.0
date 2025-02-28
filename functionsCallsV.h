@@ -29,32 +29,45 @@ void readRanka(Stud& stu) {
 
 	cout << "Iveskite studento egzamino pazymi: ";
 	while (true) {
-		input = isNumber();
-		if (isValidInput(input) && input != -1) {
-			stu.egz = input;
-			break;
+		try {
+			cin >> input;
+			if (input < 0 || input > 10) {
+				cout << "!!!!Iveskite skaiciu nuo 0 iki 10.!!!!\n\n\n";
+				continue;
+			}
 		}
-		else {
-			cout << "Neteisingai ivestas egzamino pazymys. Iveskite sveika skaiciu nuo 0 iki 10 imtinai: ";
+		catch (...) {
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			cout << "!!!!Ivestis neteisinga. Bandykite isnaujo.!!!!";
+			continue;
 		}
+		break;
 	}
-
+	stu.egz = input;
 	cout << "\n\n" << "Iveskite studento namu darbu pazymius. Ivedus visus pazymius, iveskite -1.\n";
 	cout << "Jeigu darbas neatliktas iveskite 0.\n\n";
 	int i = 1;
 	while (true) {
-		cout << i << "-asis pazymys: ";
-		input = isNumber();
-		if (isValidInput(input)) {
+		try {
+			cout << i << "-asis pazymys: ";
+			cin >> input;
 			if (input == -1) {
 				break;
 			}
-			stu.uzd.push_back(input);
-			i++;
+			if (input < 0 || input > 10) {
+				cout << "!!!!Iveskite sveika skaiciu nuo 0 iki 10 imtinai.!!!!\n!!!!Jeigu norite iseiti iveskite -1:!!!!!\n" << endl;
+				continue;
+			}
 		}
-		else {
-			cout << "Neteisinga ivestis. Iveskite sveika skaiciu nuo 0 iki 10 imtinai.\nJeigu norite iseiti iveskite -1: \n" << endl;
+		catch (...) {
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			cout << "!!!!Ivestis neteisinga. Bandykite isnaujo.!!!!";
+			continue;
 		}
+		stu.uzd.push_back(input);
+		i++;
 	}
 }
 
@@ -75,7 +88,7 @@ void fileRead(vector<Stud>& studentai, string ivestas_vardas) {
 	std::stringstream buffer;
 	std::ifstream duom(ivestas_vardas);
 	if (!duom) {
-		cout << "Failas nerastas." << endl;
+		throw std::runtime_error("\nFailas nerastas.\n\n");
 		return;
 	}
 	buffer << duom.rdbuf();
@@ -109,9 +122,21 @@ void randomStudentas(Stud& studentas, bool vyras) {
 }
 
 void randomAtsitiktinisPazymys(Stud& stu) {
+	int pazymiai;
 	stu.egz = rand() % 10 + 1;
 	cout << "Kiek pazymiu sugeneruoti? ";
-	int pazymiai = isNumber();
+	while (true) {
+		try {
+			cin >> pazymiai;
+		}
+		catch(...){
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			cout << "!!!!Ivestis neteisinga. Bandykite isnaujo.!!!!";
+			continue;
+		}
+		break;
+	}
 
 	for (int i = 0; i < pazymiai; i++) {
 		stu.uzd.push_back(rand() % 10 + 1);
@@ -187,7 +212,7 @@ void testas(string ivestas_vardas) {
 	std::stringstream buffer;
 	std::ifstream duom(ivestas_vardas);
 	if (!duom) {
-		throw std::runtime_error("Failas nerastas.");
+		throw std::runtime_error("Failas nerastas.\n");
 		return;
 	}
 	buffer << duom.rdbuf();
@@ -201,8 +226,14 @@ void testas(string ivestas_vardas) {
 		ss >> stu.var >> stu.pav;
 		int pazymys;
 
-		while (ss >> pazymys) {
-			stu.uzd.push_back(pazymys);
+		try {
+			while (ss >> pazymys) {
+				stu.uzd.push_back(pazymys);
+			}
+		}
+		catch (...) {
+			cout << "!!!!Pazymiuose ivesta raide.!!!!\n\n\n";
+			continue;
 		}
 
 		if (stu.uzd.empty()) {

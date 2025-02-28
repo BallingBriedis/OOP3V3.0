@@ -3,6 +3,7 @@
 #include "functionsCallsV.h"
 
 int main() {
+	cin.exceptions(std::ios::failbit);
 	srand(time(NULL));
 	vector<Stud> studentai;
 	int pasirinkimasV = 0;
@@ -16,16 +17,20 @@ int main() {
 		cout << "------------------------------------------------------------------------\n";
 		cout << "1 - Ivestis ranka\n2 - Ivestis ranka (Generuojami tik pazymiai)\n3 - Generuojamas studentas ir pazymiai\n4 - Nuskaityti is failo\n5 - Baigti darba\n6 - Testinis nuskaitymas laiko matavimui\n";
 		cout << "------------------------------------------------------------------------\n";
-		pasirinkimasInt = isNumber();
-		while (true) {
-			if (menuValidInput(pasirinkimasInt)) {
-				break;
-			}
-			else {
-				cout << "Neteisingas pasirinkimas. Iveskite skaiciu nuo 1 iki 5: ";
-				pasirinkimasInt = isNumber();
+		try{
+			cin >> pasirinkimasInt;
+			if (pasirinkimasInt < 1 || pasirinkimasInt > 6) {
+				cout << "!!!!Iveskite skaiciu nuo 1 iki 6.!!!!\n\n\n";
+				continue;
 			}
 		}
+		catch(...){
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			cout << "!!!!Ivestis neteisinga. Bandykite isnaujo.!!!!\n\n\n";
+			continue;
+		}
+		
 		if (pasirinkimasInt == 5) {
 			break;
 		}
@@ -54,7 +59,13 @@ int main() {
 					}
 				}
 				cin >> ivestas_vardas;
-				fileRead(studentai, ivestas_vardas);
+				try {
+					fileRead(studentai, ivestas_vardas);
+				}
+				catch (const std::exception& e) {
+					std::cerr << e.what() << std::endl;
+					continue;
+				}
 				break;
 			case 6:
 				cout << "Kiek kartu norite nuskaitineti faila?\n";
@@ -91,15 +102,21 @@ int main() {
 	cout << "Kaip pateikti rezultata?\n";
 	cout << "1 - Vidurkis (ekrane)\n2 - Mediana (ekrane)\n3 - Vidurkis (faile)\n4 - Mediana (faile)\n";
 	cout << "------------------------------------------------------------------------\n";
-	pasirinkimasV = isNumber();
 	while (true) {
-		if (endValidInput(pasirinkimasV)) {
-			break;
+		try {
+			cin >> pasirinkimasV;
+			if (pasirinkimasV < 1 || pasirinkimasV > 4) {
+				cout << "!!!!Iveskite skaiciu nuo 1 iki 4.!!!!\n\n\n";
+				continue;
+			}
 		}
-		else {
-			cout << "Neteisingas pasirinkimas. Iveskite skaiciu nuo 1 iki 4: ";
-			pasirinkimasV = isNumber();
+		catch (...) {
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			cout << "!!!!Ivestis neteisinga. Bandykite isnaujo.!!!!\n\n\n";
+			continue;
 		}
+		break;
 	}
 	cout << "------------------------------------------------------------------------\n";
 	cout << "Wait a tiny bit...\n";
@@ -112,15 +129,22 @@ int main() {
 	cout << "Pasirinkite rusiavimo kriteriju:\n";
 	cout << "1 - Pagal varda\n2 - Pagal pavarde\n3 - Pagal galutini pazymi\n";
 	cout << "------------------------------------------------------------------------\n";
-	int sortOption = isNumber();
+	int sortOption;
 	while (true) {
-		if (sortValidInput(sortOption)) {
-			break;
+		try {
+			cin >> sortOption;
+			if (sortOption < 1 || sortOption > 3) {
+				cout << "!!!!Iveskite skaiciu nuo 1 iki 3.!!!!\n\n\n";
+				continue;
+			}
 		}
-		else {
-			cout << "Neteisingas pasirinkimas. Iveskite skaiciu nuo 1 iki 3: ";
-			sortOption = isNumber();
+		catch (...) {
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			cout << "!!!!Ivestis neteisinga. Bandykite isnaujo.!!!!\n\n\n";
+			continue;
 		}
+		break;
 	}
 
 	switch (sortOption) {

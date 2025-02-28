@@ -51,46 +51,4 @@ vector<string> moteruPavardes = { "Jonate", "Petraite", "Kazlauskaite", "Baltrun
 								   "Sviderskyte", "Malinauskaite", "Gintalaite", "Budreckaite", "Tamasauskaite", "Zimnickaite", "Tamuleviciute", "Skorupskaite", "Gaigalaite", "Sadauskaite",
 								   "Janusonyte", "Leskeviciute", "Mikulenaite", "Kairaite", "Jarmalaviciute", "Milkeviciute", "Dumciute", "Tamulynaite", "Poskaite", "Savickaite" };
 
-int isNumber() {
-	int input;
-	while (true) {
-		cin >> input;
-		if (cin.fail()) {
-			cin.clear();
-			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			cout << "Neteisinga ivestis. Iveskite sveika skaiciu: ";
-		}
-		else {
-			return input;
-		}
-	}
-}
-
-bool isValidInput(int input) {
-	if (input == -1) {
-		return true;
-	}
-	if (input < 0 || input > 10) {
-		return false;
-	}
-	return true;
-}
-bool menuValidInput(int input) {
-	if (input < 1 || input > 6) {
-		return false;
-	}
-	return true;
-}
-bool endValidInput(int input) {
-	if (input < 1 || input > 4) {
-		return false;
-	}
-	return true;
-}
-bool sortValidInput(int input) {
-	if (input < 1 || input > 3) {
-		return false;
-	}
-	return true;
-}
 #endif
