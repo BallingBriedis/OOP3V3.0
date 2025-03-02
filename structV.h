@@ -1,6 +1,8 @@
 #ifndef STRUCTV_H
 #define STRUCTV_H
 
+// Struktura, kurioje laikomi studento duomenys.
+
 #include <string>
 #include <vector>
 

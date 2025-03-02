@@ -1,6 +1,8 @@
 #ifndef FUNCTIONSCALLSV_H
 #define FUNCTIONSCALLSV_H
 
+// Laikomi funkciju prototipai.
+
 //Prototipai
 void readRanka(Stud& stu);
 void readName_makeGrade(Stud& stu);

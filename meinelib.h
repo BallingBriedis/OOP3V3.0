@@ -1,6 +1,8 @@
 ﻿#ifndef MEINELIB_H
 #define MEINELIB_H
 
+// Biblioteku ir pavadinimu header failas.
+
 #include <iostream>
 #include <iomanip>
 #include <string>
