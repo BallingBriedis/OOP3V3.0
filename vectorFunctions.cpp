@@ -160,7 +160,30 @@ void randomAtsitiktinisPazymys(Stud& stu) {																					// Sugeneruoja a
 	}
 }
 
-void failoKurimas(int studentuSk) {
+void failoKurimas() {
+	int studentuSk;
+	string failoVardas = "studentai";
+	while (true) {
+		cout << "Iveskite studentu skaiciu: ";
+		try {
+			cin >> studentuSk;
+			if (studentuSk < 1) {
+				cout << "Iveskite skaiciu didesni uz 0.\n";
+				continue;
+			}
+			else {
+				break;
+			}
+		}
+		catch (...) {
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			cout << "\n\n!!!!Ivestis neteisinga. Bandykite isnaujo.!!!!\n\n";
+			continue;
+		}
+	}
+	failoVardas += std::to_string(studentuSk) + ".txt";
+
 	std::stringstream outputas;
 	int pazymiuSk = rand() % 15 + 1;
 	outputas << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20) << "Galutinis (Med.)" << endl;
@@ -176,7 +199,7 @@ void failoKurimas(int studentuSk) {
 		}
 		outputas << std::setw(5) << rand() % 10 + 1 << endl;
 	}
-	std::ofstream rez("rezultatas.txt");
+	std::ofstream rez(failoVardas);
 	rez << outputas.str();
 	rez.close();
 }

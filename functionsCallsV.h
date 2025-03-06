@@ -10,6 +10,7 @@ void makeStud(Stud& stu);
 void fileRead(vector<Stud>& studentai, string ivestas_vardas);
 void randomStudentas(Stud& studentas, bool vyras);
 void randomAtsitiktinisPazymys(Stud& stu);
+void failoKurimas();
 float vidurkis(Stud& studentai);
 float mediana(Stud& studentai);
 float galutinisVid(Stud& stu);
