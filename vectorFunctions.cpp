@@ -160,6 +160,27 @@ void randomAtsitiktinisPazymys(Stud& stu) {																					// Sugeneruoja a
 	}
 }
 
+void failoKurimas(int studentuSk) {
+	std::stringstream outputas;
+	int pazymiuSk = rand() % 15 + 1;
+	outputas << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20) << "Galutinis (Med.)" << endl;
+	for (int i = 0; i < pazymiuSk; i++) {
+		outputas << std::left << std::setw(5) << "ND" << i + 1;
+	}
+	outputas << std::left << std::setw(5) << "Egz." << endl;
+
+	for (int i = 0; i < studentuSk; i++) {
+		outputas << std::left << std::setw(20) << "Vardas" << i + 1 << std::setw(20) << "Pavarde" << i + 1 << endl;
+		for (int j = 0; j < pazymiuSk; j++) {
+			outputas << std::setw(5) << rand() % 10 + 1;
+		}
+		outputas << std::setw(5) << rand() % 10 + 1 << endl;
+	}
+	std::ofstream rez("rezultatas.txt");
+	rez << outputas.str();
+	rez.close();
+}
+
 float vidurkis(Stud& studentai) {																							// Suskaiciuoja vidurki.
 	if (studentai.uzd.empty()) return 0.0;
 	return accumulate(studentai.uzd.begin(), studentai.uzd.end(), 0) / studentai.uzd.size();
