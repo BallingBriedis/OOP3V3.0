@@ -161,6 +161,7 @@ void randomAtsitiktinisPazymys(Stud& stu) {																					// Sugeneruoja a
 }
 
 void failoKurimas() {
+	auto pradzia = hrClock::now();
 	int studentuSk;
 	string failoVardas = "studList";
 	while (true) {
@@ -168,7 +169,7 @@ void failoKurimas() {
 		try {
 			cin >> studentuSk;
 			if (studentuSk < 1) {
-				cout << "Iveskite skaiciu didesni uz 0.\n";
+				cout << "\n\nIveskite skaiciu didesni uz 0.\n\n";
 				continue;
 			}
 			else {
@@ -182,26 +183,36 @@ void failoKurimas() {
 			continue;
 		}
 	}
+	cout << "\n\nPalaukite, kuriamas failas...\n\n";
 	failoVardas += std::to_string(studentuSk) + ".txt";
 
 	std::stringstream outputas;
 	int pazymiuSk = rand() % 15 + 1;
+
 	outputas << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20);
+
 	for (int i = 0; i < pazymiuSk; i++) {
 		outputas << std::left << std::setw(6) << "ND" + std::to_string(i + 1);
+
 	}
 	outputas << std::left << std::setw(6) << "Egz." << endl;
 
 	for (int i = 0; i < studentuSk; i++) {
 		outputas << std::left << std::setw(20) << "Vardas" + std::to_string(i + 1) << std::setw(20) << "Pavarde" + std::to_string(i + 1);
+
 		for (int j = 0; j < pazymiuSk; j++) {
 			outputas << std::setw(6) << rand() % 10 + 1;
+
 		}
 		outputas << std::setw(6) << rand() % 10 + 1 << endl;
+
 	}
 	std::ofstream rez(failoVardas);
 	rez << outputas.str();
 	rez.close();
+	auto pabaiga = hrClock::now();
+	auto trukme = std::chrono::duration_cast<ms>(pabaiga - pradzia);
+	cout << "Failas sukurtas per " << trukme.count() << " milisekundziu.\n";
 }
 
 float vidurkis(Stud& studentai) {																							// Suskaiciuoja vidurki.
