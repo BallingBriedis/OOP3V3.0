@@ -13,14 +13,14 @@ int main() {
 	while (true) {																											// Meniu ciklas
 		int pasirinkimasInt = 0;
 		Stud studentas;
-		cout << "Pasirinkite norima studento duomenu surasyma irasant skaiciu nuo 1 iki 5.\n";
+		cout << "Pasirinkite norima studento duomenu surasyma irasant skaiciu nuo 1 iki 7.\n";
 		cout << "------------------------------------------------------------------------\n";
-		cout << "1 - Ivestis ranka\n2 - Ivestis ranka (Generuojami tik pazymiai)\n3 - Generuojamas studentas ir pazymiai\n4 - Nuskaityti is failo\n5 - Baigti darba\n6 - Testinis nuskaitymas laiko matavimui\n";
+		cout << "1 - Ivestis ranka\n2 - Ivestis ranka (Generuojami tik pazymiai)\n3 - Generuojamas studentas ir pazymiai\n4 - Nuskaityti is failo\n5 - Baigti darba\n6 - Failo kurimas\n7 - Testinis nuskaitymas laiko matavimui\n";
 		cout << "------------------------------------------------------------------------\n";
 		try {																												// Teisingo pasirinkimo gaudymas
 			cin >> pasirinkimasInt;
-			if (pasirinkimasInt < 1 || pasirinkimasInt > 6) {
-				cout << "\n\n!!!!Iveskite skaiciu nuo 1 iki 6.!!!!\n\n\n";
+			if (pasirinkimasInt < 1 || pasirinkimasInt > 7) {
+				cout << "\n\n!!!!Iveskite skaiciu nuo 1 iki 7.!!!!\n\n\n";
 				continue;
 			}
 		}
@@ -68,6 +68,9 @@ int main() {
 				}
 				break;
 			case 6:
+				failoKurimas();
+				break;
+			case 7:
 				cout << "Kiek kartu norite nuskaitineti faila?\n";
 				cin >> n;
 				cout << "Koki faila norite nuskaityti? (Iveskite be kabuciu)\n";
