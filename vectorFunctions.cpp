@@ -225,7 +225,7 @@ void failoKurimas() {
 }
 
 void fileFilter() {
-	vector<Stud> studentai, vargsai, mokslinciai;
+	vector<Stud> studentai, mokslinciai;
 	std::stringstream outputas;
 	int pasirinkimasV, i = 0;
 
@@ -273,12 +273,20 @@ void fileFilter() {
 	for (int i = 0; i < studentai.size(); i++) {
 		studentai[i].gal = (pasirinkimasV == 1) ? galutinisVid(studentai[i]) : galutinisMed(studentai[i]);
 	}
+	std::sort(studentai.begin(), studentai.end(), compareByFinalGrade);
+	while (studentai.back().gal > 5) {
+		mokslinciai.push_back(studentai.back());
+		studentai.pop_back();
+	}
 
 	cout << "------------------------------------------------------------------------\n";
 	cout << "Pasirinkite rusiavimo kriteriju:\n";
 	cout << "1 - Pagal varda\n2 - Pagal pavarde\n3 - Pagal galutini pazymi\n";
 	cout << "------------------------------------------------------------------------\n";
 	int sortOption;
+
+	// Matuoja studentu rusiavimas i vargsus ir mokslincius laika
+	auto rikiavimoStart = hrClock::now();
 	while (true) {
 		try {
 			cin >> sortOption;
@@ -295,48 +303,36 @@ void fileFilter() {
 		}
 		break;
 	}
+	auto rikiavimoEnd = hrClock::now();
+	auto rikiavimoDuration = std::chrono::duration_cast<ms>(rikiavimoEnd - rikiavimoStart).count();
+	cout << "Studentu rusiavimas i vargsus ir mokslincius uztruko: " << rikiavimoDuration << " ms\n";
 
 	switch (sortOption) {
 	case 1:
 		std::sort(studentai.begin(), studentai.end(), compareByName);
+		std::sort(mokslinciai.begin(), mokslinciai.end(), compareByName);
 		break;
 	case 2:
 		std::sort(studentai.begin(), studentai.end(), compareBySurname);
+		std::sort(mokslinciai.begin(), mokslinciai.end(), compareBySurname);
 		break;
 	case 3:
 		std::sort(studentai.begin(), studentai.end(), compareByFinalGrade);
+		std::sort(mokslinciai.begin(), mokslinciai.end(), compareByFinalGrade);
 		break;
 	default:
 		cout << "Neteisingas pasirinkimas. Nerusiavome.\n";
 		break;
 	}
 
-	// Matuoja studentu rikiavima
-	auto rikiavimoStart = hrClock::now();
-	for (auto it = studentai.begin(); it != studentai.end();) {
-		if (it->gal < 5) {
-			vargsai.push_back(*it);
-			it = studentai.erase(it);
-		}
-		else {
-			mokslinciai.push_back(*it);
-			++it;
-		}
-	}
-	studentai.clear();
-	studentai.shrink_to_fit();
-	auto rikiavimoEnd = hrClock::now();
-	auto rikiavimoDuration = std::chrono::duration_cast<ms>(rikiavimoEnd - rikiavimoStart).count();
-	cout << "Studentu rusiavimas i vargsus ir mokslincius uztruko: " << rikiavimoDuration << " ms\n";
-
 	// Matuoja isvedimo i faila laika
 	auto writeStart = hrClock::now();
 	if (pasirinkimasV == 1) {
-		fileCreateOutVid(vargsai, "Vargsai.txt");
+		fileCreateOutVid(studentai, "Vargsai.txt");
 		fileCreateOutVid(mokslinciai, "Mokslinciai.txt");
 	}
 	else {
-		fileCreateOutMed(vargsai, "Vargsai.txt");
+		fileCreateOutMed(studentai, "Vargsai.txt");
 		fileCreateOutMed(mokslinciai, "Mokslinciai.txt");
 	}
 	auto writeEnd = hrClock::now();
@@ -348,8 +344,8 @@ void fileFilter() {
 	auto programDuration = std::chrono::duration_cast<ms>(programEnd - programStart).count();
 	cout << "Visos programos veikimo laikas: " << programDuration << " ms\n";
 
-	vargsai.clear();
-	vargsai.shrink_to_fit();
+	studentai.clear();
+	studentai.shrink_to_fit();
 	mokslinciai.clear();
 	mokslinciai.shrink_to_fit();
 }

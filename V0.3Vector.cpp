@@ -107,7 +107,7 @@ int main() {
 	cout << "------------------------------------------------------------------------\n";
 	cout << "Palaukite kol programa skaiciuoja...\n";
 
-	for (int i = 0;i < studentai.size();i++) {
+	for (int i = 0; i < studentai.size(); i++) {
 		studentai[i].gal = (pasirinkimasV == 1 || pasirinkimasV == 3) ? galutinisVid(studentai[i]) : galutinisMed(studentai[i]);
 	}
 
