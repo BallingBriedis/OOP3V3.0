@@ -7,20 +7,26 @@ int main() {
 	srand(time(NULL));
 	vector<Stud> studentai;
 	int pasirinkimasV = 0;
-	string ivestas_vardas, path = ".";
-	auto dursum = std::chrono::milliseconds(0);
+	string ivestas_vardas;
 	int n = 0;
 	while (true) {																											// Meniu ciklas
 		int pasirinkimasInt = 0;
 		Stud studentas;
-		cout << "Pasirinkite norima studento duomenu surasyma irasant skaiciu nuo 1 iki 7.\n";
+		cout << "Pasirinkite norima studento duomenu surasyma irasant skaiciu nuo 1 iki 8.\n";
 		cout << "------------------------------------------------------------------------\n";
-		cout << "1 - Ivestis ranka\n2 - Ivestis ranka (Generuojami tik pazymiai)\n3 - Generuojamas studentas ir pazymiai\n4 - Nuskaityti is failo\n5 - Failo kurimas\n6 - Testinis nuskaitymas laiko matavimui\n7 - Baigti darba\n";
+		cout << "1 - Ivestis ranka\n";
+		cout << "2 - Ivestis ranka (Generuojami tik pazymiai)\n";
+		cout << "3 - Generuojamas studentas ir pazymiai\n";
+		cout << "4 - Failo nuskaitymas\n";
+		cout << "5 - Failo kurimas\n";
+		cout << "6 - Failo surusiavimas\n";
+		cout << "7 - Testinis nuskaitymas laiko matavimui\n";
+		cout << "8 - Baigti darba\n";
 		cout << "------------------------------------------------------------------------\n";
 		try {																												// Teisingo pasirinkimo gaudymas
 			cin >> pasirinkimasInt;
-			if (pasirinkimasInt < 1 || pasirinkimasInt > 7) {
-				cout << "\n\n!!!!Iveskite skaiciu nuo 1 iki 7.!!!!\n\n\n";
+			if (pasirinkimasInt < 1 || pasirinkimasInt > 8) {
+				cout << "\n\n!!!!Iveskite skaiciu nuo 1 iki 8.!!!!\n\n\n";
 				continue;
 			}
 		}
@@ -31,7 +37,7 @@ int main() {
 			continue;
 		}
 		
-		if (pasirinkimasInt == 7) {
+		if (pasirinkimasInt == 8) {
 			break;
 		}
 		switch (pasirinkimasInt) {
@@ -44,7 +50,7 @@ int main() {
 				studentai.push_back(studentas);
 				break;
 			case 3:
-				cout << "Kiek studentu sugeneruoti? ";
+				cout << "Kiek studentu sugeneruoti?\n";
 				cin >> n;
 				for (int i = 0; i < n; i++) {
 				makeStud(studentas);
@@ -52,15 +58,8 @@ int main() {
 				}
 				break;
 			case 4:
-				cout << "Iveskite norimo failo pavadinima be kabuciu:\n";
-				for (const auto& entry : fs::directory_iterator(path)) {
-					if (entry.path().extension() == ".txt") {
-						cout << entry.path().filename() << endl;
-					}
-				}
-				cin >> ivestas_vardas;
 				try {
-					fileRead(studentai, ivestas_vardas);
+					fileRead(studentai);
 				}
 				catch (const std::exception& e) {
 					std::cerr << e.what() << std::endl;
@@ -71,32 +70,16 @@ int main() {
 				failoKurimas();
 				break;
 			case 6:
-				cout << "Kiek kartu norite nuskaitineti faila?\n";
-				cin >> n;
-				cout << "Koki faila norite nuskaityti? (Iveskite be kabuciu)\n";
-				for (const auto& entry : fs::directory_iterator(path)) {													// Iteruoja per direktorija, iesko failu su .txt pabaiga.
-					if (entry.path().extension() == ".txt") {
-						cout << entry.path().filename() << endl;
-					}
-				}
-
-				cin >> ivestas_vardas;
-				for (int i = 0; i < n; i++) {
-					auto start = hrClock::now();
-
+				fileFilter();
+				break;
+			case 7:
 					try {
-						testas(ivestas_vardas);
+						testas();
 					}
 					catch (const std::exception& e) {
 						std::cerr << e.what() << std::endl;
 						break;
 					}
-
-					auto duration = std::chrono::duration_cast<ms>(hrClock::now() - start);
-					cout << "Failas nuskaitytas per " << duration.count() << " milisekundziu.\n";
-					dursum += duration;
-				}
-				cout << "Viso laiko: " << dursum.count()/1000 << " s.\n\n";
 				break;
 		}
 	}
@@ -122,7 +105,7 @@ int main() {
 		break;
 	}
 	cout << "------------------------------------------------------------------------\n";
-	cout << "Wait a tiny bit...\n";
+	cout << "Wait a tiny bit while the program is calculating...\n";
 
 	for (int i = 0;i < studentai.size();i++) {
 		studentai[i].gal = (pasirinkimasV == 1 || pasirinkimasV == 3) ? galutinisVid(studentai[i]) : galutinisMed(studentai[i]);

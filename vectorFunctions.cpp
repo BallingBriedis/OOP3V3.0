@@ -94,7 +94,15 @@ void makeStud(Stud& stu) {																									// Sukuria atsitiktini studen
 	randomAtsitiktinisPazymys(stu);
 }
 
-void fileRead(vector<Stud>& studentai, string ivestas_vardas) {																// Nuskaito duomenis is failo.
+void fileRead(vector<Stud>& studentai) {																// Nuskaito duomenis is failo.
+	string ivestas_vardas;
+	cout << "Iveskite norimo failo pavadinima be kabuciu:\n";
+	for (const auto& entry : fs::directory_iterator(".")) {
+		if (entry.path().extension() == ".txt") {
+			cout << entry.path().filename() << endl;
+		}
+	}
+	cin >> ivestas_vardas;
 	std::stringstream buffer;
 	std::ifstream duom(ivestas_vardas);
 	if (!duom) {																											// Truksta failo, ismeta klaida.
@@ -216,6 +224,160 @@ void failoKurimas() {
 	cout << "Failas sukurtas per " << trukme.count() << " milisekundziu.\n";
 }
 
+void fileFilter() {
+	vector<Stud> studentai,vargsai,mokslinciai;
+	std::stringstream outputas;
+	int pasirinkimasV, i=0;
+	try {
+		fileRead(studentai);
+	}
+	catch (const std::exception& e) {
+		std::cerr << e.what() << std::endl;
+		return;
+	}
+
+	cout << "------------------------------------------------------------------------\n";
+	cout << "Kaip pateikti rezultata?\n";
+	cout << "1 - Vidurkiu\n2 - Mediana\n";
+	cout << "------------------------------------------------------------------------\n";
+	while (true) {																											// Teisingo pasirinkimo ciklas
+		try {																												// Teisingo pasirinkimo gaudymas
+			cin >> pasirinkimasV;
+			if (pasirinkimasV < 1 || pasirinkimasV > 2) {
+				cout << "\n\n!!!!Iveskite skaiciu 1 arba 2.!!!!\n\n\n";
+				continue;
+			}
+		}
+		catch (...) {
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			cout << "\n\n!!!!Ivestis neteisinga. Bandykite isnaujo.!!!!\n\n\n";
+			continue;
+		}
+		break;
+	}
+	cout << "------------------------------------------------------------------------\n";
+	cout << "Wait a tiny bit while the program is calculating...\n";
+
+	for (int i = 0;i < studentai.size();i++) {
+		studentai[i].gal = (pasirinkimasV == 1) ? galutinisVid(studentai[i]) : galutinisMed(studentai[i]);
+	}
+
+	cout << "------------------------------------------------------------------------\n";
+	cout << "Pasirinkite rusiavimo kriteriju:\n";
+	cout << "1 - Pagal varda\n2 - Pagal pavarde\n3 - Pagal galutini pazymi\n";
+	cout << "------------------------------------------------------------------------\n";
+	int sortOption;
+	while (true) {																											// Teisingo pasirinkimo ciklas
+		try {																												// Teisingo pasirinkimo gaudymas
+			cin >> sortOption;
+			if (sortOption < 1 || sortOption > 3) {
+				cout << "\n\n!!!!Iveskite skaiciu nuo 1 iki 3.!!!!\n\n\n";
+				continue;
+			}
+		}
+		catch (...) {
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			cout << "\n\n!!!!Ivestis neteisinga. Bandykite isnaujo.!!!!\n\n\n";
+			continue;
+		}
+		break;
+	}
+
+	switch (sortOption) {
+	case 1:
+		std::sort(studentai.begin(), studentai.end(), compareByName);
+		break;
+	case 2:
+		std::sort(studentai.begin(), studentai.end(), compareBySurname);
+		break;
+	case 3:
+		std::sort(studentai.begin(), studentai.end(), compareByFinalGrade);
+		break;
+	default:
+		cout << "Neteisingas pasirinkimas. Nerusiavome.\n";
+		break;
+	}
+
+	for (auto it = studentai.begin(); it != studentai.end(); ) {
+		if (it -> gal < 5) {
+			vargsai.push_back(*it);
+			it = studentai.erase(it);
+		}
+		else {
+			mokslinciai.push_back(*it);
+			++it;
+		}
+	}
+
+	if (pasirinkimasV == 1) {
+		fileCreateOutVid(vargsai, "Vargsai.txt");
+		fileCreateOutVid(mokslinciai,"Mokslinciai.txt");
+	}
+	else {
+		fileCreateOutMed(vargsai, "Vargsai.txt");
+		fileCreateOutMed(mokslinciai, "Mokslinciai.txt");
+	}
+
+}
+
+void fileCreateOutVid(vector<Stud>& studentai, string ivestas_vardas) {																					// Isveda i faila pagal vidurki.
+	std::stringstream outputas;
+	outputas << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20) << "Galutinis (Vid.)" << endl;
+	for (auto& a : studentai) {
+		outputas << std::left << std::setw(20) << a.var << std::setw(20) << a.pav << std::setw(20) << fixed << setprecision(0) << a.gal << "\n";
+	}
+	studentai.clear();																										// Duomenys nebereikalingi, pasalina visus elementus is vektoriaus.
+	studentai.shrink_to_fit();																								// Duomenys nebereikalingi, sumazina rezervuota vieta iki tuscio dydzio.
+
+	std::ofstream rez(ivestas_vardas);
+	rez << outputas.str();
+	rez.close();
+}
+
+void fileCreateOutMed(vector<Stud>& studentai, string ivestas_vardas) {																					// Isveda i faila pagal mediana.
+	std::stringstream outputas;
+	outputas << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20) << "Galutinis (Med.)" << endl;
+	for (auto& a : studentai) {
+		outputas << std::left << std::setw(20) << a.var << std::setw(20) << a.pav << std::setw(20) << fixed << setprecision(0) << a.gal << "\n";
+	}
+	studentai.clear();																										// Duomenys nebereikalingi, pasalina visus elementus is vektoriaus.
+	studentai.shrink_to_fit();																								// Duomenys nebereikalingi, sumazina rezervuota vieta iki tuscio dydzio.
+
+	std::ofstream rez(ivestas_vardas);
+	rez << outputas.str();
+	rez.close();
+}
+
+void fileCreateOutVid(vector<Stud>& studentai) {																					// Isveda i faila pagal vidurki.
+	std::stringstream outputas;
+	outputas << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20) << "Galutinis (Vid.)" << endl;
+	for (auto& a : studentai) {
+		outputas << std::left << std::setw(20) << a.var << std::setw(20) << a.pav << std::setw(20) << fixed << setprecision(0) << a.gal << "\n";
+	}
+	studentai.clear();																										// Duomenys nebereikalingi, pasalina visus elementus is vektoriaus.
+	studentai.shrink_to_fit();																								// Duomenys nebereikalingi, sumazina rezervuota vieta iki tuscio dydzio.
+
+	std::ofstream rez("rezultatas.txt");
+	rez << outputas.str();
+	rez.close();
+}
+
+void fileCreateOutMed(vector<Stud>& studentai) {																					// Isveda i faila pagal mediana.
+	std::stringstream outputas;
+	outputas << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20) << "Galutinis (Med.)" << endl;
+	for (auto& a : studentai) {
+		outputas << std::left << std::setw(20) << a.var << std::setw(20) << a.pav << std::setw(20) << fixed << setprecision(0) << a.gal << "\n";
+	}
+	studentai.clear();																										// Duomenys nebereikalingi, pasalina visus elementus is vektoriaus.
+	studentai.shrink_to_fit();																								// Duomenys nebereikalingi, sumazina rezervuota vieta iki tuscio dydzio.
+
+	std::ofstream rez("rezultatas.txt");
+	rez << outputas.str();
+	rez.close();
+}
+
 float vidurkis(Stud& studentai) {																							// Suskaiciuoja vidurki.
 	if (studentai.uzd.empty()) return 0.0;
 	return accumulate(studentai.uzd.begin(), studentai.uzd.end(), 0) / studentai.uzd.size();
@@ -282,7 +444,23 @@ bool compareByFinalGrade(const Stud& a, const Stud& b) {																	// Rusi
 	return a.gal < b.gal;
 }
 
-void testas(string ivestas_vardas) {																						// Testavimo funkcija.
+void testas() {																						// Testavimo funkcija.
+	int n = 0;
+	auto dursum = std::chrono::milliseconds(0);
+	string ivestas_vardas;
+	cout << "Kiek kartu norite nuskaitineti faila?\n";
+	cin >> n;
+	cout << "Koki faila norite nuskaityti? (Iveskite be kabuciu)\n";
+	for (const auto& entry : fs::directory_iterator(".")) {													// Iteruoja per direktorija, iesko failu su .txt pabaiga.
+		if (entry.path().extension() == ".txt") {
+			cout << entry.path().filename() << endl;
+		}
+	}
+	cin >> ivestas_vardas;
+
+	for (int i = 0; i < n; i++) {
+		auto start = hrClock::now();
+
 	vector<Stud> studentai;
 	std::stringstream buffer;
 	std::ifstream duom(ivestas_vardas);
@@ -329,4 +507,10 @@ void testas(string ivestas_vardas) {																						// Testavimo funkcija.
 	}
 	studentai.clear();																										// Testinis nuskaitymas, nereikia saugoti duomenu, pasalina visus elementus is vektoriaus.
 	studentai.shrink_to_fit();																								// Rezervuota vieta sulygina su laikomais duomenim, atlaisvina vieta kitiems procesams.
+
+	auto duration = std::chrono::duration_cast<ms>(hrClock::now() - start);
+	cout << "Failas nuskaitytas per " << duration.count() << " milisekundziu.\n";
+	dursum += duration;
+}
+cout << "Viso laiko: " << dursum.count() / 1000 << " s.\n\n";
 }
