@@ -15,7 +15,7 @@ int main() {
 		Stud studentas;
 		cout << "Pasirinkite norima studento duomenu surasyma irasant skaiciu nuo 1 iki 7.\n";
 		cout << "------------------------------------------------------------------------\n";
-		cout << "1 - Ivestis ranka\n2 - Ivestis ranka (Generuojami tik pazymiai)\n3 - Generuojamas studentas ir pazymiai\n4 - Nuskaityti is failo\n5 - Baigti darba\n6 - Failo kurimas\n7 - Testinis nuskaitymas laiko matavimui\n";
+		cout << "1 - Ivestis ranka\n2 - Ivestis ranka (Generuojami tik pazymiai)\n3 - Generuojamas studentas ir pazymiai\n4 - Nuskaityti is failo\n5 - Failo kurimas\n6 - Testinis nuskaitymas laiko matavimui\n7 - Baigti darba\n";
 		cout << "------------------------------------------------------------------------\n";
 		try {																												// Teisingo pasirinkimo gaudymas
 			cin >> pasirinkimasInt;
@@ -31,7 +31,7 @@ int main() {
 			continue;
 		}
 		
-		if (pasirinkimasInt == 5) {
+		if (pasirinkimasInt == 7) {
 			break;
 		}
 		switch (pasirinkimasInt) {
@@ -67,10 +67,10 @@ int main() {
 					continue;
 				}
 				break;
-			case 6:
+			case 5:
 				failoKurimas();
 				break;
-			case 7:
+			case 6:
 				cout << "Kiek kartu norite nuskaitineti faila?\n";
 				cin >> n;
 				cout << "Koki faila norite nuskaityti? (Iveskite be kabuciu)\n";
