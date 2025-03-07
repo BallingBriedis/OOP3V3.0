@@ -161,7 +161,6 @@ void randomAtsitiktinisPazymys(Stud& stu) {																					// Sugeneruoja a
 }
 
 void failoKurimas() {
-	auto pradzia = hrClock::now();
 	int studentuSk;
 	string failoVardas = "studList";
 	while (true) {
@@ -183,11 +182,13 @@ void failoKurimas() {
 			continue;
 		}
 	}
+
+	auto pradzia = hrClock::now();
 	cout << "\n\nPalaukite, kuriamas failas...\n\n";
 	failoVardas += std::to_string(studentuSk) + ".txt";
 
 	std::stringstream outputas;
-	int pazymiuSk = rand() % 15 + 1;
+	int pazymiuSk = 7;
 
 	outputas << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20);
 
