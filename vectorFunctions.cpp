@@ -225,11 +225,20 @@ void failoKurimas() {
 }
 
 void fileFilter() {
-	vector<Stud> studentai,vargsai,mokslinciai;
+	vector<Stud> studentai, vargsai, mokslinciai;
 	std::stringstream outputas;
-	int pasirinkimasV, i=0;
+	int pasirinkimasV, i = 0;
+
+	// Visos programos vykdymo laiko matavimas
+	auto programStart = hrClock::now();
+
 	try {
+		// Matuoja kiek laiko uztrunka failo nuskaitymas
+		auto readStart = hrClock::now();
 		fileRead(studentai);
+		auto readEnd = hrClock::now();
+		auto readDuration = std::chrono::duration_cast<ms>(readEnd - readStart).count();
+		cout << "Ivestis is failo uztruko: " << readDuration << " ms\n";
 	}
 	catch (const std::exception& e) {
 		std::cerr << e.what() << std::endl;
@@ -240,8 +249,9 @@ void fileFilter() {
 	cout << "Kaip pateikti rezultata?\n";
 	cout << "1 - Vidurkiu\n2 - Mediana\n";
 	cout << "------------------------------------------------------------------------\n";
-	while (true) {																											// Teisingo pasirinkimo ciklas
-		try {																												// Teisingo pasirinkimo gaudymas
+
+	while (true) {
+		try {
 			cin >> pasirinkimasV;
 			if (pasirinkimasV < 1 || pasirinkimasV > 2) {
 				cout << "\n\n!!!!Iveskite skaiciu 1 arba 2.!!!!\n\n\n";
@@ -256,20 +266,26 @@ void fileFilter() {
 		}
 		break;
 	}
-	cout << "------------------------------------------------------------------------\n";
-	cout << "Wait a tiny bit while the program is calculating...\n";
 
-	for (int i = 0;i < studentai.size();i++) {
+	cout << "------------------------------------------------------------------------\n";
+	cout << "Palaukite kol programa skaiciuoja...\n";
+
+	// Matuoja studentu galutinio skaiciavimo ilgi
+	auto calcStart = hrClock::now();
+	for (int i = 0; i < studentai.size(); i++) {
 		studentai[i].gal = (pasirinkimasV == 1) ? galutinisVid(studentai[i]) : galutinisMed(studentai[i]);
 	}
+	auto calcEnd = hrClock::now();
+	auto calcDuration = std::chrono::duration_cast<ms>(calcEnd - calcStart).count();
+	cout << "Vidurkio skaiciavimai uztruko: " << calcDuration << " ms\n";
 
 	cout << "------------------------------------------------------------------------\n";
 	cout << "Pasirinkite rusiavimo kriteriju:\n";
 	cout << "1 - Pagal varda\n2 - Pagal pavarde\n3 - Pagal galutini pazymi\n";
 	cout << "------------------------------------------------------------------------\n";
 	int sortOption;
-	while (true) {																											// Teisingo pasirinkimo ciklas
-		try {																												// Teisingo pasirinkimo gaudymas
+	while (true) {
+		try {
 			cin >> sortOption;
 			if (sortOption < 1 || sortOption > 3) {
 				cout << "\n\n!!!!Iveskite skaiciu nuo 1 iki 3.!!!!\n\n\n";
@@ -285,6 +301,8 @@ void fileFilter() {
 		break;
 	}
 
+	// Matuoja rusiavimo laika
+	auto sortStart = hrClock::now();
 	switch (sortOption) {
 	case 1:
 		std::sort(studentai.begin(), studentai.end(), compareByName);
@@ -299,9 +317,14 @@ void fileFilter() {
 		cout << "Neteisingas pasirinkimas. Nerusiavome.\n";
 		break;
 	}
+	auto sortEnd = hrClock::now();
+	auto sortDuration = std::chrono::duration_cast<ms >(sortEnd - sortStart).count();
+	cout << "Studentu rusiavimas uztruko: " << sortDuration << " ms\n";
 
-	for (auto it = studentai.begin(); it != studentai.end(); ) {
-		if (it -> gal < 5) {
+	// Matuoja studentu rusiavima
+	auto rusiavimoStart = hrClock::now();
+	for (auto it = studentai.begin(); it != studentai.end();) {
+		if (it->gal < 5) {
 			vargsai.push_back(*it);
 			it = studentai.erase(it);
 		}
@@ -310,16 +333,35 @@ void fileFilter() {
 			++it;
 		}
 	}
+	studentai.clear();
+	studentai.shrink_to_fit();
+	auto rusiavimoEnd = hrClock::now();
+	auto rusiavimoDuration = std::chrono::duration_cast<ms>(rusiavimoEnd - rusiavimoStart).count();
+	cout << "Studentu rusiavimas uztruko: " << rusiavimoDuration << " ms\n";
 
+	// Matuoja isvedimo i faila laika
+	auto writeStart = hrClock::now();
 	if (pasirinkimasV == 1) {
 		fileCreateOutVid(vargsai, "Vargsai.txt");
-		fileCreateOutVid(mokslinciai,"Mokslinciai.txt");
+		fileCreateOutVid(mokslinciai, "Mokslinciai.txt");
 	}
 	else {
 		fileCreateOutMed(vargsai, "Vargsai.txt");
 		fileCreateOutMed(mokslinciai, "Mokslinciai.txt");
 	}
+	auto writeEnd = hrClock::now();
+	auto writeDuration = std::chrono::duration_cast<ms>(writeEnd - writeStart).count();
+	cout << "Failu isvedimas uztruko: " << writeDuration << " ms\n";
 
+	// Skaiciuoja viso programos vykdymo laika
+	auto programEnd = hrClock::now();
+	auto programDuration = std::chrono::duration_cast<ms>(programEnd - programStart).count();
+	cout << "Visos programos veikimo laikas: " << programDuration << " ms\n";
+
+	vargsai.clear();
+	vargsai.shrink_to_fit();
+	mokslinciai.clear();
+	mokslinciai.shrink_to_fit();
 }
 
 void fileCreateOutVid(vector<Stud>& studentai, string ivestas_vardas) {																					// Isveda i faila pagal vidurki.
