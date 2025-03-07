@@ -270,14 +270,9 @@ void fileFilter() {
 	cout << "------------------------------------------------------------------------\n";
 	cout << "Palaukite kol programa skaiciuoja...\n";
 
-	// Matuoja studentu galutinio skaiciavimo ilgi
-	auto calcStart = hrClock::now();
 	for (int i = 0; i < studentai.size(); i++) {
 		studentai[i].gal = (pasirinkimasV == 1) ? galutinisVid(studentai[i]) : galutinisMed(studentai[i]);
 	}
-	auto calcEnd = hrClock::now();
-	auto calcDuration = std::chrono::duration_cast<ms>(calcEnd - calcStart).count();
-	cout << "Vidurkio skaiciavimai uztruko: " << calcDuration << " ms\n";
 
 	cout << "------------------------------------------------------------------------\n";
 	cout << "Pasirinkite rusiavimo kriteriju:\n";
@@ -301,8 +296,6 @@ void fileFilter() {
 		break;
 	}
 
-	// Matuoja rusiavimo laika
-	auto sortStart = hrClock::now();
 	switch (sortOption) {
 	case 1:
 		std::sort(studentai.begin(), studentai.end(), compareByName);
@@ -317,12 +310,9 @@ void fileFilter() {
 		cout << "Neteisingas pasirinkimas. Nerusiavome.\n";
 		break;
 	}
-	auto sortEnd = hrClock::now();
-	auto sortDuration = std::chrono::duration_cast<ms >(sortEnd - sortStart).count();
-	cout << "Studentu rusiavimas uztruko: " << sortDuration << " ms\n";
 
-	// Matuoja studentu rusiavima
-	auto rusiavimoStart = hrClock::now();
+	// Matuoja studentu rikiavima
+	auto rikiavimoStart = hrClock::now();
 	for (auto it = studentai.begin(); it != studentai.end();) {
 		if (it->gal < 5) {
 			vargsai.push_back(*it);
@@ -335,9 +325,9 @@ void fileFilter() {
 	}
 	studentai.clear();
 	studentai.shrink_to_fit();
-	auto rusiavimoEnd = hrClock::now();
-	auto rusiavimoDuration = std::chrono::duration_cast<ms>(rusiavimoEnd - rusiavimoStart).count();
-	cout << "Studentu rusiavimas uztruko: " << rusiavimoDuration << " ms\n";
+	auto rikiavimoEnd = hrClock::now();
+	auto rikiavimoDuration = std::chrono::duration_cast<ms>(rikiavimoEnd - rikiavimoStart).count();
+	cout << "Studentu rusiavimas i vargsus ir mokslincius uztruko: " << rikiavimoDuration << " ms\n";
 
 	// Matuoja isvedimo i faila laika
 	auto writeStart = hrClock::now();
