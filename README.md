@@ -2,14 +2,14 @@
 
 Testai daryti prieš milisekundžių keitimą į sekundes.
 
-Įvestis buvo 5 1000 5 10000 5 100000 5 1000000 5 10000000
+Įvestis buvo 5 1.000 5 10.000 5 100.000 5 1.000.000 5 10.000.000
 
-| Komanda          | Ką daro                    |
-| ---------------- | -------------------------- |
-| 5                | pasirinkimas failo kurimui |
-| 1000 - 10000000  | studentuų kiekis faile     |
+| Komanda             | Ką daro                    |
+| ------------------- | -------------------------- |
+| 5                   | pasirinkimas failo kurimui |
+| 1.000 - 10.000.000  | studentų kiekis faile      |
 
-Kai programa baigia kurti failą, tai grižtama atgal į meniu ciklą ir del toliau ivestų duomenų jis toliau kuria kitus failus.
+Kai programa baigia kurti failą, ji grįžta į meniu ciklą ir jei yra įvesti papildomi duomenys jis toliau kuria kitus failus.
 
 Kuriant failus nustačiau, kad generuotu studentus su 7 namų darbų pažymiais, kad visi atlikti tyrimai su esamais 5 failais būtų patikimi. (Jog nebūtų tokio varianto, kad milijoninis failas su 15 ND uztrunka 200 sekundziu, o 10 milijoninis failas su 2 ND uztrunka 180 sekundziu.)
 
@@ -83,7 +83,7 @@ studList100000.txt “6 studList100000.txt 1 3”
 
 | Duomenų nuskaitymas  | Studentų rušiavimas | Failų išvedimas | Visa trukmė |
 | -------------------- | ------------------- | --------------- | ----------- |
-| 3895 ms  | 0 ms  | 404 ms | 5273 ms |
+| 3.895 ms  | 0 ms  | 404 ms | 5.273 ms |
 
 
 studList1000000.txt “6 studList1000000.txt 1 3”
@@ -92,7 +92,7 @@ studList1000000.txt “6 studList1000000.txt 1 3”
 
 | Duomenų nuskaitymas  | Studentų rušiavimas | Failų išvedimas | Visa trukmė |
 | -------------------- | ------------------- | --------------- | ----------- |
-| 38946 ms  | 0 ms  | 4175 ms | 51235 ms |
+| 38.946 ms  | 0 ms  | 4.175 ms | 51.235 ms |
 
 
 studList10000000.txt “6 studList10000000.txt 1 3”
@@ -101,4 +101,4 @@ studList10000000.txt “6 studList10000000.txt 1 3”
 
 | Duomenų nuskaitymas  | Studentų rušiavimas | Failų išvedimas | Visa trukmė |
 | -------------------- | ------------------- | --------------- | ----------- |
-| 388998 ms  | 0 ms  | 42907 ms | 516780 ms |
+| 388.998 ms  | 0 ms  | 42.907 ms | 516.780 ms |
