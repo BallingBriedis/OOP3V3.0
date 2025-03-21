@@ -7,6 +7,8 @@
 #include <iomanip>
 #include <string>
 #include <vector>
+#include <deque>
+#include <list>
 #include <fstream>
 #include <algorithm>
 #include <numeric>
@@ -24,6 +26,8 @@ using std::cin;
 using std::endl;
 using std::string;
 using std::vector;
+using std::deque;
+using std::list;
 using std::fixed;
 using std::setprecision;
 using hrClock = std::chrono::high_resolution_clock;
