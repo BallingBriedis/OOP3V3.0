@@ -30,6 +30,7 @@ using std::deque;
 using std::list;
 using std::fixed;
 using std::setprecision;
+using std::sort;
 using hrClock = std::chrono::high_resolution_clock;
 using ms = std::chrono::milliseconds;
 using sec = std::chrono::duration<double>;

@@ -135,13 +135,13 @@ int main() {
 
 	switch (sortOption) {
 	case 1:
-		std::sort(studentai.begin(), studentai.end(), compareByName);
+		studentai.sort(compareByName);
 		break;
 	case 2:
-		std::sort(studentai.begin(), studentai.end(), compareBySurname);
+		studentai.sort(compareBySurname);
 		break;
 	case 3:
-		std::sort(studentai.begin(), studentai.end(), compareByFinalGrade);
+		studentai.sort(compareByFinalGrade);
 		break;
 	default:
 		cout << "Neteisingas pasirinkimas. Nerusiavome.\n";

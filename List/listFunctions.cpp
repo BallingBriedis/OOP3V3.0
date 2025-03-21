@@ -274,7 +274,7 @@ void fileFilter() {
 		it->gal = (pasirinkimasV == 1 || pasirinkimasV == 3) ? galutinisVid(*it) : galutinisMed(*it);
 	}
 
-	std::sort(studentai.begin(), studentai.end(), compareByFinalGrade);
+	studentai.sort(compareByFinalGrade);
 	while (studentai.back().gal >= 5) {
 		mokslinciai.push_back(studentai.back());
 		studentai.pop_back();
@@ -310,16 +310,16 @@ void fileFilter() {
 
 	switch (sortOption) {
 	case 1:
-		std::sort(studentai.begin(), studentai.end(), compareByName);
-		std::sort(mokslinciai.begin(), mokslinciai.end(), compareByName);
+		studentai.sort(compareByName);
+		mokslinciai.sort(compareByName);
 		break;
 	case 2:
-		std::sort(studentai.begin(), studentai.end(), compareBySurname);
-		std::sort(mokslinciai.begin(), mokslinciai.end(), compareBySurname);
+		studentai.sort(compareBySurname);
+		mokslinciai.sort(compareBySurname);
 		break;
 	case 3:
-		std::sort(studentai.begin(), studentai.end(), compareByFinalGrade);
-		std::sort(mokslinciai.begin(), mokslinciai.end(), compareByFinalGrade);
+		studentai.sort(compareByFinalGrade);
+		mokslinciai.sort(compareByFinalGrade);
 		break;
 	default:
 		cout << "Neteisingas pasirinkimas. Nerusiavome.\n";
@@ -388,7 +388,7 @@ float vidurkis(Stud& studentai) {																							// Suskaiciuoja vidurki.
 float mediana(Stud& studentai) {																							// Suskaiciuoja mediana.
 	if (studentai.uzd.empty()) return 0.0;
 
-	std::sort(studentai.uzd.begin(), studentai.uzd.end());
+	sort(studentai.uzd.begin(), studentai.uzd.end());
 	int size = studentai.uzd.size();
 	if (size % 2 == 0) {
 		return (studentai.uzd[size / 2 - 1] + studentai.uzd[size / 2]) / 2.0;
