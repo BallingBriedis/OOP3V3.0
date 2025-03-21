@@ -6,8 +6,8 @@ Testai daryti prieš milisekundžių keitimą į sekundes.
 
 | Komanda             | Ką daro                    |
 | ------------------- | -------------------------- |
-| 5                   | pasirinkimas failo kurimui |
-| 1.000 - 10.000.000  | studentų kiekis faile      |
+| 5                   | Pasirinkimas failo kurimui |
+| 1.000 - 10.000.000  | Studentų kiekis faile      |
 
 Kai programa baigia kurti failą, ji grįžta į meniu ciklą ir jei yra įvesti papildomi duomenys jis toliau kuria kitus failus.
 
@@ -53,10 +53,10 @@ Ivedu iskart “6 studList1000.txt 1 3”, nes programoje tenka laukti ivesties,
 
 | Komanda           | Ką daro                                                |
 | ----------------- | ------------------------------------------------------ |
-| 6                 | failo surušiavimo pasirinkimas                         |
-| studList1000.txt  | failo pavadinimas                                      |
-| 1                 | pasirinkimas galutinį rezultatą skaičiuoti vidurkiu    |
-| 6                 | pasirinkimas rušiuoti failus pagal galutinius pažymius |
+| 6                 | Failo surušiavimo pasirinkimas                         |
+| studList1000.txt  | Failo pavadinimas                                      |
+| 1                 | Pasirinkimas galutinį rezultatą skaičiuoti vidurkiu    |
+| 6                 | Pasirinkimas rušiuoti failus pagal galutinius pažymius |
 
 
 studList1000.txt “6 studList1000.txt 1 3”
