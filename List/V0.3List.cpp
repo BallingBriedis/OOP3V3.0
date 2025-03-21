@@ -1,11 +1,11 @@
 ﻿#include "meinelib.h"
 #include "structV.h"
-#include "functionsCallsV.h"
+#include "functionsCallsList.h"
 
 int main() {
 	cin.exceptions(std::ios::failbit);
 	srand(time(NULL));
-	vector<Stud> studentai;
+	list<Stud> studentai;
 	int pasirinkimasV = 0;
 	string ivestas_vardas;
 	int n = 0;
@@ -107,8 +107,8 @@ int main() {
 	cout << "------------------------------------------------------------------------\n";
 	cout << "Palaukite kol programa skaiciuoja...\n";
 
-	for (int i = 0; i < studentai.size(); i++) {
-		studentai[i].gal = (pasirinkimasV == 1 || pasirinkimasV == 3) ? galutinisVid(studentai[i]) : galutinisMed(studentai[i]);
+	for (auto it = studentai.begin(); it != studentai.end(); ++it) {
+		it->gal = (pasirinkimasV == 1 || pasirinkimasV == 3) ? galutinisVid(*it) : galutinisMed(*it);
 	}
 
 	cout << "------------------------------------------------------------------------\n";
@@ -156,8 +156,9 @@ int main() {
 			for (Stud studentas : studentai) {
 				cout << std::setw(20) << studentas.var << std::setw(20) << studentas.pav << std::setw(20) << fixed << setprecision(0) << studentas.gal << endl;
 			}
-			studentai.clear();																								// Duomenys nebereikalingi, pasalina visus elementus is vektoriaus.
-			studentai.shrink_to_fit();																						// Duomenys nebereikalingi, sumazina rezervuota vieta iki tuscio dydzio.
+			studentai.clear();
+			std::list<Stud>().swap(studentai);
+
 			break;
 		case 2:
 			cout << "Studentu sarasas: \n";
@@ -165,8 +166,9 @@ int main() {
 			for (Stud studentas : studentai) {
 				cout << std::setw(20) << studentas.var << std::setw(20) << studentas.pav << std::setw(20) << fixed << setprecision(0) << studentas.gal << endl;
 			}
-			studentai.clear();																								// Duomenys nebereikalingi, pasalina visus elementus is vektoriaus.
-			studentai.shrink_to_fit();																						// Duomenys nebereikalingi, sumazina rezervuota vieta iki tuscio dydzio.
+			studentai.clear();
+			std::list<Stud>().swap(studentai);
+
 			break;
 		case 3:
 			fileOutVid(studentai);
@@ -175,7 +177,8 @@ int main() {
 			fileOutMed(studentai);
 			break;
 	}
-	studentai.clear();																										// Galutinis duomenu pasalinimas, naudojamas isitikinti, kad vektorius tuscias.
-	studentai.shrink_to_fit();																								// Galutinis duomenu atlaisvinimas.
+	studentai.clear();
+	std::list<Stud>().swap(studentai);
+
 	return 0;
 }
