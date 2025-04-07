@@ -46,7 +46,7 @@
 
 ![image](https://github.com/user-attachments/assets/6ddc42f9-f612-401e-b256-a4a349c6587a)
 
-10000000 - programa buvo pastrigusi, tai visos programos laikas netikslus.
+10000000 - programa buvo pastrigusi, tai visos programos laikas netikslus. Tikslus laikas yra 410.934731+ sec.
 
 ![image](https://github.com/user-attachments/assets/061ef750-7946-4711-b6c0-37f2f7130061)
 
