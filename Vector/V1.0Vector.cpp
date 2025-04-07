@@ -148,7 +148,6 @@ int main() {
 		break;
 	}
 
-
 	switch(pasirinkimasV) {
 		case 1:
 			cout << "Studentu sarasas: \n";
