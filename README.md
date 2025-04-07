@@ -1,104 +1,57 @@
 # **Pradžia**
+| Part | Specifications 		 |
+| ---- | ------------------------------- |
+| CPU: | Intel i5-10600K		 |
+| RAM: | 2x16GB 2666MHz DDR4		 |
+| STR: | Kingston NV2 1 TB M.2 2280 NVMe |
 
-Testai daryti prieš milisekundžių keitimą į sekundes.
+Įvestis:
 
-Įvestis buvo 5 1.000 5 10.000 5 100.000 5 1.000.000 5 10.000.000
+6 studList1000.txt 1 3
 
-| Komanda             | Ką daro                    |
-| ------------------- | -------------------------- |
-| 5                   | Pasirinkimas failo kurimui |
-| 1.000 - 10.000.000  | Studentų kiekis faile      |
+6 studList10000.txt 1 3
 
-Kai programa baigia kurti failą, ji grįžta į meniu ciklą ir jei yra įvesti papildomi duomenys jis toliau kuria kitus failus.
+6 studList100000.txt 1 3
 
-Kuriant failus nustačiau, kad generuotu studentus su 7 namų darbų pažymiais, kad visi atlikti tyrimai su esamais 5 failais būtų patikimi. (Jog nebūtų tokio varianto, kad milijoninis failas su 15 ND uztrunka 200 sekundziu, o 10 milijoninis failas su 2 ND uztrunka 180 sekundziu.)
+6 studList1000000.txt 1 3
 
+6 studList10000000.txt 1 3
 
-# **Tyrimas 1**
+# **Vector**
 
-studList1000.txt "5 1000"
+| Failo dydis  	| Failo nuskaitymas | Studentų rusiavimas | Studentu skirstymas |
+| ------------- | ----------------- | ------------------- | ------------------- |
+| 1000     	| 0.03865150 sec    | 0.00145970 sec      | 0.00577600 sec      |
+| 10000   	| 0.37697900 sec    | 0.01593270 sec      | 0.06597260 sec      |
+| 100000   	| 3.82900110 sec    | 0.16160440 sec      | 0.78876700 sec      |
+| 1000000  	| 37.31013170 sec   | 1.64722430 sec      | 6.33887450 sec      |
+| 10000000 	| 378.10585340 sec  | 16.41871420 sec     | 66.08117520 sec     |
 
-![image](https://github.com/user-attachments/assets/0379e0fb-b4f4-46be-9b84-69f850e1a2a2)
+# **List**
 
-studList10000.txt "5 10000"
+| Failo dydis  	| Failo nuskaitymas | Studentų rusiavimas | Studentu skirstymas |
+| ------------- | ----------------- | ------------------- | ------------------- |
+| 1000     	| 0.03553050 sec    | 0.00008110 sec      | 0.00217640 sec      |
+| 10000   	| 0.35179180 sec    | 0.00116630 sec      | 0.02441840 sec      |
+| 100000   	| 3.46478660 sec    | 0.02014820 sec      | 0.24388240 sec      |
+| 1000000  	| 35.12424120 sec   | 0.35589710 sec      | 2.85569620 sec      |
+| 10000000 	| 351.06966350 sec  | 3.71206090 sec      | 29.49046400 sec     |
 
-![image](https://github.com/user-attachments/assets/d295d2d5-2d0f-48f3-afe2-d6a1d2a56423)
+# **Deque**
 
-studList100000.txt "5 100000"
+| Failo dydis  	| Failo nuskaitymas | Studentų rusiavimas | Studentu skirstymas |
+| ------------- | ----------------- | ------------------- | ------------------- |
+| 1000     	| 0.03604740 sec    | 0.00160250 sec      | 0.00455520 sec      |
+| 10000   	| 0.35558020 sec    | 0.01842610 sec      | 0.05274180 sec      |
+| 100000   	| 3.53771800 sec    | 0.18900190 sec      | 0.59229530 sec      |
+| 1000000  	| 35.72011690 sec   | 1.85387040 sec      | 4.90393770 sec      |
+| 10000000 	| 346.49843060 sec  | 18.22631840 sec     | 49.01961030 sec     |
 
-![image](https://github.com/user-attachments/assets/2158c8bd-8f6c-4a79-a75d-596c83ab16e9)
+# **Summary**
 
-
-studList1000000.txt "5 1000000"
-
-![image](https://github.com/user-attachments/assets/099f422d-0226-436b-b592-8588d4cb7ca1)
-
-
-studList10000000.txt "5 10000000"
-
-![image](https://github.com/user-attachments/assets/91066151-082d-424f-8569-2d7e342e407c)
-
-| Studentų kiekis   | Failo kūrimo laikas |
-| ----------------- | ------------------- |
-| Tūkstantis        | 20 ms               |
-| Dešimt tūkstancių | 198 ms              |
-| Šimtas tūkstancių | 1968 ms             |
-| Milijonas         | 20028 ms            |
-| Dešimt milijonų   | 196357 ms           |
-
-
-# **Tyrimas 2**
-
-Ivedu iskart “6 studList1000.txt 1 3”, nes programoje tenka laukti ivesties, ir tai dirbtiniu budu padidintu programos vykimo ilgi.
-
-| Komanda           | Ką daro                                                |
-| ----------------- | ------------------------------------------------------ |
-| 6                 | Failo surušiavimo pasirinkimas                         |
-| studList1000.txt  | Failo pavadinimas                                      |
-| 1                 | Pasirinkimas galutinį rezultatą skaičiuoti vidurkiu    |
-| 6                 | Pasirinkimas rušiuoti failus pagal galutinius pažymius |
-
-
-studList1000.txt “6 studList1000.txt 1 3”
-
-![image](https://github.com/user-attachments/assets/319d3088-fead-4e68-b01d-ff85715aba6a)
-
-| Duomenų nuskaitymas  | Studentų rušiavimas | Failų išvedimas | Visa trukmė |
-| -------------------- | ------------------- | --------------- | ----------- |
-| 44 ms  | 0 ms  | 10 ms | 64 ms |
-
-
-studList10000.txt “6 studList10000.txt 1 3”
-
-![image](https://github.com/user-attachments/assets/8c2503bb-654c-4ecc-a814-62901722cf10)
-
-| Duomenų nuskaitymas  | Studentų rušiavimas | Failų išvedimas | Visa trukmė |
-| -------------------- | ------------------- | --------------- | ----------- |
-| 382 ms  | 0 ms  | 41 ms | 519 ms |
-
-
-studList100000.txt “6 studList100000.txt 1 3”
-
-![image](https://github.com/user-attachments/assets/e26e502c-6bce-4b83-861b-aa0aa37045dc)
-
-| Duomenų nuskaitymas  | Studentų rušiavimas | Failų išvedimas | Visa trukmė |
-| -------------------- | ------------------- | --------------- | ----------- |
-| 3.895 ms  | 0 ms  | 404 ms | 5.273 ms |
-
-
-studList1000000.txt “6 studList1000000.txt 1 3”
-
-![image](https://github.com/user-attachments/assets/345755ce-871b-4737-a4f2-1f628761cc0a)
-
-| Duomenų nuskaitymas  | Studentų rušiavimas | Failų išvedimas | Visa trukmė |
-| -------------------- | ------------------- | --------------- | ----------- |
-| 38.946 ms  | 0 ms  | 4.175 ms | 51.235 ms |
-
-
-studList10000000.txt “6 studList10000000.txt 1 3”
-
-![image](https://github.com/user-attachments/assets/cb185b99-9566-4ab4-aea2-f0fbed3e5820)
-
-| Duomenų nuskaitymas  | Studentų rušiavimas | Failų išvedimas | Visa trukmė |
-| -------------------- | ------------------- | --------------- | ----------- |
-| 388.998 ms  | 0 ms  | 42.907 ms | 516.780 ms |
+Bendrai pastebėjau, kad 10 milijonų failų ivesties, rusiavimo, skirstymo ir isvesties laikai tarp konteinerių tipų buvo skirtingi.
+| Container type | Full time |
+| -------------- | --------- |
+| Vector	 | 500 sec   |
+| List		 | 430 sec   |
+| Deque	 	 | 465 sec   |
