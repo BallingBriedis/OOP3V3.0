@@ -109,6 +109,8 @@ void fileRead(deque<Stud>& studentai) {																// Nuskaito duomenis is f
 		throw std::runtime_error("\nFailas nerastas.\n\n");
 		return;
 	}
+	auto fileReadStart = hrClock::now();
+
 	buffer << duom.rdbuf();
 	duom.close();
 
@@ -146,6 +148,9 @@ void fileRead(deque<Stud>& studentai) {																// Nuskaito duomenis is f
 		stu.uzd.clear();																									// Pasalinami visi elementai is vektoriaus.
 		stu.uzd.shrink_to_fit();																							// Rezervuota vieta sulygina su laikomais duomenim, atlaisvina vieta kitiems procesams.
 	}
+	auto fileReadEnd = hrClock::now();
+	cout << "Failo nuskaitymas uztruko: " << fixed << setprecision(8) << std::chrono::duration_cast<sec>(fileReadEnd - fileReadStart).count() << " sec\n";
+
 }
 
 void randomStudentas(Stud& studentas, bool vyras) {																			// Sukuria atsitiktini studenta.
@@ -232,8 +237,6 @@ void fileFilter() {
 	// Visos programos vykdymo laiko matavimas
 	auto programStart = hrClock::now();
 
-	// Matuoja kiek laiko uztrunka failo nuskaitymas
-	auto readStart = hrClock::now();
 	try {
 		fileRead(studentai);
 	}
@@ -241,9 +244,6 @@ void fileFilter() {
 		std::cerr << e.what() << std::endl;
 		return;
 	}
-	auto readEnd = hrClock::now();
-	auto readDuration = std::chrono::duration_cast<sec>(readEnd - readStart).count();
-	cout << "Ivestis is failo uztruko: " << fixed << setprecision(8) << readDuration << " sec\n";
 
 	cout << "------------------------------------------------------------------------\n";
 	cout << "Kaip pateikti rezultata?\n";
@@ -270,6 +270,9 @@ void fileFilter() {
 	cout << "------------------------------------------------------------------------\n";
 	cout << "Palaukite kol programa skaiciuoja...\n";
 
+	// Matuoja studentu skirstyma i vargsus ir mokslincius laika
+	auto rikiavimoStart = hrClock::now();
+
 	for (int i = 0; i < studentai.size(); i++) {
 		studentai[i].gal = (pasirinkimasV == 1) ? galutinisVid(studentai[i]) : galutinisMed(studentai[i]);
 	}
@@ -278,6 +281,9 @@ void fileFilter() {
 		mokslinciai.push_back(studentai.back());
 		studentai.pop_back();
 	}
+	auto rikiavimoEnd = hrClock::now();
+	auto rikiavimoDuration = std::chrono::duration_cast<sec>(rikiavimoEnd - rikiavimoStart).count();
+	cout << "Studentu skirstymas i vargsus ir mokslincius uztruko: " << fixed << setprecision(8) << rikiavimoDuration << " sec\n";
 
 	cout << "------------------------------------------------------------------------\n";
 	cout << "Pasirinkite rusiavimo kriteriju:\n";
@@ -285,8 +291,6 @@ void fileFilter() {
 	cout << "------------------------------------------------------------------------\n";
 	int sortOption;
 
-	// Matuoja studentu rusiavimas i vargsus ir mokslincius laika
-	auto rikiavimoStart = hrClock::now();
 	while (true) {
 		try {
 			cin >> sortOption;
@@ -303,9 +307,10 @@ void fileFilter() {
 		}
 		break;
 	}
-	auto rikiavimoEnd = hrClock::now();
-	auto rikiavimoDuration = std::chrono::duration_cast<sec>(rikiavimoEnd - rikiavimoStart).count();
-	cout << "Studentu rusiavimas i vargsus ir mokslincius uztruko: " << fixed << setprecision(8) << rikiavimoDuration << " sec\n";
+
+	// Matuoja rusiavima pagal pasirinkta kriteriju
+	auto sortStart = hrClock::now();
+
 
 	switch (sortOption) {
 	case 1:
@@ -324,6 +329,11 @@ void fileFilter() {
 		cout << "Neteisingas pasirinkimas. Nerusiavome.\n";
 		break;
 	}
+
+	auto sortEnd = hrClock::now();
+	auto sortDuration = std::chrono::duration_cast<sec>(sortEnd - sortStart).count();
+	cout << "Studentu rusiavimas uztruko: " << fixed << setprecision(8) << sortDuration << " sec\n";
+
 
 	// Matuoja isvedimo i faila laika
 	auto writeStart = hrClock::now();
@@ -463,7 +473,7 @@ void testas() {
 	for (int i = 0; i < n; i++) {
 		auto start = hrClock::now();
 
-		vector<Stud> studentai;
+		deque<Stud> studentai;
 		std::stringstream buffer;
 		std::ifstream duom(ivestas_vardas);
 		if (!duom) {
