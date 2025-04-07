@@ -17,41 +17,99 @@
 
 6 studList10000000.txt 1 3
 
+
 # **Vector**
 
 | Failo dydis  	| Failo nuskaitymas | Studentų rusiavimas | Studentu skirstymas |
 | ------------- | ----------------- | ------------------- | ------------------- |
-| 1000     	| 0.03865150 sec    | 0.00145970 sec      | 0.00577600 sec      |
-| 10000   	| 0.37697900 sec    | 0.01593270 sec      | 0.06597260 sec      |
-| 100000   	| 3.82900110 sec    | 0.16160440 sec      | 0.78876700 sec      |
-| 1000000  	| 37.31013170 sec   | 1.64722430 sec      | 6.33887450 sec      |
-| 10000000 	| 378.10585340 sec  | 16.41871420 sec     | 66.08117520 sec     |
+| 1000     	    | 0.03797920 sec    | 0.00174670 sec      | 0.00233630 sec      |
+| 10000   	    | 0.32922730 sec    | 0.02241820 sec      | 0.02810250 sec      |
+| 100000   	    | 3.38594230 sec    | 0.27321700 sec      | 0.33875450 sec      |
+| 1000000  	    | 32.22718410 sec   | 1.89943580 sec      | 2.79278090 sec      |
+| 10000000 	    | 320.74270200 sec  | 18.90615140 sec     | 30.13353510 sec     |
+
+# **Vector Photos**
+
+1000
+
+![image](https://github.com/user-attachments/assets/271078ea-41bf-4fa0-a4f6-1279cd1b6f2e)
+
+10000
+
+![image](https://github.com/user-attachments/assets/4a5e434c-ef85-4366-b5c3-96c081bc5954)
+
+100000
+
+![image](https://github.com/user-attachments/assets/d49adf86-fd03-484e-a86c-88daa40e97b9)
+
+1000000
+
+![image](https://github.com/user-attachments/assets/6ddc42f9-f612-401e-b256-a4a349c6587a)
+
+10000000 - programa buvo pastrigusi, tai visos programos laikas netikslus.
+
+![image](https://github.com/user-attachments/assets/061ef750-7946-4711-b6c0-37f2f7130061)
 
 # **List**
 
 | Failo dydis  	| Failo nuskaitymas | Studentų rusiavimas | Studentu skirstymas |
 | ------------- | ----------------- | ------------------- | ------------------- |
-| 1000     	| 0.03553050 sec    | 0.00008110 sec      | 0.00217640 sec      |
-| 10000   	| 0.35179180 sec    | 0.00116630 sec      | 0.02441840 sec      |
-| 100000   	| 3.46478660 sec    | 0.02014820 sec      | 0.24388240 sec      |
-| 1000000  	| 35.12424120 sec   | 0.35589710 sec      | 2.85569620 sec      |
-| 10000000 	| 351.06966350 sec  | 3.71206090 sec      | 29.49046400 sec     |
+| 1000     	    | 0.03213000 sec    | 0.00011710 sec      | 0.00104030 sec      |
+| 10000   	    | 0.29560900 sec    | 0.00176500 sec      | 0.01180630 sec      |
+| 100000   	    | 3.06711360 sec    | 0.02715160 sec      | 0.11722630 sec      |
+| 1000000  	    | 29.66832510 sec   | 0.46179300 sec      | 1.17434950 sec      |
+| 10000000 	    | 295.25705340 sec  | 6.57647140 sec      | 12.09641310 sec     |
+
+# **List Photos**
+
+1000
+
+![image](https://github.com/user-attachments/assets/a69d1c33-550d-40bc-a729-1614ec2a96b2)
+
+10000
+
+![image](https://github.com/user-attachments/assets/61f76025-33be-4092-9f83-44f449008dfd)
+
+100000
+
+![image](https://github.com/user-attachments/assets/bcd5c850-c611-4f0d-b516-282f3a4952ec)
+
+1000000
+
+![image](https://github.com/user-attachments/assets/181bbc99-e621-413f-a5f4-39d865e2f79f)
+
+10000000
+
+![image](https://github.com/user-attachments/assets/382d93eb-6902-4f9c-a0d5-53e0fd466073)
 
 # **Deque**
 
 | Failo dydis  	| Failo nuskaitymas | Studentų rusiavimas | Studentu skirstymas |
 | ------------- | ----------------- | ------------------- | ------------------- |
-| 1000     	| 0.03604740 sec    | 0.00160250 sec      | 0.00455520 sec      |
-| 10000   	| 0.35558020 sec    | 0.01842610 sec      | 0.05274180 sec      |
-| 100000   	| 3.53771800 sec    | 0.18900190 sec      | 0.59229530 sec      |
-| 1000000  	| 35.72011690 sec   | 1.85387040 sec      | 4.90393770 sec      |
-| 10000000 	| 346.49843060 sec  | 18.22631840 sec     | 49.01961030 sec     |
+| 1000     	    | 0.03942320 sec    | 0.00190650 sec      | 0.00115540 sec      |
+| 10000   	    | 0.30733680 sec    | 0.02431600 sec      | 0.01163690 sec      |
+| 100000   	    | 3.11896140 sec    | 0.32671610 sec      | 0.12436320 sec      |
+| 1000000      	| 30.24774340 sec   | 2.08329400 sec      | 1.28491670 sec      |
+| 10000000 	    | 298.47016400 sec  | 20.65112280 sec     | 12.60081870 sec     |
 
-# **Summary**
+# **Deque Photos**
 
-Bendrai pastebėjau, kad 10 milijonų failų ivesties, rusiavimo, skirstymo ir isvesties laikai tarp konteinerių tipų buvo skirtingi.
-| Container type | Full time |
-| -------------- | --------- |
-| Vector	 | 500 sec   |
-| List		 | 430 sec   |
-| Deque	 	 | 465 sec   |
+1000
+
+![image](https://github.com/user-attachments/assets/2bd0de54-5624-45f6-a68a-9cbcdf3c4c1a)
+
+10000
+
+![image](https://github.com/user-attachments/assets/22cadc32-afac-4dea-932d-d184bc4741b1)
+
+100000
+
+![image](https://github.com/user-attachments/assets/f0347495-4496-4dd7-bb78-9366c2eff383)
+
+1000000
+
+![image](https://github.com/user-attachments/assets/44e5a086-6216-439f-be42-51965d661435)
+
+10000000
+
+![image](https://github.com/user-attachments/assets/6f1856f0-e029-423d-820a-9bfad20e6995)
