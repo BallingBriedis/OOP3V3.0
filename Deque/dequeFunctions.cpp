@@ -276,7 +276,16 @@ void fileFilter() {
 	for (int i = 0; i < studentai.size(); i++) {
 		studentai[i].gal = (pasirinkimasV == 1) ? galutinisVid(studentai[i]) : galutinisMed(studentai[i]);
 	}
+
+	// Matuoja rusiavima pagal pasirinkta kriteriju
+	auto sortStart = hrClock::now();
+
 	sort(studentai.begin(), studentai.end(), compareByFinalGrade);
+
+	auto sortEnd = hrClock::now();
+	auto sortDuration = std::chrono::duration_cast<sec>(sortEnd - sortStart).count();
+	cout << "Studentu rusiavimas uztruko: " << fixed << setprecision(8) << sortDuration << " sec\n";
+
 	while (studentai.back().gal >= 5) {
 		mokslinciai.push_back(studentai.back());
 		studentai.pop_back();
@@ -308,10 +317,6 @@ void fileFilter() {
 		break;
 	}
 
-	// Matuoja rusiavima pagal pasirinkta kriteriju
-	auto sortStart = hrClock::now();
-
-
 	switch (sortOption) {
 	case 1:
 		sort(studentai.begin(), studentai.end(), compareByName);
@@ -329,11 +334,6 @@ void fileFilter() {
 		cout << "Neteisingas pasirinkimas. Nerusiavome.\n";
 		break;
 	}
-
-	auto sortEnd = hrClock::now();
-	auto sortDuration = std::chrono::duration_cast<sec>(sortEnd - sortStart).count();
-	cout << "Studentu rusiavimas uztruko: " << fixed << setprecision(8) << sortDuration << " sec\n";
-
 
 	// Matuoja isvedimo i faila laika
 	auto writeStart = hrClock::now();
