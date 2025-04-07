@@ -270,14 +270,22 @@ void fileFilter() {
 	cout << "------------------------------------------------------------------------\n";
 	cout << "Palaukite kol programa skaiciuoja...\n";
 
-	// Matuoja studentu skirstyma i vargsus ir mokslincius laika
-	auto rikiavimoStart = hrClock::now();
-
 	for (auto it = studentai.begin(); it != studentai.end(); ++it) {
 		it->gal = (pasirinkimasV == 1 || pasirinkimasV == 3) ? galutinisVid(*it) : galutinisMed(*it);
 	}
 
+	// Matuoja rusiavima pagal pasirinkta kriteriju
+	auto sortStart = hrClock::now();
+
 	studentai.sort(compareByFinalGrade);
+
+	auto sortEnd = hrClock::now();
+	auto sortDuration = std::chrono::duration_cast<sec>(sortEnd - sortStart).count();
+	cout << "Studentu rusiavimas uztruko: " << fixed << setprecision(8) << sortDuration << " sec\n";
+
+	// Matuoja studentu skirstyma i vargsus ir mokslincius laika
+	auto rikiavimoStart = hrClock::now();
+
 	while (studentai.back().gal >= 5) {
 		mokslinciai.push_back(studentai.back());
 		studentai.pop_back();
@@ -309,9 +317,6 @@ void fileFilter() {
 		break;
 	}
 
-	// Matuoja rusiavima pagal pasirinkta kriteriju
-	auto sortStart = hrClock::now();
-
 	switch (sortOption) {
 	case 1:
 		studentai.sort(compareByName);
@@ -329,10 +334,6 @@ void fileFilter() {
 		cout << "Neteisingas pasirinkimas. Nerusiavome.\n";
 		break;
 	}
-
-	auto sortEnd = hrClock::now();
-	auto sortDuration = std::chrono::duration_cast<sec>(sortEnd - sortStart).count();
-	cout << "Studentu rusiavimas uztruko: " << fixed << setprecision(8) << sortDuration << " sec\n";
 
 	// Matuoja isvedimo i faila laika
 	auto writeStart = hrClock::now();
