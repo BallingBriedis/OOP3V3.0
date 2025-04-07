@@ -269,10 +269,7 @@ void fileFilter() {
 
 	cout << "------------------------------------------------------------------------\n";
 	cout << "Palaukite kol programa skaiciuoja...\n";
-
-	// Matuoja studentu skirstyma i vargsus ir mokslincius laika
-	auto rikiavimoStart = hrClock::now();
-
+	
 	for (int i = 0; i < studentai.size(); i++) {
 		studentai[i].gal = (pasirinkimasV == 1) ? galutinisVid(studentai[i]) : galutinisMed(studentai[i]);
 	}
@@ -285,6 +282,9 @@ void fileFilter() {
 	auto sortEnd = hrClock::now();
 	auto sortDuration = std::chrono::duration_cast<sec>(sortEnd - sortStart).count();
 	cout << "Studentu rusiavimas uztruko: " << fixed << setprecision(8) << sortDuration << " sec\n";
+
+	// Matuoja studentu skirstyma i vargsus ir mokslincius laika
+	auto rikiavimoStart = hrClock::now();
 
 	while (studentai.back().gal >= 5) {
 		mokslinciai.push_back(studentai.back());
