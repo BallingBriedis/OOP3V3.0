@@ -1,3 +1,54 @@
+# **Releases**
+
+| Version   | Functions                                                                                                                                                                                                                                                  | Comments                                                                                                  |
+| --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| v.pradinė | Duomenų įvedimas. Studentų duomenų struktūra. Skaičiavimo funkcijos.                                                                                                                                                                                       | Viskas įvyko sklandžiai. Komentarų nėra                                                                   |
+| v0.1      | Galimybė įvesti bet kokį kiekį studentų, nes naudojami STL konteineriai. Versija su dinaminiu masyvu. Atsitiktinis pažymių generavimas. Meniu.                                                                                                             | Pirma kartą naudojau STL konteinerius, jie smarkiai palengvina darbą.                                     |
+| v0.2      | Sąveika su failais. Rušiavimas pagal pasirinkimą.                                                                                                                                                                                                          | Nieko specialaus, bet reikėjo kodo architektūros perdarymo įskaitomumui                                   |
+| v0.3      | Naudojama išimčių valdymas.                                                                                                                                                                                                                                | Išpradžių nenorėjau naudoti exep.handling, bet pabandžius buvo paprasta ir pagražino kodo išvazdą.        |
+| v0.4      | Studentų generavimas. Failų generavimas. Studentų rušiavimo funkcija. Testavimo funkcija. Tyrimo README.md aprašas.                                                                                                                                        | Užtruko labai daug laiko, nes buvo nemažai klaidų, teko daug testuoti. Galū gale viskas išėjo sklandžiai. |
+| v1.0      | Naudojama CMake. Trys skirtingos versijos su skirtingais STL konteineriais: List, Deque ir Vector. Spartumo tyrimai. Naudojami specialūs algoritmai Vector versijoje. Sutvarkyta repozitorija. Viso projekto aprašas. Naudojimosi ir diegimo instrukcijos. | Užtruko dar daugiau laiko dėl testavimo ir šios versijos monotoniško darbo. Darbas pavyko.                |
+
+# **Starting manual**
+
+Atsisiūsti v1.0 full release.
+
+Naudojant WinRAR arba 7-Zip, atskleisti (extract) failą, bus sukurtas aplankas su programos failais.
+
+"dependancies" aplanke įsidiegti "cmake-4.0.0-rc4-windows-x86_64.msi".
+
+Pasirinkti norimą konteinerio tipo versiją: LIST, DEQUE , VECTOR.
+
+Atidarai aplanką, paleidi run.bat scriptą.
+
+Atsidarys "cmd" langas kuriame bus veikianti programa, jeigu programą uždarėte ir norite vėl ją atidaryti, tai nuo tos vietos kur yra run.bat paspauskite "build" aplanką, tada "Debug" aplanką, kuriame rasite "MyContainerExecutable.exe" paleidžiamąjį failą.
+
+
+# **User manual**
+
+1 - Ranka įvedamas studentas ir jo pažymiai.
+
+2 - Ranka įvedamas studento vardas/pavardė, pažymys generuojamas.
+
+3 - Studentas(-ai) sukuriami automatiškai, tik reikia įvesti studentų kiekį.
+
+4 - Failas, esantis aplanke kartu su "MyContainerExecutable.exe" ( ...\{SelectedContainer}\build\Debug ) yra nuskaitomas į tam tikrą konteinerį.
+
+5 - Sukuriamas failas pavadinimu "studList{įvestasStudentuKiekis}.txt"
+
+6 - Suskirto faile esančius studentus į mokslinčių ir vargšiukų failus pagal jų galutinį pažymį.
+
+7 - Naudojamas matuoti nuskaitymo laiką, galima įvesti kiek kartu nori teksto failą skaityti.
+
+8 - Tęsiama toliau, grįžti negalima.
+
+8.1-8.4 - Pasirinkimai apskaičiuoti galutinius pažymius vidurkiu arba mediana ir kokios išvesties norite. 
+
+8.x.1-8.x.3 - Pasirinkimai pagal ką norite rušiuoti studentus.
+
+Rezultatų failą rasite ( ...\{SelectedContainer}\build\Debug ).
+
+
 # **Pradžia**
 | Part | Specifications 				 |
 | ---- | ------------------------------- |
