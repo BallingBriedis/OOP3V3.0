@@ -230,7 +230,7 @@ void failoKurimas() {
 }
 
 void fileFilter() {
-	vector<Stud> studentai, mokslinciai;
+	vector<Stud> studentai, mokslinciai, vargsai;
 	std::stringstream outputas;
 	int pasirinkimasV, i = 0;
 
@@ -283,16 +283,59 @@ void fileFilter() {
 	auto sortDuration = std::chrono::duration_cast<sec>(sortEnd - sortStart).count();
 	cout << "Studentu rusiavimas uztruko: " << fixed << setprecision(8) << sortDuration << " sec\n";
 
-	// Matuoja studentu skirstyma i vargsus ir mokslincius laika
-	auto rikiavimoStart = hrClock::now();
+	cout << "------------------------------------------------------------------------\n";
+	cout << "Kuria strategija naudoti:\n";
+	cout << "1 - Pirma\n2 - Antra\n";
+	cout << "------------------------------------------------------------------------\n";
+	int skirstymoOption;
 
-	while (studentai.back().gal >= 5) {
-		mokslinciai.push_back(studentai.back());
-		studentai.pop_back();
+	while (true) {
+		try {
+			cin >> skirstymoOption;
+			if (skirstymoOption < 1 || skirstymoOption > 2) {
+				cout << "\n\n!!!!Iveskite skaiciu nuo 1 iki 2.!!!!\n\n\n";
+				continue;
+			}
+		}
+		catch (...) {
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			cout << "\n\n!!!!Ivestis neteisinga. Bandykite isnaujo.!!!!\n\n\n";
+			continue;
+		}
+		break;
 	}
-	auto rikiavimoEnd = hrClock::now();
-	auto rikiavimoDuration = std::chrono::duration_cast<sec>(rikiavimoEnd - rikiavimoStart).count();
-	cout << "Studentu skirstymas i vargsus ir mokslincius uztruko: " << fixed << setprecision(8) << rikiavimoDuration << " sec\n";
+
+		// Matuoja studentu skirstyma i vargsus ir mokslincius laika
+		auto rikiavimoStart = hrClock::now();
+
+	switch (skirstymoOption) {
+	case 1:
+		for (int i = 0; i < studentai.size(); i++) {
+			if (studentai[i].gal < 5) {
+				vargsai.push_back(studentai[i]);
+			}
+			else {
+				mokslinciai.push_back(studentai[i]);
+			}
+		}
+		studentai.clear();
+		studentai.shrink_to_fit();
+		break;
+	case 2:
+		while (studentai.back().gal >= 5) {
+			mokslinciai.push_back(studentai.back());
+			studentai.pop_back();
+		}
+		break;
+	default:
+		cout << "Neteisingas pasirinkimas.\n";
+		break;
+	}
+
+		auto rikiavimoEnd = hrClock::now();
+		auto rikiavimoDuration = std::chrono::duration_cast<sec>(rikiavimoEnd - rikiavimoStart).count();
+		cout << "Studentu skirstymas i vargsus ir mokslincius uztruko: " << fixed << setprecision(8) << rikiavimoDuration << " sec\n";
 
 	cout << "------------------------------------------------------------------------\n";
 	cout << "Pasirinkite rusiavimo kriteriju:\n";
