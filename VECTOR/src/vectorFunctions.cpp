@@ -306,32 +306,25 @@ void fileFilter() {
 		break;
 	}
 
+	auto it = std::partition(studentai.begin(), studentai.end(), [](const Stud& s) { return s.gal < 5; });
 		// Matuoja studentu skirstyma i vargsus ir mokslincius laika
 		auto rikiavimoStart = hrClock::now();
-
-	switch (skirstymoOption) {
-	case 1:
-		for (int i = 0; i < studentai.size(); i++) {
-			if (studentai[i].gal < 5) {
-				vargsai.push_back(studentai[i]);
-			}
-			else {
-				mokslinciai.push_back(studentai[i]);
-			}
+		
+		switch (skirstymoOption) {
+		case 1:
+			std::remove_copy_if(studentai.begin(), studentai.end(), std::back_inserter(vargsai),
+				[](const Stud& s) { return s.gal >= 5; });
+			std::remove_copy_if(studentai.begin(), studentai.end(), std::back_inserter(mokslinciai),
+				[](const Stud& s) { return s.gal < 5; });
+			break;
+		case 2:
+			std::move(studentai.begin(), it, std::back_inserter(vargsai));
+			std::move(it, studentai.end(), std::back_inserter(mokslinciai));
+			break;
+		default:
+			cout << "Neteisingas pasirinkimas.\n";
+			break;
 		}
-		studentai.clear();
-		studentai.shrink_to_fit();
-		break;
-	case 2:
-		while (studentai.back().gal >= 5) {
-			mokslinciai.push_back(studentai.back());
-			studentai.pop_back();
-		}
-		break;
-	default:
-		cout << "Neteisingas pasirinkimas.\n";
-		break;
-	}
 
 		auto rikiavimoEnd = hrClock::now();
 		auto rikiavimoDuration = std::chrono::duration_cast<sec>(rikiavimoEnd - rikiavimoStart).count();
@@ -364,14 +357,17 @@ void fileFilter() {
 	case 1:
 		sort(studentai.begin(), studentai.end(), compareByName);
 		sort(mokslinciai.begin(), mokslinciai.end(), compareByName);
+		sort(vargsai.begin(), vargsai.end(), compareByName);
 		break;
 	case 2:
 		sort(studentai.begin(), studentai.end(), compareBySurname);
 		sort(mokslinciai.begin(), mokslinciai.end(), compareBySurname);
+		sort(vargsai.begin(), vargsai.end(), compareBySurname);
 		break;
 	case 3:
 		sort(studentai.begin(), studentai.end(), compareByFinalGrade);
 		sort(mokslinciai.begin(), mokslinciai.end(), compareByFinalGrade);
+		sort(vargsai.begin(), vargsai.end(), compareByFinalGrade);
 		break;
 	default:
 		cout << "Neteisingas pasirinkimas. Nerusiavome.\n";
@@ -380,14 +376,27 @@ void fileFilter() {
 
 	// Matuoja isvedimo i faila laika
 	auto writeStart = hrClock::now();
-	if (pasirinkimasV == 1) {
-		fileOutVid(studentai, "Vargsai.txt");
-		fileOutVid(mokslinciai, "Mokslinciai.txt");
+	if (skirstymoOption == 1) {
+		if (pasirinkimasV == 1) {
+			fileOutVid(vargsai, "Vargsai.txt");
+			fileOutVid(mokslinciai, "Mokslinciai.txt");
+		}
+		else {
+			fileOutMed(vargsai, "Vargsai.txt");
+			fileOutMed(mokslinciai, "Mokslinciai.txt");
+		}
 	}
 	else {
-		fileOutMed(studentai, "Vargsai.txt");
-		fileOutMed(mokslinciai, "Mokslinciai.txt");
+		if (pasirinkimasV == 1) {
+			fileOutVid(studentai, "Vargsai.txt");
+			fileOutVid(mokslinciai, "Mokslinciai.txt");
+		}
+		else {
+			fileOutMed(studentai, "Vargsai.txt");
+			fileOutMed(mokslinciai, "Mokslinciai.txt");
+		}
 	}
+
 	auto writeEnd = hrClock::now();
 	auto writeDuration = std::chrono::duration_cast<sec>(writeEnd - writeStart).count();
 	cout << "Failu isvedimas uztruko: " << fixed << setprecision(8) << writeDuration << " sec\n";

@@ -361,33 +361,50 @@ void fileFilter() {
 	}
 
 	switch (sortOption) {
-	case 1:
-		sort(studentai.begin(), studentai.end(), compareByName);
-		sort(mokslinciai.begin(), mokslinciai.end(), compareByName);
-		break;
-	case 2:
-		sort(studentai.begin(), studentai.end(), compareBySurname);
-		sort(mokslinciai.begin(), mokslinciai.end(), compareBySurname);
-		break;
-	case 3:
-		sort(studentai.begin(), studentai.end(), compareByFinalGrade);
-		sort(mokslinciai.begin(), mokslinciai.end(), compareByFinalGrade);
-		break;
-	default:
-		cout << "Neteisingas pasirinkimas. Nerusiavome.\n";
-		break;
-	}
+case 1:
+	sort(studentai.begin(), studentai.end(), compareByName);
+	sort(mokslinciai.begin(), mokslinciai.end(), compareByName);
+	sort(vargsai.begin(), vargsai.end(), compareByName);
+	break;
+case 2:
+	sort(studentai.begin(), studentai.end(), compareBySurname);
+	sort(mokslinciai.begin(), mokslinciai.end(), compareBySurname);
+	sort(vargsai.begin(), vargsai.end(), compareBySurname);
+	break;
+case 3:
+	sort(studentai.begin(), studentai.end(), compareByFinalGrade);
+	sort(mokslinciai.begin(), mokslinciai.end(), compareByFinalGrade);
+	sort(vargsai.begin(), vargsai.end(), compareByFinalGrade);
+	break;
+default:
+	cout << "Neteisingas pasirinkimas. Nerusiavome.\n";
+	break;
+}
 
 	// Matuoja isvedimo i faila laika
 	auto writeStart = hrClock::now();
-	if (pasirinkimasV == 1) {
-		fileOutVid(studentai, "Vargsai.txt");
-		fileOutVid(mokslinciai, "Mokslinciai.txt");
+	
+	if (skirstymoOption == 1) {
+		if (pasirinkimasV == 1) {
+			fileOutVid(vargsai, "Vargsai.txt");
+			fileOutVid(mokslinciai, "Mokslinciai.txt");
+		}
+		else {
+			fileOutMed(vargsai, "Vargsai.txt");
+			fileOutMed(mokslinciai, "Mokslinciai.txt");
+		}
 	}
 	else {
-		fileOutMed(studentai, "Vargsai.txt");
-		fileOutMed(mokslinciai, "Mokslinciai.txt");
+		if (pasirinkimasV == 1) {
+			fileOutVid(studentai, "Vargsai.txt");
+			fileOutVid(mokslinciai, "Mokslinciai.txt");
+		}
+		else {
+			fileOutMed(studentai, "Vargsai.txt");
+			fileOutMed(mokslinciai, "Mokslinciai.txt");
+		}
 	}
+
 	auto writeEnd = hrClock::now();
 	auto writeDuration = std::chrono::duration_cast<sec>(writeEnd - writeStart).count();
 	cout << "Failu isvedimas uztruko: " << fixed << setprecision(8) << writeDuration << " sec\n";

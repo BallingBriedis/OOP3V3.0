@@ -367,14 +367,17 @@ void fileFilter() {
 	case 1:
 		studentai.sort(compareByName);
 		mokslinciai.sort(compareByName);
+		vargsai.sort(compareByName);
 		break;
 	case 2:
 		studentai.sort(compareBySurname);
 		mokslinciai.sort(compareBySurname);
+		vargsai.sort(compareBySurname);
 		break;
 	case 3:
 		studentai.sort(compareByFinalGrade);
 		mokslinciai.sort(compareByFinalGrade);
+		vargsai.sort(compareByFinalGrade);
 		break;
 	default:
 		cout << "Neteisingas pasirinkimas. Nerusiavome.\n";
@@ -383,14 +386,28 @@ void fileFilter() {
 
 	// Matuoja isvedimo i faila laika
 	auto writeStart = hrClock::now();
-	if (pasirinkimasV == 1) {
-		fileOutVid(studentai, "Vargsai.txt");
-		fileOutVid(mokslinciai, "Mokslinciai.txt");
+	
+	if (skirstymoOption == 1) {
+		if (pasirinkimasV == 1) {
+			fileOutVid(vargsai, "Vargsai.txt");
+			fileOutVid(mokslinciai, "Mokslinciai.txt");
+		}
+		else {
+			fileOutMed(vargsai, "Vargsai.txt");
+			fileOutMed(mokslinciai, "Mokslinciai.txt");
+		}
 	}
 	else {
-		fileOutMed(studentai, "Vargsai.txt");
-		fileOutMed(mokslinciai, "Mokslinciai.txt");
+		if (pasirinkimasV == 1) {
+			fileOutVid(studentai, "Vargsai.txt");
+			fileOutVid(mokslinciai, "Mokslinciai.txt");
+		}
+		else {
+			fileOutMed(studentai, "Vargsai.txt");
+			fileOutMed(mokslinciai, "Mokslinciai.txt");
+		}
 	}
+
 	auto writeEnd = hrClock::now();
 	auto writeDuration = std::chrono::duration_cast<sec>(writeEnd - writeStart).count();
 	cout << "Failu isvedimas uztruko: " << fixed << setprecision(8) << writeDuration << " sec\n";
