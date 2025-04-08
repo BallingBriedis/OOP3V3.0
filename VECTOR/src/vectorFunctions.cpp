@@ -401,6 +401,8 @@ void fileFilter() {
 	studentai.shrink_to_fit();
 	mokslinciai.clear();
 	mokslinciai.shrink_to_fit();
+	vargsai.clear();
+	vargsai.shrink_to_fit();
 }
 
 void fileOutVid(vector<Stud>& studentai, string ivestas_vardas) {																					// Isveda i faila pagal vidurki.

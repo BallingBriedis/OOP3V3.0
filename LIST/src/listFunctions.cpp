@@ -230,7 +230,7 @@ void failoKurimas() {
 }
 
 void fileFilter() {
-	list<Stud> studentai, mokslinciai;
+	list<Stud> studentai, mokslinciai, vargsai;
 	std::stringstream outputas;
 	int pasirinkimasV, i = 0;
 
@@ -283,16 +283,62 @@ void fileFilter() {
 	auto sortDuration = std::chrono::duration_cast<sec>(sortEnd - sortStart).count();
 	cout << "Studentu rusiavimas uztruko: " << fixed << setprecision(8) << sortDuration << " sec\n";
 
+	cout << "------------------------------------------------------------------------\n";
+	cout << "Kuria strategija naudoti:\n";
+	cout << "1 - Pirma\n2 - Antra\n";
+	cout << "------------------------------------------------------------------------\n";
+	int skirstymoOption;
+
+	while (true) {
+		try {
+			cin >> skirstymoOption;
+			if (skirstymoOption < 1 || skirstymoOption > 2) {
+				cout << "\n\n!!!!Iveskite skaiciu nuo 1 iki 2.!!!!\n\n\n";
+				continue;
+			}
+		}
+		catch (...) {
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			cout << "\n\n!!!!Ivestis neteisinga. Bandykite isnaujo.!!!!\n\n\n";
+			continue;
+		}
+		break;
+	}
+
 	// Matuoja studentu skirstyma i vargsus ir mokslincius laika
 	auto rikiavimoStart = hrClock::now();
 
-	while (studentai.back().gal >= 5) {
-		mokslinciai.push_back(studentai.back());
-		studentai.pop_back();
+	switch (skirstymoOption) {
+	case 1:
+		while (studentai.size() > 0) {
+			if (studentai.front().gal < 5) {
+				vargsai.push_back(studentai.front());
+			}
+			else {
+				mokslinciai.push_back(studentai.front());
+			}
+			studentai.pop_front();
+		}
+		studentai.clear();
+		std::list<Stud>().swap(studentai);
+		break;
+	case 2:
+		while (studentai.back().gal >= 5) {
+			mokslinciai.push_back(studentai.back());
+			studentai.pop_back();
+		}
+		break;
+	default:
+		cout << "Neteisingas pasirinkimas.\n";
+		break;
 	}
+
 	auto rikiavimoEnd = hrClock::now();
 	auto rikiavimoDuration = std::chrono::duration_cast<sec>(rikiavimoEnd - rikiavimoStart).count();
 	cout << "Studentu skirstymas i vargsus ir mokslincius uztruko: " << fixed << setprecision(8) << rikiavimoDuration << " sec\n";
+
+	
 
 	cout << "------------------------------------------------------------------------\n";
 	cout << "Pasirinkite rusiavimo kriteriju:\n";
@@ -358,7 +404,8 @@ void fileFilter() {
 	std::list<Stud>().swap(studentai);
 	mokslinciai.clear();
 	std::list<Stud>().swap(mokslinciai);
-
+	vargsai.clear();
+	std::list<Stud>().swap(vargsai);
 }
 
 void fileOutVid(list<Stud>& studentai, string ivestas_vardas) {																					// Isveda i faila pagal vidurki.
