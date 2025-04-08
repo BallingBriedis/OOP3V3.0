@@ -1,112 +1,119 @@
-Pradžia.
+# **Releases**
 
-Testai daryti prieš milisekundžių keitimą į sekundes.
+| Version   | Functions                                                                                                                                                                                                                                                  | Comments                                                                                                  |
+| --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| v.pradinė | Duomenų įvedimas. Studentų duomenų struktūra. Skaičiavimo funkcijos.                                                                                                                                                                                       | Viskas įvyko sklandžiai. Komentarų nėra                                                                   |
+| v0.1      | Galimybė įvesti bet kokį kiekį studentų, nes naudojami STL konteineriai. Versija su dinaminiu masyvu. Atsitiktinis pažymių generavimas. Meniu.                                                                                                             | Pirma kartą naudojau STL konteinerius, jie smarkiai palengvina darbą.                                     |
+| v0.2      | Sąveika su failais. Rušiavimas pagal pasirinkimą.                                                                                                                                                                                                          | Nieko specialaus, bet reikėjo kodo architektūros perdarymo įskaitomumui                                   |
+| v0.3      | Naudojama išimčių valdymas.                                                                                                                                                                                                                                | Išpradžių nenorėjau naudoti exep.handling, bet pabandžius buvo paprasta ir pagražino kodo išvazdą.        |
+| v0.4      | Studentų generavimas. Failų generavimas. Studentų rušiavimo funkcija. Testavimo funkcija. Tyrimo README.md aprašas.                                                                                                                                        | Užtruko labai daug laiko, nes buvo nemažai klaidų, teko daug testuoti. Galū gale viskas išėjo sklandžiai. |
+| v1.0      | Naudojama CMake. Trys skirtingos versijos su skirtingais STL konteineriais: List, Deque ir Vector. Spartumo tyrimai. Naudojami specialūs algoritmai Vector versijoje. Sutvarkyta repozitorija. Viso projekto aprašas. Naudojimosi ir diegimo instrukcijos. | Užtruko dar daugiau laiko dėl testavimo ir šios versijos monotoniško darbo. Darbas pavyko.                |
 
-Įvestis buvo 5 1000 5 10000 5 100000 5 1000000 5 10000000
+# **Starting manual**
 
-(5 - pasirinkimas sukurti failą, antras skaičius yra studentų kiekis faile)
+Atsisiūsti v1.0 full release.
 
-Kai programa baigia kurti failą, tai grižtama atgal į meniu ciklą ir del toliau ivestų duomenų jis toliau kuria kitus failus.
+Naudojant WinRAR arba 7-Zip, atskleisti (extract) failą, bus sukurtas aplankas su programos failais.
 
-Kuriant failus nustačiau, kad generuotu studentus su 7 namų darbų pažymiais, kad visi atlikti tyrimai su esamais 5 failais būtų patikimi. (Jog nebūtų tokio varianto, kad milijoninis failas su 15 ND uztrunka 200 sekundziu, o 10 milijoninis failas su 2 ND uztrunka 180 sekundziu.)
+"dependancies" aplanke įsidiegti "cmake-4.0.0-rc4-windows-x86_64.msi".
 
-Tyrimas 1
+Pasirinkti norimą konteinerio tipo versiją: LIST, DEQUE , VECTOR.
 
-studList1000.txt "5 1000"
+Atidarai aplanką, paleidi run.bat scriptą.
 
-![image](https://github.com/user-attachments/assets/0379e0fb-b4f4-46be-9b84-69f850e1a2a2)
-
-studList10000.txt "5 10000"
-
-![image](https://github.com/user-attachments/assets/d295d2d5-2d0f-48f3-afe2-d6a1d2a56423)
-
-studList100000.txt "5 100000"
-
-![image](https://github.com/user-attachments/assets/2158c8bd-8f6c-4a79-a75d-596c83ab16e9)
-
-
-studList1000000.txt "5 1000000"
-
-![image](https://github.com/user-attachments/assets/099f422d-0226-436b-b592-8588d4cb7ca1)
+Atsidarys "cmd" langas kuriame bus veikianti programa, jeigu programą uždarėte ir norite vėl ją atidaryti, tai nuo tos vietos kur yra run.bat paspauskite "build" aplanką, tada "Debug" aplanką, kuriame rasite "MyContainerExecutable.exe" paleidžiamąjį failą.
 
 
-studList10000000.txt "5 10000000"
+# **User manual**
 
-![image](https://github.com/user-attachments/assets/91066151-082d-424f-8569-2d7e342e407c)
+1 - Ranka įvedamas studentas ir jo pažymiai.
 
+2 - Ranka įvedamas studento vardas/pavardė, pažymys generuojamas.
 
+3 - Studentas(-ai) sukuriami automatiškai, tik reikia įvesti studentų kiekį.
 
-Tyrimas 2
+4 - Failas, esantis aplanke kartu su "MyContainerExecutable.exe" ( ...\{SelectedContainer}\build\Debug ) yra nuskaitomas į tam tikrą konteinerį.
 
-Ivedu iskart “6 studList1000.txt 1 3”, nes programoje tenka laukti ivesties, ir tai dirbtiniu budu padidintu programos vykimo ilgi.
+5 - Sukuriamas failas pavadinimu "studList{įvestasStudentuKiekis}.txt"
 
-6 – pasirinkimas failo surusiavimo
+6 - Suskirto faile esančius studentus į mokslinčių ir vargšiukų failus pagal jų galutinį pažymį.
 
-1 – pasirinkimas galutini rezultata skaiciuoti vidurkiu
+7 - Naudojamas matuoti nuskaitymo laiką, galima įvesti kiek kartu nori teksto failą skaityti.
 
-3 – pasirinkimas rusiuoti galutinius sukurtus failus galutiniu pazymiu
+8 - Tęsiama toliau, grįžti negalima.
 
+8.1-8.4 - Pasirinkimai apskaičiuoti galutinius pažymius vidurkiu arba mediana ir kokios išvesties norite. 
 
-studList1000.txt “6 studList1000.txt 1 3”
+8.x.1-8.x.3 - Pasirinkimai pagal ką norite rušiuoti studentus.
 
-![image](https://github.com/user-attachments/assets/319d3088-fead-4e68-b01d-ff85715aba6a)
-
-Duomenu nuskaitymas: 44 ms
-
-Studentu rusiavimas: 0 ms
-
-Failu isvedimas: 10 ms
-
-Visa trukme: 64 ms
+Rezultatų failą rasite ( ...\{SelectedContainer}\build\Debug ).
 
 
-studList10000.txt “6 studList10000.txt 1 3”
+# **Pradžia**
+| Part | Specifications 				 |
+| ---- | ------------------------------- |
+| CPU: | Intel i5-10600K				 |
+| RAM: | 2x16GB 2666MHz DDR4			 |
+| STR: | Kingston NV2 1 TB M.2 2280 NVMe |
 
-![image](https://github.com/user-attachments/assets/8c2503bb-654c-4ecc-a814-62901722cf10)
+Įvestis:
 
-Duomenu nuskaitymas: 382 ms
+1 Strategija:
 
-Studentu rusiavimas: 0 ms
+6 studList1000.txt 1 1 3
 
-Failu isvedimas: 41 ms
+6 studList10000.txt 1 1 3
 
-Visa trukme: 519 ms
+6 studList100000.txt 1 1 3
 
+6 studList1000000.txt 1 1 3
 
-studList100000.txt “6 studList100000.txt 1 3”
+6 studList10000000.txt 1 1 3
 
-![image](https://github.com/user-attachments/assets/e26e502c-6bce-4b83-861b-aa0aa37045dc)
+2 Strategija:
 
-Duomenu nuskaitymas: 3895 ms
+6 studList1000.txt 1 2 3
 
-Studentu rusiavimas: 0 ms
+6 studList10000.txt 1 2 3
 
-Failu isvedimas:  404 ms
+6 studList100000.txt 1 2 3
 
-Visa trukme:  5273 ms
+6 studList1000000.txt 1 2 3
 
+6 studList10000000.txt 1 2 3
 
-studList1000000.txt “6 studList1000000.txt 1 3”
+# **Vector**
 
-![image](https://github.com/user-attachments/assets/345755ce-871b-4737-a4f2-1f628761cc0a)
+| Failo dydis  	| Pirma strategija 	| Antra strategija 	   |
+| ------------- | ----------------- | -------------------- |
+| 1000     	    | 0.04915840 sec    | 0.08148740 sec       |
+| 10000   	    | 0.43130660 sec    | 0.45130710 sec       |
+| 100000   	    | 4.46657050 sec    | 4.48731360 sec       |
+| 1000000  	    | 41.31402830 sec   | 42.56847090 sec      |
+| 10000000 	    | 424.58098150 sec  | 431.82273370 sec     |
 
-Duomenu nuskaitymas: 38946 ms
+10 milijonų su pirma strategija užemė 7.7GB RAM, o antra 5.9GB RAM.
 
-Studentu rusiavimas: 0 ms
+# **List**
 
-Failu isvedimas:  4175 ms
+| Failo dydis  	| Pirma strategija 	| Antra strategija 	   |
+| ------------- | ----------------- | -------------------- |
+| 1000     	    | 0.05118660 sec    | 0.08393100 sec       |
+| 10000   	    | 0.37497380 sec    | 0.37388180 sec       |
+| 100000   	    | 3.70634520 sec    | 3.53147080 sec       |
+| 1000000  	    | 35.40114870 sec   | 35.71196400 sec      |
+| 10000000 	    | 350.78200190 sec  | 361.86110030 sec     |
 
-Visa trukme:  51235 ms
+10 milijonų su pirma strategija užemė 6.1GB RAM, o antra 5.3GB RAM.
 
+# **Deque**
 
-studList10000000.txt “6 studList10000000.txt 1 3”
+| Failo dydis  	| Pirma strategija 	| Antra strategija 	   |
+| ------------- | ----------------- | -------------------- |
+| 1000     	    | 0.05772800 sec    | 0.05651100 sec       |
+| 10000   	    | 0.39833120 sec    | 0.41024440 sec       |
+| 100000   	    | 3.76838590 sec    | 4.06764040 sec       |
+| 1000000  	    | 37.04322620 sec   | 39.36357640 sec      |
+| 10000000 	    | 373.31425860 sec  | 394.22153330 sec     |
 
-![image](https://github.com/user-attachments/assets/cb185b99-9566-4ab4-aea2-f0fbed3e5820)
-
-Duomenu nuskaitymas: 388998 ms
-
-Studentu rusiavimas: 0 ms
-
-Failu isvedimas:  42907 ms
-
-Visa trukme:  516780 ms
+10 milijonų su pirma strategija užemė 10.1GB RAM, o antra 6.8GB RAM.
