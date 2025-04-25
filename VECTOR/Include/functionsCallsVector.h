@@ -20,9 +20,9 @@ float galutinisVid(Stud& stu);
 float galutinisMed(Stud& stu);
 void fileOutVid(vector<Stud>& studentai);
 void fileOutMed(vector<Stud>& studentai);
-bool compareByName(const Stud& a, const Stud& b);
-bool compareBySurname(const Stud& a, const Stud& b);
-bool compareByFinalGrade(const Stud& a, const Stud& b);
+bool compareByName(const Stud&, const Stud&);
+bool compareBySurname(const Stud&, const Stud&);
+bool compareByFinalGrade(const Stud&, const Stud&);
 void testas();
 
 #endif

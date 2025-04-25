@@ -1,7 +1,7 @@
 // Laikomi vardu vektoriai ir funkcijos, kurios dirba su vektoriais.
 
 #include "meinelib.h"
-#include "structV.h"
+#include "classV.h"
 #include "functionsCallsVector.h"
 
 // Vektoriai su vardais ir pavardemis.

@@ -1,5 +1,5 @@
-﻿#include "meinelib.h"
-#include "structV.h"
+#include "meinelib.h"
+#include "classV.h"
 #include "functionsCallsVector.h"
 
 int main() {
@@ -30,57 +30,57 @@ int main() {
 				continue;
 			}
 		}
-		catch(...){
+		catch (...) {
 			cin.clear();
 			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			cout << "\n\n!!!!Ivestis neteisinga. Bandykite isnaujo.!!!!\n\n\n";
 			continue;
 		}
-		
+
 		if (pasirinkimasInt == 8) {
 			break;
 		}
 		switch (pasirinkimasInt) {
-			case 1:
-				readRanka(studentas);
-				studentai.push_back(studentas);
-				break;
-			case 2:
-				readName_makeGrade(studentas);
-				studentai.push_back(studentas);
-				break;
-			case 3:
-				cout << "Kiek studentu sugeneruoti?\n";
-				cin >> n;
-				for (int i = 0; i < n; i++) {
+		case 1:
+			readRanka(studentas);
+			studentai.push_back(studentas);
+			break;
+		case 2:
+			readName_makeGrade(studentas);
+			studentai.push_back(studentas);
+			break;
+		case 3:
+			cout << "Kiek studentu sugeneruoti?\n";
+			cin >> n;
+			for (int i = 0; i < n; i++) {
 				makeStud(studentas);
 				studentai.push_back(studentas);
-				}
+			}
+			break;
+		case 4:
+			try {
+				fileRead(studentai);
+			}
+			catch (const std::exception& e) {
+				std::cerr << e.what() << std::endl;
+				continue;
+			}
+			break;
+		case 5:
+			failoKurimas();
+			break;
+		case 6:
+			fileFilter();
+			break;
+		case 7:
+			try {
+				testas();
+			}
+			catch (const std::exception& e) {
+				std::cerr << e.what() << std::endl;
 				break;
-			case 4:
-				try {
-					fileRead(studentai);
-				}
-				catch (const std::exception& e) {
-					std::cerr << e.what() << std::endl;
-					continue;
-				}
-				break;
-			case 5:
-				failoKurimas();
-				break;
-			case 6:
-				fileFilter();
-				break;
-			case 7:
-					try {
-						testas();
-					}
-					catch (const std::exception& e) {
-						std::cerr << e.what() << std::endl;
-						break;
-					}
-				break;
+			}
+			break;
 		}
 	}
 
@@ -148,31 +148,31 @@ int main() {
 		break;
 	}
 
-	switch(pasirinkimasV) {
-		case 1:
-			cout << "Studentu sarasas: \n";
-			cout << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20) << "Galutinis (Vid.)" << endl;
-			for (Stud studentas : studentai) {
-				cout << std::setw(20) << studentas.var << std::setw(20) << studentas.pav << std::setw(20) << fixed << setprecision(0) << studentas.gal << endl;
-			}
-			studentai.clear();																								// Duomenys nebereikalingi, pasalina visus elementus is vektoriaus.
-			studentai.shrink_to_fit();																						// Duomenys nebereikalingi, sumazina rezervuota vieta iki tuscio dydzio.
-			break;
-		case 2:
-			cout << "Studentu sarasas: \n";
-			cout << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20) << "Galutinis (Med.)" << endl;
-			for (Stud studentas : studentai) {
-				cout << std::setw(20) << studentas.var << std::setw(20) << studentas.pav << std::setw(20) << fixed << setprecision(0) << studentas.gal << endl;
-			}
-			studentai.clear();																								// Duomenys nebereikalingi, pasalina visus elementus is vektoriaus.
-			studentai.shrink_to_fit();																						// Duomenys nebereikalingi, sumazina rezervuota vieta iki tuscio dydzio.
-			break;
-		case 3:
-			fileOutVid(studentai);
-			break;
-		case 4:
-			fileOutMed(studentai);
-			break;
+	switch (pasirinkimasV) {
+	case 1:
+		cout << "Studentu sarasas: \n";
+		cout << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20) << "Galutinis (Vid.)" << endl;
+		for (Stud studentas : studentai) {
+			cout << std::setw(20) << studentas.var << std::setw(20) << studentas.pav << std::setw(20) << fixed << setprecision(0) << studentas.gal << endl;
+		}
+		studentai.clear();																								// Duomenys nebereikalingi, pasalina visus elementus is vektoriaus.
+		studentai.shrink_to_fit();																						// Duomenys nebereikalingi, sumazina rezervuota vieta iki tuscio dydzio.
+		break;
+	case 2:
+		cout << "Studentu sarasas: \n";
+		cout << std::left << std::setw(20) << "Vardas" << std::setw(20) << "Pavarde" << std::setw(20) << "Galutinis (Med.)" << endl;
+		for (Stud studentas : studentai) {
+			cout << std::setw(20) << studentas.var << std::setw(20) << studentas.pav << std::setw(20) << fixed << setprecision(0) << studentas.gal << endl;
+		}
+		studentai.clear();																								// Duomenys nebereikalingi, pasalina visus elementus is vektoriaus.
+		studentai.shrink_to_fit();																						// Duomenys nebereikalingi, sumazina rezervuota vieta iki tuscio dydzio.
+		break;
+	case 3:
+		fileOutVid(studentai);
+		break;
+	case 4:
+		fileOutMed(studentai);
+		break;
 	}
 	studentai.clear();																										// Galutinis duomenu pasalinimas, naudojamas isitikinti, kad vektorius tuscias.
 	studentai.shrink_to_fit();																								// Galutinis duomenu atlaisvinimas.
