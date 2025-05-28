@@ -55,5 +55,6 @@ void testas() {
 		dursum += duration;
 	}
 
-	cout << "Viso laiko: " << fixed << setprecision(8) << dursum.count() << " sec\n\n";
+	cout << "Viso laiko: " << fixed << setprecision(8) << dursum.count() << " sec\n";
+	cout << "Avg: " << fixed << setprecision(8) << dursum.count() / n << " sec\n\n";
 }

@@ -49,6 +49,24 @@ Atsidarys "cmd" langas kuriame bus veikianti programa, jeigu programą uždarėt
 Rezultatų failą rasite ( ...\{SelectedContainer}\build\Debug ).
 
 
+# **V1.1 testas**
+
+| Part | Specifications 				 |
+| ---- | ------------------------------- |
+| CPU: | Intel i5-10600K				 |
+| RAM: | 2x16GB 2666MHz DDR4			 |
+| STR: | Kingston NV2 1 TB M.2 2280 NVMe |
+
+| Flagai   | 100000 (Struct) | 1000000 (Struct) | EXE size (Struct) | 100000 (Class) | 1000000 (Class) | EXE size (Class) |
+| -------- | --------------- | ---------------- | ----------------- | -------------- | --------------- | ---------------- |
+| Be flagu | 0.44610952 sec  | 4.20656290 sec   | 127 KB     		| 0.44792966 sec | 4.39760216 sec  | 141 KB           |
+| O1   	   | 0.44192624 sec  | 4.05293074 sec   | 119 KB     		| 0.43307130 sec | 4.24400640 sec  | 129 KB           |
+| O2   	   | 0.40628492 sec  | 4.08120978 sec   | 119 KB     		| 0.43038714 sec | 4.25291338 sec  | 129 KB           |
+| O3  	   | 0.43692144 sec  | 4.35214120 sec   | 119 KB     		| 0.44872598 sec | 4.40468464 sec  | 129 KB           |
+
+
+# **V1.0 testas**
+
 # **Pradžia**
 | Part | Specifications 				 |
 | ---- | ------------------------------- |

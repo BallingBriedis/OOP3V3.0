@@ -30,11 +30,11 @@ void fileFilter(vector<Stud>& studentai, const int galutinioPasirinkimas, const 
 	}
 
 	try {
-		std::ofstream mokslinciai_output("../data/output/mokslinciai.txt");
+		std::ofstream mokslinciai_output("mokslinciai.txt");
 		isvestis(mokslinciai, mokslinciai_output, galutinioPasirinkimas);
 		mokslinciai_output.close();
 
-		std::ofstream vargsai_output("../data/output/vargsai.txt");
+		std::ofstream vargsai_output("vargsai.txt");
 		isvestis(vargsai, vargsai_output, galutinioPasirinkimas);
 		vargsai_output.close();
 	}

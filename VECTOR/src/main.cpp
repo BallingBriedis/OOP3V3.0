@@ -10,7 +10,7 @@ int main() {
 	int n = 0;
 	while (true) {
 		Stud studentas;
-		cout << "Pasirinkite norima studento duomenu surasyma irasant skaiciu nuo 1 iki 8.\n";
+		cout << "Pasirinkite norima studento duomenu surasyma irasant skaiciu nuo 1 iki 7.\n";
 		cout << "------------------------------------------------------------------------\n";
 		cout << "1 - Ivestis ranka\n";
 		cout << "2 - Ivestis ranka (Generuojami tik pazymiai)\n";
