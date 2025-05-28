@@ -24,5 +24,5 @@ bool compareByName(const Stud& a, const Stud& b);
 bool compareBySurname(const Stud& a, const Stud& b);
 bool compareByFinalGrade(const Stud& a, const Stud& b);
 void testas();
-
+int ivestiesPatikrinimas(const int nuo, const int iki);
 #endif

@@ -34,10 +34,10 @@ void readRanka(Stud& stu) {																									// Vartotojo praso ivesti st
 	int input;
 	string a;
 	cout << "Iveskite studento varda: ";
-	cin >> a
+	cin >> a;
 	stu.setVar(a);
 	cout << "Iveskite studento pavarde: ";
-	cin >> a
+	cin >> a;
 	stu.setPav(a);
 
 	cout << "Iveskite studento egzamino pazymi: ";

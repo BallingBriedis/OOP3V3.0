@@ -23,6 +23,7 @@ int main() {
 		cout << "7 - Testinis nuskaitymas laiko matavimui\n";
 		cout << "8 - Baigti darba\n";
 		cout << "------------------------------------------------------------------------\n";
+		menuPasirinkimas = ivestiesPatikrinimas(1, 8);
 		try {																												// Teisingo pasirinkimo gaudymas
 			cin >> pasirinkimasInt;
 			if (pasirinkimasInt < 1 || pasirinkimasInt > 8) {
