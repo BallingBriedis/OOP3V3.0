@@ -3,9 +3,6 @@
 
 // Struktura, kurioje laikomi studento duomenys.
 
-#include <string>
-#include <vector>
-
 class Stud {
 private:
 	std::string var_{}, pav_{};

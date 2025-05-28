@@ -15,15 +15,28 @@ void fileRead(vector<Stud>& studentai, string vardas);
 void isvestiesMenu(vector<Stud>& studentai);
 void isvestis(vector<Stud>& studentai, std::ostream& isvestiesMetodas, const int galutinioPasirinkimas);
 
-// rusiavimas.cpp
+// studentuRusiavimas.cpp
 void rusiavimas(vector<Stud>& studentai, int rusiavimoPasirinkimas);
 
 // generators.cpp
 void randomStudentas(Stud& studentas, bool vyras);
 void randomAtsitiktinisPazymys(Stud& stu);
 
+// fileGenerator.cpp
+void failoKurimas();
 
+// studentuSkirstymas.cpp
+void fileFilter(vector<Stud>& studentai, const int galutinioPasirinkimas, const int rusiavimoPasirinkimas);
+
+// test.cpp
+void testas();
+
+// ivestisPatikrinimas.cpp
 int ivestiesPatikrinimas(const int nuo, const int iki);
 int ivestiesPatikrinimas(const int nuo, const int iki, const int sustabdymoSalyga);
+
+// Stud.cpp
+// Stud klases Medianos ir Vidurkio funkciju deklaracijos pacioje klaseje
 void studentuGalutiniuSkaiciavimas(vector<Stud>& studentai);
+
 #endif

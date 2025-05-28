@@ -6,7 +6,8 @@ void isvestiesMenu(vector<Stud>& studentai) {
 	cout << "Pasirinkite norima studentu isvedimo buda: \n";
 	cout << "1 - Isvesti i terminala\n";
 	cout << "2 - Isvesti i faila\n";
-	int isvestiesPasirinkimas = ivestiesPatikrinimas(1, 2);
+	cout << "3 - Isvesti i du failus, suskirsto\n";
+	int isvestiesPasirinkimas = ivestiesPatikrinimas(1, 3);
 
 	cout << "Pasirinkite pagal ka bus skaiciuojamas galutinis: \n";
 	cout << "1 - Vidurki \n";
@@ -21,17 +22,21 @@ void isvestiesMenu(vector<Stud>& studentai) {
 	cout << "4 - Pagal galutini pazymi pagal mediana \n";
 	int rusiavimoPasirinkimas = ivestiesPatikrinimas(1, 4);
 
+
 	if (isvestiesPasirinkimas == 1) {
 		studentuGalutiniuSkaiciavimas(studentai);
 		rusiavimas(studentai, rusiavimoPasirinkimas);
 		isvestis(studentai, std::cout, galutinioPasirinkimas);
 	}
 
-	else {
+	else if (isvestiesPasirinkimas == 2){
 		std::ofstream output("rezultatai.txt");
 		studentuGalutiniuSkaiciavimas(studentai);
 		rusiavimas(studentai, rusiavimoPasirinkimas);
 		isvestis(studentai, output, galutinioPasirinkimas);
+	}
+	else if (isvestiesPasirinkimas == 3) {
+		fileFilter(studentai, galutinioPasirinkimas, rusiavimoPasirinkimas);
 	}
 }
 

@@ -17,13 +17,12 @@ int main() {
 		cout << "3 - Generuojamas studentas ir pazymiai\n";
 		cout << "4 - Failo nuskaitymas\n";
 		cout << "5 - Failo kurimas\n";
-		cout << "6 - Failo surusiavimas\n";
-		cout << "7 - Testinis nuskaitymas laiko matavimui\n";
-		cout << "8 - Baigti darba\n";
+		cout << "6 - Testinis nuskaitymas laiko matavimui\n";
+		cout << "7 - Baigti darba\n";
 		cout << "------------------------------------------------------------------------\n";
-		int menuPasirinkimas = ivestiesPatikrinimas(1, 8, 8);
+		int menuPasirinkimas = ivestiesPatikrinimas(1, 7, 7);
 
-		if (menuPasirinkimas == 8) { break;}
+		if (menuPasirinkimas == 7) { break;}
 
 		switch (menuPasirinkimas) {
 		case 1:
@@ -63,9 +62,6 @@ int main() {
 			failoKurimas();
 			break;
 		case 6:
-			fileFilter();
-			break;
-		case 7:
 			try {
 				testas();
 			}
