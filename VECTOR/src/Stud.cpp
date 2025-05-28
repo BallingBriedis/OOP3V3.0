@@ -31,3 +31,12 @@ void Stud::calculateGalMediana() {
 	}
 	this->galMediana_ = galMediana * 0.4f + this->egz_ * 0.6f;
 }
+
+void studentuGalutiniuSkaiciavimas(vector<Stud>& studentai) {
+	if (studentai.back().getVidurkis() == 0 || studentai.back().getMediana() == 0) {
+		for (auto& studentas : studentai) {
+			studentas.calculateGalVidurkis();
+			studentas.calculateGalMediana();
+		}
+	}
+}

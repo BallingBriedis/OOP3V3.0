@@ -3,26 +3,27 @@
 
 // Laikomi funkciju prototipai.
 
-//Prototipai
+// Prototipai
+
+// ivestis.cpp
 void readRanka(Stud& stu);
 void readName_makeGrade(Stud& stu);
 void makeStud(Stud& stu);
-void fileRead(vector<Stud>& studentai);
+void fileRead(vector<Stud>& studentai, string vardas);
+
+// isvestis.cpp
+void isvestiesMenu(vector<Stud>& studentai);
+void isvestis(vector<Stud>& studentai, std::ostream& isvestiesMetodas, const int galutinioPasirinkimas);
+
+// rusiavimas.cpp
+void rusiavimas(vector<Stud>& studentai, int rusiavimoPasirinkimas);
+
+// generators.cpp
 void randomStudentas(Stud& studentas, bool vyras);
 void randomAtsitiktinisPazymys(Stud& stu);
-void failoKurimas();
-void fileFilter();
-float vidurkis(Stud& studentai);
-float mediana(Stud& studentai);
-void fileOutVid(vector<Stud>& studentai, string ivestas_vardas);
-void fileOutMed(vector<Stud>& studentai, string ivestas_vardas);
-float galutinisVid(Stud& stu);
-float galutinisMed(Stud& stu);
-void fileOutVid(vector<Stud>& studentai);
-void fileOutMed(vector<Stud>& studentai);
-bool compareByName(const Stud& a, const Stud& b);
-bool compareBySurname(const Stud& a, const Stud& b);
-bool compareByFinalGrade(const Stud& a, const Stud& b);
-void testas();
+
+
 int ivestiesPatikrinimas(const int nuo, const int iki);
+int ivestiesPatikrinimas(const int nuo, const int iki, const int sustabdymoSalyga);
+void studentuGalutiniuSkaiciavimas(vector<Stud>& studentai);
 #endif

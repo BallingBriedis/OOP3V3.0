@@ -37,8 +37,8 @@ public:
 	/// Papildomos funkcijos, kurios prideda ir pasalina uzduociu pazymius
 	/// </summary>
 	/// <param name="uzd"></param>
-	void addUzd(const int pazymys)		{pazymys_.push_back(pazymys);}
-	void removeUzd()					{pazymys_.pop_back();}
+	void addPazymys(const int pazymys)		{pazymys_.push_back(pazymys);}
+	void removePazymys()					{pazymys_.pop_back();}
 
 	void calculateGalVidurkis();
 	void calculateGalMediana();
