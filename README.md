@@ -11,15 +11,13 @@
 
 # **Starting manual**
 
-Atsisiūsti v1.0 full release.
+Atsisiūsti v1.1 full release.
 
 Naudojant WinRAR arba 7-Zip, atskleisti (extract) failą, bus sukurtas aplankas su programos failais.
 
 "dependancies" aplanke įsidiegti "cmake-4.0.0-rc4-windows-x86_64.msi".
 
-Pasirinkti norimą konteinerio tipo versiją: LIST, DEQUE , VECTOR.
-
-Atidarai aplanką, paleidi run.bat scriptą.
+Atidarai aplanką VECTOR, paleidi run.bat scriptą.
 
 Atsidarys "cmd" langas kuriame bus veikianti programa, jeigu programą uždarėte ir norite vėl ją atidaryti, tai nuo tos vietos kur yra run.bat paspauskite "build" aplanką, tada "Debug" aplanką, kuriame rasite "MyContainerExecutable.exe" paleidžiamąjį failą.
 
@@ -32,22 +30,40 @@ Atsidarys "cmd" langas kuriame bus veikianti programa, jeigu programą uždarėt
 
 3 - Studentas(-ai) sukuriami automatiškai, tik reikia įvesti studentų kiekį.
 
-4 - Failas, esantis aplanke kartu su "MyContainerExecutable.exe" ( ...\{SelectedContainer}\build\Debug ) yra nuskaitomas į tam tikrą konteinerį.
+4 - Failas, esantis aplanke kartu su "OOPV11.exe" ( ...\{SelectedContainer}\build\Debug ) yra nuskaitomas į tam tikrą konteinerį.
 
 5 - Sukuriamas failas pavadinimu "studList{įvestasStudentuKiekis}.txt"
 
-6 - Suskirto faile esančius studentus į mokslinčių ir vargšiukų failus pagal jų galutinį pažymį.
+6 - Naudojamas matuoti nuskaitymo laiką, galima įvesti kiek kartu nori teksto failą skaityti.
 
-7 - Naudojamas matuoti nuskaitymo laiką, galima įvesti kiek kartu nori teksto failą skaityti.
+7 - Tęsiama toliau, grįžti negalima.
 
-8 - Tęsiama toliau, grįžti negalima.
+7.1-7.3 - Pasirinkimai ar isvesti i terminala, i faila arba i faila suskirstytus
 
-8.1-8.4 - Pasirinkimai apskaičiuoti galutinius pažymius vidurkiu arba mediana ir kokios išvesties norite. 
+7.x.1-7.x.3 - Pasirinkimai apskaičiuoti galutinius pažymius vidurkiu arba mediana arba abu
 
-8.x.1-8.x.3 - Pasirinkimai pagal ką norite rušiuoti studentus.
+7.x.x.1-8.x.x.4 - Pasirinkimai pagal ką norite rušiuoti studentus.
 
 Rezultatų failą rasite ( ...\{SelectedContainer}\build\Debug ).
 
+
+# **V1.1 testas**
+
+| Part | Specifications 				 |
+| ---- | ------------------------------- |
+| CPU: | Intel i5-10600K				 |
+| RAM: | 2x16GB 2666MHz DDR4			 |
+| STR: | Kingston NV2 1 TB M.2 2280 NVMe |
+
+| Flagai   | 100000 (Struct) | 1000000 (Struct) | EXE size (Struct) | 100000 (Class) | 1000000 (Class) | EXE size (Class) |
+| -------- | --------------- | ---------------- | ----------------- | -------------- | --------------- | ---------------- |
+| Be flagu | 0.44610952 sec  | 4.20656290 sec   | 127 KB     		| 0.44792966 sec | 4.39760216 sec  | 141 KB           |
+| O1   	   | 0.44192624 sec  | 4.05293074 sec   | 119 KB     		| 0.43307130 sec | 4.24400640 sec  | 129 KB           |
+| O2   	   | 0.40628492 sec  | 4.08120978 sec   | 119 KB     		| 0.43038714 sec | 4.25291338 sec  | 129 KB           |
+| O3  	   | 0.43692144 sec  | 4.35214120 sec   | 119 KB     		| 0.44872598 sec | 4.40468464 sec  | 129 KB           |
+
+
+# **V1.0 testas**
 
 # **Pradžia**
 | Part | Specifications 				 |
