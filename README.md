@@ -11,15 +11,13 @@
 
 # **Starting manual**
 
-Atsisiūsti v1.0 full release.
+Atsisiūsti v1.1 full release.
 
 Naudojant WinRAR arba 7-Zip, atskleisti (extract) failą, bus sukurtas aplankas su programos failais.
 
 "dependancies" aplanke įsidiegti "cmake-4.0.0-rc4-windows-x86_64.msi".
 
-Pasirinkti norimą konteinerio tipo versiją: LIST, DEQUE , VECTOR.
-
-Atidarai aplanką, paleidi run.bat scriptą.
+Atidarai aplanką VECTOR, paleidi run.bat scriptą.
 
 Atsidarys "cmd" langas kuriame bus veikianti programa, jeigu programą uždarėte ir norite vėl ją atidaryti, tai nuo tos vietos kur yra run.bat paspauskite "build" aplanką, tada "Debug" aplanką, kuriame rasite "MyContainerExecutable.exe" paleidžiamąjį failą.
 
@@ -32,19 +30,19 @@ Atsidarys "cmd" langas kuriame bus veikianti programa, jeigu programą uždarėt
 
 3 - Studentas(-ai) sukuriami automatiškai, tik reikia įvesti studentų kiekį.
 
-4 - Failas, esantis aplanke kartu su "MyContainerExecutable.exe" ( ...\{SelectedContainer}\build\Debug ) yra nuskaitomas į tam tikrą konteinerį.
+4 - Failas, esantis aplanke kartu su "OOPV11.exe" ( ...\{SelectedContainer}\build\Debug ) yra nuskaitomas į tam tikrą konteinerį.
 
 5 - Sukuriamas failas pavadinimu "studList{įvestasStudentuKiekis}.txt"
 
-6 - Suskirto faile esančius studentus į mokslinčių ir vargšiukų failus pagal jų galutinį pažymį.
+6 - Naudojamas matuoti nuskaitymo laiką, galima įvesti kiek kartu nori teksto failą skaityti.
 
-7 - Naudojamas matuoti nuskaitymo laiką, galima įvesti kiek kartu nori teksto failą skaityti.
+7 - Tęsiama toliau, grįžti negalima.
 
-8 - Tęsiama toliau, grįžti negalima.
+7.1-7.3 - Pasirinkimai ar isvesti i terminala, i faila arba i faila suskirstytus
 
-8.1-8.4 - Pasirinkimai apskaičiuoti galutinius pažymius vidurkiu arba mediana ir kokios išvesties norite. 
+7.x.1-7.x.3 - Pasirinkimai apskaičiuoti galutinius pažymius vidurkiu arba mediana arba abu
 
-8.x.1-8.x.3 - Pasirinkimai pagal ką norite rušiuoti studentus.
+7.x.x.1-8.x.x.4 - Pasirinkimai pagal ką norite rušiuoti studentus.
 
 Rezultatų failą rasite ( ...\{SelectedContainer}\build\Debug ).
 
