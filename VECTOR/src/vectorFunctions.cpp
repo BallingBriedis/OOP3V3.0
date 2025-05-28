@@ -32,10 +32,13 @@ vector<string> moteruPavardes = { "Jonate", "Petraite", "Kazlauskaite", "Baltrun
 
 void readRanka(Stud& stu) {																									// Vartotojo praso ivesti studento varda, pavarde, pazymius.
 	int input;
+	string a;
 	cout << "Iveskite studento varda: ";
-	cin >> stu.var;
+	cin >> a
+	stu.setVar(a);
 	cout << "Iveskite studento pavarde: ";
-	cin >> stu.pav;
+	cin >> a
+	stu.setPav(a);
 
 	cout << "Iveskite studento egzamino pazymi: ";
 	while (true) {																											// Teisingo pasirinkimo ciklas

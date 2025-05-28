@@ -5,33 +5,54 @@
 
 #include <string>
 #include <vector>
+#include "meinelib.h"
 
 class Stud {
 private:
-	std::string var;
-	std::string pav;
-	std::vector<int>uzd{};
-	int egz;
-	int gal;
+	std::string var_{}, pav_{};
+	std::vector<int>pazymys_{};
+	int egz_{};
+	float galVidurkis_{};
+	float galMediana_{};
 
 public:
-	Stud() : egz(0), gal(0) {}
-
-	void setVar(const std::string& v) {var = v;}
-	void setPav(const std::string& p) {pav = p;}
-	void addUzd(int grade) {uzd.push_back(grade);}
-	void setEgz(int e) {egz = e;}
-	void setGal(int g) {gal = g;}
-	void print() const;
-
-	std::string getVar() const { return var; }
-	std::string getPav() const { return pav; }
-	std::vector<int> getUzd() const { return uzd; }
-	int getEgz() const {return egz;}
-	int getGal() const {return gal;}
-
+	/// <summary>
+	/// Konstruktorius ir desktrutorius
+	/// </summary>
+	Stud(string var, string pav, vector<int> pazymys, int egz) : var_(std::move(var)), pav_(std::move(pav)), pazymys_(std::move(pazymys)), egz_(std::move(egz)) {}
+	Stud() = default;
 	~Stud() {
-		std::cout << "Destruktorius\n";
+		pazymys_.clear();
 	}
+
+
+	/// <summary>
+	/// Setteriai, kurie nustato studento varda, pavarde, uzduotis ir egzamino pazymi.
+	/// </summary>
+	/// <param name="v"></param>
+	void setVar(const std::string& var) {var_ = var;}
+	void setPav(const std::string& pav) {pav_ = pav;}
+	void setEgz(const int egz) { egz_ = egz; }
+
+	/// <summary>
+	/// Papildomos funkcijos, kurios prideda ir pasalina uzduociu pazymius
+	/// </summary>
+	/// <param name="uzd"></param>
+	void addUzd(const int pazymys) {pazymys_.push_back(pazymys);}
+	void removeUzd() {pazymys_.pop_back();}
+
+	void calculateGalVidurkis();
+	void calculateGalMediana();
+	/// <summary>
+	/// Getteriai, kurie grazina studento varda, pavarde, uzduotis, egzamino pazymi ir galutini pazymi.
+	/// </summary>
+	/// <returns></returns>
+	std::string getVar() const { return var_; }
+	std::string getPav() const { return pav_; }
+	std::vector<int> getPazymys() const { return pazymys_; }
+	int getEgz() const {return egz_;}
+	int getVidurkis() const {return galVidurkis_;}
+	int getMediana() const {return galMediana_;}
+	
 };
 #endif

@@ -25,30 +25,6 @@ void Stud::print() const {
 		cout << std::setw(3) << uzd[i];
 	}
 	cout << "\n";
-	cout << "Egzaminas: " << std::setw(6) << egz << "\n";
-	cout << "Galutinis: " << std::setw(6) << gal << "\n\n";
+	cout << "Egzaminas: " << std::setw(3) << egz << "\n";
+	cout << "Galutinis: " << std::setw(3) << gal << "\n\n";
 }
-
-// konstruktoriaus realizacija
-Stud::Stud(std::istream& is) {
-	// kreipiasi i Studentas::readStudent;
-	readStudent(is);
-}
-
-
-// Studentas::readStudent realizacija
-std::istream& Stud::readStudent(std::istream&) {
-	// Member funkcijos realizacija paremta ankstesniojo 2-ojo darbo funkcija: 
-	// std::istream& readStudent(std::istream&, Studentas&)
-}
-
-// Studentas::galBalas realizacija
-double Stud::galBalas(double (*) (vector<double>) = mediana) const {
-	// ...
-}
-
-/* Realizacija likusių (member) funkcijų
- .
- .
- .
-*/
