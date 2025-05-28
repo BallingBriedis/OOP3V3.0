@@ -6,7 +6,6 @@ void Stud::calculateGalVidurkis() {
 	int pazymiuSuma{};
 	if (this->getPazymys().empty()) {
 		this->galVidurkis_ = 0.0f;
-		throw std::runtime_error("Studentas neturi pazymiu.\n");
 		return;
 	}
 	for (const auto& pazymys : this->getPazymys()) {
@@ -16,16 +15,19 @@ void Stud::calculateGalVidurkis() {
 }
 
 void Stud::calculateGalMediana() {
+	float galMediana{};
 	if (this->getPazymys().empty()) {
-		throw std::runtime_error("Studentas neturi pazymiu.\n");
+		this->galMediana_ = 0.0f;
+		return;
 	}
 	std::vector<int> sortedPazymiai = this->getPazymys();
 	std::sort(sortedPazymiai.begin(), sortedPazymiai.end());
 
 	if (sortedPazymiai.size() % 2 == 0) {
-		galMediana_ = (sortedPazymiai[size / 2 - 1] + sortedPazymiai[size / 2]) / 2.0f;
+		galMediana = (sortedPazymiai[sortedPazymiai.size() / 2 - 1] + sortedPazymiai[sortedPazymiai.size() / 2]) / 2.0f;
 	}
 	else {
-		stu.galMediana_ = sortedPazymiai[size / 2];
+		galMediana = sortedPazymiai[sortedPazymiai.size() / 2];
 	}
+	this->galMediana_ = galMediana * 0.4f + this->egz_ * 0.6f;
 }
