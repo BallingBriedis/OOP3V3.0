@@ -9,8 +9,7 @@ int main() {
 	int pasirinkimasV = 0;
 	string ivestas_vardas;
 	int n = 0;
-	while (true) {																											// Meniu ciklas
-		int pasirinkimasInt = 0;
+	while (true) {
 		Stud studentas;
 		cout << "Pasirinkite norima studento duomenu surasyma irasant skaiciu nuo 1 iki 8.\n";
 		cout << "------------------------------------------------------------------------\n";
@@ -23,25 +22,11 @@ int main() {
 		cout << "7 - Testinis nuskaitymas laiko matavimui\n";
 		cout << "8 - Baigti darba\n";
 		cout << "------------------------------------------------------------------------\n";
-		menuPasirinkimas = ivestiesPatikrinimas(1, 8);
-		try {																												// Teisingo pasirinkimo gaudymas
-			cin >> pasirinkimasInt;
-			if (pasirinkimasInt < 1 || pasirinkimasInt > 8) {
-				cout << "\n\n!!!!Iveskite skaiciu nuo 1 iki 8.!!!!\n\n\n";
-				continue;
-			}
-		}
-		catch (...) {
-			cin.clear();
-			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			cout << "\n\n!!!!Ivestis neteisinga. Bandykite isnaujo.!!!!\n\n\n";
-			continue;
-		}
+		int menuPasirinkimas = ivestiesPatikrinimas(1, 8, 8);
 
-		if (pasirinkimasInt == 8) {
-			break;
-		}
-		switch (pasirinkimasInt) {
+		if (menuPasirinkimas == 8) { break; }
+
+		switch (menuPasirinkimas) {
 		case 1:
 			readRanka(studentas);
 			studentai.push_back(studentas);
