@@ -9,7 +9,7 @@ void isvestiesMenu(vector<Stud>& studentai) {
 	cout << "3 - Isvesti i du failus, suskirsto\n";
 	int isvestiesPasirinkimas = ivestiesPatikrinimas(1, 3);
 
-	cout << "Pasirinkite pagal ka bus skaiciuojamas galutinis: \n";
+	cout << "Pasirinkite koki galutini norite matyti: \n";
 	cout << "1 - Vidurki \n";
 	cout << "2 - Mediana \n";
 	cout << "3 - Abu \n";
