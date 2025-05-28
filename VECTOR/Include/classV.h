@@ -5,7 +5,6 @@
 
 #include <string>
 #include <vector>
-#include "meinelib.h"
 
 class Stud {
 private:
@@ -19,7 +18,7 @@ public:
 	/// <summary>
 	/// Konstruktorius ir desktrutorius
 	/// </summary>
-	Stud(string var, string pav, vector<int> pazymys, int egz) : var_(std::move(var)), pav_(std::move(pav)), pazymys_(std::move(pazymys)), egz_(std::move(egz)) {}
+	Stud(std::string var, std::string pav, std::vector<int> pazymys, int egz) : var_(std::move(var)), pav_(std::move(pav)), pazymys_(std::move(pazymys)), egz_(egz) {}
 	Stud() = default;
 	~Stud() {
 		pazymys_.clear();
@@ -51,8 +50,8 @@ public:
 	std::string getPav() const { return pav_; }
 	std::vector<int> getPazymys() const { return pazymys_; }
 	int getEgz() const {return egz_;}
-	int getVidurkis() const {return galVidurkis_;}
-	int getMediana() const {return galMediana_;}
+	float getVidurkis() const {return galVidurkis_;}
+	float getMediana() const {return galMediana_;}
 	
 };
 #endif

@@ -2,29 +2,30 @@
 #include "classV.h"
 #include "functionsCallsVector.h"
 
-bool compareByName(const Stud& a, const Stud& b) {																			// Rusiavimo funkcijos dalis kuri tikrina vardus.
-	return a.getVar() < b.getVar();
-}
-
-bool compareBySurname(const Stud& a, const Stud& b) {																		// Rusiavimo funkcijos dalis kuri tikrina pavardes.
-	return a.getPav() < b.getPav();
-}
-
-bool compareByFinalGrade(const Stud& a, const Stud& b) {																	// Rusiavimo funkcijos dalis kuri tikrina galutinius pazymi.
-	return a.getGal() < b.getGal();
-}
-
-void Stud::addUzd(int grade) {
-	uzd.push_back(grade);
-}
-
-void Stud::print() const {
-	cout << std::left << "\nVardas: " << std::setw(20) << var << "\nPavarde: " << std::setw(20) << pav << endl;
-	cout << "Namų darbai: ";
-	for (int i = 0; i < uzd.size(); i++) {
-		cout << std::setw(3) << uzd[i];
+void Stud::calculateGalVidurkis() {
+	int pazymiuSuma{};
+	if (this->getPazymys().empty()) {
+		this->galVidurkis_ = 0.0f;
+		throw std::runtime_error("Studentas neturi pazymiu.\n");
+		return;
 	}
-	cout << "\n";
-	cout << "Egzaminas: " << std::setw(3) << egz << "\n";
-	cout << "Galutinis: " << std::setw(3) << gal << "\n\n";
+	for (const auto& pazymys : this->getPazymys()) {
+		pazymiuSuma += pazymys;
+	}
+	this->galVidurkis_ = pazymiuSuma / this->getPazymys().size() * 0.4f + this->egz_ * 0.6f;
+}
+
+void Stud::calculateGalMediana() {
+	if (this->getPazymys().empty()) {
+		throw std::runtime_error("Studentas neturi pazymiu.\n");
+	}
+	std::vector<int> sortedPazymiai = this->getPazymys();
+	std::sort(sortedPazymiai.begin(), sortedPazymiai.end());
+
+	if (sortedPazymiai.size() % 2 == 0) {
+		galMediana_ = (sortedPazymiai[size / 2 - 1] + sortedPazymiai[size / 2]) / 2.0f;
+	}
+	else {
+		stu.galMediana_ = sortedPazymiai[size / 2];
+	}
 }
