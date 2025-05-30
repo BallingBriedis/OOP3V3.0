@@ -69,7 +69,7 @@ Stud studentas;
 std::cin >> studentas;
 
 ### Kiti būdai įvesties
-Iš failo įvestis daroma naudojant fileRead() funkciją.
+Iš failo įvestis daroma naudojant fileRead() funkciją. Norint nuskaityti savus failus, reikia pateikti juos ( ...\src\test.txt ) formatu (studentu kiekis nesvarbu) ir idėti į ( ...\VECTOR\build\Release ).
 
 Automatinė daroma naudojant makeStud() funkciją.
 
