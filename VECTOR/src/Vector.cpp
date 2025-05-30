@@ -50,10 +50,17 @@ void Vector::PushBack(int value) {
 	}
 	else {
 		capacity *= 2;
-	}
+		int* newarray = new int[capacity];
 
-	array[size] = value;
-	++size;
+		for (int i = 0; i < size; ++i) {
+			newarray[i] = array[i];
+		}
+
+		newarray[size] = value;
+		++size;
+		delete[] array;
+		array = newarray;
+	}
 }
 
 bool Vector::Empty() const {
