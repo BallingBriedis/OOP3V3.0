@@ -6,10 +6,10 @@ if not exist build (
 
 cd build
 cmake ..
-cmake --install .
-cmake --build .
+cmake --build . --config Release
+cmake --install . --config Release
 cd ..
-copy src\*.txt build\Debug\*.txt
-cd build\Debug\
-MyContainerExecutable.exe
+copy src\*.txt build\Release\*.txt
+cd build\Release\
+OOP2V12.exe
 pause

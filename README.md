@@ -8,10 +8,12 @@
 | v0.3      | Naudojama išimčių valdymas.                                                                                                                                                                                                                                | Išpradžių nenorėjau naudoti exep.handling, bet pabandžius buvo paprasta ir pagražino kodo išvazdą.        |
 | v0.4      | Studentų generavimas. Failų generavimas. Studentų rušiavimo funkcija. Testavimo funkcija. Tyrimo README.md aprašas.                                                                                                                                        | Užtruko labai daug laiko, nes buvo nemažai klaidų, teko daug testuoti. Galū gale viskas išėjo sklandžiai. |
 | v1.0      | Naudojama CMake. Trys skirtingos versijos su skirtingais STL konteineriais: List, Deque ir Vector. Spartumo tyrimai. Naudojami specialūs algoritmai Vector versijoje. Sutvarkyta repozitorija. Viso projekto aprašas. Naudojimosi ir diegimo instrukcijos. | Užtruko dar daugiau laiko dėl testavimo ir šios versijos monotoniško darbo. Darbas pavyko.                |
+| v1.1      | Pakeista kodo struktura, implementuota klasė vietoj prieštai naudoto struct                                                                                                                                                                                | Pradėti su klasėm nesinorėjo, bet vertėjo kodo aiškumui ir spartesniam kurimui                            |
+| v1.2      | Implementuota Rules of Five, perkrautas Ivesties operatorius ir perkrautas Išvesties operatorius. Testai turi menu, padaryti unit testai programos testavimo palengvinimui.                                                                                | Versija padaryta greitai, bet naudingai                                                                   |
 
 # **Starting manual**
 
-Atsisiūsti v1.1 full release.
+Atsisiūsti v1.2 full release.
 
 Naudojant WinRAR arba 7-Zip, atskleisti (extract) failą, bus sukurtas aplankas su programos failais.
 
@@ -19,7 +21,7 @@ Naudojant WinRAR arba 7-Zip, atskleisti (extract) failą, bus sukurtas aplankas 
 
 Atidarai aplanką VECTOR, paleidi run.bat scriptą.
 
-Atsidarys "cmd" langas kuriame bus veikianti programa, jeigu programą uždarėte ir norite vėl ją atidaryti, tai nuo tos vietos kur yra run.bat paspauskite "build" aplanką, tada "Debug" aplanką, kuriame rasite "MyContainerExecutable.exe" paleidžiamąjį failą.
+Atsidarys "cmd" langas kuriame bus veikianti programa, jeigu programą uždarėte ir norite vėl ją atidaryti, tai nuo tos vietos kur yra run.bat paspauskite "build" aplanką, tada "Release" aplanką, kuriame rasite "OOP2V12.exe" paleidžiamąjį failą.
 
 
 # **User manual**
@@ -30,11 +32,11 @@ Atsidarys "cmd" langas kuriame bus veikianti programa, jeigu programą uždarėt
 
 3 - Studentas(-ai) sukuriami automatiškai, tik reikia įvesti studentų kiekį.
 
-4 - Failas, esantis aplanke kartu su "OOPV11.exe" ( ...\{SelectedContainer}\build\Debug ) yra nuskaitomas į tam tikrą konteinerį.
+4 - Failas, esantis aplanke kartu su "OOPV12.exe" ( ...\VECTOR\build\Release ) yra nuskaitomas į tam tikrą konteinerį.
 
 5 - Sukuriamas failas pavadinimu "studList{įvestasStudentuKiekis}.txt"
 
-6 - Naudojamas matuoti nuskaitymo laiką, galima įvesti kiek kartu nori teksto failą skaityti.
+6 - Atidaromas testinis menu
 
 7 - Tęsiama toliau, grįžti negalima.
 
@@ -42,9 +44,36 @@ Atsidarys "cmd" langas kuriame bus veikianti programa, jeigu programą uždarėt
 
 7.x.1-7.x.3 - Pasirinkimai apskaičiuoti galutinius pažymius vidurkiu arba mediana arba abu
 
-7.x.x.1-8.x.x.4 - Pasirinkimai pagal ką norite rušiuoti studentus.
+7.x.x.1-7.x.x.4 - Pasirinkimai pagal ką norite rušiuoti studentus.
 
-Rezultatų failą rasite ( ...\{SelectedContainer}\build\Debug ).
+Rezultatų failą rasite ( ...\VECTOR\build\Release ).
+
+
+# **Klasės naudojimas**
+
+## **Išvesties operatorius**
+
+Išvesties operatorius perdengtas, naudojimas labai paprastas:
+
+Stud studentas(Jonas, Jonaitis, 8, 5, 6, 7);
+
+std::cout << studentas;
+
+Tai padarant išves duotus duomenis apie studentą, jo vidurkį ir medianą.
+
+
+## **Ivesties operatorius**
+
+Irgi labai paprastas naudojimas, rankiniu būdu parašant "std::cin >> studentas;" terminale prašys vartotojo įvesti duomenis.
+
+Stud studentas;
+
+std::cin >> studentas;
+
+### Kiti būdai įvesties
+Iš failo įvestis daroma naudojant fileRead() funkciją. Norint nuskaityti savus failus, reikia pateikti juos ( ...\build\Release\test.txt ) formatu (studentu kiekis nesvarbu) ir idėti į ( ...\VECTOR\build\Release ).
+
+Automatinė daroma naudojant makeStud() funkciją.
 
 
 # **V1.1 testas**
@@ -65,7 +94,7 @@ Rezultatų failą rasite ( ...\{SelectedContainer}\build\Debug ).
 
 # **V1.0 testas**
 
-# **Pradžia**
+## **Pradžia**
 | Part | Specifications 				 |
 | ---- | ------------------------------- |
 | CPU: | Intel i5-10600K				 |
@@ -98,7 +127,7 @@ Rezultatų failą rasite ( ...\{SelectedContainer}\build\Debug ).
 
 6 studList10000000.txt 1 2 3
 
-# **Vector**
+## **Vector**
 
 | Failo dydis  	| Pirma strategija 	| Antra strategija 	   |
 | ------------- | ----------------- | -------------------- |
@@ -110,7 +139,7 @@ Rezultatų failą rasite ( ...\{SelectedContainer}\build\Debug ).
 
 10 milijonų su pirma strategija užemė 7.7GB RAM, o antra 5.9GB RAM.
 
-# **List**
+## **List**
 
 | Failo dydis  	| Pirma strategija 	| Antra strategija 	   |
 | ------------- | ----------------- | -------------------- |
@@ -122,7 +151,7 @@ Rezultatų failą rasite ( ...\{SelectedContainer}\build\Debug ).
 
 10 milijonų su pirma strategija užemė 6.1GB RAM, o antra 5.3GB RAM.
 
-# **Deque**
+## **Deque**
 
 | Failo dydis  	| Pirma strategija 	| Antra strategija 	   |
 | ------------- | ----------------- | -------------------- |

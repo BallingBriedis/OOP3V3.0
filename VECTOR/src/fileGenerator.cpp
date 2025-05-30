@@ -2,13 +2,16 @@
 #include "classV.h"
 #include "functionsCallsVector.h"
 
-void failoKurimas() {
-	int studentuSk;
+void failoKurimas(int studentuSk) {
 	string failoVardas = "studList";
+
+	if (studentuSk == 0) {
+	cout << "Kiek studentu norite sukurti? (1 - 10 000 000): \n";
 	studentuSk = ivestiesPatikrinimas(1, 10000000);
+	}
 
 	auto pradzia = hrClock::now();
-	cout << "\n\nPalaukite, kuriamas failas...\n\n";
+	cout << "\nPalaukite, kuriamas failas...\n\n";
 	failoVardas += std::to_string(studentuSk) + ".txt";
 
 	std::stringstream outputas;
@@ -37,5 +40,5 @@ void failoKurimas() {
 	rez.close();
 	auto pabaiga = hrClock::now();
 	auto trukme = std::chrono::duration_cast<sec>(pabaiga - pradzia);
-	cout << "Failas sukurtas per " << fixed << setprecision(8) << trukme.count() << " sec.\n";
+	cout << "Failas sukurtas per " << fixed << setprecision(8) << trukme.count() << " sec.\n\n";
 }

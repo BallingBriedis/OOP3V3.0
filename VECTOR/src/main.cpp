@@ -6,23 +6,22 @@ int main() {
 	cin.exceptions(std::ios::failbit);
 	srand(time(NULL));
 	vector<Stud> studentai;
-	int pasirinkimasV = 0;
-	int n = 0;
+	int n = 0,baigimas = 7;
 	while (true) {
 		Stud studentas;
-		cout << "Pasirinkite norima studento duomenu surasyma irasant skaiciu nuo 1 iki 7.\n";
+		cout << "Pasirinkite norima studento duomenu surasyma irasant skaiciu nuo 1 iki "<< baigimas <<".\n";
 		cout << "------------------------------------------------------------------------\n";
 		cout << "1 - Ivestis ranka\n";
 		cout << "2 - Ivestis ranka (Generuojami tik pazymiai)\n";
 		cout << "3 - Generuojamas studentas ir pazymiai\n";
 		cout << "4 - Failo nuskaitymas\n";
 		cout << "5 - Failo kurimas\n";
-		cout << "6 - Testinis nuskaitymas laiko matavimui\n";
-		cout << "7 - Baigti darba\n";
+		cout << "6 - Testine aplinka\n";
+		cout << baigimas << " - Baigti darba\n";
 		cout << "------------------------------------------------------------------------\n";
-		int menuPasirinkimas = ivestiesPatikrinimas(1, 7, 7);
+		int menuPasirinkimas = ivestiesPatikrinimas(1, baigimas, baigimas);
 
-		if (menuPasirinkimas == 7) { break;}
+		if (menuPasirinkimas == baigimas) { break;}
 
 		switch (menuPasirinkimas) {
 		case 1:
@@ -59,11 +58,11 @@ int main() {
 			}
 			break;
 		case 5:
-			failoKurimas();
+			failoKurimas(0);
 			break;
 		case 6:
 			try {
-				testas();
+				testMenu();
 			}
 			catch (const std::exception& e) {
 				std::cerr << e.what() << std::endl;
