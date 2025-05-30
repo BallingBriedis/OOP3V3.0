@@ -10,10 +10,11 @@
 | v1.0      | Naudojama CMake. Trys skirtingos versijos su skirtingais STL konteineriais: List, Deque ir Vector. Spartumo tyrimai. Naudojami specialūs algoritmai Vector versijoje. Sutvarkyta repozitorija. Viso projekto aprašas. Naudojimosi ir diegimo instrukcijos. | Užtruko dar daugiau laiko dėl testavimo ir šios versijos monotoniško darbo. Darbas pavyko.                |
 | v1.1      | Pakeista kodo struktura, implementuota klasė vietoj prieštai naudoto struct                                                                                                                                                                                | Pradėti su klasėm nesinorėjo, bet vertėjo kodo aiškumui ir spartesniam kurimui                            |
 | v1.2      | Implementuota Rules of Five, perkrautas Ivesties operatorius ir perkrautas Išvesties operatorius. Testai turi menu, padaryti unit testai programos testavimo palengvinimui.                                                                                | Versija padaryta greitai, bet naudingai                                                                   |
+| v1.5      | - | - |
 
 # **Starting manual**
 
-Atsisiūsti v1.2 full release.
+Atsisiūsti v1.5 full release.
 
 Naudojant WinRAR arba 7-Zip, atskleisti (extract) failą, bus sukurtas aplankas su programos failais.
 
@@ -21,7 +22,7 @@ Naudojant WinRAR arba 7-Zip, atskleisti (extract) failą, bus sukurtas aplankas 
 
 Atidarai aplanką VECTOR, paleidi run.bat scriptą.
 
-Atsidarys "cmd" langas kuriame bus veikianti programa, jeigu programą uždarėte ir norite vėl ją atidaryti, tai nuo tos vietos kur yra run.bat paspauskite "build" aplanką, tada "Release" aplanką, kuriame rasite "OOP2V12.exe" paleidžiamąjį failą.
+Atsidarys "cmd" langas kuriame bus veikianti programa, jeigu programą uždarėte ir norite vėl ją atidaryti, tai nuo tos vietos kur yra run.bat paspauskite "build" aplanką, tada "Release" aplanką, kuriame rasite "OOP2V15.exe" paleidžiamąjį failą.
 
 
 # **User manual**
