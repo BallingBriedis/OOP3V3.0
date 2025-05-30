@@ -11,7 +11,7 @@ void Stud::calculateGalVidurkis() {
 	for (const auto& pazymys : this->getPazymys()) {
 		pazymiuSuma += pazymys;
 	}
-	this->galVidurkis_ = pazymiuSuma / this->getPazymys().size() * 0.4f + this->egz_ * 0.6f;
+	this->galVidurkis_ = round(pazymiuSuma / this->getPazymys().size() * 0.4f + this->egz_ * 0.6f);
 }
 
 void Stud::calculateGalMediana() {
@@ -29,7 +29,7 @@ void Stud::calculateGalMediana() {
 	else {
 		galMediana = sortedPazymiai[sortedPazymiai.size() / 2];
 	}
-	this->galMediana_ = galMediana * 0.4f + this->egz_ * 0.6f;
+	this->galMediana_ = round(galMediana * 0.4f + this->egz_ * 0.6f);
 }
 
 void studentuGalutiniuSkaiciavimas(vector<Stud>& studentai) {

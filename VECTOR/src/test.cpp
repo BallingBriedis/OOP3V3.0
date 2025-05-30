@@ -242,7 +242,7 @@ void studentuUnitTest() {
 	cout << "\n";
 
 	// Isveties operatorius testas
-	cout << "Ivestas studentas: " << studentas6;
+	cout << "Ivestas studentas: \n" << studentas6;
 
 	cout << "\n\n";
 }

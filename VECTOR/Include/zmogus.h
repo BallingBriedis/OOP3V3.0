@@ -60,8 +60,8 @@ public:
 	}
 
 	/// Setteriai, kurie nustato zmogaus varda ir pavarde
-	virtual void setVar(const std::string& var) { var_ = var; }
-	virtual void setPav(const std::string& pav) { pav_ = pav; }
+	virtual void setVar(const std::string& var) = 0;
+	virtual void setPav(const std::string& pav) = 0;
 
 	/// Getteriai, kurie grazina zmogaus varda ir pavarde
 	virtual std::string getVar() const { return var_; }
