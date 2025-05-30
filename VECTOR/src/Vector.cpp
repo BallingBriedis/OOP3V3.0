@@ -26,6 +26,16 @@ Vector::Vector(int elements, int value) :
 	}
 }
 
+Vector::Vector(const std::initializer_list<int>& list) :
+	size(0),
+	capacity(list.size() + 5),
+	array(new int[capacity])
+{
+	for (int i : list) {
+		PushBack(i);
+	}
+}
+
 Vector::~Vector(){
 	delete[] array;
 	size = 0;
@@ -34,6 +44,14 @@ Vector::~Vector(){
 }
 
 void Vector::PushBack(int value) {
+	if (size < capacity) {
+		array[size] = value;
+		++size;
+	}
+	else {
+		capacity *= 2;
+	}
+
 	array[size] = value;
 	++size;
 }

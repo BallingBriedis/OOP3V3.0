@@ -12,9 +12,9 @@ public:
 	Vector();
 	Vector(const Vector& rhs);
 	Vector(int elements, int value = 0);
+	Vector(const std::initializer_list<int>& list);
 
 	~Vector();
-
 
 	void PushBack(int value);
 
