@@ -1,6 +1,8 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 
+#include <iostream>
+
 class Vector {
 private:
 	int size;
@@ -22,6 +24,8 @@ public:
 
 	bool operator==(const Vector& rhs) const;
 	bool operator!=(const Vector& rhs) const;
+
+	friend std::ostream& operator<<(std::ostream& ostr, const Vector& rhs);
 };
 
 #endif

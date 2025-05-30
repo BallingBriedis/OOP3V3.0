@@ -67,3 +67,19 @@ bool Vector::operator!=(const Vector& rhs) const
 {
 	return !(*this == rhs);
 }
+
+std::ostream& operator<<(std::ostream& ostr, const Vector& rhs)
+{
+	for (int i = 0; i < rhs.size; ++i) {
+		ostr << rhs.array[i] << " ";
+	}
+	ostr << " || ";
+
+	for (int i = rhs.size; i < rhs.capacity; ++i) {
+		ostr << rhs.array[i] << " ";
+	}
+
+	ostr << std::endl;
+
+	return ostr;
+}
