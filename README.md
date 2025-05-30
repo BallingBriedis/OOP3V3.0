@@ -49,6 +49,29 @@ Rezultatų failą rasite ( ...\VECTOR\build\Release ).
 
 # **Klasės naudojimas**
 
+## **Išvesties operatorius**
+
+Išvesties operatorius perdengtas, naudojimas labai paprastas:
+
+Stud studentas(Jonas, Jonaitis, 8, 5, 6, 7);
+
+std::cout << studentas;
+
+Tai padarant išves duotus duomenis apie studentą, jo vidurkį ir medianą.
+
+
+## **Ivesties operatorius**
+
+Irgi labai paprastas naudojimas, rankiniu būdu parašant "std::cin >> studentas;" terminale prašys vartotojo įvesti duomenis.
+
+Stud studentas;
+
+std::cin >> studentas;
+
+### Kiti būdai įvesties
+Iš failo įvestis daroma naudojant fileRead() funkciją. Norint nuskaityti savus failus, reikia pateikti juos ( ...\build\Release\test.txt ) formatu (studentu kiekis nesvarbu) ir idėti į ( ...\VECTOR\build\Release ).
+
+Automatinė daroma naudojant makeStud() funkciją.
 
 
 # **V1.1 testas**
@@ -69,7 +92,7 @@ Rezultatų failą rasite ( ...\VECTOR\build\Release ).
 
 # **V1.0 testas**
 
-# **Pradžia**
+## **Pradžia**
 | Part | Specifications 				 |
 | ---- | ------------------------------- |
 | CPU: | Intel i5-10600K				 |
@@ -102,7 +125,7 @@ Rezultatų failą rasite ( ...\VECTOR\build\Release ).
 
 6 studList10000000.txt 1 2 3
 
-# **Vector**
+## **Vector**
 
 | Failo dydis  	| Pirma strategija 	| Antra strategija 	   |
 | ------------- | ----------------- | -------------------- |
@@ -114,7 +137,7 @@ Rezultatų failą rasite ( ...\VECTOR\build\Release ).
 
 10 milijonų su pirma strategija užemė 7.7GB RAM, o antra 5.9GB RAM.
 
-# **List**
+## **List**
 
 | Failo dydis  	| Pirma strategija 	| Antra strategija 	   |
 | ------------- | ----------------- | -------------------- |
@@ -126,7 +149,7 @@ Rezultatų failą rasite ( ...\VECTOR\build\Release ).
 
 10 milijonų su pirma strategija užemė 6.1GB RAM, o antra 5.3GB RAM.
 
-# **Deque**
+## **Deque**
 
 | Failo dydis  	| Pirma strategija 	| Antra strategija 	   |
 | ------------- | ----------------- | -------------------- |
