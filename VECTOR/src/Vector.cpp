@@ -134,8 +134,28 @@ int& Vector::Back(){
 	return array[size - 1];
 }
 
-void Vector::Insert(int index, int value)
-{
+void Vector::Insert(int index, int value){
+	if ((index < 0) || (index > size)) {
+		throw std::exception("Insert - Index out of range");
+	}
+
+	if (size != capacity) {
+		for (int i = size - 1; i >= index; --i) {
+			array[i + 1] = array[i];
+		}
+		array[index] = value;
+		++size;
+	}
+	else{
+		capacity *= 2;
+		int* newarray = new int[capacity];
+		for (int i = 0; i < size; ++i) {
+			newarray[i] = array[i];
+		}
+		delete[] array;
+		array = newarray;
+		Insert(index, value);
+	}
 }
 
 void Vector::Erase(int index){

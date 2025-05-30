@@ -3,7 +3,6 @@
 
 #include <iostream>
 
-
 class Vector {
 private:
 	int size;
