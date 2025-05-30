@@ -1,28 +1,25 @@
-﻿#ifndef STRUCTV_H
-#define STRUCTV_H
-
+﻿#ifndef STUDENTAS_H
+#define STUDENTAS_H
+#include "zmogus.h"
 // Struktura, kurioje laikomi studento duomenys.
 
-class Stud {
+class Stud : public Zmogus {
 private:
-	std::string var_{}, pav_{};
 	std::vector<int>pazymys_{};
 	int egz_{};
 	float galVidurkis_{};
 	float galMediana_{};
 
 public:
-	/// <summary>
 	/// Konstruktorius ir desktrutorius
-	/// </summary>
-	explicit Stud(std::string var = "", std::string pav = "", std::vector<int> pazymys = {}, int egz = {}) : var_(std::move(var)), pav_(std::move(pav)), pazymys_(std::move(pazymys)), egz_(egz) {}
+	explicit Stud(std::string var = "", std::string pav = "", std::vector<int> pazymys = {}, int egz = {}) :
+		Zmogus(std::move(var), std::move(pav)), pazymys_(std::move(pazymys)), egz_(egz) {}
 
 	~Stud() = default;
 
 	/// Copy constructor
 	Stud(const Stud& other) :
-		var_(other.var_),
-		pav_(other.pav_),
+		Zmogus(other.var_, other.pav_),
 		pazymys_(other.pazymys_), 
 		egz_(other.egz_),
 		galVidurkis_(other.galVidurkis_),
@@ -31,8 +28,7 @@ public:
 	/// Copy assignment operator
 	Stud& operator=(const Stud& other) {
 		if (this != &other) {
-			var_ = other.var_;
-			pav_ = other.pav_;
+			Zmogus::operator=(other);
 			pazymys_ = other.pazymys_;
 			egz_ = other.egz_;
 			galVidurkis_ = other.galVidurkis_;
@@ -43,42 +39,38 @@ public:
 
 	/// Move constructor
 	Stud(Stud&& other) noexcept :
-		var_(std::move(other.var_)),
-		pav_(std::move(other.pav_)),
+		Zmogus(std::move(other)),
 		pazymys_(std::move(other.pazymys_)),
 		egz_(other.egz_),
 		galVidurkis_(other.galVidurkis_),
 		galMediana_(other.galMediana_) {
-		other.egz_ = 0; // Reset moved-from object's egz
+		other.egz_ = 0;
 	}
 
 	///  Move assignment operator
 	Stud& operator=(Stud&& other) noexcept {
 		if (this != &other) {
-			var_ = std::move(other.var_);
-			pav_ = std::move(other.pav_);
+			Zmogus::operator=(std::move(other));
 			pazymys_ = std::move(other.pazymys_);
 			egz_ = other.egz_;
 			galVidurkis_ = other.galVidurkis_;
 			galMediana_ = other.galMediana_;
-			other.egz_ = 0; // Reset moved-from object's egz
+			other.egz_ = 0;
 		}
 		return *this;
 	}
 
 	/// Ivesties operatorius
 	friend std::istream& operator>>(std::istream& is, Stud& s) {
-		std::string var, pav;
+		is >> static_cast<Zmogus&>(s);
+
 		int egz;
 		std::vector<int> pazymiai;
 		int paz;
 
-		cout << "Iveskite varda: ";
-		is >> var;
-		cout << "Iveskite pavarde: ";
-		is >> pav;
 		cout << "Iveskite egzamino pazymi: ";
 		egz = ivestiesPatikrinimas(0, 10);
+
 		cout << "Iveskite pazymius 0 iki 10, norint baigti iveskite -1:\n";
 		while(true) {
 			paz = ivestiesPatikrinimas(0, 10, -1);
@@ -86,32 +78,29 @@ public:
 			pazymiai.push_back(paz);
 		}
 
-		s.setVar(var);
-		s.setPav(pav);
 		s.setEgz(egz);
 		for (int p : pazymiai) s.addPazymys(p);
 
 		s.calculateGalVidurkis();
 		s.calculateGalMediana();
-		pazymiai.clear();
-		pazymiai.shrink_to_fit();
 		return is;
 	}
 
 	/// Isvesties operatorius
 	friend std::ostream& operator<<(std::ostream& os, const Stud& s) {
-		os << s.getVar() << " " << s.getPav() << " Egzaminas: " << s.getEgz() << " Pazymiai: ";
+		os << static_cast<const Zmogus&>(s);
+		os << " Egzaminas: " << s.getEgz() << " Pazymiai: ";
 		for (int p : s.getPazymys()) {
 			os << p << " ";
 		}
-		os << " Vidurkis: " << s.getVidurkis() << " Mediana: " << s.getMediana();
+		os << "Vidurkis: " << s.getVidurkis() << " Mediana: " << s.getMediana();
 		return os;
 	}
 
 	/// Setteriai, kurie nustato studento varda, pavarde, uzduotis ir egzamino pazymi.
-	void setVar(const std::string& var) { var_ = var; }
-	void setPav(const std::string& pav) { pav_ = pav; }
-	void setEgz(const int egz)          { egz_ = egz; }
+	void setVar(const std::string& var) override { var_ = var; }
+	void setPav(const std::string& pav) override { pav_ = pav; }
+	void setEgz(const int egz)					 { egz_ = egz; }
 
 	/// Papildomos funkcijos, kurios prideda ir pasalina uzduociu pazymius
 	void addPazymys(const int pazymys)		{pazymys_.push_back(pazymys);}
@@ -121,8 +110,8 @@ public:
 	void calculateGalMediana();
 
 	/// Getteriai, kurie grazina studento varda, pavarde, uzduotis, egzamino pazymi ir galutini pazymi.
-	std::string getVar() const			{ return var_; }
-	std::string getPav() const          { return pav_; }
+	std::string getVar() const override { return var_; }
+	std::string getPav() const override { return pav_; }
 	std::vector<int> getPazymys() const { return pazymys_; }
 	int getEgz() const					{ return egz_; }
 	float getVidurkis() const			{ return galVidurkis_; }

@@ -1,5 +1,5 @@
 #include "meinelib.h"
-#include "classV.h"
+#include "studentas.h"
 #include "functionsCallsVector.h"
 
 void failoKurimas(int studentuSk) {

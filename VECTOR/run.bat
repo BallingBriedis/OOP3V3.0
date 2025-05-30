@@ -11,5 +11,5 @@ cmake --install . --config Release
 cd ..
 copy src\*.txt build\Release\*.txt
 cd build\Release\
-OOP2V12.exe
+OOP2V15.exe
 pause

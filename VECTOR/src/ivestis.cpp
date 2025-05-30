@@ -1,5 +1,5 @@
 #include "meinelib.h"
-#include "classV.h"
+#include "studentas.h"
 #include "functionsCallsVector.h"
 
 void readRanka(Stud& stu) {																									// Vartotojo praso ivesti studento varda, pavarde, pazymius.
