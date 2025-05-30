@@ -54,7 +54,8 @@ void testas() {
 		cout << "Failas nuskaitytas per " << fixed << setprecision(8) << duration.count() << " sec\n";
 		dursum += duration;
 	}
-
+	studentai.clear();
+	studentai.shrink_to_fit();
 	cout << "Viso laiko: " << fixed << setprecision(8) << dursum.count() << " sec\n";
 	cout << "Avg: " << fixed << setprecision(8) << dursum.count() / n << " sec\n\n";
 }
