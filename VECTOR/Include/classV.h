@@ -15,13 +15,56 @@ public:
 	/// <summary>
 	/// Konstruktorius ir desktrutorius
 	/// </summary>
-	Stud(std::string var, std::string pav, std::vector<int> pazymys, int egz) : var_(std::move(var)), pav_(std::move(pav)), pazymys_(std::move(pazymys)), egz_(egz) {}
-	Stud() = default;
-	~Stud() {
-		pazymys_.clear();
+	explicit Stud(std::string var = "", std::string pav = "", std::vector<int> pazymys = {}, int egz = {}) : var_(std::move(var)), pav_(std::move(pav)), pazymys_(std::move(pazymys)), egz_(egz) {}
+
+	~Stud() = default;
+
+	/// Copy constructor
+	Stud(const Stud& other) :
+		var_(other.var_),
+		pav_(other.pav_),
+		pazymys_(other.pazymys_), 
+		egz_(other.egz_),
+		galVidurkis_(other.galVidurkis_),
+		galMediana_(other.galMediana_) {}
+
+	/// Copy assignment operator
+	Stud& operator=(const Stud& other) {
+		if (this != &other) {
+			var_ = other.var_;
+			pav_ = other.pav_;
+			pazymys_ = other.pazymys_;
+			egz_ = other.egz_;
+			galVidurkis_ = other.galVidurkis_;
+			galMediana_ = other.galMediana_;
+		}
+		return *this;
 	}
 
+	/// Move constructor
+	Stud(Stud&& other) noexcept :
+		var_(std::move(other.var_)),
+		pav_(std::move(other.pav_)),
+		pazymys_(std::move(other.pazymys_)),
+		egz_(other.egz_),
+		galVidurkis_(other.galVidurkis_),
+		galMediana_(other.galMediana_) {
+		other.egz_ = 0; // Reset moved-from object's egz
+	}
 
+	///  Move assignment operator
+	Stud& operator=(Stud&& other) noexcept {
+		if (this != &other) {
+			var_ = std::move(other.var_);
+			pav_ = std::move(other.pav_);
+			pazymys_ = std::move(other.pazymys_);
+			egz_ = other.egz_;
+			galVidurkis_ = other.galVidurkis_;
+			galMediana_ = other.galMediana_;
+			other.egz_ = 0; // Reset moved-from object's egz
+		}
+		return *this;
+	}
 	/// <summary>
 	/// Setteriai, kurie nustato studento varda, pavarde, uzduotis ir egzamino pazymi.
 	/// </summary>
