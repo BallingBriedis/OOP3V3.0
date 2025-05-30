@@ -165,6 +165,16 @@ void studentuUnitTest() {
 	else {
 		cout << "[FAIL] Constructor test failed\n\n";
 	}
+	/// Tuscio konstruktoriaus testas
+	Stud studentas7;
+	if (studentas7.getVar().empty() &&
+		studentas7.getPav().empty() &&
+		studentas7.getPazymys().empty()) {
+		cout << "[PASS] Empty Constructor test passed\n\n";
+	}
+	else {
+		cout << "[FAIL] Empty Constructor test failed\n\n";
+	}
 
 	// Copy constructor testas
 	Stud studentas2(studentas1);
@@ -222,14 +232,14 @@ void studentuUnitTest() {
 		cout << "[FAIL] Move assignment operator test failed\n\n";
 	}
 
-	cout << "\n\n";
+	cout << "\n";
 
 	// Ivesties operatorius testas
 	cout << "Input operator testas:\n";
 	Stud studentas6;
 	cin >> studentas6;
 
-	cout << "\n\n";
+	cout << "\n";
 
 	// Isveties operatorius testas
 	cout << "Ivestas studentas: " << studentas6;
