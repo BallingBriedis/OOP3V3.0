@@ -16,14 +16,14 @@ void fileFilter(vector<Stud>& studentai, const int galutinioPasirinkimas, const 
 
 	if (rusiavimoPasirinkimas == 3) {
 		auto partition_iteratorius = std::partition_point(studentai.begin(), studentai.end(),
-			[](const Stud& studentas) {return studentas.getVidurkis() >= 5.0f;}
+			[](const Stud& studentas) {return studentas.getVidurkis() < 5.0f;}
 		);
-		mokslinciai.assign(studentai.begin(), partition_iteratorius);
-		vargsai.assign(partition_iteratorius, studentai.end());
+		vargsai.assign(studentai.begin(), partition_iteratorius);
+		mokslinciai.assign(partition_iteratorius, studentai.end());
 	}
 	else if (rusiavimoPasirinkimas == 4) {
 		auto partition_iteratorius = std::partition_point(studentai.begin(), studentai.end(),
-			[](const Stud& studentas) {return studentas.getVidurkis() <= 5.0f;}
+			[](const Stud& studentas) {return studentas.getMediana() < 5.0f;}
 		);
 		vargsai.assign(studentai.begin(), partition_iteratorius);
 		mokslinciai.assign(partition_iteratorius, studentai.end());

@@ -69,22 +69,22 @@ void isvestis(vector<Stud>& studentai, std::ostream& isvestiesMetodas, const int
 
 	if (galutinioPasirinkimas == 1) {
 		for (auto& i : studentai) {
-			isvestis << std::setw(isvesties_pavardes_ilgis) << i.getPav()
-				<< std::setw(isvesties_vardo_ilgis) << i.getVar()
+			isvestis << std::setw(isvesties_pavardes_ilgis) << i.getVar()
+				<< std::setw(isvesties_vardo_ilgis) << i.getPav()
 				<< std::setw(20) << std::left << i.getVidurkis() << "\n";
 		}
 	}
 	else if (galutinioPasirinkimas == 2) {
 		for (auto& i : studentai) {
-			isvestis << std::setw(isvesties_pavardes_ilgis) << i.getPav()
-				<< std::setw(isvesties_vardo_ilgis) << i.getVar()
+			isvestis << std::setw(isvesties_pavardes_ilgis) << i.getVar()
+				<< std::setw(isvesties_vardo_ilgis) << i.getPav()
 				<< std::setw(20) << std::left << i.getMediana() << "\n";
 		}
 	}
 	else if (galutinioPasirinkimas == 3) {
 		for (auto& i : studentai) {
-			isvestis << std::setw(isvesties_pavardes_ilgis) << i.getPav()
-				<< std::setw(isvesties_vardo_ilgis) << i.getVar()
+			isvestis << std::setw(isvesties_pavardes_ilgis) << i.getVar()
+				<< std::setw(isvesties_vardo_ilgis) << i.getPav()
 				<< std::setw(20) << std::left << i.getVidurkis() << "   "
 				<< std::setw(20) << std::left << i.getMediana() << "\n";
 		}
