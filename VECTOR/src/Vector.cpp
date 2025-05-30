@@ -121,7 +121,7 @@ int& Vector::operator[](int index){
 int& Vector::At(int index){
 	if ((index < 0) || (index >= size))
 	{
-		throw std::exception("Index out of range");
+		throw std::exception("At - Index out of range");
 	}
 	return array[index];
 }
@@ -132,6 +132,25 @@ int& Vector::Front(){
 
 int& Vector::Back(){
 	return array[size - 1];
+}
+
+void Vector::Insert(int index, int value)
+{
+}
+
+void Vector::Erase(int index){
+	if ((index < 0) || (index >= size)){
+		throw std::exception("Erase - Index out of range");
+	}
+
+	for (int i = index; i < size - 1; ++i) {
+		array[i] = array[i + 1];
+	}
+	--size;
+}
+
+void Vector::Clear(){
+	size = 0;
 }
 
 std::ostream& operator<<(std::ostream& ostr, const Vector& rhs)

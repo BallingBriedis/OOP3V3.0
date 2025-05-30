@@ -3,6 +3,7 @@
 
 #include <iostream>
 
+
 class Vector {
 private:
 	int size;
@@ -34,6 +35,10 @@ public:
 	int& At(int index);
 	int& Front();
 	int& Back();
+
+	void Insert(int index, int value);
+	void Erase(int index);
+	void Clear();
 };
 
 #endif
