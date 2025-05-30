@@ -63,6 +63,13 @@ void Vector::PushBack(int value) {
 	}
 }
 
+void Vector::PopBack(){
+	if (size == 0) {
+		throw std::exception("Pop back on empty vector!");
+	}
+	--size;
+}
+
 bool Vector::Empty() const {
 	return size == 0;;
 }
@@ -91,6 +98,36 @@ bool Vector::operator==(const Vector& rhs) const {
 bool Vector::operator!=(const Vector& rhs) const
 {
 	return !(*this == rhs);
+}
+
+Vector& Vector::operator=(const Vector& rhs){
+	if (rhs.size > size) {
+		delete[] array;
+		array = new int[rhs.size + 5];
+	}
+	for (int i = 0; i < rhs.Size(); ++i) {
+		array[i] = rhs.array[i];
+	}
+}
+
+int& Vector::operator[](int index){
+	return array[index];
+}
+
+int& Vector::At(int index){
+	if ((index < 0) || (index >= size))
+	{
+		throw std::exception("Index out of range");
+	}
+	return array[index];
+}
+
+int& Vector::Front(){
+	return array[0];
+}
+
+int& Vector::Back(){
+	return array[size - 1];
 }
 
 std::ostream& operator<<(std::ostream& ostr, const Vector& rhs)

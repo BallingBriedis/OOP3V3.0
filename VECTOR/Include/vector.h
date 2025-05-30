@@ -17,6 +17,7 @@ public:
 	~Vector();
 
 	void PushBack(int value);
+	void PopBack();
 
 	bool Empty() const;
 	int Size() const;
@@ -26,6 +27,13 @@ public:
 	bool operator!=(const Vector& rhs) const;
 
 	friend std::ostream& operator<<(std::ostream& ostr, const Vector& rhs);
+
+	Vector& operator=(const Vector& rhs);
+
+	int& operator[](int index);
+	int& At(int index);
+	int& Front();
+	int& Back();
 };
 
 #endif
