@@ -2,7 +2,31 @@
 #include "classV.h"
 #include "functionsCallsVector.h"
 
-void testas() {
+void testMenu() {
+	while (true) {
+	cout << "Pasirinkite norima testavimo buda: \n";
+	cout << "1 - Nuskaitymo testas\n";
+	cout << "2 - Programos unit testas\n";
+	cout << "3 - Studentu unit testas\n";
+	cout << "4 - Baigti testavima\n";
+	int testPasirinkimas = ivestiesPatikrinimas(1, 4, 4);
+
+	if (testPasirinkimas == 4) return;
+
+		switch (testPasirinkimas) {
+		case 1:
+			nuskaitymoTestas();
+			break;
+		case 2:
+			programUnitTest();
+			break;
+		case 3:
+			studentuUnitTest();
+			break;
+		}
+	}
+}
+void nuskaitymoTestas() {
 	int n = 0;
 	sec dursum(0.0);
 	string ivestas_vardas;
@@ -58,4 +82,140 @@ void testas() {
 	studentai.shrink_to_fit();
 	cout << "Viso laiko: " << fixed << setprecision(8) << dursum.count() << " sec\n";
 	cout << "Avg: " << fixed << setprecision(8) << dursum.count() / n << " sec\n\n";
+}
+
+void programUnitTest() {
+	vector<Stud> studentai;
+	Stud studentas;
+
+	// Test 1: Manual input
+	readRanka(studentas);
+	studentai.push_back(studentas);
+
+	if (studentai.size() == 1)
+		cout << "[PASS] Added one student\n";
+	else
+		cout << "[FAIL] studentai size: " << studentai.size() << ", expected 1\n";
+
+	if (studentai[0].getVar() == studentas.getVar())
+		cout << "[PASS] Name matches\n";
+	else
+		cout << "[FAIL] Name mismatch\n";
+
+	if (studentai[0].getPav() == studentas.getPav())
+		cout << "[PASS] Surname matches\n";
+	else
+		cout << "[FAIL] Surname mismatch\n";
+
+	// Test 2: Generate random grades
+	readName_makeGrade(studentas);
+	if (!studentas.getPazymys().empty())
+		cout << "[PASS] Random grades generated\n";
+	else
+		cout << "[FAIL] Random grades missing\n";
+
+	// Test 3: Create a random student
+	makeStud(studentas);
+	if (!studentas.getPazymys().empty())
+		cout << "[PASS] Random student created\n";
+	else
+		cout << "[FAIL] Random student creation failed\n";
+
+	// Test 4: File reading
+	try {
+		fileRead(studentai, "test.txt");
+		if (!studentai.empty())
+			cout << "[PASS] File reading successful\n";
+		else
+			cout << "[FAIL] File read but no students loaded\n";
+	}
+	catch (const std::exception& e) {
+		cout << "[FAIL] File reading exception: " << e.what() << '\n';
+	}
+
+	// Test 5: File creation
+	failoKurimas(); // No check, unless you want to test file existence
+
+	// Test 6: Output filtering
+	isvestiesMenu(studentai); // Add logging inside if needed
+
+	// Test 7: Sorting
+	rusiavimas(studentai, 1); // Sort by name
+	cout << "[INFO] Sorting completed\n";
+}
+
+void studentuUnitTest() {
+	vector<Stud> studentai;
+	vector<int> pazymiai = { 5, 6, 7, 8, 9, 10 };
+
+
+	/// Konstruktoriaus testas
+	Stud studentas1("Jonas", "Jonaitis", pazymiai, 8);
+	studentas1.calculateGalVidurkis();
+	studentas1.calculateGalMediana();
+	if (studentas1.getVar() == "Jonas" &&
+		studentas1.getPav() == "Jonaitis" &&
+		studentas1.getPazymys() == pazymiai) {
+		cout << "[PASS] Constructor test passed\n";
+	}
+	else {
+		cout << "[FAIL] Constructor test failed\n";
+	}
+
+	// Copy constructor testas
+	Stud studentas2(studentas1);
+	if (studentas1.getVar() == studentas2.getVar() &&
+		studentas1.getPav() == studentas2.getPav() &&
+		studentas1.getPazymys() == studentas2.getPazymys() &&
+		studentas1.getVidurkis() == studentas2.getVidurkis() &&
+		studentas1.getMediana() == studentas2.getMediana()) {
+		cout << "[PASS] Copy constructor test passed\n";
+	}
+	else {
+		cout << "[FAIL] Copy constructor test failed\n";
+	}
+
+	// Copy assignment operator testas
+	Stud studentas3;
+	studentas3 = studentas1;
+	if (studentas3.getVar() == studentas1.getVar() &&
+		studentas3.getPav() == studentas1.getPav() &&
+		studentas3.getPazymys() == studentas1.getPazymys() &&
+		studentas3.getVidurkis() == studentas1.getVidurkis() &&
+		studentas3.getMediana() == studentas1.getMediana()) {
+		cout << "[PASS] Copy assignment operator test passed\n";
+	}
+	else {
+		cout << "[FAIL] Copy assignment operator test failed\n";
+	}
+
+	// Move constructor testas
+	Stud studentas4(std::move(studentas1));
+	if (studentas4.getVar() == "Jonas" &&
+		studentas4.getPav() == "Jonaitis" &&
+		studentas4.getPazymys() == pazymiai &&
+		studentas1.getVar() != "Jonas" &&
+		studentas1.getPav() != "Jonaitis" &&
+		studentas1.getPazymys() != pazymiai) {
+		cout << "[PASS] Move constructor test passed\n";
+	}
+	else {
+		cout << "[FAIL] Move constructor test failed\n";
+	}
+
+	// Move assignment operator testas
+	Stud studentas5;
+	studentas5 = std::move(studentas4);
+	if (studentas5.getVar() == "Jonas" &&
+		studentas5.getPav() == "Jonaitis" &&
+		studentas5.getPazymys() == pazymiai &&
+		studentas4.getVar() != "Jonas" &&
+		studentas4.getPav() != "Jonaitis" &&
+		studentas4.getPazymys() != pazymiai) {
+		cout << "[PASS] Move assignment operator test passed\n";
+	}
+	else {
+		cout << "[FAIL] Move assignment operator test failed\n";
+	}
+	cout << "\n";
 }

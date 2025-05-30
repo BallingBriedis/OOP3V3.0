@@ -29,7 +29,10 @@ void failoKurimas();
 void fileFilter(vector<Stud>& studentai, const int galutinioPasirinkimas, const int rusiavimoPasirinkimas);
 
 // test.cpp
-void testas();
+void testMenu();
+void nuskaitymoTestas();
+void studentuUnitTest();
+void programUnitTest();
 
 // ivestisPatikrinimas.cpp
 int ivestiesPatikrinimas(const int nuo, const int iki);
@@ -38,5 +41,6 @@ int ivestiesPatikrinimas(const int nuo, const int iki, const int sustabdymoSalyg
 // Stud.cpp
 // Stud klases Medianos ir Vidurkio funkciju deklaracijos pacioje klaseje
 void studentuGalutiniuSkaiciavimas(vector<Stud>& studentai);
+
 
 #endif
