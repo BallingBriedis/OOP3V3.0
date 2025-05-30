@@ -103,11 +103,15 @@ bool Vector::operator!=(const Vector& rhs) const
 Vector& Vector::operator=(const Vector& rhs){
 	if (rhs.size > size) {
 		delete[] array;
-		array = new int[rhs.size + 5];
+		capacity = rhs.size + 5;
+		array = new int[capacity];
 	}
 	for (int i = 0; i < rhs.Size(); ++i) {
 		array[i] = rhs.array[i];
 	}
+
+	size = rhs.size;
+	return *this;
 }
 
 int& Vector::operator[](int index){
