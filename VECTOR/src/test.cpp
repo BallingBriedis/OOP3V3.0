@@ -146,7 +146,7 @@ void programUnitTest() {
 
 void studentuUnitTest() {
 	vector<Stud> studentai;
-	vector<int> pazymiai = { 5, 6, 7, 8, 9, 10 };
+	vector<int> pazymiai = { 5, 6, 7 };
 
 
 	/// Konstruktoriaus testas
@@ -217,5 +217,20 @@ void studentuUnitTest() {
 	else {
 		cout << "[FAIL] Move assignment operator test failed\n";
 	}
-	cout << "\n";
+
+	cout << "\n\n";
+
+	// Isvesties operatorius testas
+	cout << "Output operator testas:\n";
+	cout << studentas5;
+
+	cout << "\n\n";
+
+	// Ivesties operatorius testas
+	cout << "Input operator testas:\n";
+	Stud studentas6;
+	cin >> studentas6;
+	cout << "Ivestas studentas: " << studentas6;
+
+	cout << "\n\n";
 }

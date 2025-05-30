@@ -65,27 +65,62 @@ public:
 		}
 		return *this;
 	}
-	/// <summary>
+
+	/// Ivesties operatorius
+	friend std::istream& operator>>(std::istream& is, Stud& s) {
+		std::string var, pav;
+		int egz;
+		std::vector<int> pazymiai;
+		int paz;
+
+		cout << "Iveskite varda: ";
+		is >> var;
+		cout << "Iveskite pavarde: ";
+		is >> pav;
+		cout << "Iveskite egzamino pazymi: ";
+		egz = ivestiesPatikrinimas(0, 10);
+		cout << "Iveskite pazymius 0 iki 10, norint baigti iveskite -1:\n";
+		while(true) {
+			paz = ivestiesPatikrinimas(0, 10, -1);
+			if (paz == -1) break;
+			pazymiai.push_back(paz);
+		}
+
+		s.setVar(var);
+		s.setPav(pav);
+		s.setEgz(egz);
+		for (int p : pazymiai) s.addPazymys(p);
+
+		s.calculateGalVidurkis();
+		s.calculateGalMediana();
+		pazymiai.clear();
+		pazymiai.shrink_to_fit();
+		return is;
+	}
+
+	/// Isvesties operatorius
+	friend std::ostream& operator<<(std::ostream& os, const Stud& s) {
+		os << s.getVar() << " " << s.getPav() << " Egzaminas: " << s.getEgz() << " Pazymiai: ";
+		for (int p : s.getPazymys()) {
+			os << p << " ";
+		}
+		os << " Vidurkis: " << s.getVidurkis() << " Mediana: " << s.getMediana();
+		return os;
+	}
+
 	/// Setteriai, kurie nustato studento varda, pavarde, uzduotis ir egzamino pazymi.
-	/// </summary>
-	/// <param name="v"></param>
 	void setVar(const std::string& var) { var_ = var; }
 	void setPav(const std::string& pav) { pav_ = pav; }
 	void setEgz(const int egz)          { egz_ = egz; }
 
-	/// <summary>
 	/// Papildomos funkcijos, kurios prideda ir pasalina uzduociu pazymius
-	/// </summary>
-	/// <param name="uzd"></param>
 	void addPazymys(const int pazymys)		{pazymys_.push_back(pazymys);}
 	void removePazymys()					{pazymys_.pop_back();}
 
 	void calculateGalVidurkis();
 	void calculateGalMediana();
-	/// <summary>
+
 	/// Getteriai, kurie grazina studento varda, pavarde, uzduotis, egzamino pazymi ir galutini pazymi.
-	/// </summary>
-	/// <returns></returns>
 	std::string getVar() const			{ return var_; }
 	std::string getPav() const          { return pav_; }
 	std::vector<int> getPazymys() const { return pazymys_; }
@@ -93,5 +128,51 @@ public:
 	float getVidurkis() const			{ return galVidurkis_; }
 	float getMediana() const			{ return galMediana_; }
 	
+	/// Ivesties patikrinimas
+	static int ivestiesPatikrinimas(const int nuo, const int iki) {
+		int input{};
+		while (true) {
+			try {
+				cin >> input;
+				if (input < nuo || input > iki) {
+					cout << "\n\n!!!!Iveskite skaiciu nuo " << nuo << " iki " << iki << ".!!!!\n\n\n";
+					continue;
+				}
+			}
+			catch (...) {
+				cin.clear();
+				cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				cout << "\n\n!!!!Ivestis neteisinga. Bandykite isnaujo.!!!!\n\n\n";
+				continue;
+			}
+			break;
+		}
+		return input;
+	}
+
+	static int ivestiesPatikrinimas(const int nuo, const int iki, const int sustabdymoSalyga) {
+		int input{};
+		while (true) {
+			try {
+				cin >> input;
+				if (input == sustabdymoSalyga) {
+					return sustabdymoSalyga;
+				}
+
+				if (input < nuo || input > iki) {
+					cout << "\n\n!!!!Iveskite skaiciu nuo " << nuo << " iki " << iki << ".!!!!\n\n\n";
+					continue;
+				}
+			}
+			catch (...) {
+				cin.clear();
+				cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				cout << "\n\n!!!!Ivestis neteisinga. Bandykite isnaujo.!!!!\n\n\n";
+				continue;
+			}
+			break;
+		}
+		return input;
+	}
 };
 #endif
