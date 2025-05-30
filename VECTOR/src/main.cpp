@@ -16,7 +16,7 @@ int main() {
 		cout << "3 - Generuojamas studentas ir pazymiai\n";
 		cout << "4 - Failo nuskaitymas\n";
 		cout << "5 - Failo kurimas\n";
-		cout << "6 - Testinis nuskaitymas laiko matavimui\n";
+		cout << "6 - Testine aplinka\n";
 		cout << baigimas << " - Baigti darba\n";
 		cout << "------------------------------------------------------------------------\n";
 		int menuPasirinkimas = ivestiesPatikrinimas(1, baigimas, baigimas);
@@ -58,7 +58,7 @@ int main() {
 			}
 			break;
 		case 5:
-			failoKurimas();
+			failoKurimas(0);
 			break;
 		case 6:
 			try {

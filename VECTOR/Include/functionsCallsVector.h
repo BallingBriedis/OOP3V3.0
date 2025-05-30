@@ -23,7 +23,7 @@ void randomStudentas(Stud& studentas, bool vyras);
 void randomAtsitiktinisPazymys(Stud& stu);
 
 // fileGenerator.cpp
-void failoKurimas();
+void failoKurimas(int studentuSk);
 
 // studentuSkirstymas.cpp
 void fileFilter(vector<Stud>& studentai, const int galutinioPasirinkimas, const int rusiavimoPasirinkimas);

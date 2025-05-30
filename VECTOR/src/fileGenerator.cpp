@@ -2,11 +2,13 @@
 #include "classV.h"
 #include "functionsCallsVector.h"
 
-void failoKurimas() {
-	int studentuSk;
+void failoKurimas(int studentuSk) {
 	string failoVardas = "studList";
+
+	if (studentuSk == 0) {
 	cout << "Kiek studentu norite sukurti? (1 - 10 000 000): \n";
 	studentuSk = ivestiesPatikrinimas(1, 10000000);
+	}
 
 	auto pradzia = hrClock::now();
 	cout << "\nPalaukite, kuriamas failas...\n\n";
