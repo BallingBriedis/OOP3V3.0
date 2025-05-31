@@ -10,66 +10,218 @@ private:
 	size_t capacity;
 	T* array = nullptr;
 public:
+	// Constructors
 	Vector() :
 		size(0),
 		capacity(5),
-		array(new int[capacity]) {}
+		array(new T[capacity]) {}
 
 	Vector(const Vector& rhs) :
 		size(rhs.size),
 		capacity(rhs.capacity),
-		array(new int[capacity])
+		array(new T[capacity])
 	{
-		for (int i = 0; i < rhs.Size(); ++i) {
+		for (size_t i = 0; i < size; ++i) {
 			array[i] = rhs.array[i];
 		}
 	}
 
-	Vector(int elements, int value) :
+	Vector(int elements, const T& value = T()) :
 		size(elements),
 		capacity(elements + 5),
-		array(new int[capacity])
+		array(new T[capacity])
 	{
-		for (int i = 0; i < size; ++i) {
+		for (size_t i = 0; i < size; ++i) {
 			array[i] = value;
 		}
 	}
 
-	Vector(const std::initializer_list<int>& list) :
+	Vector(const std::initializer_list<T>& list) :
 		size(0),
 		capacity(list.size() + 5),
-		array(new int[capacity])
+		array(new T[capacity])
 	{
-		for (int i : list) {
-			PushBack(i);
+		for (const T& value : list) {
+			PushBack(value);
 		}
 	}
 
+
+	//Destructor
 	~Vector() {
 		delete[] array;
+		array = nullptr;
 		size = 0;
 		capacity = 0;
-		array = nullptr;
 	}
 
-	void PushBack(int value) {
-		if (size < capacity) {
-			array[size] = value;
-			++size;
-		}
-		else {
-			capacity *= 2;
-			int* newarray = new int[capacity];
 
-			for (int i = 0; i < size; ++i) {
+	// Operator=
+	Vector& operator=(const Vector& rhs) {
+		if (this != &rhs) {
+			if (rhs.size > capacity) {
+				delete[] array;
+				capacity = rhs.size + 5;
+				array = new T[capacity];
+			}
+			for (size_t i = 0; i < rhs.size; ++i) {
+				array[i] = rhs.array[i];
+			}
+			size = rhs.size;
+		}
+		return *this;
+	}
+
+
+	// Operator<<
+	 friend std::ostream& operator<<(std::ostream& ostr, const Vector& rhs)
+	{
+		for (size_t i = 0; i < rhs.size; ++i) {
+			ostr << rhs.array[i] << " ";
+		}
+		/*ostr << " || ";
+
+		for (int i = rhs.size; i < rhs.capacity; ++i) {
+			ostr << rhs.array[i] << " ";
+		}
+
+		ostr << std::endl;*/
+
+		return ostr;
+	}
+
+
+	// Element access
+	const T& At(size_t index) const {
+		if ((index < 0) || (index >= size))
+		{
+			throw std::exception("At - Index out of range");
+		}
+		return array[index];
+	}
+	
+	T& operator[](size_t index) {
+		return array[index];
+	}
+
+	T& Front() {
+		return At(0);
+	}
+
+	T& Back() {
+		return At(size - 1);
+	}
+
+
+	// Iterators
+	T* begin() {
+		return array;
+	}
+
+	T* end() {
+		return array + size;
+	}
+
+	// Capacity
+	bool Empty() const {
+		return size == 0;;
+	}
+
+	size_t Size() const {
+		return size;
+	}
+
+	size_t MaxSize() const {
+		return static_cast<size_t>(-1) / sizeof(T);
+	}
+
+	void Reserve(size_t newCapacity) {
+		if (newCapacity <= capacity) return;
+
+		T* newArray = new T[newCapacity];
+
+		for (size_t i = 0; i < size; ++i) {
+			newArray[i] = array[i];
+		}
+
+		delete[] array;
+		array = newArray;
+		capacity = newCapacity;
+	}
+
+	size_t Capacity() const {
+		return capacity;
+	}
+
+	void ShrinkToFit() {
+		if (capacity == size) return;
+
+		T* newArray = new T[size];
+
+		for (size_t i = 0; i < size; ++i) {
+			newArray[i] = array[i];
+		}
+
+		delete[] array;
+		array = newArray;
+		capacity = size;
+	}
+
+
+	// Modifiers
+	void Clear() {
+		size = 0;
+	}
+
+	void Insert(size_t index, const T& value) {
+		if ((index < 0) || (index > size)) {
+			throw std::exception("Insert - Index out of range");
+		}
+
+		if (size >= capacity) {
+			capacity *= 2;
+			T* newarray = new T[capacity];
+			for (size_t i = 0; i < index; ++i) {
 				newarray[i] = array[i];
 			}
-
-			newarray[size] = value;
-			++size;
+			newarray[index] = value;
+			for (size_t i = index; i < size; ++i) {
+				newarray[i + 1] = array[i];
+			}
 			delete[] array;
 			array = newarray;
 		}
+		else {
+			for (size_t i = size; i > index; --i) {
+				array[i] = array[i - 1];
+			}
+			array[index] = value;
+		}
+		++size;
+	}
+
+	void Erase(size_t index) {
+		if ((index < 0) || (index >= size)) {
+			throw std::exception("Erase - Index out of range");
+		}
+
+		for (size_t i = index; i < size - 1; ++i) {
+			array[i] = array[i + 1];
+		}
+		--size;
+	}
+
+	void PushBack(const T& value) {
+		if (size >= capacity) {
+			capacity *= 2;
+			T* newarray = new T[capacity];
+			for (size_t i = 0; i < size; ++i) {
+				newarray[i] = array[i];
+			}
+			delete[] array;
+			array = newarray;
+		}
+		array[size++] = value;
 	}
 
 	void PopBack() {
@@ -79,27 +231,26 @@ public:
 		--size;
 	}
 
-	bool Empty() const {
-		return size == 0;;
+	void Swap(Vector& other) {
+		size_t tempSize = size;
+		size = other.size;
+		other.size = tempSize;
+
+		size_t tempCapacity = capacity;
+		capacity = other.capacity;
+		other.capacity = tempCapacity;
+
+		T* tempArray = array;
+		array = other.array;
+		other.array = tempArray;
 	}
 
-	int Size() const {
-		return size;
-	}
-
-	int Capacity() const {
-		return capacity;
-	}
-
+	// Non-member functions
 	bool operator==(const Vector& rhs) const {
-		if (Size() != rhs.Size()) {
-			return false;
-		}
+		if (Size() != rhs.Size()) return false;
 
-		for (int i = 0; i < Size(); ++i) {
-			if (array[i] != rhs.array[i]) {
-				return false;
-			}
+		for (size_t i = 0; i < Size(); ++i) {
+			if (array[i] != rhs.array[i]) return false;
 		}
 		return true;
 	}
@@ -109,95 +260,7 @@ public:
 		return !(*this == rhs);
 	}
 
-	friend std::ostream& operator<<(std::ostream& ostr, const Vector& rhs)
-	{
-		for (int i = 0; i < rhs.size; ++i) {
-			ostr << rhs.array[i] << " ";
-		}
-		ostr << " || ";
-
-		for (int i = rhs.size; i < rhs.capacity; ++i) {
-			ostr << rhs.array[i] << " ";
-		}
-
-		ostr << std::endl;
-
-		return ostr;
-	}
-
-	Vector& operator=(const Vector& rhs) {
-		if (rhs.size > size) {
-			delete[] array;
-			capacity = rhs.size + 5;
-			array = new int[capacity];
-		}
-		for (int i = 0; i < rhs.Size(); ++i) {
-			array[i] = rhs.array[i];
-		}
-
-		size = rhs.size;
-		return *this;
-	}
-
-	int& operator[](int index) {
-		return array[index];
-	}
-
-	int& At(int index) {
-		if ((index < 0) || (index >= size))
-		{
-			throw std::exception("At - Index out of range");
-		}
-		return array[index];
-	}
-
-	int& Front() {
-		return array[0];
-	}
-
-	int& Back() {
-		return array[size - 1];
-	}
-
-	void Insert(int index, int value) {
-		if ((index < 0) || (index > size)) {
-			throw std::exception("Insert - Index out of range");
-		}
-
-		if (size != capacity) {
-			for (int i = size - 1; i >= index; --i) {
-				array[i + 1] = array[i];
-			}
-			array[index] = value;
-			++size;
-		}
-		else {
-			capacity *= 2;
-			int* newarray = new int[capacity];
-			for (int i = 0; i < size; ++i) {
-				newarray[i] = array[i];
-			}
-			delete[] array;
-			array = newarray;
-			Insert(index, value);
-		}
-	}
-
-	void Erase(int index) {
-		if ((index < 0) || (index >= size)) {
-			throw std::exception("Erase - Index out of range");
-		}
-
-		for (int i = index; i < size - 1; ++i) {
-			array[i] = array[i + 1];
-		}
-		--size;
-	}
-
-	void Clear() {
-		size = 0;
-	}
-
+	
 };
 
 #endif
