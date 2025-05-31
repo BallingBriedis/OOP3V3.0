@@ -14,17 +14,23 @@
 | v2.0      | Sukurta HTML, LaTeX PDF dokumentacija naudojant Doxygen programėlę. Implementuoti Stud klasės Unit Testai naudojant "googletest" projektą.                                                                                                                 | Dėl korumpuotų failų ir nepastabumo šita versija buvo blogiausia patirtis. Bet galų gale viskas pavyko sekmingai.     |
 | v3.0      | Sukuriau savo custom Vector klasę, atkartota didelė dalis STL vector funkcijų. Unit testai nuosavai vector funkcijai. Testavimas. Installeris.                                                                                                             | Daug laiko užtruko, sudėtinga pradėti, bet atradus internetinius šaltinius pasidare lengviau.                         |
 
+
 # **Starting manual**
 
 Atsisiūsti v3.0 full release.
 
 Naudojant WinRAR arba 7-Zip, atskleisti (extract) failą, bus sukurtas aplankas su programos failais.
 
+## **Pirmas būdas (Lengvesnis)**
+Paleidi "V1.5 OOP.msi" failą, nekeisti atsisiuntimo direktorijos. Baigus siūstis į "C:\Program Files\Vilniaus Universitetas\V1.5 OOP" įsidėkite "studList10000.txt" ir "studList100000.txt".
+
+## **Antras būdas**
+
 "dependancies" aplanke įsidiegti "cmake-4.0.0-rc4-windows-x86_64.msi".
 
 Atidarai aplanką VECTOR, paleidi run.bat scriptą.
 
-Atsidarys "cmd" langas kuriame bus veikianti programa, jeigu programą uždarėte ir norite vėl ją atidaryti, tai nuo tos vietos kur yra run.bat paspauskite "build" aplanką, tada "Release" aplanką, kuriame rasite "OOP3V30.exe" paleidžiamąjį failą.
+Atsidarys "cmd" langas kuriame bus veikianti programa, pirma kartą pasileidus dar vyks unit testas. Jeigu programą uždarėte ir norite vėl ją atidaryti, tai nuo tos vietos kur yra run.bat paspauskite "build" aplanką, tada "Release" aplanką kuriame rasite "OOP3V30.exe" paleidžiamąjį failą.
 
 
 # **User manual**
