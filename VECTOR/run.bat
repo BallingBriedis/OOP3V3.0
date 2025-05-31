@@ -16,18 +16,18 @@ cd build\Release
 
 echo Running tests...
 cd ..
-if exist Release\OOP2V20_tests.exe (
-    Release\OOP2V20_tests.exe
-) else if exist Debug\OOP2V20_tests.exe (
-    Debug\OOP2V20_tests.exe
-) else if exist OOP2V20_tests.exe (
-    OOP2V20_tests.exe
+if exist Release\OOP3V30_tests.exe (
+    Release\OOP3V30_tests.exe
+) else if exist Debug\OOP3V30_tests.exe (
+    Debug\OOP3V30_tests.exe
+) else if exist OOP3V30_tests.exe (
+    OOP3V30_tests.exe
 ) else (
     echo Test executable not found!
 )
 
 cd Release
 echo Running main executable...
-OOP2V20.exe
+OOP3V30.exe
 
 pause

@@ -35,8 +35,10 @@ void fileFilter(Vector<Stud>& studentai, const int galutinioPasirinkimas, const 
 // test.cpp
 void testMenu();
 void nuskaitymoTestas();
-void studentuUnitTest();
-void programUnitTest();
+void studentuTest();
+void programTest();
+void vectorCompare();
+void atmintiesPerskirstymas();
 
 // ivestisPatikrinimas.cpp
 int ivestiesPatikrinimas(const int nuo, const int iki);

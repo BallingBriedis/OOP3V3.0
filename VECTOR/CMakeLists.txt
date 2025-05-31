@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 
-set(This OOP2V20)
+set(This OOP3V30)
 project(${This})
 
 set(CMAKE_CXX_STANDARD 17)

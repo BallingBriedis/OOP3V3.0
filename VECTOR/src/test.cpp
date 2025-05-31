@@ -3,29 +3,39 @@
 #include "functionsCallsVector.h"
 
 void testMenu() {
+	int baigimas = 6;
 	while (true) {
-	std::cout << "Pasirinkite norima testavimo buda: \n";
-	std::cout << "1 - Nuskaitymo testas\n";
-	std::cout << "2 - Programos unit testas\n";
-	std::cout << "3 - Studentu unit testas\n";
-	std::cout << "4 - Baigti testavima\n";
-	int testPasirinkimas = ivestiesPatikrinimas(1, 4, 4);
+		std::cout << "Pasirinkite norima testavimo buda: \n";
+		std::cout << "1 - Nuskaitymo testas\n";
+		std::cout << "2 - Programos unit testas\n";
+		std::cout << "3 - Studentu unit testas\n";
+		std::cout << "4 - Vector compare\n";
+		std::cout << "5 - Vector atminties perskirstymas\n";
+		std::cout << baigimas << " - Baigti testavima\n";
+		int testPasirinkimas = ivestiesPatikrinimas(1, baigimas, baigimas);
 
-	if (testPasirinkimas == 4) return;
+		if (testPasirinkimas == baigimas) return;
 
 		switch (testPasirinkimas) {
 		case 1:
 			nuskaitymoTestas();
 			break;
 		case 2:
-			programUnitTest();
+			programTest();
 			break;
 		case 3:
-			studentuUnitTest();
+			studentuTest();
+			break;
+		case 4:
+			vectorCompare();
+			break;
+		case 5:
+			atmintiesPerskirstymas();
 			break;
 		}
 	}
 }
+
 void nuskaitymoTestas() {
 	int n = 0;
 	sec dursum(0.0);
@@ -84,7 +94,7 @@ void nuskaitymoTestas() {
 	std::cout << "Avg: " << fixed << setprecision(8) << dursum.count() / n << " sec\n\n";
 }
 
-void programUnitTest() {
+void programTest() {
 	Vector<Stud> studentai;
 	Stud studentas;
 
@@ -148,7 +158,7 @@ void programUnitTest() {
 	std::cout << "[INFO] Sorting completed\n\n";
 }
 
-void studentuUnitTest() {
+void studentuTest() {
 	Vector<Stud> studentai;
 	Vector<int> pazymiai = { 5, 6, 7 };
 
@@ -240,4 +250,39 @@ void studentuUnitTest() {
 	std::cout << "Ivestas studentas: \n" << studentas6;
 
 	std::cout << "\n\n";
+}
+
+void vectorCompare() {
+	auto start = hrClock::now();
+	auto dursum = sec(0.0);
+	Vector<int> vec1;
+	int n = 10000;
+	for (int i = 0; i < 5; i++) {
+		auto start1 = hrClock::now();
+		for (int j = 0; j < n; j++) {
+			vec1.PushBack(j);
+		}
+		vec1.Clear();
+		n *= 10;
+		auto end1 = hrClock::now();
+		sec duration1 = end1 - start1;
+		dursum += duration1;
+		cout <<"Size " << n << " Vector PushBack duration: " << fixed << setprecision(8) << duration1.count() << " sec\n";
+	}
+
+	auto end = hrClock::now();
+	sec duration = end - start;
+	std::cout << "Vector compare duration: " << fixed << setprecision(8) << duration.count() << " sec\n";
+	std::cout << "Vector compare avg: " << fixed << setprecision(8) << dursum.count()/5 << " sec\n";
+}
+
+void atmintiesPerskirstymas() {
+	Vector<int> sk;
+	int n = 100000000, j = 0;
+	for (int i = 0; i < n; i++) {
+		sk.PushBack(i);
+		if (sk.Capacity() == sk.Size()) { j++; }
+	}
+	cout << "Atminties perskirstyta " << j << " kartu.\n";
+	cout << "Atmintis perskirstyta ir studentai prideti.\n";
 }
