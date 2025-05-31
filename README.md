@@ -12,11 +12,11 @@
 | v1.2      | Implementuota Rules of Five, perkrautas Ivesties operatorius ir perkrautas Išvesties operatorius. Testai turi menu, padaryti testai programos testavimo palengvinimui.                                                                                     | Versija padaryta greitai, bet naudingai                                                                               |
 | v1.5      | Sukurtos abstrakti bazinė Zmogus ir išvestinė Stud klasės.                                                                                                                                                                                                 | Greičiausia padaryta versija, supratimas apie bazines ir išvestines klases tikrai padidėjo. Testų keisti nereikėjo :) |
 | v2.0      | Sukurta HTML, LaTeX PDF dokumentacija naudojant Doxygen programėlę. Implementuoti Stud klasės Unit Testai naudojant "googletest" projektą.                                                                                                                 | Dėl korumpuotų failų ir nepastabumo šita versija buvo blogiausia patirtis. Bet galų gale viskas pavyko sekmingai.     |
-| v3.0      | Sukuriau savo custom Vector klasę, atkartota didelė dalis STL vector funkcijų.                                                                                                                                                                             | Daug laiko užtruko, sudėtinga pradėti, bet atradus internetinius šaltinius pasidare lengviau.                         |
+| v3.0      | Sukuriau savo custom Vector klasę, atkartota didelė dalis STL vector funkcijų. Unit testai nuosavai vector funkcijai. Testavimas. Installeris.                                                                                                             | Daug laiko užtruko, sudėtinga pradėti, bet atradus internetinius šaltinius pasidare lengviau.                         |
 
 # **Starting manual**
 
-Atsisiūsti v2.0 full release.
+Atsisiūsti v3.0 full release.
 
 Naudojant WinRAR arba 7-Zip, atskleisti (extract) failą, bus sukurtas aplankas su programos failais.
 
@@ -24,7 +24,7 @@ Naudojant WinRAR arba 7-Zip, atskleisti (extract) failą, bus sukurtas aplankas 
 
 Atidarai aplanką VECTOR, paleidi run.bat scriptą.
 
-Atsidarys "cmd" langas kuriame bus veikianti programa, jeigu programą uždarėte ir norite vėl ją atidaryti, tai nuo tos vietos kur yra run.bat paspauskite "build" aplanką, tada "Release" aplanką, kuriame rasite "OOP2V20.exe" paleidžiamąjį failą.
+Atsidarys "cmd" langas kuriame bus veikianti programa, jeigu programą uždarėte ir norite vėl ją atidaryti, tai nuo tos vietos kur yra run.bat paspauskite "build" aplanką, tada "Release" aplanką, kuriame rasite "OOP3V30.exe" paleidžiamąjį failą.
 
 
 # **User manual**
@@ -35,7 +35,7 @@ Atsidarys "cmd" langas kuriame bus veikianti programa, jeigu programą uždarėt
 
 3 - Studentas(-ai) sukuriami automatiškai, tik reikia įvesti studentų kiekį.
 
-4 - Failas, esantis aplanke kartu su "OOPV20.exe" ( ...\VECTOR\build\Release ) yra nuskaitomas į tam tikrą konteinerį.
+4 - Failas, esantis aplanke kartu su "OOP3V30.exe" ( ...\VECTOR\build\Release ) yra nuskaitomas į tam tikrą konteinerį.
 
 5 - Sukuriamas failas pavadinimu "studList{įvestasStudentuKiekis}.txt"
 
