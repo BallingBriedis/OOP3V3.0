@@ -73,21 +73,17 @@ public:
 	}
 
 
-	// Operator<<
-	 friend std::ostream& operator<<(std::ostream& ostr, const Vector& rhs)
-	{
-		for (size_t i = 0; i < rhs.size; ++i) {
-			ostr << rhs.array[i] << " ";
+	// Assign
+	void Assign(size_t count, const T& value) {
+		if (count > capacity) {
+			delete[] array;
+			capacity = count + 5;
+			array = new T[capacity];
 		}
-		/*ostr << " || ";
-
-		for (int i = rhs.size; i < rhs.capacity; ++i) {
-			ostr << rhs.array[i] << " ";
+		for (size_t i = 0; i < count; ++i) {
+			array[i] = value;
 		}
-
-		ostr << std::endl;*/
-
-		return ostr;
+		size = count;
 	}
 
 
@@ -121,6 +117,7 @@ public:
 	T* end() {
 		return array + size;
 	}
+
 
 	// Capacity
 	bool Empty() const {
@@ -245,6 +242,7 @@ public:
 		other.array = tempArray;
 	}
 
+
 	// Non-member functions
 	bool operator==(const Vector& rhs) const {
 		if (Size() != rhs.Size()) return false;
@@ -260,7 +258,25 @@ public:
 		return !(*this == rhs);
 	}
 
-	
+
+	// Operator<<
+	friend std::ostream& operator<<(std::ostream& ostr, const Vector& rhs)
+	{
+		for (size_t i = 0; i < rhs.size; ++i) {
+			ostr << rhs.array[i] << " ";
+		}
+		/*ostr << " || ";
+
+		for (int i = rhs.size; i < rhs.capacity; ++i) {
+			ostr << rhs.array[i] << " ";
+		}
+
+		ostr << std::endl;*/
+
+		return ostr;
+	}
+
+
 };
 
 #endif
