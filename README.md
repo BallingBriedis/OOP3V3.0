@@ -54,6 +54,7 @@ Rezultatų failą rasite ( ...\VECTOR\build\Release ).
 
 # **5 Funkcijų aprašymai**
 | Reserve    | void Reserve(size_t newCapacity); Ši funkcija naudojama užrezervuoti pateiktą "vietų" (newCapacity) atmintyje. Funkcija gauna reikšmę newCapacity, kurią lyginu su esančia capacity reikšme, jeigu newCapacity mažesnis, tai funkcijas grįžta. Kitaip ji sukuria new newArray, kurią užpildo array, array išsitrina ir atgauna savo reikšmes. |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | PushBack   | void PushBack(const T& value); Ši funkcija priima value, kuri įstato į Vectoriaus galą. Pirma - patikrina ar size >= capacity, jei taip, tai padidina array ir toliau eina, kur array paskutine vietele idedama value.                                                                                                                        |
 | operator== | bool operator==(const Vector& rhs) const; Ši funkcija priima rhs reikšmę, kurią lygina su pradines reikšmės size, tada array elementais ir jeigu abu neismete false, duoda true.                                                                                                                                                              |
 | Vector     | Vector(const std::initializer_list<T>& list); Ši funkcija leidžia inicijuoti reikšmes pvz.: Vector<int> SK {1,2,3,4,5}. Pirma paima size(0), tada capacity yra pagal paduota list ilgi + 5, sukuriama array dinaminej atminty ir PushBack funkcija prideda visas reikšmes prie array.                                                         |
@@ -62,6 +63,7 @@ Rezultatų failą rasite ( ...\VECTOR\build\Release ).
 
 # **Vector compare test**
 | Fill size     | My vector      | STL vector     |
+| ------------- | -------------- | -------------- |
 | 10000         | 0.00004790 sec | 0.00005380 sec |
 | 100000        | 0.00037480 sec | 0.00041790 sec |
 | 1000000       | 0.00198310 sec | 0.00290890 sec |
@@ -70,6 +72,17 @@ Rezultatų failą rasite ( ...\VECTOR\build\Release ).
 | AVG           | 0.06051138 sec | 0.07803556 sec |
 | TOTAL         | 0.30636120 sec | 0.39470780 sec |
 | Perskirstymai | 25 kartai      | 46 kartai      |
+
+
+Kiekvienas failas nuskaitytas po 3 kartus.
+| File size     | My vector (AVG) | My vector (TOT)   | STL vector (FUN) | STL vector (AVG) | STL vector (TOT)  | STL vector (FUN) |
+| ------------- | --------------- | ----------------- | ---------------- | ---------------- | ----------------- | ---------------- |
+| 100000        | 0.42521847 sec  | 1.27565540 sec    | 0.37621842 sec   | 0.41326590 sec   | 1.23979770 sec    | 0.35512627 sec   |
+| 1000000       | 4.52487077 sec  | 13.57461230 sec   | 4.02434072 sec   | 4.48646507 sec   | 13.45939520 sec   | 3.62357066 sec   |
+| 10000000      | 49.94290833 sec | 149.82872500 sec  | 37.95690113 sec  | 41.98002827 sec  | 125.94008480 sec  | 36.44295553 sec  |
+
+Nuskaityme vienintele Vector funkcija naudojama yra push_back, arba PushBack, tikslaus laiko negausiu, bet operacija kuri suskirsto duomenis ivyksta yr apateikta.
+
 
 # **Unit testing**
 Unit testai vykdomi pirmą kartą paleidus run.bat failą ir priešais pagrindinę programą.
