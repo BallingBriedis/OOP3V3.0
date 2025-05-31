@@ -22,11 +22,11 @@ Atsisiūsti v3.0 full release.
 Naudojant WinRAR arba 7-Zip, atskleisti (extract) failą, bus sukurtas aplankas su programos failais.
 
 ## **Pirmas būdas (Lengvesnis)**
-Paleidi "V1.5 OOP.msi" failą, nekeisti atsisiuntimo direktorijos.
+Paleisti "V1.5 OOP.msi" failą, nekeisti atsisiuntimo direktorijos.
 
-Siuntimuisi baigus ir direktorijos nepakeitus į "C:\Program Files\VU\Dominykas-Pronskus" įsidėkite "studList10000.txt" ir "studList100000.txt".
+Siuntimuisi baigus ir direktorijos nepakeitus į "C:\Program Files\VU\Dominykas-Pronskus" įsidėti "studList10000.txt" ir "studList100000.txt".
 
-Paleidžiamąją programą rasite "Start menu" ir Darbalaukyje.
+Paleidžiamąją programą bus randama "Start menu" ir Darbalaukyje.
 
 
 ## **Antras būdas**
