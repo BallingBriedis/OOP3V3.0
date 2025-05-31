@@ -21,7 +21,7 @@
 namespace fs = std::filesystem;
 
 using std::cout;
-using std::cin;
+using std::cout;
 using std::endl;
 using std::string;
 using std::deque;

@@ -3,15 +3,15 @@
 #include "functionsCallsVector.h"
 
 void failoKurimas(int studentuSk) {
-	string failoVardas = "studList";
+	std::string failoVardas = "studList";
 
 	if (studentuSk == 0) {
-	cout << "Kiek studentu norite sukurti? (1 - 10 000 000): \n";
+	std::cout << "Kiek studentu norite sukurti? (1 - 10 000 000): \n";
 	studentuSk = ivestiesPatikrinimas(1, 10000000);
 	}
 
 	auto pradzia = hrClock::now();
-	cout << "\nPalaukite, kuriamas failas...\n\n";
+	std::cout << "\nPalaukite, kuriamas failas...\n\n";
 	failoVardas += std::to_string(studentuSk) + ".txt";
 
 	std::stringstream outputas;
@@ -40,5 +40,5 @@ void failoKurimas(int studentuSk) {
 	rez.close();
 	auto pabaiga = hrClock::now();
 	auto trukme = std::chrono::duration_cast<sec>(pabaiga - pradzia);
-	cout << "Failas sukurtas per " << fixed << setprecision(8) << trukme.count() << " sec.\n\n";
+	std::cout << "Failas sukurtas per " << fixed << setprecision(8) << trukme.count() << " sec.\n\n";
 }

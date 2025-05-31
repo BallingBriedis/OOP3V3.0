@@ -2,6 +2,7 @@
 #define VECTOR_H
 
 #include <iostream>
+#include <iterator>
 
 template<typename T>
 class Vector {
@@ -86,10 +87,9 @@ public:
 		size = count;
 	}
 
-	template <typename InputIt>
+	template <typename InputIt, typename = typename std::enable_if<!std::is_integral<InputIt>::value>::type>
 	void Assign(InputIt first, InputIt last) {
 		size_t count = std::distance(first, last);
-
 		if (count > capacity) {
 			delete[] array;
 			capacity = count + 5;

@@ -30,7 +30,7 @@ void rusiavimas(Vector<Stud>& studentai, int rusiavimoPasirinkimas) {
 		sort(studentai.begin(), studentai.end(), compareByFinalGradeMed);
 		break;
 	default:
-		cout << "Neteisingas pasirinkimas. Nerusiavome.\n";
+		std::cout << "Neteisingas pasirinkimas. Nerusiavome.\n";
 		break;
 	}
 }

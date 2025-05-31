@@ -49,9 +49,9 @@ public:
 	friend std::istream& operator>>(std::istream& is, Zmogus& s) {
 		std::string var, pav;
 
-		cout << "Iveskite varda: ";
+		std::cout << "Iveskite varda: ";
 		is >> var;
-		cout << "Iveskite pavarde: ";
+		std::cout << "Iveskite pavarde: ";
 		is >> pav;
 
 		s.setVar(var);

@@ -4,11 +4,11 @@
 
 void testMenu() {
 	while (true) {
-	cout << "Pasirinkite norima testavimo buda: \n";
-	cout << "1 - Nuskaitymo testas\n";
-	cout << "2 - Programos unit testas\n";
-	cout << "3 - Studentu unit testas\n";
-	cout << "4 - Baigti testavima\n";
+	std::cout << "Pasirinkite norima testavimo buda: \n";
+	std::cout << "1 - Nuskaitymo testas\n";
+	std::cout << "2 - Programos unit testas\n";
+	std::cout << "3 - Studentu unit testas\n";
+	std::cout << "4 - Baigti testavima\n";
 	int testPasirinkimas = ivestiesPatikrinimas(1, 4, 4);
 
 	if (testPasirinkimas == 4) return;
@@ -29,19 +29,19 @@ void testMenu() {
 void nuskaitymoTestas() {
 	int n = 0;
 	sec dursum(0.0);
-	string ivestas_vardas;
+	std::string ivestas_vardas;
 	Vector<Stud> studentai;
 
-	cout << "Kiek kartu norite nuskaitineti faila?\n";
-	cin >> n;
-	cout << "Koki faila norite nuskaityti? (Iveskite be kabuciu)\n";
+	std::cout << "Kiek kartu norite nuskaitineti faila?\n";
+	std::cin >> n;
+	std::cout << "Koki faila norite nuskaityti? (Iveskite be kabuciu)\n";
 
 	for (const auto& entry : fs::directory_iterator(".")) {
 		if (entry.path().extension() == ".txt") {
-			cout << entry.path().filename() << endl;
+			std::cout << entry.path().filename() << endl;
 		}
 	}
-	cin >> ivestas_vardas;
+	std::cin >> ivestas_vardas;
 
 	for (int i = 0; i < n; i++) {
 		auto start = hrClock::now();
@@ -55,12 +55,12 @@ void nuskaitymoTestas() {
 		buffer << duom.rdbuf();
 		duom.close();
 
-		string line;
+		std::string line;
 		getline(buffer, line);
 		while (getline(buffer, line)) {
 			Stud tempStu;
 			std::istringstream iss(line);
-			string vardas{}, pavarde{};
+			std::string vardas{}, pavarde{};
 			iss >> vardas >> pavarde;
 			tempStu.setVar(vardas);
 			tempStu.setPav(pavarde);
@@ -75,13 +75,13 @@ void nuskaitymoTestas() {
 		}
 
 		sec duration = hrClock::now() - start;
-		cout << "Failas nuskaitytas per " << fixed << setprecision(8) << duration.count() << " sec\n";
+		std::cout << "Failas nuskaitytas per " << fixed << setprecision(8) << duration.count() << " sec\n";
 		dursum += duration;
 	}
 	studentai.Clear();
 	studentai.ShrinkToFit();
-	cout << "Viso laiko: " << fixed << setprecision(8) << dursum.count() << " sec\n";
-	cout << "Avg: " << fixed << setprecision(8) << dursum.count() / n << " sec\n\n";
+	std::cout << "Viso laiko: " << fixed << setprecision(8) << dursum.count() << " sec\n";
+	std::cout << "Avg: " << fixed << setprecision(8) << dursum.count() / n << " sec\n\n";
 }
 
 void programUnitTest() {
@@ -93,59 +93,59 @@ void programUnitTest() {
 	studentai.PushBack(studentas);
 
 	if (studentai.Size() == 1)
-		cout << "[PASS] Added one student\n\n";
+		std::cout << "[PASS] Added one student\n\n";
 	else
-		cout << "[FAIL] studentai size: " << studentai.Size() << ", expected 1\n\n";
+		std::cout << "[FAIL] studentai size: " << studentai.Size() << ", expected 1\n\n";
 
 	if (studentai[0].getVar() == studentas.getVar())
-		cout << "[PASS] Name matches\n\n";
+		std::cout << "[PASS] Name matches\n\n";
 	else
-		cout << "[FAIL] Name mismatch\n\n";
+		std::cout << "[FAIL] Name mismatch\n\n";
 
 	if (studentai[0].getPav() == studentas.getPav())
-		cout << "[PASS] Surname matches\n\n";
+		std::cout << "[PASS] Surname matches\n\n";
 	else
-		cout << "[FAIL] Surname mismatch\n\n";
+		std::cout << "[FAIL] Surname mismatch\n\n";
 
 	// Test 2: Generate random grades
 	readName_makeGrade(studentas);
 	if (!studentas.getPazymys().Empty())
-		cout << "[PASS] Random grades generated\n\n";
+		std::cout << "[PASS] Random grades generated\n\n";
 	else
-		cout << "[FAIL] Random grades missing\n\n";
+		std::cout << "[FAIL] Random grades missing\n\n";
 
 	// Test 3: Create a random student
 	makeStud(studentas);
 	if (!studentas.getPazymys().Empty())
-		cout << "[PASS] Random student created\n\n";
+		std::cout << "[PASS] Random student created\n\n";
 	else
-		cout << "[FAIL] Random student creation failed\n\n";
+		std::cout << "[FAIL] Random student creation failed\n\n";
 
 	// Test 4: File reading
 	try {
 		fileRead(studentai, "test.txt");
 		if (!studentai.Empty())
-			cout << "[PASS] File reading successful\n\n";
+			std::cout << "[PASS] File reading successful\n\n";
 		else
-			cout << "[FAIL] File read but no students loaded\n\n";
+			std::cout << "[FAIL] File read but no students loaded\n\n";
 	}
 	catch (const std::exception& e) {
-		cout << "[FAIL] File reading exception: " << e.what() << '\n\n';
+		std::cout << "[FAIL] File reading exception: " << e.what() << '\n\n';
 	}
 
 	// Test 5: File creation
 	failoKurimas(100);
 	if (fs::exists("studList100.txt"))
-		cout << "[PASS] File creation successful\n\n";
+		std::cout << "[PASS] File creation successful\n\n";
 	else
-		cout << "[FAIL] File not created\n\n";
+		std::cout << "[FAIL] File not created\n\n";
 
 	// Test 6: Output filtering
 	isvestiesMenu(studentai);
 
 	// Test 7: Sorting
 	rusiavimas(studentai, 1);
-	cout << "[INFO] Sorting completed\n\n";
+	std::cout << "[INFO] Sorting completed\n\n";
 }
 
 void studentuUnitTest() {
@@ -160,10 +160,10 @@ void studentuUnitTest() {
 	if (studentas1.getVar() == "Jonas" &&
 		studentas1.getPav() == "Jonaitis" &&
 		studentas1.getPazymys() == pazymiai) {
-		cout << "[PASS] Constructor test passed\n\n";
+		std::cout << "[PASS] Constructor test passed\n\n";
 	}
 	else {
-		cout << "[FAIL] Constructor test failed\n\n";
+		std::cout << "[FAIL] Constructor test failed\n\n";
 	}
 
 	/// Tuscio konstruktoriaus testas
@@ -171,10 +171,10 @@ void studentuUnitTest() {
 	if (studentas7.getVar().empty() &&
 		studentas7.getPav().empty() &&
 		studentas7.getPazymys().Empty()) {
-		cout << "[PASS] Empty Constructor test passed\n\n";
+		std::cout << "[PASS] Empty Constructor test passed\n\n";
 	}
 	else {
-		cout << "[FAIL] Empty Constructor test failed\n\n";
+		std::cout << "[FAIL] Empty Constructor test failed\n\n";
 	}
 
 	// Copy constructor testas
@@ -184,10 +184,10 @@ void studentuUnitTest() {
 		studentas1.getPazymys() == studentas2.getPazymys() &&
 		studentas1.getVidurkis() == studentas2.getVidurkis() &&
 		studentas1.getMediana() == studentas2.getMediana()) {
-		cout << "[PASS] Copy constructor test passed\n\n";
+		std::cout << "[PASS] Copy constructor test passed\n\n";
 	}
 	else {
-		cout << "[FAIL] Copy constructor test failed\n\n";
+		std::cout << "[FAIL] Copy constructor test failed\n\n";
 	}
 
 	// Copy assignment operator testas
@@ -198,10 +198,10 @@ void studentuUnitTest() {
 		studentas3.getPazymys() == studentas1.getPazymys() &&
 		studentas3.getVidurkis() == studentas1.getVidurkis() &&
 		studentas3.getMediana() == studentas1.getMediana()) {
-		cout << "[PASS] Copy assignment operator test passed\n\n";
+		std::cout << "[PASS] Copy assignment operator test passed\n\n";
 	}
 	else {
-		cout << "[FAIL] Copy assignment operator test failed\n\n";
+		std::cout << "[FAIL] Copy assignment operator test failed\n\n";
 	}
 
 	// Move constructor testas
@@ -209,10 +209,10 @@ void studentuUnitTest() {
 	if (studentas4.getVar() != studentas1.getVar() &&
 		studentas4.getPav() != studentas1.getPav() &&
 		studentas4.getPazymys() != studentas1.getPazymys()) {
-		cout << "[PASS] Move constructor test passed\n\n";
+		std::cout << "[PASS] Move constructor test passed\n\n";
 	}
 	else {
-		cout << "[FAIL] Move constructor test failed\n\n";
+		std::cout << "[FAIL] Move constructor test failed\n\n";
 	}
 
 	// Move assignment operator testas
@@ -221,23 +221,23 @@ void studentuUnitTest() {
 	if (studentas5.getVar() != studentas4.getVar() &&
 		studentas5.getPav() != studentas4.getPav() &&
 		studentas5.getPazymys() != studentas4.getPazymys()) {
-		cout << "[PASS] Move assignment operator test passed\n\n";
+		std::cout << "[PASS] Move assignment operator test passed\n\n";
 	}
 	else {
-		cout << "[FAIL] Move assignment operator test failed\n\n";
+		std::cout << "[FAIL] Move assignment operator test failed\n\n";
 	}
 
-	cout << "\n";
+	std::cout << "\n";
 
 	// Ivesties operatorius testas
-	cout << "Input operator testas:\n";
+	std::cout << "Input operator testas:\n";
 	Stud studentas6;
-	cin >> studentas6;
+	std::cin >> studentas6;
 
-	cout << "\n";
+	std::cout << "\n";
 
 	// Isveties operatorius testas
-	cout << "Ivestas studentas: \n" << studentas6;
+	std::cout << "Ivestas studentas: \n" << studentas6;
 
-	cout << "\n\n";
+	std::cout << "\n\n";
 }

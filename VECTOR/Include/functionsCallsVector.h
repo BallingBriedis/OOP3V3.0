@@ -1,6 +1,10 @@
 #ifndef FUNCTIONSCALLSV_H
 #define FUNCTIONSCALLSV_H
 
+#include "studentas.h"
+#include "zmogus.h"
+#include "meinelib.h"
+
 // Laikomi funkciju prototipai.
 
 // Prototipai
@@ -9,7 +13,7 @@
 void readRanka(Stud& stu);
 void readName_makeGrade(Stud& stu);
 void makeStud(Stud& stu);
-void fileRead(Vector<Stud>& studentai, string vardas);
+void fileRead(Vector<Stud>& studentai, std::string vardas);
 
 // isvestis.cpp
 void isvestiesMenu(Vector<Stud>& studentai);
