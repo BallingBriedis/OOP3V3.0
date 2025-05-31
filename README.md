@@ -81,7 +81,8 @@ Kiekvienas failas nuskaitytas po 3 kartus.
 | 1000000       | 4.52487077 sec  | 13.57461230 sec   | 4.02434072 sec   | 4.48646507 sec   | 13.45939520 sec   | 3.62357066 sec   |
 | 10000000      | 49.94290833 sec | 149.82872500 sec  | 37.95690113 sec  | 41.98002827 sec  | 125.94008480 sec  | 36.44295553 sec  |
 
-Nuskaityme vienintele Vector funkcija naudojama yra push_back, arba PushBack, tikslaus laiko negausiu, bet operacija kuri suskirsto duomenis ivyksta yr apateikta.
+Nuskaityme vienintele Vector funkcija naudojama yra push_back, arba PushBack, tikslaus laiko negausiu, bet operacija kuri suskirsto duomenis ivyksta yra pateikta.
+Po šios analizės paaiškėjo, kad aš nesu geresnis Vector klasės kurėjas negu žmonės susiėmę STL.
 
 
 # **Unit testing**
