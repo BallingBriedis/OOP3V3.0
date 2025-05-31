@@ -46,7 +46,10 @@ public:
 		egz_(other.egz_),
 		galVidurkis_(other.galVidurkis_),
 		galMediana_(other.galMediana_) {
+		other.pazymys_.Clear();
 		other.egz_ = 0;
+		other.galVidurkis_ = 0.0f;
+		other.galMediana_ = 0.0f;
 	}
 
 	///  Move assignment operator
@@ -57,7 +60,11 @@ public:
 			egz_ = other.egz_;
 			galVidurkis_ = other.galVidurkis_;
 			galMediana_ = other.galMediana_;
+
+			other.pazymys_.Clear();
 			other.egz_ = 0;
+			other.galVidurkis_ = 0.0f;
+			other.galMediana_ = 0.0f;
 		}
 		return *this;
 	}

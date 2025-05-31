@@ -165,6 +165,7 @@ void studentuUnitTest() {
 	else {
 		cout << "[FAIL] Constructor test failed\n\n";
 	}
+
 	/// Tuscio konstruktoriaus testas
 	Stud studentas7;
 	if (studentas7.getVar().empty() &&
@@ -205,12 +206,9 @@ void studentuUnitTest() {
 
 	// Move constructor testas
 	Stud studentas4(std::move(studentas1));
-	if (studentas4.getVar() == "Jonas" &&
-		studentas4.getPav() == "Jonaitis" &&
-		studentas4.getPazymys() == pazymiai &&
-		studentas1.getVar() != "Jonas" &&
-		studentas1.getPav() != "Jonaitis" &&
-		studentas1.getPazymys() != pazymiai) {
+	if (studentas4.getVar() != studentas1.getVar() &&
+		studentas4.getPav() != studentas1.getPav() &&
+		studentas4.getPazymys() != studentas1.getPazymys()) {
 		cout << "[PASS] Move constructor test passed\n\n";
 	}
 	else {
@@ -220,12 +218,9 @@ void studentuUnitTest() {
 	// Move assignment operator testas
 	Stud studentas5;
 	studentas5 = std::move(studentas4);
-	if (studentas5.getVar() == "Jonas" &&
-		studentas5.getPav() == "Jonaitis" &&
-		studentas5.getPazymys() == pazymiai &&
-		studentas4.getVar() != "Jonas" &&
-		studentas4.getPav() != "Jonaitis" &&
-		studentas4.getPazymys() != pazymiai) {
+	if (studentas5.getVar() != studentas4.getVar() &&
+		studentas5.getPav() != studentas4.getPav() &&
+		studentas5.getPazymys() != studentas4.getPazymys()) {
 		cout << "[PASS] Move assignment operator test passed\n\n";
 	}
 	else {

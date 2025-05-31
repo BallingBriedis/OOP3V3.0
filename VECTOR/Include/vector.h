@@ -87,13 +87,35 @@ public:
 	}
 
 	template <typename InputIt>
-	void Assign(InputIt first, InputIt last);
+	void Assign(InputIt first, InputIt last) {
+		size_t count = std::distance(first, last);
+
+		if (count > capacity) {
+			delete[] array;
+			capacity = count + 5;
+			array = new T[capacity];
+		}
+
+		size_t i = 0;
+		for (InputIt it = first; it != last; ++it, ++i) {
+			array[i] = *it;
+		}
+
+		size = count;
+	}
 
 
 	// Element access
-	const T& At(size_t index) const {
+	T& At(size_t index) {
 		if ((index < 0) || (index >= size))
 		{
+			throw std::exception("At - Index out of range");
+		}
+		return array[index];
+	}
+
+	const T& At(size_t index) const {
+		if ((index < 0) || (index >= size)) {
 			throw std::exception("At - Index out of range");
 		}
 		return array[index];
@@ -107,7 +129,15 @@ public:
 		return At(0);
 	}
 
+	const T& Front() const {
+		return At(0);
+	}
+
 	T& Back() {
+		return At(size - 1);
+	}
+
+	const T& Back() const {
 		return At(size - 1);
 	}
 

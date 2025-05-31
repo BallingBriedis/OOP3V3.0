@@ -29,13 +29,18 @@ public:
 	/// Move constructor
 	Zmogus(Zmogus&& other) noexcept :
 		var_(std::move(other.var_)),
-		pav_(std::move(other.pav_)){}
+		pav_(std::move(other.pav_)){
+		other.var_.clear();
+		other.pav_.clear();
+	}
 
 	///  Move assignment operator
 	Zmogus& operator=(Zmogus&& other) noexcept {
 		if (this != &other) {
 			var_ = std::move(other.var_);
 			pav_ = std::move(other.pav_);
+			other.var_.clear();
+			other.pav_.clear();
 		}
 		return *this;
 	}
