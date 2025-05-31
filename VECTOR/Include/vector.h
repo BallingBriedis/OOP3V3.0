@@ -142,7 +142,7 @@ public:
 	}
 
 
-	// Iterators
+	// Iterators+
 	T* begin() {
 		return array;
 	}
@@ -151,8 +151,15 @@ public:
 		return array + size;
 	}
 
+	T* rbegin() {
+		return (size == 0) ? nullptr : array + size - 1;
+	}
 
-	// Capacity
+	T* rend() {
+		return (size == 0) ? nullptr : array - 1;
+	}
+
+	// Capacity+
 	bool Empty() const {
 		return size == 0;;
 	}
