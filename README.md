@@ -24,9 +24,10 @@ Naudojant WinRAR arba 7-Zip, atskleisti (extract) failą, bus sukurtas aplankas 
 ## **Pirmas būdas (Lengvesnis)**
 Paleidi "V1.5 OOP.msi" failą, nekeisti atsisiuntimo direktorijos.
 
-Siuntimuisi baigus, į "C:\Program Files\Vilniaus Universitetas\V1.5 OOP" įsidėkite "studList10000.txt" ir "studList100000.txt".
+Siuntimuisi baigus ir direktorijos nepakeitus į "C:\Program Files\VU\Dominykas-Pronskus" įsidėkite "studList10000.txt" ir "studList100000.txt".
 
 Paleidžiamąją programą rasite "Start menu" ir Darbalaukyje.
+
 
 ## **Antras būdas**
 
