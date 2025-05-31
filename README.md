@@ -22,7 +22,11 @@ Atsisiūsti v3.0 full release.
 Naudojant WinRAR arba 7-Zip, atskleisti (extract) failą, bus sukurtas aplankas su programos failais.
 
 ## **Pirmas būdas (Lengvesnis)**
-Paleidi "V1.5 OOP.msi" failą, nekeisti atsisiuntimo direktorijos. Baigus siūstis į "C:\Program Files\Vilniaus Universitetas\V1.5 OOP" įsidėkite "studList10000.txt" ir "studList100000.txt".
+Paleidi "V1.5 OOP.msi" failą, nekeisti atsisiuntimo direktorijos.
+
+Siuntimuisi baigus, į "C:\Program Files\Vilniaus Universitetas\V1.5 OOP" įsidėkite "studList10000.txt" ir "studList100000.txt".
+
+Paleidžiamąją programą rasite "Start menu" ir Darbalaukyje.
 
 ## **Antras būdas**
 
