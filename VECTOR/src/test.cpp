@@ -30,7 +30,7 @@ void nuskaitymoTestas() {
 	int n = 0;
 	sec dursum(0.0);
 	string ivestas_vardas;
-	vector<Stud> studentai;
+	Vector<Stud> studentai;
 
 	cout << "Kiek kartu norite nuskaitineti faila?\n";
 	cin >> n;
@@ -69,33 +69,33 @@ void nuskaitymoTestas() {
 			while (iss >> pazymys) {
 				tempStu.addPazymys(pazymys);
 			}
-			tempStu.setEgz(tempStu.getPazymys().back());
+			tempStu.setEgz(tempStu.getPazymys().Back());
 			tempStu.removePazymys();
-			studentai.push_back(tempStu);
+			studentai.PushBack(tempStu);
 		}
 
 		sec duration = hrClock::now() - start;
 		cout << "Failas nuskaitytas per " << fixed << setprecision(8) << duration.count() << " sec\n";
 		dursum += duration;
 	}
-	studentai.clear();
-	studentai.shrink_to_fit();
+	studentai.Clear();
+	studentai.ShrinkToFit();
 	cout << "Viso laiko: " << fixed << setprecision(8) << dursum.count() << " sec\n";
 	cout << "Avg: " << fixed << setprecision(8) << dursum.count() / n << " sec\n\n";
 }
 
 void programUnitTest() {
-	vector<Stud> studentai;
+	Vector<Stud> studentai;
 	Stud studentas;
 
 	// Test 1: Manual input
 	readRanka(studentas);
-	studentai.push_back(studentas);
+	studentai.PushBack(studentas);
 
-	if (studentai.size() == 1)
+	if (studentai.Size() == 1)
 		cout << "[PASS] Added one student\n\n";
 	else
-		cout << "[FAIL] studentai size: " << studentai.size() << ", expected 1\n\n";
+		cout << "[FAIL] studentai size: " << studentai.Size() << ", expected 1\n\n";
 
 	if (studentai[0].getVar() == studentas.getVar())
 		cout << "[PASS] Name matches\n\n";
@@ -109,14 +109,14 @@ void programUnitTest() {
 
 	// Test 2: Generate random grades
 	readName_makeGrade(studentas);
-	if (!studentas.getPazymys().empty())
+	if (!studentas.getPazymys().Empty())
 		cout << "[PASS] Random grades generated\n\n";
 	else
 		cout << "[FAIL] Random grades missing\n\n";
 
 	// Test 3: Create a random student
 	makeStud(studentas);
-	if (!studentas.getPazymys().empty())
+	if (!studentas.getPazymys().Empty())
 		cout << "[PASS] Random student created\n\n";
 	else
 		cout << "[FAIL] Random student creation failed\n\n";
@@ -124,7 +124,7 @@ void programUnitTest() {
 	// Test 4: File reading
 	try {
 		fileRead(studentai, "test.txt");
-		if (!studentai.empty())
+		if (!studentai.Empty())
 			cout << "[PASS] File reading successful\n\n";
 		else
 			cout << "[FAIL] File read but no students loaded\n\n";
@@ -149,8 +149,8 @@ void programUnitTest() {
 }
 
 void studentuUnitTest() {
-	vector<Stud> studentai;
-	vector<int> pazymiai = { 5, 6, 7 };
+	Vector<Stud> studentai;
+	Vector<int> pazymiai = { 5, 6, 7 };
 
 
 	/// Konstruktoriaus testas
@@ -169,7 +169,7 @@ void studentuUnitTest() {
 	Stud studentas7;
 	if (studentas7.getVar().empty() &&
 		studentas7.getPav().empty() &&
-		studentas7.getPazymys().empty()) {
+		studentas7.getPazymys().Empty()) {
 		cout << "[PASS] Empty Constructor test passed\n\n";
 	}
 	else {

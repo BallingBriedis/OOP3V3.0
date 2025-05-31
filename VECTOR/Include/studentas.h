@@ -1,18 +1,20 @@
 ﻿#ifndef STUDENTAS_H
 #define STUDENTAS_H
+
 #include "zmogus.h"
+#include "Vector.h"
 // Struktura, kurioje laikomi studento duomenys.
 
 class Stud : public Zmogus {
 private:
-	std::vector<int>pazymys_{};
+	Vector<int>pazymys_{};
 	int egz_{};
 	float galVidurkis_{};
 	float galMediana_{};
 
 public:
 	/// Konstruktorius ir desktrutorius
-	explicit Stud(std::string var = "", std::string pav = "", std::vector<int> pazymys = {}, int egz = {}) :
+	explicit Stud(std::string var = "", std::string pav = "", Vector<int> pazymys = {}, int egz = {}) :
 		Zmogus(std::move(var), std::move(pav)), pazymys_(std::move(pazymys)), egz_(egz) {}
 
 	~Stud() = default;
@@ -65,7 +67,7 @@ public:
 		is >> static_cast<Zmogus&>(s);
 
 		int egz;
-		std::vector<int> pazymiai;
+		Vector<int> pazymiai;
 		int paz;
 
 		cout << "Iveskite egzamino pazymi: ";
@@ -75,7 +77,7 @@ public:
 		while(true) {
 			paz = ivestiesPatikrinimas(0, 10, -1);
 			if (paz == -1) break;
-			pazymiai.push_back(paz);
+			pazymiai.PushBack(paz);
 		}
 
 		s.setEgz(egz);
@@ -103,8 +105,8 @@ public:
 	void setEgz(const int egz)					 { egz_ = egz; }
 
 	/// Papildomos funkcijos, kurios prideda ir pasalina uzduociu pazymius
-	void addPazymys(const int pazymys)		{pazymys_.push_back(pazymys);}
-	void removePazymys()					{pazymys_.pop_back();}
+	void addPazymys(const int pazymys)		{pazymys_.PushBack(pazymys);}
+	void removePazymys()					{pazymys_.PopBack();}
 
 	void calculateGalVidurkis();
 	void calculateGalMediana();
@@ -112,7 +114,7 @@ public:
 	/// Getteriai, kurie grazina studento varda, pavarde, uzduotis, egzamino pazymi ir galutini pazymi.
 	std::string getVar() const override { return var_; }
 	std::string getPav() const override { return pav_; }
-	std::vector<int> getPazymys() const { return pazymys_; }
+	Vector<int> getPazymys() const { return pazymys_; }
 	int getEgz() const					{ return egz_; }
 	float getVidurkis() const			{ return galVidurkis_; }
 	float getMediana() const			{ return galMediana_; }
@@ -164,4 +166,5 @@ public:
 		return input;
 	}
 };
+
 #endif

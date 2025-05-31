@@ -6,7 +6,7 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
-#include <vector>
+#include "vector.h"
 #include <deque>
 #include <list>
 #include <fstream>
@@ -24,7 +24,6 @@ using std::cout;
 using std::cin;
 using std::endl;
 using std::string;
-using std::vector;
 using std::deque;
 using std::list;
 using std::fixed;

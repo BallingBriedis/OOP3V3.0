@@ -45,7 +45,7 @@ void makeStud(Stud& stu) {																									// Sukuria atsitiktini studen
 	randomAtsitiktinisPazymys(stu);
 }
 
-void fileRead(vector<Stud>& studentai, string ivestas_vardas) {
+void fileRead(Vector<Stud>& studentai, string ivestas_vardas) {
 	std::stringstream buffer;
 	std::ifstream duom(ivestas_vardas);
 	if (!duom) {
@@ -69,8 +69,8 @@ void fileRead(vector<Stud>& studentai, string ivestas_vardas) {
 		while (iss >> pazymys) {
 			tempStu.addPazymys(pazymys);
 		}
-		tempStu.setEgz(tempStu.getPazymys().back());
+		tempStu.setEgz(tempStu.getPazymys().Back());
 		tempStu.removePazymys();
-		studentai.push_back(tempStu);
+		studentai.PushBack(tempStu);
 	}
 }

@@ -2,7 +2,7 @@
 #include "studentas.h"
 #include "functionsCallsVector.h"
 
-void rusiavimas(vector<Stud>& studentai, int rusiavimoPasirinkimas) {
+void rusiavimas(Vector<Stud>& studentai, int rusiavimoPasirinkimas) {
 	auto compareByName = [](const Stud& a, const Stud& b) {
 		return a.getVar() < b.getVar();
 		};

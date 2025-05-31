@@ -2,7 +2,7 @@
 #include "studentas.h"
 #include "functionsCallsVector.h"
 
-void isvestiesMenu(vector<Stud>& studentai) {
+void isvestiesMenu(Vector<Stud>& studentai) {
 	cout << "Pasirinkite norima studentu isvedimo buda: \n";
 	cout << "1 - Isvesti i terminala\n";
 	cout << "2 - Isvesti i faila\n";
@@ -40,7 +40,7 @@ void isvestiesMenu(vector<Stud>& studentai) {
 	}
 }
 
-void isvestis(vector<Stud>& studentai, std::ostream& isvestiesMetodas, const int galutinioPasirinkimas) {
+void isvestis(Vector<Stud>& studentai, std::ostream& isvestiesMetodas, const int galutinioPasirinkimas) {
 	int longest_name{};
 	int longest_surname{};
 	for (auto& studentas : studentai) {

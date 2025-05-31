@@ -1,5 +1,6 @@
 #ifndef ZMOGUS_H
 #define ZMOGUS_H
+
 class Zmogus {
 protected:
 	std::string var_{}, pav_{};
@@ -67,4 +68,5 @@ public:
 	virtual std::string getVar() const { return var_; }
 	virtual std::string getPav() const { return pav_; }
 };
+
 #endif

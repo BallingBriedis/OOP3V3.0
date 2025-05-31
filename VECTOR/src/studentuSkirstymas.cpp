@@ -2,9 +2,9 @@
 #include "studentas.h"
 #include "functionsCallsVector.h"
 
-void fileFilter(vector<Stud>& studentai, const int galutinioPasirinkimas, const int rusiavimoPasirinkimas) {
-	vector<Stud> mokslinciai{};
-	vector<Stud> vargsai{};
+void fileFilter(Vector<Stud>& studentai, const int galutinioPasirinkimas, const int rusiavimoPasirinkimas) {
+	Vector<Stud> mokslinciai{};
+	Vector<Stud> vargsai{};
 	studentuGalutiniuSkaiciavimas(studentai);
 
 	if (rusiavimoPasirinkimas == 1 || rusiavimoPasirinkimas == 2) {
@@ -18,15 +18,15 @@ void fileFilter(vector<Stud>& studentai, const int galutinioPasirinkimas, const 
 		auto partition_iteratorius = std::partition_point(studentai.begin(), studentai.end(),
 			[](const Stud& studentas) {return studentas.getVidurkis() < 5.0f;}
 		);
-		vargsai.assign(studentai.begin(), partition_iteratorius);
-		mokslinciai.assign(partition_iteratorius, studentai.end());
+		vargsai.Assign(studentai.begin(), partition_iteratorius);
+		mokslinciai.Assign(partition_iteratorius, studentai.end());
 	}
 	else if (rusiavimoPasirinkimas == 4) {
 		auto partition_iteratorius = std::partition_point(studentai.begin(), studentai.end(),
 			[](const Stud& studentas) {return studentas.getMediana() < 5.0f;}
 		);
-		vargsai.assign(studentai.begin(), partition_iteratorius);
-		mokslinciai.assign(partition_iteratorius, studentai.end());
+		vargsai.Assign(studentai.begin(), partition_iteratorius);
+		mokslinciai.Assign(partition_iteratorius, studentai.end());
 	}
 
 	try {

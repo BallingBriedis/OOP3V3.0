@@ -86,6 +86,9 @@ public:
 		size = count;
 	}
 
+	template <typename InputIt>
+	void Assign(InputIt first, InputIt last);
+
 
 	// Element access
 	const T& At(size_t index) const {

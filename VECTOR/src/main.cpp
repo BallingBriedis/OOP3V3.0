@@ -5,7 +5,7 @@
 int main() {
 	cin.exceptions(std::ios::failbit);
 	srand(time(NULL));
-	vector<Stud> studentai;
+	Vector<Stud> studentai;
 	int n = 0,baigimas = 7;
 	while (true) {
 		Stud studentas;
@@ -26,18 +26,18 @@ int main() {
 		switch (menuPasirinkimas) {
 		case 1:
 			readRanka(studentas);
-			studentai.push_back(studentas);
+			studentai.PushBack(studentas);
 			break;
 		case 2:
 			readName_makeGrade(studentas);
-			studentai.push_back(studentas);
+			studentai.PushBack(studentas);
 			break;
 		case 3:
 			cout << "Kiek studentu sugeneruoti?\n";
 			cin >> n;
 			for (int i = 0; i < n; i++) {
 				makeStud(studentas);
-				studentai.push_back(studentas);
+				studentai.PushBack(studentas);
 			}
 			break;
 		case 4:
