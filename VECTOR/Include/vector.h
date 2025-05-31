@@ -237,6 +237,42 @@ public:
 		++size;
 	}
 
+	template<typename InputIt>
+	void InsertRange(size_t index, InputIt first, InputIt last) {
+		if (index < 0 || index > size) {
+			throw std::out_of_range("InsertRange - Index out of range");
+		}
+		size_t count = std::distance(first, last);
+		if (size + count > capacity) {
+			Reserve(size + count + 5);
+		}
+		for (size_t i = size; i > index; --i) {
+			array[i + count - 1] = array[i - 1];
+		}
+		for (size_t i = 0; i < count; ++i, ++first) {
+			array[index + i] = *first;
+		}
+
+		size += count;
+	}
+
+	template<typename... Args>
+	void Emplace(size_t index, Args&&... args) {
+		if (index < 0 || index > size) {
+			throw std::out_of_range("Emplace - Index out of range");
+		}
+
+		if (size >= capacity) {
+			Reserve(capacity * 2);
+		}
+		for (size_t i = size; i > index; --i) {
+			array[i] = array[i - 1];
+		}
+
+		array[index] = T(std::forward<Args>(args)...);
+		++size;
+	}
+
 	void Erase(size_t index) {
 		if ((index < 0) || (index >= size)) {
 			throw std::exception("Erase - Index out of range");
@@ -261,11 +297,42 @@ public:
 		array[size++] = value;
 	}
 
+	template<typename... Args>
+	void EmplaceBack(Args&&... args) {
+		if (size >= capacity) {
+			Reserve(capacity * 2);
+		}
+
+		array[size++] = T(std::forward<Args>(args)...);
+	}
+
+	template<typename InputIt>
+	void AppendRange(InputIt first, InputIt last) {
+		for (auto it = first; it != last; ++it) {
+			PushBack(*it);
+		}
+	}
+
 	void PopBack() {
 		if (size == 0) {
 			throw std::exception("Pop back on empty vector!");
 		}
 		--size;
+	}
+
+	void Resize(size_t newSize, const T& value = T()) {
+		if (newSize < size) {
+			size = newSize;
+		}
+		else {
+			if (newSize > capacity) {
+				Reserve(newSize + 5);
+			}
+			for (size_t i = size; i < newSize; ++i) {
+				array[i] = value;
+			}
+			size = newSize;
+		}
 	}
 
 	void Swap(Vector& other) {
