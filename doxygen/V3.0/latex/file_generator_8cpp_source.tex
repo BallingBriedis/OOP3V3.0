@@ -1,0 +1,50 @@
+\doxysection{file\+Generator.\+cpp}
+\hypertarget{file_generator_8cpp_source}{}\label{file_generator_8cpp_source}\index{VECTOR/src/fileGenerator.cpp@{VECTOR/src/fileGenerator.cpp}}
+\mbox{\hyperlink{file_generator_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{meinelib_8h}{meinelib.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{studentas_8h}{studentas.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{functions_calls_vector_8h}{functionsCallsVector.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00005}\mbox{\hyperlink{functions_calls_vector_8h_a08d36400ad2deec37d7c1c84a45fa411}{00005}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{file_generator_8cpp_a08d36400ad2deec37d7c1c84a45fa411}{failoKurimas}}(\textcolor{keywordtype}{int}\ studentuSk)\ \{}
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00006}00006\ \ \ \ \ std::string\ failoVardas\ =\ \textcolor{stringliteral}{"{}studList"{}};}
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00008}00008\ \ \ \ \ \textcolor{keywordflow}{if}\ (studentuSk\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00009}00009\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Kiek\ studentu\ norite\ sukurti?\ (1\ -\/\ 10\ 000\ 000):\ \(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00010}00010\ \ \ \ \ studentuSk\ =\ \mbox{\hyperlink{functions_calls_vector_8h_a54a8f1e3c7e2596e7d9909aed8942adf}{ivestiesPatikrinimas}}(1,\ 10000000);}
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00011}00011\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00013}00013\ \ \ \ \ \textcolor{keyword}{auto}\ pradzia\ =\ hrClock::now();}
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00014}00014\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nPalaukite,\ kuriamas\ failas...\(\backslash\)n\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00015}00015\ \ \ \ \ failoVardas\ +=\ std::to\_string(studentuSk)\ +\ \textcolor{stringliteral}{"{}.txt"{}};}
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00017}00017\ \ \ \ \ std::stringstream\ outputas;}
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00018}00018\ \ \ \ \ \textcolor{keywordtype}{int}\ pazymiuSk\ =\ 7;}
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00020}00020\ \ \ \ \ outputas\ <<\ std::left\ <<\ std::setw(20)\ <<\ \textcolor{stringliteral}{"{}Vardas"{}}\ <<\ std::setw(20)\ <<\ \textcolor{stringliteral}{"{}Pavarde"{}}\ <<\ std::setw(20);}
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00022}00022\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ pazymiuSk;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00023}00023\ \ \ \ \ \ \ \ \ outputas\ <<\ std::left\ <<\ std::setw(6)\ <<\ \textcolor{stringliteral}{"{}ND"{}}\ +\ std::to\_string(i\ +\ 1);}
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00025}00025\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00026}00026\ \ \ \ \ outputas\ <<\ std::left\ <<\ std::setw(6)\ <<\ \textcolor{stringliteral}{"{}Egz."{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00028}00028\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ studentuSk;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ outputas\ <<\ std::left\ <<\ std::setw(20)\ <<\ \textcolor{stringliteral}{"{}Vardas"{}}\ +\ std::to\_string(i\ +\ 1)\ <<\ std::setw(20)\ <<\ \textcolor{stringliteral}{"{}Pavarde"{}}\ +\ std::to\_string(i\ +\ 1);}
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ pazymiuSk;\ j++)\ \{}
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ outputas\ <<\ std::setw(6)\ <<\ rand()\ \%\ 10\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ outputas\ <<\ std::setw(6)\ <<\ rand()\ \%\ 10\ +\ 1\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00037}00037\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00038}00038\ \ \ \ \ std::ofstream\ rez(failoVardas);}
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00039}00039\ \ \ \ \ rez\ <<\ outputas.str();}
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00040}00040\ \ \ \ \ rez.close();}
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00041}00041\ \ \ \ \ \textcolor{keyword}{auto}\ pabaiga\ =\ hrClock::now();}
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00042}00042\ \ \ \ \ \textcolor{keyword}{auto}\ trukme\ =\ std::chrono::duration\_cast<sec>(pabaiga\ -\/\ pradzia);}
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00043}00043\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Failas\ sukurtas\ per\ "{}}\ <<\ fixed\ <<\ setprecision(8)\ <<\ trukme.count()\ <<\ \textcolor{stringliteral}{"{}\ sec.\(\backslash\)n\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{file_generator_8cpp_source_l00044}00044\ \}}
+
+\end{DoxyCode}

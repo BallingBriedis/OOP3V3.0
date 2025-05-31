@@ -1,0 +1,72 @@
+\doxysection{studentas\+\_\+tests.\+cpp}
+\hypertarget{studentas__tests_8cpp_source}{}\label{studentas__tests_8cpp_source}\index{VECTOR/test/studentas\_tests.cpp@{VECTOR/test/studentas\_tests.cpp}}
+\mbox{\hyperlink{studentas__tests_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}../googletest-\/main/googletest/include/gtest/gtest.h"{}}}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{studentas_8h}{../Include/studentas.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{zmogus_8h}{../Include/zmogus.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{functions_calls_vector_8h}{../Include/functionsCallsVector.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{meinelib_8h}{../Include/meinelib.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00007}\mbox{\hyperlink{studentas__tests_8cpp_a694743b57d6d2028ae5762b6fa735d19}{00007}}\ \mbox{\hyperlink{studentas__tests_8cpp_a694743b57d6d2028ae5762b6fa735d19}{TEST}}(StudentTest,\ ConstructorTest)\ \{}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00008}00008\ \ \ \ \ \mbox{\hyperlink{class_stud}{Stud}}\ student(\textcolor{stringliteral}{"{}TestVardas"{}},\ \textcolor{stringliteral}{"{}TestPavarde"{}},\ \{\ 7,\ 8,\ 9\ \},\ 10);}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00009}00009\ \ \ \ \ EXPECT\_EQ(student.getVar(),\ \textcolor{stringliteral}{"{}TestVardas"{}});}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00010}00010\ \ \ \ \ EXPECT\_EQ(student.getPav(),\ \textcolor{stringliteral}{"{}TestPavarde"{}});}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00011}00011\ \ \ \ \ EXPECT\_EQ(student.getEgz(),\ 10);}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00012}00012\ \}}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00014}\mbox{\hyperlink{studentas__tests_8cpp_a37fd7884b21725049af786f444262dfd}{00014}}\ \mbox{\hyperlink{studentas__tests_8cpp_a694743b57d6d2028ae5762b6fa735d19}{TEST}}(StudentTest,\ EmptyConstructorTest)\ \{}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00015}00015\ \ \ \ \ \mbox{\hyperlink{class_stud}{Stud}}\ student;}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00016}00016\ \ \ \ \ EXPECT\_EQ(student.\mbox{\hyperlink{class_stud_a126f3a064f7a437ed790d5e113916c9f}{getVar}}(),\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00017}00017\ \ \ \ \ EXPECT\_EQ(student.\mbox{\hyperlink{class_stud_a9640a8714a3cf3697a052fba13422672}{getPav}}(),\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00018}00018\ \ \ \ \ EXPECT\_TRUE(student.\mbox{\hyperlink{class_stud_aa2fe476e86df66487d4ac7ff645ba138}{getPazymys}}().\mbox{\hyperlink{class_vector_aa86dd68a83d05eb1494cb699353d9f73}{Empty}}());}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00019}00019\ \ \ \ \ EXPECT\_EQ(student.\mbox{\hyperlink{class_stud_a25998973a74b359a72a95d49beae0c08}{getEgz}}(),\ 0);}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00020}00020\ \}}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00022}\mbox{\hyperlink{studentas__tests_8cpp_a700961f867c8d9506bbb3557a6cad00e}{00022}}\ \mbox{\hyperlink{studentas__tests_8cpp_a694743b57d6d2028ae5762b6fa735d19}{TEST}}(StudentTest,\ CopyConstructorTest)\ \{}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00023}00023\ \ \ \ \ \mbox{\hyperlink{class_stud}{Stud}}\ original(\textcolor{stringliteral}{"{}OriginalVardas"{}},\ \textcolor{stringliteral}{"{}OriginalPavarde"{}},\ \{\ 7,\ 8,\ 9\ \},\ 10);}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00024}00024\ \ \ \ \ original.\mbox{\hyperlink{class_stud_a5f530b5d70445a48c587fd4ec020359b}{calculateGalMediana}}();}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00025}00025\ \ \ \ \ original.calculateGalVidurkis();}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00026}00026\ \ \ \ \ \mbox{\hyperlink{class_stud}{Stud}}\ copy(original);}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00027}00027\ \ \ \ \ EXPECT\_EQ(copy.\mbox{\hyperlink{class_stud_a126f3a064f7a437ed790d5e113916c9f}{getVar}}(),\ original.getVar());}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00028}00028\ \ \ \ \ EXPECT\_EQ(copy.\mbox{\hyperlink{class_stud_a9640a8714a3cf3697a052fba13422672}{getPav}}(),\ original.getPav());}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00029}00029\ \ \ \ \ EXPECT\_EQ(copy.\mbox{\hyperlink{class_stud_aa2fe476e86df66487d4ac7ff645ba138}{getPazymys}}(),\ original.getPazymys());}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00030}00030\ \ \ \ \ EXPECT\_EQ(copy.\mbox{\hyperlink{class_stud_a25998973a74b359a72a95d49beae0c08}{getEgz}}(),\ original.getEgz());}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00031}00031\ \ \ \ \ EXPECT\_FLOAT\_EQ(copy.\mbox{\hyperlink{class_stud_a0d995bffe46c984eeb15c19514f55779}{getVidurkis}}(),\ original.getVidurkis());}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00032}00032\ \ \ \ \ EXPECT\_FLOAT\_EQ(copy.\mbox{\hyperlink{class_stud_a1c8b648f405c514991b68ac1f4fbe087}{getMediana}}(),\ original.getMediana());}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00033}00033\ \}}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00035}\mbox{\hyperlink{studentas__tests_8cpp_af3c27fb409812b0d72b21a11265c6c6c}{00035}}\ \mbox{\hyperlink{studentas__tests_8cpp_a694743b57d6d2028ae5762b6fa735d19}{TEST}}(StudentTest,\ CopyAssignmentOperatorTest)\ \{}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00036}00036\ \ \ \ \ \mbox{\hyperlink{class_stud}{Stud}}\ original(\textcolor{stringliteral}{"{}OriginalVardas"{}},\ \textcolor{stringliteral}{"{}OriginalPavarde"{}},\ \{\ 7,\ 8,\ 9\ \},\ 10);}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00037}00037\ \ \ \ \ original.\mbox{\hyperlink{class_stud_a5f530b5d70445a48c587fd4ec020359b}{calculateGalMediana}}();}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00038}00038\ \ \ \ \ original.calculateGalVidurkis();}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00039}00039\ \ \ \ \ \mbox{\hyperlink{class_stud}{Stud}}\ copy;}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00040}00040\ \ \ \ \ copy\ =\ original;}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00041}00041\ \ \ \ \ EXPECT\_EQ(copy.\mbox{\hyperlink{class_stud_a126f3a064f7a437ed790d5e113916c9f}{getVar}}(),\ original.getVar());}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00042}00042\ \ \ \ \ EXPECT\_EQ(copy.\mbox{\hyperlink{class_stud_a9640a8714a3cf3697a052fba13422672}{getPav}}(),\ original.getPav());}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00043}00043\ \ \ \ \ EXPECT\_EQ(copy.\mbox{\hyperlink{class_stud_aa2fe476e86df66487d4ac7ff645ba138}{getPazymys}}(),\ original.getPazymys());}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00044}00044\ \ \ \ \ EXPECT\_EQ(copy.\mbox{\hyperlink{class_stud_a25998973a74b359a72a95d49beae0c08}{getEgz}}(),\ original.getEgz());}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00045}00045\ \ \ \ \ EXPECT\_FLOAT\_EQ(copy.\mbox{\hyperlink{class_stud_a0d995bffe46c984eeb15c19514f55779}{getVidurkis}}(),\ original.getVidurkis());}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00046}00046\ \ \ \ \ EXPECT\_FLOAT\_EQ(copy.\mbox{\hyperlink{class_stud_a1c8b648f405c514991b68ac1f4fbe087}{getMediana}}(),\ original.getMediana());}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00047}00047\ \}}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00049}\mbox{\hyperlink{studentas__tests_8cpp_ae98167ddf1aeeb1d553c43eb36b68029}{00049}}\ \mbox{\hyperlink{studentas__tests_8cpp_a694743b57d6d2028ae5762b6fa735d19}{TEST}}(StudentTest,\ MoveConstructorTest)\ \{}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00050}00050\ \ \ \ \ \mbox{\hyperlink{class_stud}{Stud}}\ original(\textcolor{stringliteral}{"{}OriginalVardas"{}},\ \textcolor{stringliteral}{"{}OriginalPavarde"{}},\ \{\ 7,\ 8,\ 9\ \},\ 10);}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00051}00051\ \ \ \ \ \mbox{\hyperlink{class_stud}{Stud}}\ moved(std::move(original));}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00052}00052\ \ \ \ \ EXPECT\_EQ(moved.getVar(),\ \textcolor{stringliteral}{"{}OriginalVardas"{}});}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00053}00053\ \ \ \ \ EXPECT\_EQ(moved.getPav(),\ \textcolor{stringliteral}{"{}OriginalPavarde"{}});}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00054}00054\ \ \ \ \ EXPECT\_EQ(moved.getPazymys(),\ \mbox{\hyperlink{class_vector}{Vector<int>}}(\{\ 7,\ 8,\ 9\ \}));}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00055}00055\ \ \ \ \ EXPECT\_EQ(moved.getEgz(),\ 10);}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00056}00056\ \}}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00058}\mbox{\hyperlink{studentas__tests_8cpp_a9f80437a226043c76612287d1fde9994}{00058}}\ \mbox{\hyperlink{studentas__tests_8cpp_a694743b57d6d2028ae5762b6fa735d19}{TEST}}(StudentTest,\ MoveAssignmentOperatorTest)\ \{}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00059}00059\ \ \ \ \ \mbox{\hyperlink{class_stud}{Stud}}\ original(\textcolor{stringliteral}{"{}OriginalVardas"{}},\ \textcolor{stringliteral}{"{}OriginalPavarde"{}},\ \{\ 7,\ 8,\ 9\ \},\ 10);}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00060}00060\ \ \ \ \ \mbox{\hyperlink{class_stud}{Stud}}\ moved;}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00061}00061\ \ \ \ \ moved\ =\ std::move(original);}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00062}00062\ \ \ \ \ EXPECT\_EQ(moved.getVar(),\ \textcolor{stringliteral}{"{}OriginalVardas"{}});}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00063}00063\ \ \ \ \ EXPECT\_EQ(moved.getPav(),\ \textcolor{stringliteral}{"{}OriginalPavarde"{}});}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00064}00064\ \ \ \ \ EXPECT\_EQ(moved.getPazymys(),\ \mbox{\hyperlink{class_vector}{Vector<int>}}(\{\ 7,\ 8,\ 9\ \}));}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00065}00065\ \ \ \ \ EXPECT\_EQ(moved.getEgz(),\ 10);}
+\DoxyCodeLine{\Hypertarget{studentas__tests_8cpp_source_l00066}00066\ \}}
+
+\end{DoxyCode}

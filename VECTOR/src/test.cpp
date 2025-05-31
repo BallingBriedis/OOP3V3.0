@@ -67,6 +67,7 @@ void nuskaitymoTestas() {
 
 		std::string line;
 		getline(buffer, line);
+			auto startVector = hrClock::now();
 		while (getline(buffer, line)) {
 			Stud tempStu;
 			std::istringstream iss(line);
@@ -83,6 +84,9 @@ void nuskaitymoTestas() {
 			tempStu.removePazymys();
 			studentai.PushBack(tempStu);
 		}
+			auto endVector = hrClock::now();
+			sec durationVector = endVector - startVector;
+			std::cout << "Studentas nuskaitytas per " << fixed << setprecision(8) << durationVector.count() << " sec\n";
 
 		sec duration = hrClock::now() - start;
 		std::cout << "Failas nuskaitytas per " << fixed << setprecision(8) << duration.count() << " sec\n";

@@ -1,0 +1,48 @@
+\doxysection{Stud.\+cpp}
+\hypertarget{_stud_8cpp_source}{}\label{_stud_8cpp_source}\index{VECTOR/src/Stud.cpp@{VECTOR/src/Stud.cpp}}
+\mbox{\hyperlink{_stud_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{meinelib_8h}{meinelib.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{studentas_8h}{studentas.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{functions_calls_vector_8h}{functionsCallsVector.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00005}\mbox{\hyperlink{class_stud_ae907d90fc7794bd0483a49e694203224}{00005}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stud_ae907d90fc7794bd0483a49e694203224}{Stud::calculateGalVidurkis}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00006}00006\ \ \ \ \ \textcolor{keywordtype}{int}\ pazymiuSuma\{\};}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00007}00007\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\mbox{\hyperlink{class_stud_aa2fe476e86df66487d4ac7ff645ba138}{getPazymys}}().Empty())\ \{}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00008}00008\ \ \ \ \ \ \ \ \ this-\/>galVidurkis\_\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00009}00009\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00010}00010\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00011}00011\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ pazymys\ :\ this-\/>\mbox{\hyperlink{class_stud_aa2fe476e86df66487d4ac7ff645ba138}{getPazymys}}())\ \{}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00012}00012\ \ \ \ \ \ \ \ \ pazymiuSuma\ +=\ pazymys;}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00013}00013\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00014}00014\ \ \ \ \ this-\/>galVidurkis\_\ =\ pazymiuSuma\ /\ this-\/>\mbox{\hyperlink{class_stud_aa2fe476e86df66487d4ac7ff645ba138}{getPazymys}}().\mbox{\hyperlink{class_vector_a40e7f1dfdfa1a9c74e3769b5802125a9}{Size}}()\ *\ 0.4f\ +\ this-\/>egz\_\ *\ 0.6f;}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00015}00015\ \}}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00017}\mbox{\hyperlink{class_stud_a5f530b5d70445a48c587fd4ec020359b}{00017}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stud_a5f530b5d70445a48c587fd4ec020359b}{Stud::calculateGalMediana}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00018}00018\ \ \ \ \ \textcolor{keywordtype}{float}\ galMediana\{\};}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00019}00019\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\mbox{\hyperlink{class_stud_aa2fe476e86df66487d4ac7ff645ba138}{getPazymys}}().Empty())\ \{}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00020}00020\ \ \ \ \ \ \ \ \ this-\/>galMediana\_\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00022}00022\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00023}00023\ \ \ \ \ \mbox{\hyperlink{class_vector}{Vector<int>}}\ sortedPazymiai\ =\ this-\/>\mbox{\hyperlink{class_stud_aa2fe476e86df66487d4ac7ff645ba138}{getPazymys}}();}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00024}00024\ \ \ \ \ std::sort(sortedPazymiai.\mbox{\hyperlink{class_vector_a48330adb902d17d3fbed6e83fd58976f}{begin}}(),\ sortedPazymiai.\mbox{\hyperlink{class_vector_aa8958aac9b8931d471cdd99428c2d535}{end}}());}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00026}00026\ \ \ \ \ \textcolor{keywordflow}{if}\ (sortedPazymiai.\mbox{\hyperlink{class_vector_a40e7f1dfdfa1a9c74e3769b5802125a9}{Size}}()\ \%\ 2\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ galMediana\ =\ (sortedPazymiai[sortedPazymiai.\mbox{\hyperlink{class_vector_a40e7f1dfdfa1a9c74e3769b5802125a9}{Size}}()\ /\ 2\ -\/\ 1]\ +\ sortedPazymiai[sortedPazymiai.\mbox{\hyperlink{class_vector_a40e7f1dfdfa1a9c74e3769b5802125a9}{Size}}()\ /\ 2])\ /\ 2.0f;}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00028}00028\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00029}00029\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ galMediana\ =\ sortedPazymiai[sortedPazymiai.\mbox{\hyperlink{class_vector_a40e7f1dfdfa1a9c74e3769b5802125a9}{Size}}()\ /\ 2];}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00031}00031\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00032}00032\ \ \ \ \ this-\/>galMediana\_\ =\ galMediana\ *\ 0.4f\ +\ this-\/>egz\_\ *\ 0.6f;}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00033}00033\ \}}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00035}\mbox{\hyperlink{functions_calls_vector_8h_ad877f9f92c7607336a5a3a5f14e083e5}{00035}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_stud_8cpp_ad877f9f92c7607336a5a3a5f14e083e5}{studentuGalutiniuSkaiciavimas}}(\mbox{\hyperlink{class_vector}{Vector<Stud>}}\&\ studentai)\ \{}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00036}00036\ \ \ \ \ \textcolor{keywordflow}{if}\ (studentai.\mbox{\hyperlink{class_vector_ae27b84e819f399c1d6b88a24276f4a67}{Back}}().getVidurkis()\ ==\ 0\ ||\ studentai.\mbox{\hyperlink{class_vector_ae27b84e819f399c1d6b88a24276f4a67}{Back}}().getMediana()\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ studentas\ :\ studentai)\ \{}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ studentas.calculateGalVidurkis();}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ studentas.calculateGalMediana();}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00041}00041\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stud_8cpp_source_l00042}00042\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,52 @@
+\doxysection{functions\+Calls\+Vector.\+h}
+\hypertarget{functions_calls_vector_8h_source}{}\label{functions_calls_vector_8h_source}\index{VECTOR/Include/functionsCallsVector.h@{VECTOR/Include/functionsCallsVector.h}}
+\mbox{\hyperlink{functions_calls_vector_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ FUNCTIONSCALLSV\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ FUNCTIONSCALLSV\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Laikomi\ funkciju\ prototipai.}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ Prototipai}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ ivestis.cpp}}
+\DoxyCodeLine{00009\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_calls_vector_8h_a438e27ff7e7c04247ca7888651829402}{readRanka}}(\mbox{\hyperlink{class_stud}{Stud}}\&\ stu);}
+\DoxyCodeLine{00010\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_calls_vector_8h_ac1465efdb002e8e3c6201dd5356adbdd}{readName\_makeGrade}}(\mbox{\hyperlink{class_stud}{Stud}}\&\ stu);}
+\DoxyCodeLine{00011\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_calls_vector_8h_a5325c9c8f78494adf2f67c96b00b3845}{makeStud}}(\mbox{\hyperlink{class_stud}{Stud}}\&\ stu);}
+\DoxyCodeLine{00012\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_calls_vector_8h_aaa12f5156ef5ecd2c051c2d07a746a5b}{fileRead}}(vector<Stud>\&\ studentai,\ \textcolor{keywordtype}{string}\ vardas);}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ isvestis.cpp}}
+\DoxyCodeLine{00015\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_calls_vector_8h_ac2ddce908e590de01c0e16a287228952}{isvestiesMenu}}(vector<Stud>\&\ studentai);}
+\DoxyCodeLine{00016\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_calls_vector_8h_aa17f01702e86c8ecba3c2d051fc73aa3}{isvestis}}(vector<Stud>\&\ studentai,\ std::ostream\&\ isvestiesMetodas,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ galutinioPasirinkimas);}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ studentuRusiavimas.cpp}}
+\DoxyCodeLine{00019\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_calls_vector_8h_a896c64773d65859f283deda82e5d0c18}{rusiavimas}}(vector<Stud>\&\ studentai,\ \textcolor{keywordtype}{int}\ rusiavimoPasirinkimas);}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ generators.cpp}}
+\DoxyCodeLine{00022\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_calls_vector_8h_a9440b8f9a72518a4e6db6340636f4ff4}{randomStudentas}}(\mbox{\hyperlink{class_stud}{Stud}}\&\ studentas,\ \textcolor{keywordtype}{bool}\ vyras);}
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_calls_vector_8h_a96b8a566072db648d71f443bd0ae2346}{randomAtsitiktinisPazymys}}(\mbox{\hyperlink{class_stud}{Stud}}\&\ stu);}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ fileGenerator.cpp}}
+\DoxyCodeLine{00026\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_calls_vector_8h_a08d36400ad2deec37d7c1c84a45fa411}{failoKurimas}}(\textcolor{keywordtype}{int}\ studentuSk);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{comment}{//\ studentuSkirstymas.cpp}}
+\DoxyCodeLine{00029\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_calls_vector_8h_a00fb5a6f321e353849ae58352ab03a8a}{fileFilter}}(vector<Stud>\&\ studentai,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ galutinioPasirinkimas,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ rusiavimoPasirinkimas);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{comment}{//\ test.cpp}}
+\DoxyCodeLine{00032\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_calls_vector_8h_aa5f9d8702556c317f863cc2b616c0135}{testMenu}}();}
+\DoxyCodeLine{00033\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_calls_vector_8h_a674b875434e19bbcfa08a13a11e9a5e1}{nuskaitymoTestas}}();}
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_calls_vector_8h_ad8e08b68ddf742cab512ed884f0e4fb2}{studentuTest}}();}
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_calls_vector_8h_a6a9d85bd54abfad29241efee80e61c8d}{programTest}}();}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{comment}{//\ ivestisPatikrinimas.cpp}}
+\DoxyCodeLine{00038\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{functions_calls_vector_8h_a54a8f1e3c7e2596e7d9909aed8942adf}{ivestiesPatikrinimas}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ nuo,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ iki);}
+\DoxyCodeLine{00039\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{functions_calls_vector_8h_a54a8f1e3c7e2596e7d9909aed8942adf}{ivestiesPatikrinimas}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ nuo,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ iki,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ sustabdymoSalyga);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{comment}{//\ Stud.cpp}}
+\DoxyCodeLine{00042\ \textcolor{comment}{//\ Stud\ klases\ Medianos\ ir\ Vidurkio\ funkciju\ deklaracijos\ pacioje\ klaseje}}
+\DoxyCodeLine{00043\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_calls_vector_8h_a208bc8e550b16a2e2f555115650beae0}{studentuGalutiniuSkaiciavimas}}(vector<Stud>\&\ studentai);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

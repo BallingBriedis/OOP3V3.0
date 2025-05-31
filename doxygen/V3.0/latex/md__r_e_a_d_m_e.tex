@@ -1,0 +1,261 @@
+\chapter{{\bfseries{Releases}} }
+\hypertarget{md__r_e_a_d_m_e}{}\label{md__r_e_a_d_m_e}\index{$<$strong$>$Releases$<$/strong$>$@{$<$strong$>$Releases$<$/strong$>$}}
+\label{md__r_e_a_d_m_e_autotoc_md0}%
+\Hypertarget{md__r_e_a_d_m_e_autotoc_md0}%
+
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Version  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Functions  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Comments  }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Version  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Functions  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Comments  }\\\cline{1-3}
+\endhead
+v.\+pradinė  &Duomenų įvedimas. Studentų duomenų struktūra. Skaičiavimo funkcijos.  &Viskas įvyko sklandžiai. Komentarų nėra  \\\cline{1-3}
+v0.\+1  &Galimybė įvesti bet kokį kiekį studentų, nes naudojami STL konteineriai. Versija su dinaminiu masyvu. Atsitiktinis pažymių generavimas. Meniu.  &Pirma kartą naudojau STL konteinerius, jie smarkiai palengvina darbą.  \\\cline{1-3}
+v0.\+2  &Sąveika su failais. Rušiavimas pagal pasirinkimą.  &Nieko specialaus, bet reikėjo kodo architektūros perdarymo įskaitomumui  \\\cline{1-3}
+v0.\+3  &Naudojama išimčių valdymas.  &Iš pradžių nenorėjau naudoti exep.\+handling, bet pabandžius buvo paprasta ir pagražino kodo išvazdą.  \\\cline{1-3}
+v0.\+4  &Studentų generavimas. Failų generavimas. Studentų rušiavimo funkcija. Testavimo funkcija. Tyrimo \doxylink{_r_e_a_d_m_e_8md}{README.\+md} aprašas.  &Užtruko labai daug laiko, nes buvo nemažai klaidų, teko daug testuoti. Galū gale viskas išėjo sklandžiai.  \\\cline{1-3}
+v1.\+0  &Naudojama CMake. Trys skirtingos versijos su skirtingais STL konteineriais\+: List, Deque ir \doxylink{class_vector}{Vector}. Spartumo tyrimai. Naudojami specialūs algoritmai \doxylink{class_vector}{Vector} versijoje. Sutvarkyta repozitorija. Viso projekto aprašas. Naudojimosi ir diegimo instrukcijos.  &Užtruko dar daugiau laiko dėl testavimo ir šios versijos monotoniško darbo. Darbas pavyko.  \\\cline{1-3}
+v1.\+1  &Pakeista kodo struktura, implementuota klasė vietoj prieštai naudoto struct  &Pradėti su klasėm nesinorėjo, bet vertėjo kodo aiškumui ir spartesniam kurimui  \\\cline{1-3}
+v1.\+2  &Implementuota Rules of Five, perkrautas Ivesties operatorius ir perkrautas Išvesties operatorius. Testai turi menu, padaryti testai programos testavimo palengvinimui.  &Versija padaryta greitai, bet naudingai  \\\cline{1-3}
+v1.\+5  &Sukurtos abstrakti bazinė \doxylink{class_zmogus}{Zmogus} ir išvestinė \doxylink{class_stud}{Stud} klasės.  &Greičiausia padaryta versija, supratimas apie bazines ir išvestines klases tikrai padidėjo. Testų keisti nereikėjo \+:)  \\\cline{1-3}
+v2.\+0  &Sukurta HTML, La\+TeX PDF dokumentacija naudojant Doxygen programėlę. Implementuoti \doxylink{class_stud}{Stud} klasės Unit Testai naudojant "{}googletest"{} projektą.  &Dėl korumpuotų failų ir nepastabumo šita versija buvo blogiausia patirtis. Bet galų gale viskas pavyko sekmingai.  \\\cline{1-3}
+v3.\+0  &Sukuriau savo custom \doxylink{class_vector}{Vector} klasę, atkartota didelė dalis STL vector funkcijų. Unit testai nuosavai vector funkcijai. Testavimas. Installeris.  &Daug laiko užtruko, sudėtinga pradėti, bet atradus internetinius šaltinius pasidare lengviau.  \\\cline{1-3}
+\end{longtabu}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md1}{}\doxysection{\texorpdfstring{{\bfseries{Starting manual}}}{{\bfseries{Starting manual}}}}\label{md__r_e_a_d_m_e_autotoc_md1}
+Atsisiūsti v3.\+0 full release.
+
+Naudojant Win\+RAR arba 7-\/Zip, atskleisti (extract) failą, bus sukurtas aplankas su programos failais.
+
+"{}dependancies"{} aplanke įsidiegti "{}cmake-\/4.\+0.\+0-\/rc4-\/windows-\/x86\+\_\+64.\+msi"{}.
+
+Atidarai aplanką VECTOR, paleidi run.\+bat scriptą.
+
+Atsidarys "{}cmd"{} langas kuriame bus veikianti programa, jeigu programą uždarėte ir norite vėl ją atidaryti, tai nuo tos vietos kur yra run.\+bat paspauskite "{}build"{} aplanką, tada "{}\+Release"{} aplanką, kuriame rasite "{}\+OOP3\+V30.\+exe"{} paleidžiamąjį failą.\hypertarget{md__r_e_a_d_m_e_autotoc_md2}{}\doxysection{\texorpdfstring{{\bfseries{User manual}}}{{\bfseries{User manual}}}}\label{md__r_e_a_d_m_e_autotoc_md2}
+1 -\/ Ranka įvedamas studentas ir jo pažymiai.
+
+2 -\/ Ranka įvedamas studento vardas/pavardė, pažymys generuojamas.
+
+3 -\/ Studentas(-\/ai) sukuriami automatiškai, tik reikia įvesti studentų kiekį.
+
+4 -\/ Failas, esantis aplanke kartu su "{}\+OOP3\+V30.\+exe"{} ( ...\textbackslash{}\+VECTOR\textbackslash{}build\textbackslash{}\+Release ) yra nuskaitomas į tam tikrą konteinerį.
+
+5 -\/ Sukuriamas failas pavadinimu "{}stud\+List\{įvestas\+Studentu\+Kiekis\}.\+txt"{}
+
+6 -\/ Atidaromas testinis menu
+
+7 -\/ Tęsiama toliau, grįžti negalima.
+
+7.\+1-\/7.\+3 -\/ Pasirinkimai ar isvesti i terminala, i faila arba i faila suskirstytus
+
+7.\+x.\+1-\/7.\+x.\+3 -\/ Pasirinkimai apskaičiuoti galutinius pažymius vidurkiu arba mediana arba abu
+
+7.\+x.\+x.\+1-\/7.\+x.\+x.\+4 -\/ Pasirinkimai pagal ką norite rušiuoti studentus.
+
+Rezultatų failą rasite ( ...\textbackslash{}\+VECTOR\textbackslash{}build\textbackslash{}\+Release ).\hypertarget{md__r_e_a_d_m_e_autotoc_md3}{}\doxysection{\texorpdfstring{{\bfseries{5 Funkcijų aprašymai}}}{{\bfseries{5 Funkcijų aprašymai}}}}\label{md__r_e_a_d_m_e_autotoc_md3}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Reserve  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ void Reserve(size\+\_\+t new\+Capacity); Ši funkcija naudojama užrezervuoti pateiktą "{}vietų"{} (new\+Capacity) atmintyje. Funkcija gauna reikšmę new\+Capacity, kurią lyginu su esančia capacity reikšme, jeigu new\+Capacity mažesnis, tai funkcijas grįžta. Kitaip ji sukuria new new\+Array, kurią užpildo array, array išsitrina ir atgauna savo reikšmes.  }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Reserve  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ void Reserve(size\+\_\+t new\+Capacity); Ši funkcija naudojama užrezervuoti pateiktą "{}vietų"{} (new\+Capacity) atmintyje. Funkcija gauna reikšmę new\+Capacity, kurią lyginu su esančia capacity reikšme, jeigu new\+Capacity mažesnis, tai funkcijas grįžta. Kitaip ji sukuria new new\+Array, kurią užpildo array, array išsitrina ir atgauna savo reikšmes.  }\\\cline{1-2}
+\endhead
+Push\+Back  &void Push\+Back(const T\& value); Ši funkcija priima value, kuri įstato į Vectoriaus galą. Pirma -\/ patikrina ar size \texorpdfstring{$>$}{>}= capacity, jei taip, tai padidina array ir toliau eina, kur array paskutine vietele idedama value.  \\\cline{1-2}
+operator==  &bool operator==(const Vector\& rhs) const; Ši funkcija priima rhs reikšmę, kurią lygina su pradines reikšmės size, tada array elementais ir jeigu abu neismete false, duoda true.  \\\cline{1-2}
+\doxylink{class_vector}{Vector}  &\doxylink{class_vector}{Vector(const std\+::initializer\+\_\+list$<$\+T$>$\& list)}; Ši funkcija leidžia inicijuoti reikšmes pvz.\+: \doxylink{class_vector}{Vector$<$int$>$} SK \{1,2,3,4,5\}. Pirma paima size(0), tada capacity yra pagal paduota list ilgi + 5, sukuriama array dinaminej atminty ir Push\+Back funkcija prideda visas reikšmes prie array.  \\\cline{1-2}
+At  &T\& At(size\+\_\+t index); Priima indeksa, pagal kuri gražina elementa toj vietoj, jeigu indeksas neišeina iš Vectoriaus ribų.  \\\cline{1-2}
+\end{longtabu}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md4}{}\doxysection{\texorpdfstring{{\bfseries{Vector compare test}}}{{\bfseries{Vector compare test}}}}\label{md__r_e_a_d_m_e_autotoc_md4}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Fill size  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ My vector  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ STL vector  }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Fill size  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ My vector  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ STL vector  }\\\cline{1-3}
+\endhead
+10000  &0.\+00004790 sec  &0.\+00005380 sec  \\\cline{1-3}
+100000  &0.\+00037480 sec  &0.\+00041790 sec  \\\cline{1-3}
+1000000  &0.\+00198310 sec  &0.\+00290890 sec  \\\cline{1-3}
+10000000  &0.\+01952810 sec  &0.\+03320920 sec  \\\cline{1-3}
+100000000  &0.\+30923830 sec  &0.\+35358800 sec  \\\cline{1-3}
+AVG  &0.\+06051138 sec  &0.\+07803556 sec  \\\cline{1-3}
+TOTAL  &0.\+30636120 sec  &0.\+39470780 sec  \\\cline{1-3}
+Perskirstymai  &25 kartai  &46 kartai  \\\cline{1-3}
+\end{longtabu}
+
+
+Kiekvienas failas nuskaitytas po 3 kartus. \tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{7}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ File size  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ My vector (AVG)  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ My vector (TOT)  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ STL vector (FUN)  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ STL vector (AVG)  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ STL vector (TOT)  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ STL vector (FUN)  }\\\cline{1-7}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ File size  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ My vector (AVG)  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ My vector (TOT)  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ STL vector (FUN)  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ STL vector (AVG)  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ STL vector (TOT)  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ STL vector (FUN)  }\\\cline{1-7}
+\endhead
+100000  &0.\+42521847 sec  &1.\+27565540 sec  &0.\+37621842 sec  &0.\+41326590 sec  &1.\+23979770 sec  &0.\+35512627 sec  \\\cline{1-7}
+1000000  &4.\+52487077 sec  &13.\+57461230 sec  &4.\+02434072 sec  &4.\+48646507 sec  &13.\+45939520 sec  &3.\+62357066 sec  \\\cline{1-7}
+10000000  &49.\+94290833 sec  &149.\+82872500 sec  &37.\+95690113 sec  &41.\+98002827 sec  &125.\+94008480 sec  &36.\+44295553 sec  \\\cline{1-7}
+\end{longtabu}
+
+
+Nuskaityme vienintele \doxylink{class_vector}{Vector} funkcija naudojama yra push\+\_\+back, arba Push\+Back, tikslaus laiko negausiu, bet operacija kuri suskirsto duomenis ivyksta yra pateikta. Po šios analizės paaiškėjo, kad aš nesu geresnis \doxylink{class_vector}{Vector} klasės kurėjas negu žmonės susiėmę STL.\hypertarget{md__r_e_a_d_m_e_autotoc_md5}{}\doxysection{\texorpdfstring{{\bfseries{Unit testing}}}{{\bfseries{Unit testing}}}}\label{md__r_e_a_d_m_e_autotoc_md5}
+Unit testai vykdomi pirmą kartą paleidus run.\+bat failą ir priešais pagrindinę programą.\hypertarget{md__r_e_a_d_m_e_autotoc_md6}{}\doxysection{\texorpdfstring{{\bfseries{Klasės naudojimas}}}{{\bfseries{Klasės naudojimas}}}}\label{md__r_e_a_d_m_e_autotoc_md6}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md7}{}\doxysubsection{\texorpdfstring{{\bfseries{Išvesties operatorius}}}{{\bfseries{Išvesties operatorius}}}}\label{md__r_e_a_d_m_e_autotoc_md7}
+Išvesties operatorius perdengtas, naudojimas labai paprastas\+:
+
+\doxylink{class_stud}{Stud} studentas(\+Jonas, Jonaitis, 8, 5, 6, 7);
+
+std\+::cout \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} studentas;
+
+Tai padarant išves duotus duomenis apie studentą, jo vidurkį ir medianą.\hypertarget{md__r_e_a_d_m_e_autotoc_md8}{}\doxysubsection{\texorpdfstring{{\bfseries{Ivesties operatorius}}}{{\bfseries{Ivesties operatorius}}}}\label{md__r_e_a_d_m_e_autotoc_md8}
+Irgi labai paprastas naudojimas, rankiniu būdu parašant "{}std\+::cin $>$$>$ studentas;"{} terminale prašys vartotojo įvesti duomenis.
+
+\doxylink{class_stud}{Stud} studentas;
+
+std\+::cin \texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>} studentas;\hypertarget{md__r_e_a_d_m_e_autotoc_md9}{}\doxysubsubsection{\texorpdfstring{Kiti būdai įvesties}{Kiti būdai įvesties}}\label{md__r_e_a_d_m_e_autotoc_md9}
+Iš failo įvestis daroma naudojant \doxylink{functions_calls_vector_8h_a650d4c39768ef34ac4d4be136530a385}{file\+Read()} funkciją. Norint nuskaityti savus failus, reikia pateikti juos ( ...\textbackslash{}build\textbackslash{}\+Release\textbackslash{}test.txt ) formatu (studentu kiekis nesvarbu) ir idėti į ( ...\textbackslash{}\+VECTOR\textbackslash{}build\textbackslash{}\+Release ).
+
+Automatinė daroma naudojant \doxylink{functions_calls_vector_8h_a5325c9c8f78494adf2f67c96b00b3845}{make\+Stud()} funkciją.\hypertarget{md__r_e_a_d_m_e_autotoc_md10}{}\doxysection{\texorpdfstring{{\bfseries{V1.\+1 testas}}}{{\bfseries{V1.\+1 testas}}}}\label{md__r_e_a_d_m_e_autotoc_md10}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Part  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Specifications  }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Part  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Specifications  }\\\cline{1-2}
+\endhead
+CPU\+:  &Intel i5-\/10600K  \\\cline{1-2}
+RAM\+:  &2x16\+GB 2666MHz DDR4  \\\cline{1-2}
+STR\+:  &Kingston NV2 1 TB M.\+2 2280 NVMe  \\\cline{1-2}
+\end{longtabu}
+
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{7}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Flagai  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 100000 (Struct)  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1000000 (Struct)  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ EXE size (Struct)  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 100000 (Class)  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1000000 (Class)  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ EXE size (Class)  }\\\cline{1-7}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Flagai  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 100000 (Struct)  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1000000 (Struct)  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ EXE size (Struct)  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 100000 (Class)  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1000000 (Class)  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ EXE size (Class)  }\\\cline{1-7}
+\endhead
+Be flagu  &0.\+44610952 sec  &4.\+20656290 sec  &127 KB  &0.\+44792966 sec  &4.\+39760216 sec  &141 KB  \\\cline{1-7}
+O1  &0.\+44192624 sec  &4.\+05293074 sec  &119 KB  &0.\+43307130 sec  &4.\+24400640 sec  &129 KB  \\\cline{1-7}
+O2  &0.\+40628492 sec  &4.\+08120978 sec  &119 KB  &0.\+43038714 sec  &4.\+25291338 sec  &129 KB  \\\cline{1-7}
+O3  &0.\+43692144 sec  &4.\+35214120 sec  &119 KB  &0.\+44872598 sec  &4.\+40468464 sec  &129 KB  \\\cline{1-7}
+\end{longtabu}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md11}{}\doxysection{\texorpdfstring{{\bfseries{V1.\+0 testas}}}{{\bfseries{V1.\+0 testas}}}}\label{md__r_e_a_d_m_e_autotoc_md11}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md12}{}\doxysubsection{\texorpdfstring{{\bfseries{Pradžia}}}{{\bfseries{Pradžia}}}}\label{md__r_e_a_d_m_e_autotoc_md12}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Part  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Specifications  }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Part  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Specifications  }\\\cline{1-2}
+\endhead
+CPU\+:  &Intel i5-\/10600K  \\\cline{1-2}
+RAM\+:  &2x16\+GB 2666MHz DDR4  \\\cline{1-2}
+STR\+:  &Kingston NV2 1 TB M.\+2 2280 NVMe  \\\cline{1-2}
+\end{longtabu}
+
+
+Įvestis\+:
+
+1 Strategija\+:
+
+6 stud\+List1000.\+txt 1 1 3
+
+6 stud\+List10000.\+txt 1 1 3
+
+6 stud\+List100000.\+txt 1 1 3
+
+6 stud\+List1000000.\+txt 1 1 3
+
+6 stud\+List10000000.\+txt 1 1 3
+
+2 Strategija\+:
+
+6 stud\+List1000.\+txt 1 2 3
+
+6 stud\+List10000.\+txt 1 2 3
+
+6 stud\+List100000.\+txt 1 2 3
+
+6 stud\+List1000000.\+txt 1 2 3
+
+6 stud\+List10000000.\+txt 1 2 3\hypertarget{md__r_e_a_d_m_e_autotoc_md13}{}\doxysubsection{\texorpdfstring{{\bfseries{Vector}}}{{\bfseries{Vector}}}}\label{md__r_e_a_d_m_e_autotoc_md13}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pirma strategija  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Antra strategija  }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pirma strategija  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Antra strategija  }\\\cline{1-3}
+\endhead
+1000  &0.\+04915840 sec  &0.\+08148740 sec  \\\cline{1-3}
+10000  &0.\+43130660 sec  &0.\+45130710 sec  \\\cline{1-3}
+100000  &4.\+46657050 sec  &4.\+48731360 sec  \\\cline{1-3}
+1000000  &41.\+31402830 sec  &42.\+56847090 sec  \\\cline{1-3}
+10000000  &424.\+58098150 sec  &431.\+82273370 sec  \\\cline{1-3}
+\end{longtabu}
+
+
+10 milijonų su pirma strategija užemė 7.\+7\+GB RAM, o antra 5.\+9\+GB RAM.\hypertarget{md__r_e_a_d_m_e_autotoc_md14}{}\doxysubsection{\texorpdfstring{{\bfseries{List}}}{{\bfseries{List}}}}\label{md__r_e_a_d_m_e_autotoc_md14}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pirma strategija  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Antra strategija  }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pirma strategija  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Antra strategija  }\\\cline{1-3}
+\endhead
+1000  &0.\+05118660 sec  &0.\+08393100 sec  \\\cline{1-3}
+10000  &0.\+37497380 sec  &0.\+37388180 sec  \\\cline{1-3}
+100000  &3.\+70634520 sec  &3.\+53147080 sec  \\\cline{1-3}
+1000000  &35.\+40114870 sec  &35.\+71196400 sec  \\\cline{1-3}
+10000000  &350.\+78200190 sec  &361.\+86110030 sec  \\\cline{1-3}
+\end{longtabu}
+
+
+10 milijonų su pirma strategija užemė 6.\+1\+GB RAM, o antra 5.\+3\+GB RAM.\hypertarget{md__r_e_a_d_m_e_autotoc_md15}{}\doxysubsection{\texorpdfstring{{\bfseries{Deque}}}{{\bfseries{Deque}}}}\label{md__r_e_a_d_m_e_autotoc_md15}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pirma strategija  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Antra strategija  }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pirma strategija  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Antra strategija  }\\\cline{1-3}
+\endhead
+1000  &0.\+05772800 sec  &0.\+05651100 sec  \\\cline{1-3}
+10000  &0.\+39833120 sec  &0.\+41024440 sec  \\\cline{1-3}
+100000  &3.\+76838590 sec  &4.\+06764040 sec  \\\cline{1-3}
+1000000  &37.\+04322620 sec  &39.\+36357640 sec  \\\cline{1-3}
+10000000  &373.\+31425860 sec  &394.\+22153330 sec  \\\cline{1-3}
+\end{longtabu}
+
+
+10 milijonų su pirma strategija užemė 10.\+1\+GB RAM, o antra 6.\+8\+GB RAM. 

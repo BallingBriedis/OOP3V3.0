@@ -1,0 +1,82 @@
+\doxysection{ivestis.\+cpp}
+\hypertarget{ivestis_8cpp_source}{}\label{ivestis_8cpp_source}\index{VECTOR/src/ivestis.cpp@{VECTOR/src/ivestis.cpp}}
+\mbox{\hyperlink{ivestis_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{meinelib_8h}{meinelib.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{studentas_8h}{studentas.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{functions_calls_vector_8h}{functionsCallsVector.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00005}\mbox{\hyperlink{functions_calls_vector_8h_a438e27ff7e7c04247ca7888651829402}{00005}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{ivestis_8cpp_a438e27ff7e7c04247ca7888651829402}{readRanka}}(\mbox{\hyperlink{class_stud}{Stud}}\&\ stu)\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Vartotojo\ praso\ ivesti\ studento\ varda,\ pavarde,\ pazymius.}}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00006}00006\ \ \ \ \ \textcolor{keywordtype}{int}\ input,\ i\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00007}00007\ \ \ \ \ std::string\ a;}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00008}00008\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Iveskite\ studento\ varda:\ "{}};}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00009}00009\ \ \ \ \ std::cin\ >>\ a;}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00010}00010\ \ \ \ \ stu.\mbox{\hyperlink{class_stud_ab13bf07ce751ca9d1dedb2981f8116a0}{setVar}}(a);}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00011}00011\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Iveskite\ studento\ pavarde:\ "{}};}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00012}00012\ \ \ \ \ std::cin\ >>\ a;}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00013}00013\ \ \ \ \ stu.\mbox{\hyperlink{class_stud_afe0026549ffb1bd250bbfd788c367aae}{setPav}}(a);}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00015}00015\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Iveskite\ studento\ egzamino\ pazymi:\ "{}};}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00016}00016\ \ \ \ \ input\ =\ \mbox{\hyperlink{functions_calls_vector_8h_a54a8f1e3c7e2596e7d9909aed8942adf}{ivestiesPatikrinimas}}(0,\ 10);}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00017}00017\ \ \ \ \ stu.\mbox{\hyperlink{class_stud_ac7ee63b58b35f567caa7ec358ed4eb89}{setEgz}}(input);}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00018}00018\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)n"{}}\ <<\ \textcolor{stringliteral}{"{}Iveskite\ studento\ namu\ darbu\ pazymius.\ Ivedus\ visus\ pazymius,\ iveskite\ -\/1.\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00019}00019\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Jeigu\ darbas\ neatliktas\ iveskite\ 0.\(\backslash\)n\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00021}00021\ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00022}00022\ \ \ \ \ \ \ \ \ std::cout\ <<\ i\ <<\ \textcolor{stringliteral}{"{}-\/asis\ pazymys:\ "{}};}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00023}00023\ \ \ \ \ \ \ \ \ input\ =\ \mbox{\hyperlink{functions_calls_vector_8h_a54a8f1e3c7e2596e7d9909aed8942adf}{ivestiesPatikrinimas}}(0,\ 10,\ -\/1);}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (input\ ==\ -\/1)\ \{}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00026}00026\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ stu.\mbox{\hyperlink{class_stud_a538b025e4561f1e18d12ba4c7b5b8b5e}{addPazymys}}(input);}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ i++;}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00029}00029\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00030}00030\ \}}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00032}\mbox{\hyperlink{functions_calls_vector_8h_ac1465efdb002e8e3c6201dd5356adbdd}{00032}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{ivestis_8cpp_ac1465efdb002e8e3c6201dd5356adbdd}{readName\_makeGrade}}(\mbox{\hyperlink{class_stud}{Stud}}\&\ stu)\ \{}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00033}00033\ \ \ \ \ std::string\ a;}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00034}00034\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Iveskite\ studento\ varda:\ "{}};}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00035}00035\ \ \ \ \ std::cin\ >>\ a;}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00036}00036\ \ \ \ \ stu.\mbox{\hyperlink{class_stud_ab13bf07ce751ca9d1dedb2981f8116a0}{setVar}}(a);}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00037}00037\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Iveskite\ studento\ pavarde:\ "{}};}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00038}00038\ \ \ \ \ std::cin\ >>\ a;}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00039}00039\ \ \ \ \ stu.\mbox{\hyperlink{class_stud_afe0026549ffb1bd250bbfd788c367aae}{setPav}}(a);}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00040}00040\ \ \ \ \ \mbox{\hyperlink{functions_calls_vector_8h_a96b8a566072db648d71f443bd0ae2346}{randomAtsitiktinisPazymys}}(stu);}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00041}00041\ \}}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00043}\mbox{\hyperlink{functions_calls_vector_8h_a5325c9c8f78494adf2f67c96b00b3845}{00043}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{ivestis_8cpp_a5325c9c8f78494adf2f67c96b00b3845}{makeStud}}(\mbox{\hyperlink{class_stud}{Stud}}\&\ stu)\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Sukuria\ atsitiktini\ studenta.}}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00044}00044\ \ \ \ \ \mbox{\hyperlink{functions_calls_vector_8h_a9440b8f9a72518a4e6db6340636f4ff4}{randomStudentas}}(stu,\ rand()\ \%\ 2);}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00045}00045\ \ \ \ \ \mbox{\hyperlink{functions_calls_vector_8h_a96b8a566072db648d71f443bd0ae2346}{randomAtsitiktinisPazymys}}(stu);}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00046}00046\ \}}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00048}\mbox{\hyperlink{functions_calls_vector_8h_a650d4c39768ef34ac4d4be136530a385}{00048}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{ivestis_8cpp_a42d4b6dfdee797fb64a4e529ff26152f}{fileRead}}(\mbox{\hyperlink{class_vector}{Vector<Stud>}}\&\ studentai,\ std::string\ ivestas\_vardas)\ \{}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00049}00049\ \ \ \ \ std::stringstream\ buffer;}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00050}00050\ \ \ \ \ std::ifstream\ duom(ivestas\_vardas);}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00051}00051\ \ \ \ \ \textcolor{keywordflow}{if}\ (!duom)\ \{}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}\(\backslash\)nFailas\ nerastas.\(\backslash\)n\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00054}00054\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00055}00055\ \ \ \ \ buffer\ <<\ duom.rdbuf();}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00056}00056\ \ \ \ \ duom.close();}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00058}00058\ \ \ \ \ std::string\ line;}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00059}00059\ \ \ \ \ getline(buffer,\ line);}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00060}00060\ \ \ \ \ \textcolor{keywordflow}{while}\ (getline(buffer,\ line))\ \{}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_stud}{Stud}}\ tempStu;}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ std::istringstream\ iss(line);}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ std::string\ vardas\{\},\ pavarde\{\};}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ iss\ >>\ vardas\ >>\ pavarde;}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ tempStu.\mbox{\hyperlink{class_stud_ab13bf07ce751ca9d1dedb2981f8116a0}{setVar}}(vardas);}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ tempStu.\mbox{\hyperlink{class_stud_afe0026549ffb1bd250bbfd788c367aae}{setPav}}(pavarde);}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pazymys\{\};}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (iss\ >>\ pazymys)\ \{}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ tempStu.\mbox{\hyperlink{class_stud_a538b025e4561f1e18d12ba4c7b5b8b5e}{addPazymys}}(pazymys);}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ tempStu.\mbox{\hyperlink{class_stud_ac7ee63b58b35f567caa7ec358ed4eb89}{setEgz}}(tempStu.\mbox{\hyperlink{class_stud_aa2fe476e86df66487d4ac7ff645ba138}{getPazymys}}().\mbox{\hyperlink{class_vector_ae27b84e819f399c1d6b88a24276f4a67}{Back}}());}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ tempStu.\mbox{\hyperlink{class_stud_a3b91cff05e3cc98dcd95738f165e73a3}{removePazymys}}();}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ studentai.\mbox{\hyperlink{class_vector_aef96c0aa0017a17cbf66a802709469dd}{PushBack}}(tempStu);}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00075}00075\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ivestis_8cpp_source_l00076}00076\ \}}
+
+\end{DoxyCode}
