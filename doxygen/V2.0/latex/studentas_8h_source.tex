@@ -1,0 +1,174 @@
+\doxysection{studentas.\+h}
+\hypertarget{studentas_8h_source}{}\label{studentas_8h_source}\index{VECTOR/Include/studentas.h@{VECTOR/Include/studentas.h}}
+\mbox{\hyperlink{studentas_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ STUDENTAS\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ STUDENTAS\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{zmogus_8h}{zmogus.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_stud_a82e9148bdcb239a16dd8bd896b5dc73a}{Stud}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_zmogus_ad59b94d6c574cac985bdb56fde73fc3f}{Zmogus}}\ \{}
+\DoxyCodeLine{00008\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00009\ \ \ \ \ std::vector<int>pazymys\_\{\};}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keywordtype}{int}\ egz\_\{\};}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordtype}{float}\ galVidurkis\_\{\};}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordtype}{float}\ galMediana\_\{\};}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{comment}{//\ Konstruktorius\ ir\ desktrutorius}}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_stud_a82e9148bdcb239a16dd8bd896b5dc73a}{Stud}}(std::string\ var\ =\ \textcolor{stringliteral}{"{}"{}},\ std::string\ pav\ =\ \textcolor{stringliteral}{"{}"{}},\ std::vector<int>\ pazymys\ =\ \{\},\ \textcolor{keywordtype}{int}\ egz\ =\ \{\})\ :}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_zmogus_ad59b94d6c574cac985bdb56fde73fc3f}{Zmogus}}(std::move(var),\ std::move(pav)),\ pazymys\_(std::move(pazymys)),\ egz\_(egz)\ \{\}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{class_stud_ae675f7ebb5886aa5c3963f2b81250037}{\string~Stud}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//\ Copy\ constructor}}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{class_stud_ad473232271f7e160f811c6ae206d326c}{Stud}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_stud_a82e9148bdcb239a16dd8bd896b5dc73a}{Stud}}\&\ other)\ :}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_zmogus_ad59b94d6c574cac985bdb56fde73fc3f}{Zmogus}}(other.\mbox{\hyperlink{class_zmogus_a6867269cc503f47e4e7f247ed5f7eaa0}{var\_}},\ other.\mbox{\hyperlink{class_zmogus_a41f95a6793e83d1584925cc4f7df9b87}{pav\_}}),}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ pazymys\_(other.pazymys\_),\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ egz\_(other.egz\_),}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ galVidurkis\_(other.galVidurkis\_),}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ galMediana\_(other.galMediana\_)\ \{\}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ Copy\ assignment\ operator}}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{class_stud_a82e9148bdcb239a16dd8bd896b5dc73a}{Stud}}\&\ \mbox{\hyperlink{class_stud_a311ba01abe5e734694bd281a9653226f}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_stud_a82e9148bdcb239a16dd8bd896b5dc73a}{Stud}}\&\ other)\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{this}\ !=\ \&other)\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_zmogus_a8bc6d11547d75c71a38567f750f02612}{Zmogus::operator=}}(other);}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ pazymys\_\ =\ other.pazymys\_;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ egz\_\ =\ other.egz\_;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ galVidurkis\_\ =\ other.galVidurkis\_;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ galMediana\_\ =\ other.galMediana\_;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00039\ \ \ \ \ \}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//\ Move\ constructor}}
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{class_stud_a3ddb538bd2b699c964ae8a8491b3e87e}{Stud}}(\mbox{\hyperlink{class_stud_a82e9148bdcb239a16dd8bd896b5dc73a}{Stud}}\&\&\ other)\ noexcept\ :}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_zmogus_ad59b94d6c574cac985bdb56fde73fc3f}{Zmogus}}(std::move(other)),}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ pazymys\_(std::move(other.pazymys\_)),}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ egz\_(other.egz\_),}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ galVidurkis\_(other.galVidurkis\_),}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ galMediana\_(other.galMediana\_)\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ other.egz\_\ =\ 0;}
+\DoxyCodeLine{00049\ \ \ \ \ \}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{comment}{//\ \ Move\ assignment\ operator}}
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{class_stud_a82e9148bdcb239a16dd8bd896b5dc73a}{Stud}}\&\ \mbox{\hyperlink{class_stud_a5d0e079824920b39953f50b2bd543819}{operator=}}(\mbox{\hyperlink{class_stud_a82e9148bdcb239a16dd8bd896b5dc73a}{Stud}}\&\&\ other)\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{this}\ !=\ \&other)\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_zmogus_a8bc6d11547d75c71a38567f750f02612}{Zmogus::operator=}}(std::move(other));}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ pazymys\_\ =\ std::move(other.pazymys\_);}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ egz\_\ =\ other.egz\_;}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ galVidurkis\_\ =\ other.galVidurkis\_;}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ galMediana\_\ =\ other.galMediana\_;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ other.egz\_\ =\ 0;}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00062\ \ \ \ \ \}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{comment}{//\ Ivesties\ operatorius}}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{friend}\ std::istream\&\ \mbox{\hyperlink{class_stud_a672dac4d6c85e5e6a26a1fb91600e021}{operator>>}}(std::istream\&\ is,\ \mbox{\hyperlink{class_stud_a82e9148bdcb239a16dd8bd896b5dc73a}{Stud}}\&\ s)\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ is\ >>\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{class_zmogus_ad59b94d6c574cac985bdb56fde73fc3f}{Zmogus}}\&\textcolor{keyword}{>}(s);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ egz;}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ std::vector<int>\ pazymiai;}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ paz;}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Iveskite\ egzamino\ pazymi:\ "{}};}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ egz\ =\ \mbox{\hyperlink{class_stud_a670ee2e65bb111d82ebb129e6ec8421e}{ivestiesPatikrinimas}}(0,\ 10);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Iveskite\ pazymius\ 0\ iki\ 10,\ norint\ baigti\ iveskite\ -\/1:\(\backslash\)n"{}};}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(\textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ paz\ =\ \mbox{\hyperlink{class_stud_a670ee2e65bb111d82ebb129e6ec8421e}{ivestiesPatikrinimas}}(0,\ 10,\ -\/1);}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (paz\ ==\ -\/1)\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ pazymiai.push\_back(paz);}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ s.\mbox{\hyperlink{class_stud_ac7ee63b58b35f567caa7ec358ed4eb89}{setEgz}}(egz);}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ p\ :\ pazymiai)\ s.\mbox{\hyperlink{class_stud_a538b025e4561f1e18d12ba4c7b5b8b5e}{addPazymys}}(p);}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ s.\mbox{\hyperlink{class_stud_ae907d90fc7794bd0483a49e694203224}{calculateGalVidurkis}}();}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ s.\mbox{\hyperlink{class_stud_a5f530b5d70445a48c587fd4ec020359b}{calculateGalMediana}}();}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ is;}
+\DoxyCodeLine{00088\ \ \ \ \ \}}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{comment}{//\ Isvesties\ operatorius}}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keyword}{friend}\ std::ostream\&\ \mbox{\hyperlink{class_stud_ab1296094a664d5c7adc2ec4a188b343c}{operator<<}}(std::ostream\&\ os,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_stud_a82e9148bdcb239a16dd8bd896b5dc73a}{Stud}}\&\ s)\ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ os\ <<\ static\_cast<const\ Zmogus\&>(s);}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{}\ Egzaminas:\ "{}}\ <<\ s.\mbox{\hyperlink{class_stud_a25998973a74b359a72a95d49beae0c08}{getEgz}}()\ <<\ \textcolor{stringliteral}{"{}\ Pazymiai:\ "{}};}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ p\ :\ s.\mbox{\hyperlink{class_stud_a432f169eeca06746cdd81946e3c046e4}{getPazymys}}())\ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ os\ <<\ p\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{}Vidurkis:\ "{}}\ <<\ s.\mbox{\hyperlink{class_stud_a0d995bffe46c984eeb15c19514f55779}{getVidurkis}}()\ <<\ \textcolor{stringliteral}{"{}\ Mediana:\ "{}}\ <<\ s.\mbox{\hyperlink{class_stud_a1c8b648f405c514991b68ac1f4fbe087}{getMediana}}();}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ os;}
+\DoxyCodeLine{00099\ \ \ \ \ \}}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{comment}{//\ Setteriai,\ kurie\ nustato\ studento\ varda,\ pavarde,\ uzduotis\ ir\ egzamino\ pazymi.}}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stud_ab13bf07ce751ca9d1dedb2981f8116a0}{setVar}}(\textcolor{keyword}{const}\ std::string\&\ var)\textcolor{keyword}{\ override\ }\{\ \mbox{\hyperlink{class_zmogus_a6867269cc503f47e4e7f247ed5f7eaa0}{var\_}}\ =\ var;\ \}}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stud_afe0026549ffb1bd250bbfd788c367aae}{setPav}}(\textcolor{keyword}{const}\ std::string\&\ pav)\textcolor{keyword}{\ override\ }\{\ \mbox{\hyperlink{class_zmogus_a41f95a6793e83d1584925cc4f7df9b87}{pav\_}}\ =\ pav;\ \}}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stud_ac7ee63b58b35f567caa7ec358ed4eb89}{setEgz}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ egz)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ egz\_\ =\ egz;\ \}}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{comment}{//\ Papildomos\ funkcijos,\ kurios\ prideda\ ir\ pasalina\ uzduociu\ pazymius}}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stud_a538b025e4561f1e18d12ba4c7b5b8b5e}{addPazymys}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ pazymys)\ \ \ \ \ \ \ \ \{pazymys\_.push\_back(pazymys);\}}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stud_a3b91cff05e3cc98dcd95738f165e73a3}{removePazymys}}()\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{pazymys\_.pop\_back();\}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stud_ae907d90fc7794bd0483a49e694203224}{calculateGalVidurkis}}();}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stud_a5f530b5d70445a48c587fd4ec020359b}{calculateGalMediana}}();}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{comment}{//\ Getteriai,\ kurie\ grazina\ studento\ varda,\ pavarde,\ uzduotis,\ egzamino\ pazymi\ ir\ galutini\ pazymi.}}
+\DoxyCodeLine{00114\ \ \ \ \ std::string\ \mbox{\hyperlink{class_stud_a126f3a064f7a437ed790d5e113916c9f}{getVar}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_zmogus_a6867269cc503f47e4e7f247ed5f7eaa0}{var\_}};\ \}}
+\DoxyCodeLine{00115\ \ \ \ \ std::string\ \mbox{\hyperlink{class_stud_a9640a8714a3cf3697a052fba13422672}{getPav}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_zmogus_a41f95a6793e83d1584925cc4f7df9b87}{pav\_}};\ \}}
+\DoxyCodeLine{00116\ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{class_stud_a432f169eeca06746cdd81946e3c046e4}{getPazymys}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ pazymys\_;\ \}}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_stud_a25998973a74b359a72a95d49beae0c08}{getEgz}}()\textcolor{keyword}{\ const\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\{\ \textcolor{keywordflow}{return}\ egz\_;\ \}}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_stud_a0d995bffe46c984eeb15c19514f55779}{getVidurkis}}()\textcolor{keyword}{\ const\ \ \ \ \ \ \ \ \ \ \ \ }\{\ \textcolor{keywordflow}{return}\ galVidurkis\_;\ \}}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_stud_a1c8b648f405c514991b68ac1f4fbe087}{getMediana}}()\textcolor{keyword}{\ const\ \ \ \ \ \ \ \ \ \ }\{\ \textcolor{keywordflow}{return}\ galMediana\_;\ \}}
+\DoxyCodeLine{00120\ \ \ \ \ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{comment}{//\ Ivesties\ patikrinimas}}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_stud_a670ee2e65bb111d82ebb129e6ec8421e}{ivestiesPatikrinimas}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ nuo,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ iki)\ \{}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ input\{\};}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cin\ >>\ input;}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (input\ <\ nuo\ ||\ input\ >\ iki)\ \{}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)n!!!!Iveskite\ skaiciu\ nuo\ "{}}\ <<\ nuo\ <<\ \textcolor{stringliteral}{"{}\ iki\ "{}}\ <<\ iki\ <<\ \textcolor{stringliteral}{"{}.!!!!\(\backslash\)n\(\backslash\)n\(\backslash\)n"{}};}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (...)\ \{}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cin.clear();}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cin.ignore(std::numeric\_limits<std::streamsize>::max(),\ \textcolor{charliteral}{'\(\backslash\)n'});}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)n!!!!Ivestis\ neteisinga.\ Bandykite\ isnaujo.!!!!\(\backslash\)n\(\backslash\)n\(\backslash\)n"{}};}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ input;}
+\DoxyCodeLine{00141\ \ \ \ \ \}}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_stud_a22e59cb404ec25c991391af0ef77987d}{ivestiesPatikrinimas}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ nuo,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ iki,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ sustabdymoSalyga)\ \{}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ input\{\};}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cin\ >>\ input;}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (input\ ==\ sustabdymoSalyga)\ \{}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sustabdymoSalyga;}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (input\ <\ nuo\ ||\ input\ >\ iki)\ \{}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)n!!!!Iveskite\ skaiciu\ nuo\ "{}}\ <<\ nuo\ <<\ \textcolor{stringliteral}{"{}\ iki\ "{}}\ <<\ iki\ <<\ \textcolor{stringliteral}{"{}.!!!!\(\backslash\)n\(\backslash\)n\(\backslash\)n"{}};}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (...)\ \{}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cin.clear();}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cin.ignore(std::numeric\_limits<std::streamsize>::max(),\ \textcolor{charliteral}{'\(\backslash\)n'});}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)n!!!!Ivestis\ neteisinga.\ Bandykite\ isnaujo.!!!!\(\backslash\)n\(\backslash\)n\(\backslash\)n"{}};}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ input;}
+\DoxyCodeLine{00166\ \ \ \ \ \}}
+\DoxyCodeLine{00167\ \};}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00169\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,18 +1,20 @@
 ﻿#ifndef STUDENTAS_H
 #define STUDENTAS_H
+
 #include "zmogus.h"
+#include "Vector.h"
 // Struktura, kurioje laikomi studento duomenys.
 
 class Stud : public Zmogus {
 private:
-	std::vector<int>pazymys_{};
+	Vector<int>pazymys_{};
 	int egz_{};
 	float galVidurkis_{};
 	float galMediana_{};
 
 public:
 	/// Konstruktorius ir desktrutorius
-	explicit Stud(std::string var = "", std::string pav = "", std::vector<int> pazymys = {}, int egz = {}) :
+	explicit Stud(std::string var = "", std::string pav = "", Vector<int> pazymys = {}, int egz = {}) :
 		Zmogus(std::move(var), std::move(pav)), pazymys_(std::move(pazymys)), egz_(egz) {}
 
 	~Stud() = default;
@@ -44,7 +46,10 @@ public:
 		egz_(other.egz_),
 		galVidurkis_(other.galVidurkis_),
 		galMediana_(other.galMediana_) {
+		other.pazymys_.Clear();
 		other.egz_ = 0;
+		other.galVidurkis_ = 0.0f;
+		other.galMediana_ = 0.0f;
 	}
 
 	///  Move assignment operator
@@ -55,7 +60,11 @@ public:
 			egz_ = other.egz_;
 			galVidurkis_ = other.galVidurkis_;
 			galMediana_ = other.galMediana_;
+
+			other.pazymys_.Clear();
 			other.egz_ = 0;
+			other.galVidurkis_ = 0.0f;
+			other.galMediana_ = 0.0f;
 		}
 		return *this;
 	}
@@ -65,17 +74,17 @@ public:
 		is >> static_cast<Zmogus&>(s);
 
 		int egz;
-		std::vector<int> pazymiai;
+		Vector<int> pazymiai;
 		int paz;
 
-		cout << "Iveskite egzamino pazymi: ";
+		std::cout << "Iveskite egzamino pazymi: ";
 		egz = ivestiesPatikrinimas(0, 10);
 
-		cout << "Iveskite pazymius 0 iki 10, norint baigti iveskite -1:\n";
+		std::cout << "Iveskite pazymius 0 iki 10, norint baigti iveskite -1:\n";
 		while(true) {
 			paz = ivestiesPatikrinimas(0, 10, -1);
 			if (paz == -1) break;
-			pazymiai.push_back(paz);
+			pazymiai.PushBack(paz);
 		}
 
 		s.setEgz(egz);
@@ -103,8 +112,8 @@ public:
 	void setEgz(const int egz)					 { egz_ = egz; }
 
 	/// Papildomos funkcijos, kurios prideda ir pasalina uzduociu pazymius
-	void addPazymys(const int pazymys)		{pazymys_.push_back(pazymys);}
-	void removePazymys()					{pazymys_.pop_back();}
+	void addPazymys(const int pazymys)		{pazymys_.PushBack(pazymys);}
+	void removePazymys()					{pazymys_.PopBack();}
 
 	void calculateGalVidurkis();
 	void calculateGalMediana();
@@ -112,7 +121,7 @@ public:
 	/// Getteriai, kurie grazina studento varda, pavarde, uzduotis, egzamino pazymi ir galutini pazymi.
 	std::string getVar() const override { return var_; }
 	std::string getPav() const override { return pav_; }
-	std::vector<int> getPazymys() const { return pazymys_; }
+	Vector<int> getPazymys() const { return pazymys_; }
 	int getEgz() const					{ return egz_; }
 	float getVidurkis() const			{ return galVidurkis_; }
 	float getMediana() const			{ return galMediana_; }
@@ -122,16 +131,16 @@ public:
 		int input{};
 		while (true) {
 			try {
-				cin >> input;
+				std::cin >> input;
 				if (input < nuo || input > iki) {
-					cout << "\n\n!!!!Iveskite skaiciu nuo " << nuo << " iki " << iki << ".!!!!\n\n\n";
+					std::cout << "\n\n!!!!Iveskite skaiciu nuo " << nuo << " iki " << iki << ".!!!!\n\n\n";
 					continue;
 				}
 			}
 			catch (...) {
-				cin.clear();
-				cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-				cout << "\n\n!!!!Ivestis neteisinga. Bandykite isnaujo.!!!!\n\n\n";
+				std::cin.clear();
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				std::cout << "\n\n!!!!Ivestis neteisinga. Bandykite isnaujo.!!!!\n\n\n";
 				continue;
 			}
 			break;
@@ -143,20 +152,20 @@ public:
 		int input{};
 		while (true) {
 			try {
-				cin >> input;
+				std::cin >> input;
 				if (input == sustabdymoSalyga) {
 					return sustabdymoSalyga;
 				}
 
 				if (input < nuo || input > iki) {
-					cout << "\n\n!!!!Iveskite skaiciu nuo " << nuo << " iki " << iki << ".!!!!\n\n\n";
+					std::cout << "\n\n!!!!Iveskite skaiciu nuo " << nuo << " iki " << iki << ".!!!!\n\n\n";
 					continue;
 				}
 			}
 			catch (...) {
-				cin.clear();
-				cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-				cout << "\n\n!!!!Ivestis neteisinga. Bandykite isnaujo.!!!!\n\n\n";
+				std::cin.clear();
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				std::cout << "\n\n!!!!Ivestis neteisinga. Bandykite isnaujo.!!!!\n\n\n";
 				continue;
 			}
 			break;
@@ -164,4 +173,5 @@ public:
 		return input;
 	}
 };
+
 #endif

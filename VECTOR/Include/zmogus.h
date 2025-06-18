@@ -1,5 +1,6 @@
 #ifndef ZMOGUS_H
 #define ZMOGUS_H
+
 class Zmogus {
 protected:
 	std::string var_{}, pav_{};
@@ -28,13 +29,18 @@ public:
 	/// Move constructor
 	Zmogus(Zmogus&& other) noexcept :
 		var_(std::move(other.var_)),
-		pav_(std::move(other.pav_)){}
+		pav_(std::move(other.pav_)){
+		other.var_.clear();
+		other.pav_.clear();
+	}
 
 	///  Move assignment operator
 	Zmogus& operator=(Zmogus&& other) noexcept {
 		if (this != &other) {
 			var_ = std::move(other.var_);
 			pav_ = std::move(other.pav_);
+			other.var_.clear();
+			other.pav_.clear();
 		}
 		return *this;
 	}
@@ -43,9 +49,9 @@ public:
 	friend std::istream& operator>>(std::istream& is, Zmogus& s) {
 		std::string var, pav;
 
-		cout << "Iveskite varda: ";
+		std::cout << "Iveskite varda: ";
 		is >> var;
-		cout << "Iveskite pavarde: ";
+		std::cout << "Iveskite pavarde: ";
 		is >> pav;
 
 		s.setVar(var);
@@ -67,4 +73,5 @@ public:
 	virtual std::string getVar() const { return var_; }
 	virtual std::string getPav() const { return pav_; }
 };
+
 #endif

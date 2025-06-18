@@ -9,20 +9,39 @@
 | v0.4      | Studentų generavimas. Failų generavimas. Studentų rušiavimo funkcija. Testavimo funkcija. Tyrimo README.md aprašas.                                                                                                                                        | Užtruko labai daug laiko, nes buvo nemažai klaidų, teko daug testuoti. Galū gale viskas išėjo sklandžiai.             |
 | v1.0      | Naudojama CMake. Trys skirtingos versijos su skirtingais STL konteineriais: List, Deque ir Vector. Spartumo tyrimai. Naudojami specialūs algoritmai Vector versijoje. Sutvarkyta repozitorija. Viso projekto aprašas. Naudojimosi ir diegimo instrukcijos. | Užtruko dar daugiau laiko dėl testavimo ir šios versijos monotoniško darbo. Darbas pavyko.                            |
 | v1.1      | Pakeista kodo struktura, implementuota klasė vietoj prieštai naudoto struct                                                                                                                                                                                | Pradėti su klasėm nesinorėjo, bet vertėjo kodo aiškumui ir spartesniam kurimui                                        |
-| v1.2      | Implementuota Rules of Five, perkrautas Ivesties operatorius ir perkrautas Išvesties operatorius. Testai turi menu, padaryti unit testai programos testavimo palengvinimui.                                                                                | Versija padaryta greitai, bet naudingai                                                                               |
+| v1.2      | Implementuota Rules of Five, perkrautas Ivesties operatorius ir perkrautas Išvesties operatorius. Testai turi menu, padaryti testai programos testavimo palengvinimui.                                                                                     | Versija padaryta greitai, bet naudingai                                                                               |
 | v1.5      | Sukurtos abstrakti bazinė Zmogus ir išvestinė Stud klasės.                                                                                                                                                                                                 | Greičiausia padaryta versija, supratimas apie bazines ir išvestines klases tikrai padidėjo. Testų keisti nereikėjo :) |
+| v2.0      | Sukurta HTML, LaTeX PDF dokumentacija naudojant Doxygen programėlę. Implementuoti Stud klasės Unit Testai naudojant "googletest" projektą.                                                                                                                 | Dėl korumpuotų failų ir nepastabumo šita versija buvo blogiausia patirtis. Bet galų gale viskas pavyko sekmingai.     |
+| v3.0      | Sukuriau savo custom Vector klasę, atkartota didelė dalis STL vector funkcijų. Unit testai nuosavai vector funkcijai. Testavimas. Installeris.                                                                                                             | Daug laiko užtruko, sudėtinga pradėti, bet atradus internetinius šaltinius pasidare lengviau.                         |
+
 
 # **Starting manual**
 
-Atsisiūsti v1.5 full release.
+Atsisiūsti v3.0 full release.
 
 Naudojant WinRAR arba 7-Zip, atskleisti (extract) failą, bus sukurtas aplankas su programos failais.
+
+## **Pirmas būdas (Lengvesnis)**
+Paleisti "V1.5 OOP.msi" failą, nekeisti atsisiuntimo direktorijos.
+
+Siuntimuisi baigus ir direktorijos nepakeitus į "C:\Program Files\VU\Dominykas-Pronskus" įsidėti "studList10000.txt", "studList100000.txt" ir "test.txt".
+
+Paleidžiamąją programą bus randama "Start menu" ir Darbalaukyje.
+
+
+## **Antras būdas**
 
 "dependancies" aplanke įsidiegti "cmake-4.0.0-rc4-windows-x86_64.msi".
 
 Atidarai aplanką VECTOR, paleidi run.bat scriptą.
 
-Atsidarys "cmd" langas kuriame bus veikianti programa, jeigu programą uždarėte ir norite vėl ją atidaryti, tai nuo tos vietos kur yra run.bat paspauskite "build" aplanką, tada "Release" aplanką, kuriame rasite "OOP2V15.exe" paleidžiamąjį failą.
+Atsidarys "cmd" langas kuriame bus veikianti programa, pirma kartą pasileidus dar vyks unit testas. Jeigu programą uždarėte ir norite vėl ją atidaryti, tai nuo tos vietos kur yra run.bat paspauskite "build" aplanką, tada "Release" aplanką kuriame rasite "OOP3V30.exe" paleidžiamąjį failą.
+
+
+# **Uninstall**
+For the .msi download, go to your program deletion and delete "Dominykas-Pronskus".
+
+For the CMakeFile program, just delete the folder the program resides in.
 
 
 # **User manual**
@@ -33,7 +52,7 @@ Atsidarys "cmd" langas kuriame bus veikianti programa, jeigu programą uždarėt
 
 3 - Studentas(-ai) sukuriami automatiškai, tik reikia įvesti studentų kiekį.
 
-4 - Failas, esantis aplanke kartu su "OOPV12.exe" ( ...\VECTOR\build\Release ) yra nuskaitomas į tam tikrą konteinerį.
+4 - Failas, esantis aplanke kartu su "OOP3V30.exe" ( ...\VECTOR\build\Release ) yra nuskaitomas į tam tikrą konteinerį.
 
 5 - Sukuriamas failas pavadinimu "studList{įvestasStudentuKiekis}.txt"
 
@@ -48,6 +67,43 @@ Atsidarys "cmd" langas kuriame bus veikianti programa, jeigu programą uždarėt
 7.x.x.1-7.x.x.4 - Pasirinkimai pagal ką norite rušiuoti studentus.
 
 Rezultatų failą rasite ( ...\VECTOR\build\Release ).
+
+
+# **5 Funkcijų aprašymai**
+| Reserve    | void Reserve(size_t newCapacity); Ši funkcija naudojama užrezervuoti pateiktą "vietų" (newCapacity) atmintyje. Funkcija gauna reikšmę newCapacity, kurią lyginu su esančia capacity reikšme, jeigu newCapacity mažesnis, tai funkcijas grįžta. Kitaip ji sukuria new newArray, kurią užpildo array, array išsitrina ir atgauna savo reikšmes. |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| PushBack   | void PushBack(const T& value); Ši funkcija priima value, kuri įstato į Vectoriaus galą. Pirma - patikrina ar size >= capacity, jei taip, tai padidina array ir toliau eina, kur array paskutine vietele idedama value.                                                                                                                        |
+| operator== | bool operator==(const Vector& rhs) const; Ši funkcija priima rhs reikšmę, kurią lygina su pradines reikšmės size, tada array elementais ir jeigu abu neismete false, duoda true.                                                                                                                                                              |
+| Vector     | Vector(const std::initializer_list<T>& list); Ši funkcija leidžia inicijuoti reikšmes pvz.: Vector<int> SK {1,2,3,4,5}. Pirma paima size(0), tada capacity yra pagal paduota list ilgi + 5, sukuriama array dinaminej atminty ir PushBack funkcija prideda visas reikšmes prie array.                                                         |
+| At         | T& At(size_t index); Priima indeksa, pagal kuri gražina elementa toj vietoj, jeigu indeksas neišeina iš Vectoriaus ribų.                                                                                                                                                                                                                      |
+
+
+# **Vector compare test**
+| Fill size     | My vector      | STL vector     |
+| ------------- | -------------- | -------------- |
+| 10000         | 0.00004790 sec | 0.00005380 sec |
+| 100000        | 0.00037480 sec | 0.00041790 sec |
+| 1000000       | 0.00198310 sec | 0.00290890 sec |
+| 10000000      | 0.01952810 sec | 0.03320920 sec |
+| 100000000     | 0.30923830 sec | 0.35358800 sec |
+| AVG           | 0.06051138 sec | 0.07803556 sec |
+| TOTAL         | 0.30636120 sec | 0.39470780 sec |
+| Perskirstymai | 25 kartai      | 46 kartai      |
+
+
+Kiekvienas failas nuskaitytas po 3 kartus.
+| File size     | My vector (AVG) | My vector (TOT)   | STL vector (FUN) | STL vector (AVG) | STL vector (TOT)  | STL vector (FUN) |
+| ------------- | --------------- | ----------------- | ---------------- | ---------------- | ----------------- | ---------------- |
+| 100000        | 0.42521847 sec  | 1.27565540 sec    | 0.37621842 sec   | 0.41326590 sec   | 1.23979770 sec    | 0.35512627 sec   |
+| 1000000       | 4.52487077 sec  | 13.57461230 sec   | 4.02434072 sec   | 4.48646507 sec   | 13.45939520 sec   | 3.62357066 sec   |
+| 10000000      | 49.94290833 sec | 149.82872500 sec  | 37.95690113 sec  | 41.98002827 sec  | 125.94008480 sec  | 36.44295553 sec  |
+
+Nuskaityme vienintele Vector funkcija naudojama yra push_back, arba PushBack, tikslaus laiko negausiu, bet operacija kuri suskirsto duomenis ivyksta yra pateikta.
+Po šios analizės paaiškėjo, kad aš nesu geresnis Vector klasės kurėjas negu žmonės susiėmę STL.
+
+
+# **Unit testing**
+Unit testai vykdomi pirmą kartą paleidus run.bat failą ir priešais pagrindinę programą.
 
 
 # **Klasės naudojimas**

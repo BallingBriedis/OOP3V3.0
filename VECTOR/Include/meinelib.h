@@ -6,7 +6,7 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
-#include <vector>
+#include "vector.h"
 #include <deque>
 #include <list>
 #include <fstream>
@@ -21,10 +21,9 @@
 namespace fs = std::filesystem;
 
 using std::cout;
-using std::cin;
+using std::cout;
 using std::endl;
 using std::string;
-using std::vector;
 using std::deque;
 using std::list;
 using std::fixed;

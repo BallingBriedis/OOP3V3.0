@@ -2,24 +2,24 @@
 #include "studentas.h"
 #include "functionsCallsVector.h"
 
-void isvestiesMenu(vector<Stud>& studentai) {
-	cout << "Pasirinkite norima studentu isvedimo buda: \n";
-	cout << "1 - Isvesti i terminala\n";
-	cout << "2 - Isvesti i faila\n";
-	cout << "3 - Isvesti i du failus, suskirsto\n";
+void isvestiesMenu(Vector<Stud>& studentai) {
+	std::cout << "Pasirinkite norima studentu isvedimo buda: \n";
+	std::cout << "1 - Isvesti i terminala\n";
+	std::cout << "2 - Isvesti i faila\n";
+	std::cout << "3 - Isvesti i du failus, suskirsto\n";
 	int isvestiesPasirinkimas = ivestiesPatikrinimas(1, 3);
 
-	cout << "Pasirinkite koki galutini norite matyti: \n";
-	cout << "1 - Vidurki \n";
-	cout << "2 - Mediana \n";
-	cout << "3 - Abu \n";
+	std::cout << "Pasirinkite koki galutini norite matyti: \n";
+	std::cout << "1 - Vidurki \n";
+	std::cout << "2 - Mediana \n";
+	std::cout << "3 - Abu \n";
 	int galutinioPasirinkimas = ivestiesPatikrinimas(1, 3);
 
-	cout << "Pasirinkite studentu rusiavima:\n";
-	cout << "1 - Pagal varda\n";
-	cout << "2 - Pagal pavarde\n";
-	cout << "3 - Pagal galutini pazymi pagal vidurki \n";
-	cout << "4 - Pagal galutini pazymi pagal mediana \n";
+	std::cout << "Pasirinkite studentu rusiavima:\n";
+	std::cout << "1 - Pagal varda\n";
+	std::cout << "2 - Pagal pavarde\n";
+	std::cout << "3 - Pagal galutini pazymi pagal vidurki \n";
+	std::cout << "4 - Pagal galutini pazymi pagal mediana \n";
 	int rusiavimoPasirinkimas = ivestiesPatikrinimas(1, 4);
 
 
@@ -40,7 +40,7 @@ void isvestiesMenu(vector<Stud>& studentai) {
 	}
 }
 
-void isvestis(vector<Stud>& studentai, std::ostream& isvestiesMetodas, const int galutinioPasirinkimas) {
+void isvestis(Vector<Stud>& studentai, std::ostream& isvestiesMetodas, const int galutinioPasirinkimas) {
 	int longest_name{};
 	int longest_surname{};
 	for (auto& studentas : studentai) {

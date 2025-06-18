@@ -3,22 +3,22 @@
 #include "functionsCallsVector.h"
 
 int main() {
-	cin.exceptions(std::ios::failbit);
+	std::cin.exceptions(std::ios::failbit);
 	srand(time(NULL));
-	vector<Stud> studentai;
+	Vector<Stud> studentai;
 	int n = 0,baigimas = 7;
 	while (true) {
 		Stud studentas;
-		cout << "Pasirinkite norima studento duomenu surasyma irasant skaiciu nuo 1 iki "<< baigimas <<".\n";
-		cout << "------------------------------------------------------------------------\n";
-		cout << "1 - Ivestis ranka\n";
-		cout << "2 - Ivestis ranka (Generuojami tik pazymiai)\n";
-		cout << "3 - Generuojamas studentas ir pazymiai\n";
-		cout << "4 - Failo nuskaitymas\n";
-		cout << "5 - Failo kurimas\n";
-		cout << "6 - Testine aplinka\n";
-		cout << baigimas << " - Baigti darba\n";
-		cout << "------------------------------------------------------------------------\n";
+		std::cout << "Pasirinkite norima studento duomenu surasyma irasant skaiciu nuo 1 iki "<< baigimas <<".\n";
+		std::cout << "------------------------------------------------------------------------\n";
+		std::cout << "1 - Ivestis ranka\n";
+		std::cout << "2 - Ivestis ranka (Generuojami tik pazymiai)\n";
+		std::cout << "3 - Generuojamas studentas ir pazymiai\n";
+		std::cout << "4 - Failo nuskaitymas\n";
+		std::cout << "5 - Failo kurimas\n";
+		std::cout << "6 - Testine aplinka\n";
+		std::cout << baigimas << " - Baigti darba\n";
+		std::cout << "------------------------------------------------------------------------\n";
 		int menuPasirinkimas = ivestiesPatikrinimas(1, baigimas, baigimas);
 
 		if (menuPasirinkimas == baigimas) { break;}
@@ -26,30 +26,30 @@ int main() {
 		switch (menuPasirinkimas) {
 		case 1:
 			readRanka(studentas);
-			studentai.push_back(studentas);
+			studentai.PushBack(studentas);
 			break;
 		case 2:
 			readName_makeGrade(studentas);
-			studentai.push_back(studentas);
+			studentai.PushBack(studentas);
 			break;
 		case 3:
-			cout << "Kiek studentu sugeneruoti?\n";
-			cin >> n;
+			std::cout << "Kiek studentu sugeneruoti?\n";
+			std::cin >> n;
 			for (int i = 0; i < n; i++) {
 				makeStud(studentas);
-				studentai.push_back(studentas);
+				studentai.PushBack(studentas);
 			}
 			break;
 		case 4:
 			try {
-				cout << "Iveskite norimo failo pavadinima be kabuciu:\n";
+				std::cout << "Iveskite norimo failo pavadinima be kabuciu:\n";
 				for (const auto& entry : fs::directory_iterator(".")) {
 					if (entry.path().extension() == ".txt") {
-						cout << entry.path().filename() << endl;
+						std::cout << entry.path().filename() << endl;
 					}
 				}
-				string ivestas_vardas;
-				cin >> ivestas_vardas;
+				std::string ivestas_vardas;
+				std::cin >> ivestas_vardas;
 				fileRead(studentai, ivestas_vardas);
 			}
 			catch (const std::exception& e) {

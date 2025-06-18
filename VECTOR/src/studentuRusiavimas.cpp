@@ -2,7 +2,7 @@
 #include "studentas.h"
 #include "functionsCallsVector.h"
 
-void rusiavimas(vector<Stud>& studentai, int rusiavimoPasirinkimas) {
+void rusiavimas(Vector<Stud>& studentai, int rusiavimoPasirinkimas) {
 	auto compareByName = [](const Stud& a, const Stud& b) {
 		return a.getVar() < b.getVar();
 		};
@@ -30,7 +30,7 @@ void rusiavimas(vector<Stud>& studentai, int rusiavimoPasirinkimas) {
 		sort(studentai.begin(), studentai.end(), compareByFinalGradeMed);
 		break;
 	default:
-		cout << "Neteisingas pasirinkimas. Nerusiavome.\n";
+		std::cout << "Neteisingas pasirinkimas. Nerusiavome.\n";
 		break;
 	}
 }
