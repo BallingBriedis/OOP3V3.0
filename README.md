@@ -38,6 +38,12 @@ Atidarai aplanką VECTOR, paleidi run.bat scriptą.
 Atsidarys "cmd" langas kuriame bus veikianti programa, pirma kartą pasileidus dar vyks unit testas. Jeigu programą uždarėte ir norite vėl ją atidaryti, tai nuo tos vietos kur yra run.bat paspauskite "build" aplanką, tada "Release" aplanką kuriame rasite "OOP3V30.exe" paleidžiamąjį failą.
 
 
+# **Uninstall**
+For the .msi download, go to your program deletion and delete "Dominykas-Pronskus".
+
+For the CMakeFile program, just delete the folder the program resides in.
+
+
 # **User manual**
 
 1 - Ranka įvedamas studentas ir jo pažymiai.
